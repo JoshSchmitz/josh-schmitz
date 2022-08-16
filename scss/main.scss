@@ -7,4 +7,11 @@
 }
 
 body {
+  color: $primary-color;
+  background-color: $secondary-color;
+}
+
+header {
+  align-items: center;
+  justify-content: space-between;
 }
