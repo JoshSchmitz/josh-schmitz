@@ -9,9 +9,34 @@
 body {
   color: $primary-color;
   background-color: $secondary-color;
+  height: 100%;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
 }
 
-header {
-  align-items: center;
-  justify-content: space-between;
+.navbar {
+  background-color: $primary-color;
+  color: $secondary-color;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      a {
+        color: $secondary-color;
+        text-decoration: none;
+        padding: 10px 15px;
+
+        &:hover {
+        }
+      }
+    }
+  }
 }
