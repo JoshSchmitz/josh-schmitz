@@ -52,6 +52,25 @@ header {
   }
 }
 
+.main-content {
+  .container {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 4fr;
+
+    .portrait {
+      text-align: center;
+      padding-top: 30px;
+
+      img {
+        width: 80%;
+        border-radius: 50%;
+        border: $primary-color 4px solid;
+      }
+    }
+  }
+}
+
 footer {
   text-align: center;
   padding: 1rem;
