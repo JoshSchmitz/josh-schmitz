@@ -44,6 +44,9 @@ header {
           color: lighten($primary-color, 60);
         }
       }
+
+      &::after {
+      }
     }
 
     .logo {
@@ -53,53 +56,78 @@ header {
   }
 }
 
-.main-content {
+.showcase {
+  background-color: $primary-color;
+  overflow: visible;
+  height: 150px;
+  color: $tertiary-color;
+  position: relative;
+
   .container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: 1fr 4fr;
+    display: flex;
+    justify-content: space-between;
 
-    .portrait {
-      text-align: center;
-      padding-top: 30px;
-
-      img {
-        width: 80%;
-        border-radius: 50%;
-        border: #debf10 4px solid;
-      }
+    &::after {
+      content: "";
+      position: absolute;
+      height: 200px;
+      bottom: -45px;
+      right: 0;
+      left: 0;
+      background-color: $primary-color;
+      transform: skewY(3deg);
+      -webkit-transform: skewY(3deg);
+      -moz-transform: skewY(3deg);
+      -ms-transform: skewY(3deg);
+      z-index: -1;
     }
 
     .tagline {
-      padding-top: 30px;
+      font-size: 2em;
       font-style: italic;
-      font-size: 1.5rem;
-      color: lighten($primary-color, 10);
+      margin: 40px 30px;
     }
 
-    .branding {
-      .intro {
-        font-size: 0.9rem;
-        font-weight: bold;
+    .card {
+      width: 25%;
+      padding-top: 15px;
+      z-index: 100;
+
+      .portrait {
         text-align: center;
-        padding-bottom: 30px;
+
+        img {
+          width: 70%;
+          border-radius: 50%;
+          border: solid $tertiary-color 3px;
+        }
+      }
+
+      .intro {
+        text-align: center;
+        padding: 30px;
       }
 
       .social {
         text-align: center;
 
         a {
-          padding: 0 6px;
+          padding: 0 10px;
           color: $text-dark;
 
           &:hover {
-            color: #debf10;
+            color: $tertiary-color;
             @include easeOut;
           }
         }
       }
     }
   }
+}
+
+.main-content {
+  position: relative;
+  top: 70px;
 }
 
 footer {
