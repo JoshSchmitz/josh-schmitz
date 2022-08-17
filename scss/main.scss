@@ -7,7 +7,7 @@
 }
 
 body {
-  color: $text-dark;
+  color: set-text-color($secondary-color);
   background-color: $secondary-color;
   height: 100%;
   font-family: $fontface;
@@ -20,7 +20,7 @@ main {
 
 header {
   background-color: $primary-color;
-  color: $secondary-color;
+  color: set-text-color($primary-color);
 
   .container {
     display: flex;
@@ -34,7 +34,7 @@ header {
       justify-content: space-between;
 
       a {
-        color: $secondary-color;
+        color: set-text-color($primary-color);
         text-decoration: none;
         padding: 10px 15px;
         font-size: 1.2rem;
@@ -43,9 +43,6 @@ header {
           @include easeOut;
           color: lighten($primary-color, 60);
         }
-      }
-
-      &::after {
       }
     }
 
@@ -116,7 +113,7 @@ header {
           color: $text-dark;
 
           &:hover {
-            color: $tertiary-color;
+            color: set-text-color($tertiary-color);
             @include easeOut;
           }
         }
@@ -130,8 +127,7 @@ header {
   top: 70px;
 
   .highlights {
-    border: solid $primary-color 3px;
-    width: 74%;
+    width: 72%;
   }
 }
 
@@ -139,6 +135,6 @@ footer {
   text-align: center;
   padding: 1rem;
   background-color: $primary-color;
-  color: $secondary-color;
+  color: set-text-color($primary-color);
   height: 60px;
 }

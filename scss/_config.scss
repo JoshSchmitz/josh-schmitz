@@ -29,14 +29,16 @@ $fontface: "PT Serif", Times, serif;
 
     .company {
       color: $tertiary-color;
+      text-transform: lowercase;
     }
   }
   .location {
     text-transform: lowercase;
-    margin-left: 20px;
   }
 
   &.currentposition {
+    @extend .card;
+    padding: 20px;
   }
 }
 
@@ -48,9 +50,9 @@ $fontface: "PT Serif", Times, serif;
 // Set Text Color
 @function set-text-color($color) {
   @if (lightness($color) > 40) {
-    @return #333;
+    @return $text-dark;
   } @else {
-    @return #fff;
+    @return $secondary-color;
   }
 }
 
