@@ -1,12 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+
 $primary-color: #0f2462; // rgb(15, 36, 98);
 $secondary-color: #f4f4f4; // rgb(244,244,244);
+$tertiary-color: #debf10;
 $text-dark: #333;
-$fontface: Tahoma, Geneva, Verdana, sans-serif;
+$fontface: "PT Serif", Times, serif;
 
 .container {
   max-width: 1760px;
   margin: 0 auto;
   padding: 0 30px;
+}
+
+.card {
+  color: $text-dark;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px;
 }
 
 @mixin easeOut {
