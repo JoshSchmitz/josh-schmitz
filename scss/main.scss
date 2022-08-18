@@ -61,8 +61,8 @@ header {
   position: relative;
 
   .container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 
     &::after {
       content: "";
@@ -86,7 +86,6 @@ header {
     }
 
     .card {
-      width: 25%;
       padding-top: 15px;
       z-index: 100;
 
@@ -113,7 +112,7 @@ header {
           color: $text-dark;
 
           &:hover {
-            color: set-text-color($tertiary-color);
+            color: $tertiary-color;
             @include easeOut;
           }
         }
@@ -122,12 +121,26 @@ header {
   }
 }
 
-.main-content {
-  position: relative;
-  top: 70px;
+#highlights {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 
-  .highlights {
-    width: 72%;
+  .position {
+    grid-column: 1 / 4;
+  }
+
+  .skills {
+    grid-column: 1 / 3;
+    display: flex;
+
+    .skill {
+      i,
+      h3,
+      p {
+        display: inline-block;
+      }
+    }
   }
 }
 
