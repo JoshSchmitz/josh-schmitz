@@ -51,8 +51,11 @@ header {
     }
 
     .logo {
-      font-size: 1.5rem;
-      margin: 15px 0;
+      padding: 0 20px;
+      h1 {
+        font-size: 3rem;
+        margin: 15px 0;
+      }
     }
   }
 }
@@ -84,45 +87,10 @@ header {
     }
 
     .tagline {
-      font-size: 2em;
+      font-size: 2rem;
       font-style: italic;
       margin: 40px 30px;
       height: 120px;
-    }
-
-    .branding {
-      padding-top: 15px;
-      z-index: 100;
-      overflow: visible;
-
-      .portrait {
-        text-align: center;
-
-        img {
-          max-width: 70%;
-          border-radius: 50%;
-          border: solid $tertiary-color 3px;
-        }
-      }
-
-      .intro {
-        text-align: center;
-        padding: 30px;
-      }
-
-      .social {
-        text-align: center;
-
-        a {
-          padding: 10px;
-          color: $text-dark;
-
-          &:hover {
-            color: $tertiary-color;
-            @include easeOut;
-          }
-        }
-      }
     }
   }
 }
@@ -154,41 +122,10 @@ header {
     grid-row: 2 / 5;
     padding: 20px 20px 0 20px;
   }
+}
 
-  #leadership {
-    grid-column: 1 / 3;
-    padding: 20px;
-    margin: 0;
-
-    .leaderships {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-around;
-
-      .leadership {
-        width: 50%;
-        padding: 10px;
-        margin: 10px 0;
-        text-align: center;
-
-        i {
-          color: $tertiary-color;
-          font-size: 3rem;
-          margin-bottom: 5px;
-        }
-
-        h2 {
-          margin-bottom: 20px;
-        }
-
-        p {
-          text-align: left;
-          text-indent: 15px;
-        }
-      }
-    }
-  }
+#leadership {
+  padding: 20px;
 }
 
 footer {
