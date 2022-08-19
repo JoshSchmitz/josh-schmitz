@@ -5,6 +5,15 @@
 } // Desktops & Laptops
 
 @include mediaMd {
+  header .container {
+    .menu-btn {
+      display: block;
+    }
+    .nav {
+      display: none;
+    }
+  }
+
   .showcase .container {
     grid-template-columns: 1fr;
 
@@ -27,6 +36,34 @@
       .intro {
         text-align: left;
         padding: 0 10px;
+      }
+    }
+  }
+
+  #highlights {
+    margin-top: 200px;
+    grid-template-columns: 1fr;
+    grid-column: 1;
+
+    #positions {
+      grid-column: 1;
+    }
+
+    #educations {
+      grid-column: 1;
+    }
+
+    #skills {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    #languages {
+      grid-column: 1;
+      grid-row: auto;
+
+      .languages .language {
+        width: auto;
       }
     }
   }
