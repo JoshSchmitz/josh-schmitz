@@ -1,0 +1,36 @@
+@include mediaXl {
+} // Widescreens
+
+@include mediaLg {
+} // Desktops & Laptops
+
+@include mediaMd {
+  .showcase .container {
+    grid-template-columns: 1fr;
+
+    .tagline {
+      text-align: center;
+      margin: 20px 30px;
+    }
+
+    .branding {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .portrait {
+        img {
+          max-width: 150px;
+        }
+      }
+
+      .intro {
+        text-align: left;
+        padding: 0 10px;
+      }
+    }
+  }
+} // Tablets &  Small Laptops
+
+@include mediaSm {
+} // Smartphones
