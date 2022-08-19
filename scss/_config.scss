@@ -6,6 +6,20 @@ $tertiary-color: #debf10;
 $text-dark: #333;
 $fontface: "PT Serif", Times, serif;
 
+// easeOut mixin
+@mixin easeOut {
+  transition: all 0.5s ease-out;
+}
+
+// Set Text Color
+@function set-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return $text-dark;
+  } @else {
+    @return $secondary-color;
+  }
+}
+
 .container {
   max-width: 1760px;
   margin: 0 auto;
@@ -17,7 +31,7 @@ $fontface: "PT Serif", Times, serif;
   background-color: $secondary-color;
   border-radius: 10px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
 }
 
@@ -42,17 +56,39 @@ $fontface: "PT Serif", Times, serif;
   }
 }
 
-// easeOut mixin
-@mixin easeOut {
-  transition: all 0.5s ease-out;
-}
+.skills {
+  display: flex;
+  flex-wrap: wrap;
 
-// Set Text Color
-@function set-text-color($color) {
-  @if (lightness($color) > 40) {
-    @return $text-dark;
-  } @else {
-    @return $secondary-color;
+  .skill {
+    margin: 5px;
+    font-size: 0.8rem;
+    border: solid #ccc 1px;
+    border-radius: 10px;
+    padding: 10px;
+
+    i,
+    h3,
+    p {
+      display: inline-block;
+      margin-right: 5px;
+      line-height: 1rem;
+    }
+
+    &-light {
+      background-color: lighten($tertiary-color, 40);
+      border: none;
+    }
+
+    &-dark {
+      background-color: #54638e;
+      color: set-text-color($primary-color);
+      border: none;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
   }
 }
 
