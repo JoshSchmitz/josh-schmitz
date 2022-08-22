@@ -59,27 +59,18 @@
         color: lighten($primary-color, 60);
       }
     }
-  }
 
-  .nav-link {
-    display: inline-block;
-    position: relative;
-    font-size: 2rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    color: #set-text-color($primary-color);
-    @include easeOut;
-
-    &:hover {
-      color: $secondary-color;
+    .nav-item {
+      &.current {
+        border-bottom: solid #fff 1px;
+      }
     }
   }
 }
 
-// Delay each nav item slide by 0.1s
+/*// Delay each nav item slide by 0.1s
 @for $x from 1 through 4 {
   .nav-item:nth-child(#{$x}) {
     transition-delay: $x * 0.1s;
   }
-}
+}*/
