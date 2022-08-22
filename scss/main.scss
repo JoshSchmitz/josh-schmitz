@@ -32,29 +32,6 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    .menu-btn {
-      display: none;
-    }
-
-    .nav {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      a {
-        color: set-text-color($primary-color);
-        text-decoration: none;
-        padding: 10px 15px;
-        font-size: 1.2rem;
-
-        &:hover {
-          @include easeOut;
-          color: lighten($primary-color, 60);
-        }
-      }
-    }
-
     .logo {
       padding: 0 20px;
       h1 {
@@ -74,7 +51,7 @@ header {
   .container {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    height: 200px;
+    min-height: 200px;
 
     &::after {
       content: "";
@@ -95,7 +72,7 @@ header {
       font-size: 2rem;
       font-style: italic;
       margin: 40px 30px;
-      height: 120px;
+      // min-height: 120px;
     }
   }
 }

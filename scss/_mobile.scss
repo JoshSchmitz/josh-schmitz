@@ -9,8 +9,32 @@
     .menu-btn {
       display: block;
     }
-    .nav {
-      display: none;
+
+    .menu {
+      &-nav {
+        max-height: 0;
+        background-color: darken($primary-color, 10);
+        opacity: 90%;
+        border-radius: 10px;
+        display: block;
+        position: absolute;
+        top: 35px;
+        right: 80px;
+        overflow-y: hidden;
+        z-index: 100;
+        padding: 0;
+
+        &.show {
+          max-height: 500px;
+          overflow-y: visible;
+          padding: 5px 0;
+          transition: all 0.5s ease;
+        }
+
+        .nav-item {
+          padding: 10px;
+        }
+      }
     }
   }
 
@@ -26,6 +50,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 99;
 
       .portrait {
         img {
@@ -37,11 +62,19 @@
         text-align: left;
         padding: 0 10px;
       }
+
+      .social {
+        a {
+          i {
+            padding: 5px 10px;
+          }
+        }
+      }
     }
   }
 
   #highlights {
-    margin-top: 200px;
+    margin-top: 175px;
     grid-template-columns: 1fr;
     grid-column: 1;
 
@@ -70,4 +103,35 @@
 } // Tablets &  Small Laptops
 
 @include mediaSm {
+  header .container .menu {
+    &-nav {
+      position: absolute;
+      top: 90px;
+      right: 35px;
+    }
+  }
+
+  .showcase {
+    height: auto;
+    .container .branding {
+      display: block;
+    }
+  }
+
+  #highlights {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  #leadership {
+    text-align: center;
+
+    .leaderships {
+      display: block;
+
+      .leadership {
+        width: 100%;
+      }
+    }
+  }
 } // Smartphones

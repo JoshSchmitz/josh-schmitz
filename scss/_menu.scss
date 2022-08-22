@@ -36,72 +36,28 @@
   }
 }
 
+.menu-btn {
+  display: none;
+}
+
 // Menu Overlay
 .menu {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  opacity: 0.9;
-  visibility: hidden;
-
-  &.show {
-    visibility: visible;
-  }
-
-  &-branding,
-  &-nav {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    float: left;
-    width: 50%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  &-nav {
-    background: darken($primary-color, 5);
+  .menu-nav {
     list-style: none;
-    transform: translate3d(0, -100%, 0);
-    @include easeOut;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    &.show {
-      // Slide in from top
-      transform: translate3d(0, 0, 0);
-    }
-  }
+    a {
+      color: set-text-color($primary-color);
+      text-decoration: none;
+      padding: 10px 15px;
+      font-size: 1.2rem;
 
-  // Branding side
-  &-branding {
-    background: $primary-color;
-    transform: translate3d(0, 100%, 0);
-    @include easeOut;
-
-    &.show {
-      // Slide in from bottom
-      transform: translate3d(0, 0, 0);
-    }
-
-    .portrait {
-      width: 250px;
-      height: 250px;
-      background: url("../img/portrait.jpg");
-      border-radius: 50%;
-      border: solid 3px $secondary-color;
-    }
-  }
-
-  .nav-item {
-    transform: translate3d(600px, 0, 0);
-    @include easeOut;
-
-    &.show {
-      transform: translate3d(0, 0, 0);
-    }
-
-    &.current > a {
-      color: $secondary-color;
+      &:hover {
+        @include easeOut;
+        color: lighten($primary-color, 60);
+      }
     }
   }
 

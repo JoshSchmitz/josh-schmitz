@@ -58,8 +58,11 @@ $fontface: "PT Serif", Times, serif;
     text-align: center;
 
     a {
-      padding: 10px;
       color: $text-dark;
+
+      i {
+        padding: 10px;
+      }
 
       &:hover {
         color: $tertiary-color;
