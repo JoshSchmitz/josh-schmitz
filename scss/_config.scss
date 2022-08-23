@@ -52,6 +52,10 @@ $fontface: "PT Serif", Times, serif;
   .intro {
     text-align: center;
     padding: 30px;
+
+    h2 {
+      margin-bottom: 10px;
+    }
   }
 
   .social {
@@ -109,7 +113,12 @@ $fontface: "PT Serif", Times, serif;
       font-style: italic;
     }
 
-    .description {
+    ul.description {
+      padding-left: 20px;
+
+      li {
+        margin-bottom: 10px;
+      }
     }
 
     &.important {
@@ -160,14 +169,14 @@ $fontface: "PT Serif", Times, serif;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin-top: 20px;
 
   .language {
     text-align: center;
     border-radius: 10px;
     padding: 20px;
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 
     i {
       font-size: 3rem;
