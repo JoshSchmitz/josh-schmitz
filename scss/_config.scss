@@ -72,25 +72,50 @@ $fontface: "PT Serif", Times, serif;
   }
 }
 
-.position,
-.education {
-  margin-top: 10px;
-  .title {
-    font-size: 1.7rem;
-  }
+.positions,
+.educations {
+  .position,
+  .education {
+    margin-top: 20px;
 
-  .company {
-    color: $tertiary-color;
-    text-transform: lowercase;
-  }
+    .headline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin-bottom: 5px;
 
-  .location {
-    // text-transform: lowercase;
-  }
+      .title,
+      .company {
+        padding-right: 15px;
+      }
 
-  &.currentposition {
-    @extend .card;
-    padding: 20px;
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .company {
+        color: $tertiary-color;
+        text-transform: lowercase;
+      }
+
+      .location {
+        flex-grow: 1;
+        text-align: right;
+      }
+    }
+
+    .time {
+      margin-bottom: 5px;
+      font-style: italic;
+    }
+
+    .description {
+    }
+
+    &.important {
+      @extend .card;
+      padding: 20px;
+    }
   }
 }
 

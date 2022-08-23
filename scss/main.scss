@@ -82,12 +82,12 @@ header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  #positions {
+  & > .positions {
     grid-column: 1 / 4;
     padding: 20px;
   }
 
-  #educations {
+  & > .educations {
     grid-column: 1 / 3;
     padding: 20px;
     margin: 0;
@@ -106,8 +106,8 @@ header {
   }
 }
 
-#leadership {
-  padding: 20px;
+#leadership .container {
+  padding: 40px;
 }
 
 #resume .container {
@@ -121,9 +121,13 @@ header {
 
   .resume {
     margin-left: 10px;
+    padding-left: 30px;
+
+    & > section {
+      margin-bottom: 20px;
+    }
 
     #introduction {
-      padding: 20px;
     }
 
     #work-experiences {
