@@ -92,7 +92,6 @@ $fontface: "PT Serif", Times, serif;
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
-      margin-bottom: 5px;
 
       .title,
       .company {
@@ -206,21 +205,23 @@ $fontface: "PT Serif", Times, serif;
   }
 }
 
-.leaderships {
+.leaderships,
+.awards {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-around;
 
-  .leadership {
-    width: 45%;
-    padding: 10px;
-    margin: 10px 0;
+  .leadership,
+  .award {
+    width: 50%;
+    padding: 0 2rem 2rem 2rem;
     text-align: center;
 
     i {
       color: $tertiary-color;
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 5px;
     }
 
@@ -231,6 +232,7 @@ $fontface: "PT Serif", Times, serif;
     p {
       text-align: left;
       text-indent: 15px;
+      margin-bottom: 10px;
     }
   }
 }
