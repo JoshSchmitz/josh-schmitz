@@ -115,8 +115,10 @@ header {
   display: grid;
   grid-template-columns: 1fr 5fr;
 
-  .branding .intro {
-    padding: 20px 0;
+  .branding {
+    .intro {
+      padding: 20px 0;
+    }
   }
 
   .resume {

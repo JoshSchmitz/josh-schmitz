@@ -34,6 +34,12 @@ $fontface: "PT Serif", Times, serif;
   padding: 20px;
 }
 
+.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 2rem;
+}
+
 .branding {
   padding-top: 15px;
   z-index: 100;
