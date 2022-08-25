@@ -237,6 +237,31 @@ $fontface: "PT Serif", Times, serif;
   }
 }
 
+.groups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+
+  .group {
+    padding: 15px 2rem;
+
+    i {
+      display: inline-block;
+      font-size: 1.2rem;
+      padding-right: 5px;
+    }
+
+    h3 {
+      display: inline-block;
+    }
+
+    p {
+      margin-left: 33px;
+    }
+  }
+}
+
 // Media query mixins
 @mixin mediaSm {
   @media screen and (max-width: 500px) {
