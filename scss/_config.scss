@@ -92,7 +92,7 @@ $fontface: "PT Serif", Times, serif;
 .educations {
   .position,
   .education {
-    margin-top: 20px;
+    margin-top: 1.5rem;
 
     .headline {
       display: flex;
@@ -130,6 +130,10 @@ $fontface: "PT Serif", Times, serif;
       li {
         margin-bottom: 10px;
       }
+    }
+
+    &.important {
+      margin: 1.5rem 0;
     }
   }
 }
