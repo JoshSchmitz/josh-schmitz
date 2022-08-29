@@ -125,7 +125,8 @@ header {
   padding: 40px;
 }
 
-#resume .container {
+#resume .container,
+#contact .container {
   margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 5fr;
@@ -136,7 +137,8 @@ header {
     }
   }
 
-  .resume {
+  .resume,
+  .contact {
     margin-left: 10px;
     padding-left: 30px;
 

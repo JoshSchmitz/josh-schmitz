@@ -307,6 +307,26 @@ $fontface: "PT Serif", Times, serif;
   }
 }
 
+.contact {
+  padding-top: 1rem;
+
+  .email,
+  .phone,
+  .indeed,
+  .linkedin,
+  .github {
+    h2 {
+      display: inline-block;
+    }
+
+    h3 {
+      display: inline-block;
+      color: $tertiary-color;
+      padding-left: 2rem;
+    }
+  }
+}
+
 // Media query mixins
 @mixin mediaSm {
   @media screen and (max-width: 500px) {
