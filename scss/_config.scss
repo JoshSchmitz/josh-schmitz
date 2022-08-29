@@ -11,6 +11,40 @@ $fontface: "PT Serif", Times, serif;
   transition: all 0.5s ease-out;
 }
 
+@mixin alignBrandingMd {
+  .branding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+
+    .portrait {
+      img {
+        max-width: 150px;
+      }
+    }
+
+    .intro {
+      text-align: left;
+      padding: 0 10px;
+    }
+
+    .social {
+      a {
+        i {
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}
+
+@mixin alignBrandingSm {
+  .branding {
+    display: block;
+  }
+}
+
 // Set Text Color
 @function set-text-color($color) {
   @if (lightness($color) > 40) {
@@ -241,7 +275,7 @@ $fontface: "PT Serif", Times, serif;
     }
 
     &.important {
-      width: 48%;
+      width: 47%;
     }
   }
 }

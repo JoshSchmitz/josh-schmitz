@@ -2,6 +2,20 @@
 } // Widescreens
 
 @include mediaLg {
+  #resume .container .branding {
+    .intro {
+      max-height: 360px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 13;
+      overflow: hidden;
+    }
+
+    .social {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 } // Desktops & Laptops
 
 @include mediaMd {
@@ -46,31 +60,7 @@
       margin: 20px 30px;
     }
 
-    .branding {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 99;
-
-      .portrait {
-        img {
-          max-width: 150px;
-        }
-      }
-
-      .intro {
-        text-align: left;
-        padding: 0 10px;
-      }
-
-      .social {
-        a {
-          i {
-            padding: 5px 10px;
-          }
-        }
-      }
-    }
+    @include alignBrandingMd;
   }
 
   #highlights {
@@ -100,6 +90,29 @@
       }
     }
   }
+
+  #resume {
+    .container {
+      grid-template-columns: 1fr;
+      margin-top: 0;
+      text-align: center;
+
+      div .branding {
+        margin-bottom: 1.5rem;
+      }
+
+      @include alignBrandingMd;
+
+      .resume {
+        margin: 0;
+        padding: 0;
+      }
+
+      .languages {
+        justify-content: space-between;
+      }
+    }
+  }
 } // Tablets &  Small Laptops
 
 @include mediaSm {
@@ -113,9 +126,8 @@
 
   .showcase {
     height: auto;
-    .container .branding {
-      display: block;
-    }
+
+    @include alignBrandingSm;
   }
 
   #highlights {
@@ -132,6 +144,40 @@
       .leadership {
         width: 100%;
       }
+    }
+  }
+
+  #resume .container {
+    padding: 0 0.75rem;
+
+    @include alignBrandingSm;
+
+    .languages {
+      justify-content: center;
+    }
+
+    .skills {
+      justify-content: center;
+    }
+
+    .awards {
+      display: block;
+
+      .award {
+        width: 100%;
+      }
+    }
+
+    .groups {
+      justify-content: center;
+
+      .group {
+        padding: 1rem 0;
+      }
+    }
+
+    .leadership.important {
+      margin: 0.5rem 0;
     }
   }
 } // Smartphones
