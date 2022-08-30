@@ -2,18 +2,21 @@
 } // Widescreens
 
 @include mediaLg {
-  #resume .container .branding {
-    .intro {
-      max-height: 360px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 13;
-      overflow: hidden;
-    }
+  #resume,
+  #contact {
+    .container .branding {
+      .intro {
+        max-height: 360px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 13;
+        overflow: hidden;
+      }
 
-    .social {
-      display: flex;
-      justify-content: space-between;
+      .social {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 } // Desktops & Laptops
@@ -91,7 +94,8 @@
     }
   }
 
-  #resume {
+  #resume,
+  #contact {
     .container {
       grid-template-columns: 1fr;
       margin-top: 0;
@@ -103,7 +107,8 @@
 
       @include alignBrandingMd;
 
-      .resume {
+      .resume,
+      .contact {
         margin: 0;
         padding: 0;
       }
@@ -147,37 +152,40 @@
     }
   }
 
-  #resume .container {
-    padding: 0 0.75rem;
+  #resume,
+  #contact {
+    .container {
+      padding: 0 0.75rem;
 
-    @include alignBrandingSm;
+      @include alignBrandingSm;
 
-    .languages {
-      justify-content: center;
-    }
-
-    .skills {
-      justify-content: center;
-    }
-
-    .awards {
-      display: block;
-
-      .award {
-        width: 100%;
+      .languages {
+        justify-content: center;
       }
-    }
 
-    .groups {
-      justify-content: center;
-
-      .group {
-        padding: 1rem 0;
+      .skills {
+        justify-content: center;
       }
-    }
 
-    .leadership.important {
-      margin: 0.5rem 0;
+      .awards {
+        display: block;
+
+        .award {
+          width: 100%;
+        }
+      }
+
+      .groups {
+        justify-content: center;
+
+        .group {
+          padding: 1rem 0;
+        }
+      }
+
+      .leadership.important {
+        margin: 0.5rem 0;
+      }
     }
   }
 } // Smartphones
