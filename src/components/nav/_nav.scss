@@ -1,76 +1,95 @@
-.menu-btn {
-    position: absolute;
-    z-index: 3;
-    top: 35px;
-    right: 35px;
-    cursor: pointer;
-    @include easeOut;
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
 
-    .btn-line {
-        width: 28px;
-        height: 3px;
-        margin: 0 0 5px 0;
-        background: set-text-color($primary-color);
-        @include easeOut;
-    }
+    a {
+        color: set-text-color($primary-color);
+        text-decoration: none;
 
-    // Rotate into X with menu lines
-    &.close {
-        transform: rotate(180deg);
-
-        .btn-line {
-
-            // Line 1: rotate
-            &:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            // Line 2: hide
-            &:nth-child(2) {
-                opacity: 0;
-            }
-
-            // Line 3: rotate
-            &:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -6px);
-            }
+        &:hover {
+            @include easeOut;
+            color: lighten($primary-color, 60);
         }
     }
-}
 
-.menu-btn {
-    display: none;
-}
-
-// Menu Overlay
-.menu {
-    .menu-nav {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        a {
-            color: set-text-color($primary-color);
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 1.2rem;
+    .nav-item {
+        &.current {
+            border-bottom: solid #fff 1px;
 
             &:hover {
                 @include easeOut;
-                color: lighten($primary-color, 60);
+                border-bottom: solid lighten($primary-color, 60) 1px;
             }
         }
+    }
+}
 
-        .nav-item {
-            &.current {
-                border-bottom: solid #fff 1px;
+header .container .nav {
+    .nav-list {
+        justify-content: space-between;
+        gap: 20px;
 
-                &:hover {
-                    @include easeOut;
-                    border-bottom: solid lighten($primary-color, 60) 1px;
+        a {
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
+    }
+}
+
+footer .container .nav {
+    .nav-list {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    a {
+        padding: 0 10px;
+    }
+}
+
+/*
+    .menu-btn {
+        position: absolute;
+        z-index: 3;
+        top: 35px;
+        right: 35px;
+        cursor: pointer;
+        @include easeOut;
+    
+        .btn-line {
+            width: 28px;
+            height: 3px;
+            margin: 0 0 5px 0;
+            background: set-text-color($primary-color);
+            @include easeOut;
+        }
+    
+        // Rotate into X with menu lines
+        &.close {
+            transform: rotate(180deg);
+    
+            .btn-line {
+    
+                // Line 1: rotate
+                &:nth-child(1) {
+                    transform: rotate(45deg) translate(5px, 5px);
+                }
+    
+                // Line 2: hide
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+    
+                // Line 3: rotate
+                &:nth-child(3) {
+                    transform: rotate(-45deg) translate(6px, -6px);
                 }
             }
         }
     }
-}
+    
+    .menu-btn {
+        display: none;
+    }
+*/
