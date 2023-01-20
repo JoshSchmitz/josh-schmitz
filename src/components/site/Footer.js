@@ -1,8 +1,10 @@
 const Footer = () => {
   return (
-    <div>
-      <h1>Footer works!</h1>
-    </div>
+    <footer>
+      <div class='container'>
+        Copyright &copy 2023, Josh Schmitz, all rights reserved.
+      </div>
+    </footer>
   );
 };
 
