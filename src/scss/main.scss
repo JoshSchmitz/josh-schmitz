@@ -1,3 +1,7 @@
+@import 'config';
+@import 'header';
+@import 'footer';
+
 * {
   display: block;
   box-sizing: border-box;
@@ -7,4 +11,12 @@
 
 head {
   display: none;
+}
+
+body {
+  color: set-text-color($secondary-color);
+  background-color: $secondary-color;
+  height: 100%;
+  font-family: $fontface;
+  line-height: 1.5;
 }
