@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+
+$primary-color: #0f2462; // rgb(15, 36, 98);
+$secondary-color: #f4f4f4; // rgb(244,244,244);
+$tertiary-color: #debf10;
+$text-dark: #333;
+$fontface: "PT Serif", Times, serif;
+
+// easeOut mixin
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+// Set Text Color
+@function set-text-color($color) {
+    @if (lightness($color) > 40) {
+        @return $text-dark;
+    }
+
+    @else {
+        @return $secondary-color;
+    }
+}
+
+.container {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
