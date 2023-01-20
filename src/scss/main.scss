@@ -1,6 +1,6 @@
 @import 'config';
-@import 'header';
-@import 'footer';
+@import '../components/header/header';
+@import '../components/footer/footer';
 @import '../components/nav/nav';
 
 * {

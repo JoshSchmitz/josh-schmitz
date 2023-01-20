@@ -1,10 +1,10 @@
 import '../scss/main.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './site/Header';
-import Footer from './site/Footer';
-import Home from './site/Home';
-import Resume from './site/Resume';
-import Contact from './site/Contact';
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import Home from './pages/Home';
+import Resume from './pages/Resume';
+import Contact from './pages/Contact';
 
 const App = () => {
   return (
