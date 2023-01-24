@@ -10,15 +10,17 @@ const Nav = () => {
     <nav className='nav'>
       <ul className='nav-list'>
         {navItems.map((item) => {
+          const name = item.item;
           return (
             <li
-              className={currentItem === item ? 'nav-item current' : 'nav-item'}
+              key={item.id}
+              className={currentItem === name ? 'nav-item current' : 'nav-item'}
             >
               <Link
-                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                onClick={() => dispatch(newCurrentItem(item))}
+                to={name === 'Home' ? '/' : `/${name.toString().toLowerCase()}`}
+                onClick={() => dispatch(newCurrentItem(name))}
               >
-                {item}
+                {name}
               </Link>
             </li>
           );
