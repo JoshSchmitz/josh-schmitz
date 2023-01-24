@@ -2,10 +2,10 @@ import Experiences from '../experience/Experiences';
 
 const Resume = () => {
   return (
-    <div className='container'>
+    <article className='container' id='resume'>
       <h1>Resume works!</h1>
       <Experiences></Experiences>
-    </div>
+    </article>
   );
 };
 
