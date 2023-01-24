@@ -11,6 +11,10 @@ $fontface: "PT Serif", Times, serif;
     transition: all 0.5s ease-out;
 }
 
+@mixin stickyFooter {
+    min-height: calc(100vh - 212px);
+}
+
 // Set Text Color
 @function set-text-color($color) {
     @if (lightness($color) > 40) {
