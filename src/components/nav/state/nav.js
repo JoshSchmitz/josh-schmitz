@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 const initialState = {
   navItems: [
-    { id: 1, item: 'Home' },
-    { id: 2, item: 'Resume' },
-    { id: 3, item: 'Contact' },
+    { id: nanoid(), item: 'Home' },
+    { id: nanoid(), item: 'Resume' },
+    { id: nanoid(), item: 'Contact' },
   ],
   currentItem: 'Home',
   isLoading: true,
