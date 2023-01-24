@@ -19,6 +19,22 @@ const initialState = {
       startDate: '',
       endDate: '',
     },
+    {
+      id: nanoid(),
+      position: 'IT Systems Specialist',
+      company: 'North Homes Children & Family Services',
+      location: {
+        address: '303 CE 1st Street',
+        city: 'Grand Rapids',
+        state: 'MN',
+        postcode: 55744,
+      },
+      description:
+        'Streamlined IT processes and managed relationships with our Managed IT partner using knowledge of combining business process improvements with technology solutions. Developed IT intranet site, documented IT processes, policies, and equipment inventory, and streamlined business processes using SharePoint and Power Automate. Managed $1,000,000+ annual IT budget.',
+      highlighted: true,
+      startDate: '',
+      endDate: '',
+    },
   ],
   isloading: true,
 };
