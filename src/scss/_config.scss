@@ -31,3 +31,10 @@ $fontface: "PT Serif", Times, serif;
     margin: 0 auto;
     padding: 0 30px;
 }
+
+.page {
+    max-width: 1760px;
+    margin: 30px auto 0 auto;
+    padding: 0 30px;
+    @include stickyFooter;
+}
