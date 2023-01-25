@@ -40,6 +40,20 @@ $fontface: "PT Serif", Times, serif;
     @include stickyFooter;
 }
 
+.section {
+    margin-bottom: 30px;
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    hr {
+        color: #dcdcdc;
+        border-color: #dcdcdc;
+        border-style: solid;
+    }
+}
+
 /* Inserting a collapsed row between two flex items will make 
  * the flex item that comes after it break to a new row */
 .break {
