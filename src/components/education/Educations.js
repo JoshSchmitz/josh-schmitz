@@ -1,8 +1,9 @@
 const Educations = () => {
   return (
-    <div>
-      <h1>Educations works!</h1>
-    </div>
+    <section className='educations'>
+      <h1 className='title'>Education</h1>
+      <hr />
+    </section>
   );
 };
 
