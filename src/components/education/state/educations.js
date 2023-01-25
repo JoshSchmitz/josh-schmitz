@@ -2,7 +2,34 @@ import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
 const initialState = {
-  educations: [],
+  educations: [
+    {
+      id: nanoid(),
+      degree: `Bachelor's of Science`,
+      majors: [{ id: nanoid(), title: 'Computer Information Systems' }],
+      minors: [
+        {
+          id: nanoid(),
+          title: 'Software Engineering',
+        },
+        {
+          id: nanoid(),
+          title: 'Web Design',
+        },
+      ],
+      institution: {
+        name: 'The College of St. Scholastica',
+        location: {
+          address: '1200 Kenwood Ave',
+          city: 'Duluth',
+          state: 'Minnesota',
+          postcode: 55806,
+        },
+        phone: '',
+      },
+      gpa: 3.6,
+    },
+  ],
   isloading: true,
 };
 
