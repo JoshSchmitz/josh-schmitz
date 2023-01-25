@@ -13,7 +13,7 @@ $fontface: "PT Serif", Times, serif;
 }
 
 @mixin stickyFooter {
-    min-height: calc(100vh - 212px);
+    min-height: calc(100vh - 243px);
 }
 
 // Set Text Color
@@ -35,7 +35,7 @@ $fontface: "PT Serif", Times, serif;
 
 .page {
     max-width: 1760px;
-    margin: 30px auto 0 auto;
+    margin: 30px auto 30px auto;
     padding: 0 30px;
     @include stickyFooter;
 }
