@@ -1,4 +1,5 @@
 import Experiences from '../experience/Experiences';
+import Educations from '../education/Educations';
 
 const Resume = () => {
   return (
@@ -8,6 +9,7 @@ const Resume = () => {
       </article>
       <article>
         <Experiences></Experiences>
+        <Educations></Educations>
       </article>
     </div>
   );
