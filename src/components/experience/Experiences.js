@@ -11,7 +11,7 @@ const Experiences = () => {
   // const dispatch = useDispatch();
 
   return (
-    <section className='experiences'>
+    <section className='section experiences'>
       <h1 className='title'>Work Experience</h1>
       <hr />
       {experiences.map((exp) => {
