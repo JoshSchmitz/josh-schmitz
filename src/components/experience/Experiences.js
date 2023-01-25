@@ -1,10 +1,14 @@
 import Experience from './Experience';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteExp } from '../experience/state/experiences';
+import {
+  useSelector /**
+  useDispatch
+*/,
+} from 'react-redux';
+// import { deleteExp } from '../experience/state/experiences';
 
 const Experiences = () => {
   const { experiences } = useSelector((store) => store.experiences);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <section className='experiences'>
