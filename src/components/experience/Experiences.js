@@ -19,8 +19,8 @@ const Experiences = () => {
           <Experience
             key={exp.id}
             position={exp.position}
-            company={exp.company}
-            location={exp.location}
+            company={exp.company.name}
+            location={exp.company.location}
             startdate={exp.startDate}
             enddate={exp.endDate}
             description={exp.description}
