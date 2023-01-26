@@ -2,10 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
 const initialState = {
-  skills: {
-    id: nanoid(),
-    title: 'Front-End Web Development',
-  },
+  skills: [
+    {
+      id: nanoid(),
+      title: 'Front-End Web Development',
+      exp: 5,
+    },
+    { id: nanoid(), title: 'Responsive Design', exp: 5 },
+  ],
   isloading: true,
 };
 
