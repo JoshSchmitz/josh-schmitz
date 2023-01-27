@@ -6,9 +6,17 @@ const initialState = {
     {
       id: nanoid(),
       title: 'Front-End Web Development',
-      exp: 5,
+      years: 5,
+      experience: 6,
+      highlighted: true,
     },
-    { id: nanoid(), title: 'Responsive Design', exp: 5 },
+    {
+      id: nanoid(),
+      title: 'Responsive Design',
+      years: 6,
+      experience: 7,
+      highlighted: false,
+    },
   ],
   isloading: true,
 };
