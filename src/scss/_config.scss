@@ -3,8 +3,9 @@
 $primary-color: #0f2462; // rgb(15, 36, 98);
 $secondary-color: #f4f4f4; // rgb(244,244,244);
 $tertiary-color: #debf10;
+$highlight-color: #dfdfdf;
 $text-dark: #2d2d2d;
-$text-light: #6f6f6f;
+$text-light: #898989;
 $fontface: "PT Serif", Times, serif;
 
 // easeOut mixin
@@ -48,8 +49,8 @@ $fontface: "PT Serif", Times, serif;
     }
 
     hr {
-        color: #dcdcdc;
-        border-color: #dcdcdc;
+        color: $highlight-color;
+        border-color: $highlight-color;
         border-style: solid;
     }
 }
