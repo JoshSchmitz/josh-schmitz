@@ -3,6 +3,7 @@ import navReducer from '../nav/state/nav';
 import experiencesReducer from '../experience/state/experiences';
 import educationsReducer from '../education/state/educations';
 import skillsReducer from '../skill/state/skills';
+import languagesReducer from '../language/state/languages';
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     experiences: experiencesReducer,
     educations: educationsReducer,
     skills: skillsReducer,
+    languages: languagesReducer,
   },
 });
