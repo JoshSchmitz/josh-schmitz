@@ -1,6 +1,7 @@
 import Experiences from '../experience/Experiences';
 import Educations from '../education/Educations';
 import Skills from '../skill/Skills';
+import Languages from '../language/Languages';
 
 const Resume = () => {
   return (
@@ -12,6 +13,7 @@ const Resume = () => {
         <Experiences></Experiences>
         <Educations></Educations>
         <Skills></Skills>
+        <Languages></Languages>
       </article>
     </div>
   );
