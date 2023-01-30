@@ -1,4 +1,7 @@
-import { MdAddTask, MdEdit, MdDelete } from 'react-icons/md';
+import {
+  MdAddTask,
+  /** MdEdit, MdDelete */
+} from 'react-icons/md';
 
 const Skill = (props) => {
   const xp = [];
