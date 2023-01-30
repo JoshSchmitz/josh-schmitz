@@ -1,8 +1,9 @@
 const Languages = () => {
   return (
-    <div>
-      <h1>Languages works!</h1>
-    </div>
+    <section className='section languages'>
+      <h1 className='title'>Languages</h1>
+      <hr />
+    </section>
   );
 };
 
