@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import {
-  IoLogoJavascript,
-  IoLogoSass,
-  IoLogoHtml5,
-  IoLogoCss3,
-} from 'react-icons/io';
+import { IoLogoSass, IoLogoHtml5, IoLogoCss3 } from 'react-icons/io';
+import { IoLogoJavascript } from 'react-icons/io5';
 
 const initialState = {
   languages: [
