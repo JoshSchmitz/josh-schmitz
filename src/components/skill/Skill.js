@@ -1,8 +1,3 @@
-import {
-  MdAddTask,
-  /** MdEdit, MdDelete */
-} from 'react-icons/md';
-
 const Skill = (props) => {
   const xp = [];
   for (let i = 0; i < 10; i++) {
@@ -15,11 +10,13 @@ const Skill = (props) => {
 
   return (
     <div className={props.highlighted ? 'skill highlighted-skill' : 'skill'}>
-      <MdAddTask className='icon'></MdAddTask>
+      {props.icon}
       <div className='details'>
         <h4 className='details-name'>
           {props.title}
-          <span className='details-years'>{props.years} years</span>
+          <span className='details-years'>
+            {props.years} {props.years > 1 ? 'years' : 'year'}
+          </span>
         </h4>
         <div className='break'></div>
         <div className='details-exp'>
