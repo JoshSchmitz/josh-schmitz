@@ -15,6 +15,7 @@ const Skills = () => {
               title={skill.title}
               experience={skill.experience}
               years={skill.years}
+              icon={skill.icon}
               highlighted={skill.highlighted}
             ></Skill>
           );
