@@ -1,3 +1,4 @@
+import Language from './Language';
 import { useSelector } from 'react-redux';
 
 const Languages = () => {
@@ -6,7 +7,19 @@ const Languages = () => {
     <section className='section languages'>
       <h1 className='title'>Languages</h1>
       <hr />
-      {languages.map((lang) => lang.icon)}
+      <div className='languages-container'>
+        {languages.map((lang) => {
+          return (
+            <Language
+              key={lang.id}
+              title={lang.title}
+              icon={lang.icon}
+              years={lang.years}
+              highlighted={lang.highlighted}
+            ></Language>
+          );
+        })}
+      </div>
     </section>
   );
 };
