@@ -1,7 +1,13 @@
 const Language = (props) => {
   return (
-    <div>
-      <h1>Language works!</h1>
+    <div className={props.highlighted ? 'lang highlighted-lang' : 'lang'}>
+      {props.icon}
+      <div className='details'>
+        <h4 className='details-name'>
+          {props.title}
+          <span className='details-years'>{props.years} years</span>
+        </h4>
+      </div>
     </div>
   );
 };
