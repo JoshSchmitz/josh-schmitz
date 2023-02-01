@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
+import { SiReact } from 'react-icons/si';
+import { MdAddTask } from 'react-icons/md';
 
 const initialState = {
   skills: [
@@ -8,6 +10,7 @@ const initialState = {
       title: 'Front-End Web Development',
       years: 5,
       experience: 6,
+      icon: <MdAddTask className='icon'></MdAddTask>,
       highlighted: true,
     },
     {
@@ -15,7 +18,16 @@ const initialState = {
       title: 'Responsive Design',
       years: 6,
       experience: 7,
+      icon: <MdAddTask className='icon'></MdAddTask>,
       highlighted: false,
+    },
+    {
+      id: nanoid(),
+      title: 'React',
+      years: 1,
+      experience: 2,
+      icon: <SiReact className='icon'></SiReact>,
+      highlighted: true,
     },
   ],
   isloading: true,
