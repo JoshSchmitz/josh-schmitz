@@ -5,7 +5,9 @@ const Language = (props) => {
       <div className='details'>
         <h4 className='details-name'>
           {props.title}
-          <span className='details-years'>{props.years} years</span>
+          <span className='details-years'>
+            {props.years} {props.years > 1 ? 'years' : 'year'}
+          </span>
         </h4>
       </div>
     </div>
