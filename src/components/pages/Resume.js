@@ -3,6 +3,7 @@ import Educations from '../education/Educations';
 import Skills from '../skill/Skills';
 import Languages from '../language/Languages';
 import Leaderships from '../leadership/Leaderships';
+import Accomplishments from '../accomplishment/Accomplishments';
 
 const Resume = () => {
   return (
@@ -16,6 +17,7 @@ const Resume = () => {
         <Skills></Skills>
         <Languages></Languages>
         <Leaderships></Leaderships>
+        <Accomplishments></Accomplishments>
       </article>
     </div>
   );
