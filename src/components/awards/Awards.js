@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import Award from './Award';
 
 const Awards = () => {
   const { awards } = useSelector((store) => store.awards);
@@ -9,7 +10,7 @@ const Awards = () => {
       <hr />
       <div className='awards-container'>
         {awards.map((award) => {
-          return award.title;
+          return <Award key={award.id} title={award.title}></Award>;
         })}
       </div>
     </section>
