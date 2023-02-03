@@ -1,8 +1,18 @@
+import Awards from '../awards/Awards';
+import Groups from '../groups/Groups';
+import Projects from '../projects/Projects';
+
 const Accomplishments = () => {
   return (
-    <div>
-      <h1>Accomplishments works!</h1>
-    </div>
+    <section className='section accomplishments'>
+      <h1 className='title'>Accomplishments</h1>
+      <hr />
+      <div className='accomplishments-container'>
+        <Awards></Awards>
+        <Groups></Groups>
+        <Projects></Projects>
+      </div>
+    </section>
   );
 };
 
