@@ -10,7 +10,7 @@ const initialState = {
       title: 'Front-End Web Development',
       years: 5,
       experience: 6,
-      icon: <MdAddTask className='icon'></MdAddTask>,
+      icon: <MdAddTask className='icon' />,
       highlighted: true,
     },
     {
@@ -18,7 +18,7 @@ const initialState = {
       title: 'Responsive Design',
       years: 6,
       experience: 7,
-      icon: <MdAddTask className='icon'></MdAddTask>,
+      icon: <MdAddTask className='icon' />,
       highlighted: false,
     },
     {
@@ -26,7 +26,7 @@ const initialState = {
       title: 'React',
       years: 1,
       experience: 2,
-      icon: <SiReact className='icon'></SiReact>,
+      icon: <SiReact className='icon' />,
       highlighted: true,
     },
   ],
