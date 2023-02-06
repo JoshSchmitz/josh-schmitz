@@ -6,6 +6,7 @@ const initialState = {
     {
       id: nanoid(),
       title: 'Eagle Scout',
+      date: 'August 2008',
     },
   ],
   isLoading: true,
