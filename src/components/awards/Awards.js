@@ -10,7 +10,9 @@ const Awards = () => {
       <hr />
       <div className='awards-container'>
         {awards.map((award) => {
-          return <Award key={award.id} title={award.title}></Award>;
+          return (
+            <Award key={award.id} title={award.title} date={award.date}></Award>
+          );
         })}
       </div>
     </section>
