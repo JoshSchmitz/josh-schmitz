@@ -8,6 +8,11 @@ const initialState = {
       title: 'Eagle Scout',
       date: 'August 2008',
     },
+    {
+      id: nanoid(),
+      title: 'NSF STEM Scholarship',
+      date: 'August 2010',
+    },
   ],
   isLoading: true,
 };
