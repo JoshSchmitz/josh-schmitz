@@ -7,6 +7,7 @@ import languagesReducer from '../language/state/languages';
 import leadershipsReducer from '../leadership/state/leaderships';
 import awardsSlice from '../awards/state/awards';
 import groupsSlice from '../groups/state/groups';
+import projectsSlice from '../projects/state/projects';
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     leaderships: leadershipsReducer,
     awards: awardsSlice,
     groups: groupsSlice,
+    projects: projectsSlice,
   },
 });
