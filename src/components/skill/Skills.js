@@ -9,16 +9,20 @@ const Skills = () => {
       <hr />
       <div className='skills-container'>
         {skills.map((skill) => {
-          return (
-            <Skill
-              key={skill.id}
-              title={skill.title}
-              experience={skill.experience}
-              years={skill.years}
-              icon={skill.icon}
-              highlighted={skill.highlighted}
-            ></Skill>
-          );
+          if (skill.category === 'skill') {
+            return (
+              <Skill
+                key={skill.id}
+                title={skill.title}
+                experience={skill.experience}
+                years={skill.years}
+                icon={skill.icon}
+                highlighted={skill.highlighted}
+              ></Skill>
+            );
+          } else {
+            return null;
+          }
         })}
       </div>
     </section>
