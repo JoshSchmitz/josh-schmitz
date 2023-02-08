@@ -6,6 +6,7 @@ import skillsReducer from '../skill/state/skills';
 import languagesReducer from '../language/state/languages';
 import leadershipsReducer from '../leadership/state/leaderships';
 import awardsSlice from '../awards/state/awards';
+import groupsSlice from '../groups/state/groups';
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     languages: languagesReducer,
     leaderships: leadershipsReducer,
     awards: awardsSlice,
+    groups: groupsSlice,
   },
 });
