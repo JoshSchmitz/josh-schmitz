@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 $primary-color: #0f2462; // rgb(15, 36, 98);
 $secondary-color: #f4f4f4; // rgb(244,244,244);
@@ -52,6 +53,10 @@ $fontface: "PT Serif", Times, serif;
         color: $highlight-color;
         border-color: $highlight-color;
         border-style: solid;
+    }
+
+    p {
+        font-family: 'PT Sans', sans-serif;
     }
 }
 
