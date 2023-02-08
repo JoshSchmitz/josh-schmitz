@@ -10,7 +10,14 @@ const Groups = () => {
       <hr />
       <div className='groups-container'>
         {groups.map((group) => {
-          return <Group key={group.id} title={group.title}></Group>;
+          return (
+            <Group
+              key={group.id}
+              title={group.title}
+              start={group.startDate}
+              end={group.endDate}
+            ></Group>
+          );
         })}
       </div>
     </section>
