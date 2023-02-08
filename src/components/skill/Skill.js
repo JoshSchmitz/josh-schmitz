@@ -19,15 +19,17 @@ const Skill = (props) => {
           </span>
         </h4>
         <div className='break'></div>
-        <div className='details-exp'>
-          {xp.map((item, i) => {
-            if (item === 'filled') {
-              return <div key={i} className='xp filled'></div>;
-            } else {
-              return <div key={i} className='xp'></div>;
-            }
-          })}
-        </div>
+        {props.experience && (
+          <div className='details-exp'>
+            {xp.map((item, i) => {
+              if (item === 'filled') {
+                return <div key={i} className='xp filled'></div>;
+              } else {
+                return <div key={i} className='xp'></div>;
+              }
+            })}
+          </div>
+        )}
       </div>
       {/* <div className='actions'>
         <MdEdit className='action'></MdEdit>
