@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { SiReact } from 'react-icons/si';
 import { MdAddTask } from 'react-icons/md';
+import { IoLogoSass, IoLogoHtml5, IoLogoCss3 } from 'react-icons/io';
+import { IoLogoJavascript } from 'react-icons/io5';
 
 const initialState = {
   skills: [
@@ -11,6 +13,7 @@ const initialState = {
       years: 5,
       experience: 6,
       icon: <MdAddTask className='icon' />,
+      category: 'skill',
       highlighted: true,
     },
     {
@@ -19,6 +22,7 @@ const initialState = {
       years: 6,
       experience: 7,
       icon: <MdAddTask className='icon' />,
+      category: 'skill',
       highlighted: false,
     },
     {
@@ -27,6 +31,39 @@ const initialState = {
       years: 1,
       experience: 2,
       icon: <SiReact className='icon' />,
+      category: 'skill',
+      highlighted: true,
+    },
+    {
+      id: nanoid(),
+      title: 'JavaScript',
+      icon: <IoLogoJavascript className='icon' />,
+      years: 3,
+      category: 'language',
+      highlighted: true,
+    },
+    {
+      id: nanoid(),
+      title: 'HTML',
+      icon: <IoLogoHtml5 className='icon' />,
+      years: 6,
+      category: 'language',
+      highlighted: false,
+    },
+    {
+      id: nanoid(),
+      title: 'CSS',
+      icon: <IoLogoCss3 className='icon' />,
+      years: 6,
+      category: 'language',
+      highlighted: false,
+    },
+    {
+      id: nanoid(),
+      title: 'SASS',
+      icon: <IoLogoSass className='icon' />,
+      years: 3,
+      category: 'language',
       highlighted: true,
     },
   ],
