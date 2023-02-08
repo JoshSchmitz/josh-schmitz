@@ -1,7 +1,6 @@
 import Experiences from '../experience/Experiences';
 import Educations from '../education/Educations';
 import Skills from '../skill/Skills';
-import Languages from '../skill/Languages';
 import Leaderships from '../leadership/Leaderships';
 import Accomplishments from '../accomplishment/Accomplishments';
 
@@ -14,8 +13,8 @@ const Resume = () => {
       <article>
         <Experiences></Experiences>
         <Educations></Educations>
-        <Languages></Languages>
-        <Skills></Skills>
+        <Skills category='language'></Skills>
+        <Skills category='skill'></Skills>
         <Leaderships></Leaderships>
         <Accomplishments></Accomplishments>
       </article>

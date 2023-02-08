@@ -1,7 +1,13 @@
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.skills {
+    &>.title::first-letter {
+        text-transform: uppercase;
+    }
+
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
 
 .skill {
