@@ -13,7 +13,9 @@ const Resume = () => {
       <article>
         <Experiences></Experiences>
         <Educations></Educations>
+        {/* map skill categories and display Skill for each unique category */}
         <Skills category='language'></Skills>
+        <Skills category='framework'></Skills>
         <Skills category='skill'></Skills>
         <Leaderships></Leaderships>
         <Accomplishments></Accomplishments>
