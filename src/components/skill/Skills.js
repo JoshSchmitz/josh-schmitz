@@ -8,8 +8,11 @@ const Skills = (props) => {
       <h1 className='title'>{props.category}s</h1>
       <hr />
       <div className='skills-container'>
-        {skills.map((skill) => {
-          if (skill.category === props.category) {
+        {skills
+          .filter((skill) => skill.category === props.category)
+          .sort((a, b) => b.experience - a.experience)
+          .sort((a, b) => b.years - a.years)
+          .map((skill) => {
             return (
               <Skill
                 key={skill.id}
@@ -20,10 +23,7 @@ const Skills = (props) => {
                 highlighted={skill.highlighted}
               ></Skill>
             );
-          } else {
-            return null;
-          }
-        })}
+          })}
       </div>
     </section>
   );
