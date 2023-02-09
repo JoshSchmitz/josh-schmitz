@@ -24,11 +24,10 @@ const initialState = {
       },
       description:
         'Operated Autonomous Vehicles (AV) prioritizing safety, rider comfort, and autonomous driving by deciding when to use autonomous mode, anticipating vehicle actions, taking control when unsafe or uncomfortable, and logging events for continuous improvement.',
-      startDate: new Date('2022-12-05').toLocaleDateString(
-        undefined,
-        dateOptions
-      ),
-      endDate: new Date().toLocaleDateString(undefined, dateOptions),
+      startDate: new Date(
+        Date.UTC(2022, 11, 5, 12, 0, 0, 0)
+      ).toLocaleDateString(undefined, dateOptions),
+      endDate: new Date(Date.now()).toLocaleDateString(undefined, dateOptions),
       highlighted: false,
     },
     {
@@ -45,11 +44,10 @@ const initialState = {
       },
       description:
         'Streamlined IT processes and managed relationships with our Managed IT partner using knowledge of combining business process improvements with technology solutions. Developed IT intranet site, documented IT processes, policies, and equipment inventory, and streamlined business processes using SharePoint and Power Automate. Managed $1,000,000+ annual IT budget.',
-      startDate: new Date('2021-03-22').toLocaleDateString(
-        undefined,
-        dateOptions
-      ),
-      endDate: new Date('2022-09-29').toLocaleDateString(
+      startDate: new Date(
+        Date.UTC(2021, 2, 22, 12, 0, 0, 0)
+      ).toLocaleDateString(undefined, dateOptions),
+      endDate: new Date(Date.UTC(2022, 8, 29, 12, 0, 0, 0)).toLocaleDateString(
         undefined,
         dateOptions
       ),

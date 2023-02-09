@@ -27,7 +27,7 @@ const Experience = (props) => {
         <h4 className='time'>
           {props.startdate} to{' '}
           {props.enddate ===
-          new Date().toLocaleDateString(undefined, dateOptions)
+          new Date(Date.now()).toLocaleDateString(undefined, dateOptions)
             ? 'Now'
             : props.enddate}
         </h4>
