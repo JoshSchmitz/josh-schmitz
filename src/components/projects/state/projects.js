@@ -11,16 +11,27 @@ const initialState = {
     {
       id: nanoid(),
       title: 'Grace Gospel Press Website Redesign',
-      startDate: new Date('2016-01-15').toLocaleDateString(undefined, options),
-      endDate: new Date('2017-09-01').toLocaleDateString(undefined, options),
+      startDate: new Date(
+        Date.UTC(2016, 0, 15, 12, 0, 0, 0)
+      ).toLocaleDateString(undefined, options),
+      endDate: new Date(Date.UTC(2017, 8, 1, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        options
+      ),
       description: `Redesigned the Grace Gospel Press website to parallel the Duluth Bible Church website. Created online bookstore and Grace Family Journal.`,
       highlighted: false,
     },
     {
       id: nanoid(),
       title: 'VP Wild Rice Logo Update',
-      startDate: new Date('2008-02-01').toLocaleDateString(undefined, options),
-      endDate: new Date('2008-03-30').toLocaleDateString(undefined, options),
+      startDate: new Date(Date.UTC(2008, 1, 1, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        options
+      ),
+      endDate: new Date(Date.UTC(2008, 2, 30, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        options
+      ),
       description: `Developed a new logo and branding for company and product.`,
       highlighted: true,
     },
