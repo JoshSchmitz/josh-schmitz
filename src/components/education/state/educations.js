@@ -1,6 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
+const dateOptions = {
+  timeZone: 'America/Chicago',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+
 const initialState = {
   educations: [
     {
@@ -27,8 +34,13 @@ const initialState = {
         },
         phone: '',
       },
-      startDate: 'August 2008',
-      endDate: 'May 2012',
+      startDate: new Date(
+        Date.UTC(2008, 7, 20, 12, 0, 0, 0)
+      ).toLocaleDateString('en-US', dateOptions),
+      endDate: new Date(Date.UTC(2012, 4, 20, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        dateOptions
+      ),
       gpa: 3.6,
       highlighted: true,
     },

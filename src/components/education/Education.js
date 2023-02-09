@@ -1,4 +1,11 @@
 const Education = (props) => {
+  const dateOptions = {
+    timeZone: 'America/Chicago',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
   return (
     <div className={props.highlighted ? 'education highlighted' : 'education'}>
       <div className='headline'>
@@ -34,7 +41,11 @@ const Education = (props) => {
         </h3>
         <div className='break'></div>
         <h4 className='time'>
-          {props.startdate} to {props.enddate}
+          {props.startdate} to{' '}
+          {props.enddate ===
+          new Date(Date.now()).toLocaleDateString(undefined, dateOptions)
+            ? 'Now'
+            : props.enddate}
         </h4>
       </div>
     </div>
