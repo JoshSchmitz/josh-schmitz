@@ -1,5 +1,5 @@
 const Group = (props) => {
-  const options = {
+  const dateOptions = {
     year: 'numeric',
     month: 'long',
   };
@@ -9,7 +9,7 @@ const Group = (props) => {
       <h4 className='group-title'>{props.title}</h4>
       <h4 className='group-date'>
         {props.start} to{' '}
-        {props.end === new Date().toLocaleDateString(undefined, options)
+        {props.end === new Date().toLocaleDateString(undefined, dateOptions)
           ? 'Now'
           : props.end}
       </h4>
