@@ -23,20 +23,19 @@ const initialState = {
     {
       id: nanoid(),
       title: 'National Eagle Scout Association',
-      startDate: new Date('2008-08-20').toLocaleDateString(
-        undefined,
-        dateOptions
-      ),
+      startDate: new Date(
+        Date.UTC(2008, 7, 20, 12, 0, 0, 0)
+      ).toLocaleDateString(undefined, dateOptions),
       endDate: new Date().toLocaleDateString(undefined, dateOptions),
     },
     {
       id: nanoid(),
       title: 'CSS Computer Club',
-      startDate: new Date('2008-10-01').toLocaleDateString(
+      startDate: new Date(Date.UTC(2008, 9, 1, 12, 0, 0, 0)).toLocaleDateString(
         undefined,
         dateOptions
       ),
-      endDate: new Date('2012-06-01').toLocaleDateString(
+      endDate: new Date(Date.UTC(2012, 5, 1, 12, 0, 0, 0)).toLocaleDateString(
         undefined,
         dateOptions
       ),
