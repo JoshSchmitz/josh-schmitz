@@ -1,17 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
+const dateOptions = {
+  timeZone: 'America/Chicago',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+};
+
 const initialState = {
   awards: [
     {
       id: nanoid(),
       title: 'Eagle Scout',
-      date: 'August 2008',
+      date: new Date(Date.UTC(2008, 7, 20, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        dateOptions
+      ),
     },
     {
       id: nanoid(),
       title: 'NSF STEM Scholarship',
-      date: 'August 2010',
+      date: new Date(Date.UTC(2010, 7, 20, 12, 0, 0, 0)).toLocaleDateString(
+        undefined,
+        dateOptions
+      ),
     },
   ],
   isLoading: true,
