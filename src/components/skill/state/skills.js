@@ -1,8 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
-import { SiReact } from 'react-icons/si';
+import { SiReact, SiRedux } from 'react-icons/si';
 import { MdAddTask } from 'react-icons/md';
-import { IoLogoSass, IoLogoHtml5, IoLogoCss3 } from 'react-icons/io';
+import {
+  IoLogoSass,
+  IoLogoHtml5,
+  IoLogoCss3,
+  IoLogoNodejs,
+} from 'react-icons/io';
 import { IoLogoJavascript } from 'react-icons/io5';
 
 const initialState = {
@@ -31,7 +36,7 @@ const initialState = {
       years: 1,
       experience: 2,
       icon: <SiReact className='icon' />,
-      category: 'skill',
+      category: 'framework',
       highlighted: true,
     },
     {
@@ -64,6 +69,24 @@ const initialState = {
       icon: <IoLogoSass className='icon' />,
       years: 3,
       category: 'language',
+      highlighted: true,
+    },
+    {
+      id: nanoid(),
+      title: 'Node.js',
+      icon: <IoLogoNodejs className='icon' />,
+      years: 1,
+      experience: 1,
+      category: 'framework',
+      highlighted: false,
+    },
+    {
+      id: nanoid(),
+      title: 'Redux',
+      icon: <SiRedux className='icon' />,
+      years: 1,
+      experience: 2,
+      category: 'framework',
       highlighted: true,
     },
   ],
