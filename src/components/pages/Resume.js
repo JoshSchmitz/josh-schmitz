@@ -10,7 +10,7 @@ const Resume = () => {
       <article className='businesscard'>
         <h1>Resume works!</h1>
       </article>
-      <article>
+      <article className='resume'>
         <Experiences></Experiences>
         <Educations></Educations>
         {/* map skill categories and display Skill for each unique category */}
