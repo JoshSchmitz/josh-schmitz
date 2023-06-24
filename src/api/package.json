@@ -1,0 +1,14 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Josh Schmitz Resume API",
+  "main": "app.js",
+  "scripts": {
+    "test": "api-test"
+  },
+  "author": "Josh Schmitz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
