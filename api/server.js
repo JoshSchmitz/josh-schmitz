@@ -10,6 +10,10 @@ const app = express();
 const port = process.env.PORT || 6000;
 connectDB();
 
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // routes
 app.use('/api/users', userRoutes);
 
