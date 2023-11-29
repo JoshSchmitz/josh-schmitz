@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node api/server.js",
     "server": "nodemon api/server.js",
-    "client": "",
-    "dev": ""
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Josh Schmitz",
   "license": "ISC",
