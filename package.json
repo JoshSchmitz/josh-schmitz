@@ -1,0 +1,12 @@
+{
+  "name": "josh-schmitz",
+  "version": "1.0.0",
+  "description": "Josh Schmitz Resume mern site",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Schmitz",
+  "license": "ISC",
+  "type": "module"
+}
