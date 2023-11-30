@@ -1,0 +1,22 @@
+* {
+    display: block;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+head {
+    display: none;
+}
+
+body {
+    //color: set-text-color($secondary-color);
+    //background-color: $secondary-color;
+    height: 100%;
+    //font-family: $fontface;
+    line-height: 1.5;
+}
+
+:-webkit-any(article, aside, nav, section) h1 {
+    font-size: 1.8rem;
+}
