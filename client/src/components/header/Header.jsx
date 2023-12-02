@@ -1,3 +1,5 @@
+import Nav from '../nav/Nav';
+
 const Header = () => {
   return (
     <header>
@@ -5,6 +7,7 @@ const Header = () => {
         <div className='logo'>
           <h1>Josh Schmitz</h1>
         </div>
+        <Nav></Nav>
       </div>
     </header>
   );
