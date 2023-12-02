@@ -13,6 +13,8 @@ import store from './store/store.js';
 
 // import pages
 import Home from './pages/Home.jsx';
+import Contact from './pages/Contact.jsx';
+import Resume from './pages/Resume.jsx';
 
 // import components
 import App from './components/App.jsx';
@@ -24,7 +26,9 @@ import './css/main.min.css';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route route='/' element={<App />}>
-      <Route index={true} route='/' element={<Home />}></Route>
+      <Route index={true} path='/' element={<Home />}></Route>
+      <Route path='/resume' element={<Resume />}></Route>
+      <Route path='/contact' element={<Contact />}></Route>
     </Route>
   )
 );
