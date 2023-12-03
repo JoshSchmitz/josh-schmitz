@@ -1,0 +1,13 @@
+.auth {
+    font-size: 1.6em;
+
+    &-container {
+        position: absolute;
+        top: 150px;
+        right: 5px;
+        padding: 20px;
+        color: $text-dark;
+        border: solid $highlight-color 1px;
+        border-radius: 15px;
+    }
+}

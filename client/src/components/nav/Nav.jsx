@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import Authenticate from '../authenticate/Authenticate';
 import { newCurrentItem } from '../../store/slices/nav';
 
 const Nav = () => {
@@ -25,6 +26,9 @@ const Nav = () => {
             </li>
           );
         })}
+        <li className='nav-item'>
+          <Authenticate></Authenticate>
+        </li>
       </ul>
     </nav>
   );
