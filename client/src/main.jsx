@@ -26,9 +26,10 @@ import './css/main.min.css';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route route='/' element={<App />}>
-      <Route index={true} path='/' element={<Home />}></Route>
-      <Route path='/resume' element={<Resume />}></Route>
-      <Route path='/contact' element={<Contact />}></Route>
+      <Route index={true} path='/' element={<Home />} />
+      <Route path='/resume' element={<Resume />} />
+      <Route path='/contact' element={<Contact />} />
+      <Route path='/auth/*' element={<Home />} />
     </Route>
   )
 );
