@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   return (
     <div>
-      <h3>Auth Login</h3>
+      <h3>Login</h3>
+
+      <div className='form'>
+        <div className='form-group'>
+          <label htmlFor='email'>Email</label>
+        </div>
+        <div className='form-group'>
+          <label htmlFor='password'>Password</label>
+        </div>
+      </div>
+
       <Link to='/auth/register'>Register</Link>
     </div>
   );
