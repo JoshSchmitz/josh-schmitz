@@ -29,7 +29,6 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<Home />} />
       <Route path='/resume' element={<Resume />} />
       <Route path='/contact' element={<Contact />} />
-      <Route path='/auth/*' element={<Home />} />
     </Route>
   )
 );

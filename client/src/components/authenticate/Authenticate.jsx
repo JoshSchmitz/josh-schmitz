@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import AuthContainer from './AuthContainer';
 
 const Authenticate = () => {
+  const { currentItem } = useSelector((state) => state.nav);
   const userInfo = useSelector((state) => state.auth);
   const [click, setClick] = useState(false);
 
@@ -25,7 +26,13 @@ const Authenticate = () => {
 
   return (
     <>
-      <Link to='/auth/login'>
+      <Link
+        to={
+          currentItem === 'Home'
+            ? '/'
+            : `/${currentItem.toString().toLowerCase()}`
+        }
+      >
         <div className='auth'>
           {userInfo.name ? (
             getInitials(userInfo.name)

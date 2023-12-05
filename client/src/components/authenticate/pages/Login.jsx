@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const Login = () => {
   return (
     <div>
@@ -12,8 +10,6 @@ const Login = () => {
           <label htmlFor='password'>Password</label>
         </div>
       </div>
-
-      <Link to='/auth/register'>Register</Link>
     </div>
   );
 };
