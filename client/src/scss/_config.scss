@@ -10,12 +10,16 @@ $text-light: #898989;
 $fontface: "PT Serif", Times, serif;
 
 // easeOut mixin
-@mixin easeOut {
+@mixin ease-out {
     transition: all 0.5s ease-out;
 }
 
-@mixin stickyFooter {
+@mixin sticky-footer {
     min-height: calc(100vh - 243px);
+}
+
+@mixin box-shadow {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 // Set Text Color
@@ -39,7 +43,7 @@ $fontface: "PT Serif", Times, serif;
     max-width: 1760px;
     margin: 30px auto 30px auto;
     padding: 0 30px;
-    @include stickyFooter;
+    @include sticky-footer;
 }
 
 .section {
