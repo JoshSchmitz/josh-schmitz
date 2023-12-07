@@ -1,20 +1,35 @@
-import { useState, useDispatch } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Login = () => {
+import { useLoginMutation } from '../../../store/slices/api-user';
+import { setCredentials } from '../../../store/slices/auth';
+
+const Login = ({ openClick, registerClick }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [login, { isLoading }] = useLoginMutation();
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      openClick();
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
     <>
-      <div className='form' onSubmit={submitHandler}>
+      <form className='form' onSubmit={submitHandler}>
         <h1 className='title'>Sign In</h1>
         <h4 className='subtitle'>
           Sign in to your account using you email address
@@ -38,14 +53,19 @@ const Login = () => {
         <button className='button' type='submit'>
           Sign In
         </button>
-      </div>
+      </form>
       <div className='form-section'>
         Need an account?{' '}
-        <Link className='link' to='/register'>
+        <a className='link' onClick={registerClick()}>
           Register
-        </Link>
+        </a>
       </div>
     </>
   );
 };
+Login.propTypes = {
+  openClick: PropTypes.func,
+  registerClick: PropTypes.func,
+};
+
 export default Login;

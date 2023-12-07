@@ -3,25 +3,25 @@ import { MdOutlineLogin } from 'react-icons/md';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// import pages
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+
 // import components
-import AuthContainer from './AuthContainer';
+import ProfileBadge from './components/ProfileBadge';
 
 const Authenticate = () => {
   const { currentItem } = useSelector((state) => state.nav);
-  const userInfo = useSelector((state) => state.auth);
-  const [click, setClick] = useState(false);
+  const { userInfo } = useSelector((state) => state.auth);
+  const [open, setOpen] = useState(false);
+  const [register, setRegister] = useState(false);
 
-  const getInitials = (name) => {
-    let names = name.split(' ');
-    let initials = names[0].substring(0, 1).toUpperCase();
-    if (name.length > 1) {
-      initials += names[names.length - 1].substring(0, 1).toUpperCase();
-    }
-    return initials;
+  const handleOpen = () => {
+    setOpen(!open);
   };
 
-  const handleDropdown = () => {
-    setClick(!click);
+  const handleRegister = () => {
+    setRegister(!register);
   };
 
   return (
@@ -32,16 +32,26 @@ const Authenticate = () => {
             ? '/'
             : `/${currentItem.toString().toLowerCase()}`
         }
+        onClick={() => handleOpen()}
       >
         <div className='auth'>
-          {userInfo.name ? (
-            getInitials(userInfo.name)
-          ) : (
-            <MdOutlineLogin onClick={handleDropdown} />
-          )}
+          {userInfo ? <ProfileBadge /> : <MdOutlineLogin />}
         </div>
       </Link>
-      {click ? <AuthContainer /> : null}
+      {open ? (
+        <div className='auth-container'>
+          {register ? (
+            'Register Page'
+          ) : userInfo ? (
+            <Profile openClick={() => handleOpen()} />
+          ) : (
+            <Login
+              openClick={() => handleOpen()}
+              registerClick={() => handleRegister()}
+            />
+          )}
+        </div>
+      ) : null}
     </>
   );
 };
