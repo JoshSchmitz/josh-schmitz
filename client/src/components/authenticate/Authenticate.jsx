@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import pages
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Register from './pages/Register';
 
 // import components
 import ProfileBadge from './components/ProfileBadge';
@@ -41,7 +42,7 @@ const Authenticate = () => {
       {open ? (
         <div className='auth-container'>
           {register ? (
-            'Register Page'
+            <Register loginClick={() => handleRegister()} />
           ) : userInfo ? (
             <Profile />
           ) : (
