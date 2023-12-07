@@ -32,7 +32,7 @@ const Authenticate = () => {
             ? '/'
             : `/${currentItem.toString().toLowerCase()}`
         }
-        onClick={() => handleOpen()}
+        onClick={handleOpen}
       >
         <div className='auth'>
           {userInfo ? <ProfileBadge /> : <MdOutlineLogin />}
@@ -43,7 +43,7 @@ const Authenticate = () => {
           {register ? (
             'Register Page'
           ) : userInfo ? (
-            <Profile openClick={() => handleOpen()} />
+            <Profile />
           ) : (
             <Login
               openClick={() => handleOpen()}
