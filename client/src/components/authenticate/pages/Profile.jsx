@@ -1,19 +1,35 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdOutlineLogout } from 'react-icons/md';
+import { useLogoutMutation } from '../../../store/slices/api-user';
+import { clearCredentials } from '../../../store/slices/auth';
 
 const Profile = () => {
+  const userInfo = useSelector((state) => state.auth.userInfo);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const [logout] = useLogoutMutation();
+
+  const logoutHandler = async () => {
+    try {
+      await logout().unwrap();
+      dispatch(clearCredentials());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <form className='form'>
         <div className='title-bar'>
-          <h1 className='title'>Profile</h1>
+          <h1 className='title'>{userInfo.name}</h1>
           <div className='logout'>
-            <MdOutlineLogout className='logout-icon' />
+            <MdOutlineLogout className='logout-icon' onClick={logoutHandler} />
           </div>
         </div>
         <h4 className='subtitle'>Update your profile information</h4>

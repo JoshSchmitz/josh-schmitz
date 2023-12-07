@@ -27,13 +27,14 @@
 
     &>.title-bar {
         display: grid;
-        grid-template-areas: "empty title logout";
+        grid-template-areas: "title title logout";
         grid-template-columns: repeat(3, 1fr);
 
         &>.title {
             grid-area: title;
             font-weight: bold;
             font-size: 1.6rem;
+            text-align: left;
         }
     }
 

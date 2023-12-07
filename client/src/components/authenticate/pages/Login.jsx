@@ -30,9 +30,11 @@ const Login = ({ openClick, registerClick }) => {
   return (
     <>
       <form className='form' onSubmit={submitHandler}>
-        <h1 className='title'>Sign In</h1>
+        <div className='title-bar'>
+          <h1 className='title'>Sign In</h1>
+        </div>
         <h4 className='subtitle'>
-          Sign in to your account using you email address
+          Sign in to your account using your email address
         </h4>
         <div className='form-group'>
           <input
@@ -56,7 +58,7 @@ const Login = ({ openClick, registerClick }) => {
       </form>
       <div className='form-section'>
         Need an account?{' '}
-        <a className='link' onClick={registerClick()}>
+        <a className='link' onClick={registerClick}>
           Register
         </a>
       </div>
