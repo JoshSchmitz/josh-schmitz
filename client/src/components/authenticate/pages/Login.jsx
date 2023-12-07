@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { useLoginMutation } from '../../../store/slices/api-user';
@@ -14,7 +13,6 @@ const Login = ({ openClick, registerClick }) => {
   const [login, { isLoading }] = useLoginMutation();
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
