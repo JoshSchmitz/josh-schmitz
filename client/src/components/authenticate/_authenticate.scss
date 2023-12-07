@@ -10,5 +10,24 @@
         border: solid $highlight-color 1px;
         border-radius: 15px;
         @include box-shadow;
+
+        .logout {
+            grid-area: logout;
+            border-radius: 50%;
+            padding: 6px;
+            margin-left: auto;
+
+            &:hover {
+                cursor: pointer;
+                @include box-shadow;
+                @include ease-out;
+            }
+
+            &-icon {
+                font-size: 1.6em;
+            }
+        }
+
+
     }
 }
