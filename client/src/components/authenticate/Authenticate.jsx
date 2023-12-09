@@ -38,23 +38,21 @@ const Authenticate = () => {
           <ProfileBadge />
         </div>
       </Link>
-      {open ? (
-        <div className='auth-container'>
-          {register ? (
-            <Register
-              openClick={() => handleOpen()}
-              loginClick={() => handleRegister()}
-            />
-          ) : userInfo ? (
-            <Profile />
-          ) : (
-            <Login
-              openClick={() => handleOpen()}
-              registerClick={() => handleRegister()}
-            />
-          )}
-        </div>
-      ) : null}
+      <div className={open ? 'auth-container' : 'auth-container closed'}>
+        {register ? (
+          <Register
+            openClick={() => handleOpen()}
+            loginClick={() => handleRegister()}
+          />
+        ) : userInfo ? (
+          <Profile />
+        ) : (
+          <Login
+            openClick={() => handleOpen()}
+            registerClick={() => handleRegister()}
+          />
+        )}
+      </div>
     </>
   );
 };

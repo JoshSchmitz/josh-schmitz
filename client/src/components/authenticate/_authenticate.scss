@@ -7,9 +7,15 @@
         top: 150px;
         right: 5px;
         color: $text-dark;
+        background-color: $secondary-color;
         border: solid $highlight-color 1px;
         border-radius: 15px;
         @include box-shadow;
+        @include ease-out;
+
+        &.closed {
+            right: -310px;
+        }
 
         .logout {
             grid-area: logout;
