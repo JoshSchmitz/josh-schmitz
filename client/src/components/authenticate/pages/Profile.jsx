@@ -1,11 +1,16 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdOutlineLogout } from 'react-icons/md';
-import { useLogoutMutation } from '../../../store/slices/api-user';
-import { clearCredentials } from '../../../store/slices/auth';
+import {
+  useLogoutMutation,
+  useUpdateUserMutation,
+} from '../../../store/slices/api-user';
+import { clearCredentials, setCredentials } from '../../../store/slices/auth';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
-  const userInfo = useSelector((state) => state.auth.userInfo);
+  const { userInfo } = useSelector((state) => state.auth);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,19 +18,47 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   const [logout] = useLogoutMutation();
+  const [updateUser, { isLoading }] = useUpdateUserMutation();
+
+  useEffect(() => {
+    setName(userInfo.name);
+    setEmail(userInfo.email);
+  }, [userInfo.name, userInfo.email]);
+
+  const profileHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+    } else {
+      try {
+        const res = await updateUser({
+          _id: userInfo._id,
+          name,
+          email,
+          password,
+        }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        toast.success('Profile updated');
+        setPassword('');
+        setConfirmPassword('');
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
 
   const logoutHandler = async () => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
     } catch (err) {
-      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
   return (
     <>
-      <form className='form'>
+      <form className='form' onSubmit={profileHandler}>
         <div className='title-bar'>
           <h1 className='title'>{userInfo.name}</h1>
           <div className='logout'>
