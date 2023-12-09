@@ -15,7 +15,9 @@ const Nav = () => {
           return (
             <li
               key={item._id}
-              className={currentItem === name ? 'nav-item current' : 'nav-item'}
+              className={
+                currentItem === name ? 'nav-list-item current' : 'nav-list-item'
+              }
             >
               <Link
                 to={name === 'Home' ? '/' : `/${name.toString().toLowerCase()}`}
@@ -26,7 +28,7 @@ const Nav = () => {
             </li>
           );
         })}
-        <li className='nav-item-noeffect'>
+        <li className='nav-list-item-noeffect'>
           <Authenticate></Authenticate>
         </li>
       </ul>

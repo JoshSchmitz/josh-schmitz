@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
 
-    .nav-item {
+    &-item {
         @include ease-out;
 
         &>a {
@@ -11,7 +11,7 @@
             text-decoration: none;
 
             &:hover {
-                color: lighten($primary-color, 60);
+                border-bottom: solid #fff 1px;
             }
         }
 
@@ -26,10 +26,6 @@
 
         &.current {
             border-bottom: solid #fff 1px;
-
-            &:hover {
-                border-bottom: solid lighten($primary-color, 60) 1px;
-            }
         }
     }
 }
@@ -38,11 +34,11 @@ header .container .nav {
     &-list {
         justify-content: space-between;
         gap: 20px;
-    }
 
-    &-item>a {
-        font-size: 1.2rem;
-        padding: 0 20px;
+        &-item>a {
+            font-size: 1.2rem;
+            padding: 0 20px;
+        }
     }
 }
 
@@ -50,11 +46,13 @@ footer .container .nav {
     &-list {
         justify-content: center;
         gap: 10px;
+
+        &-item>a {
+            padding: 0 10px;
+        }
     }
 
-    &-item>a {
-        padding: 0 10px;
-    }
+
 }
 
 /*
