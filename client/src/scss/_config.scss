@@ -18,6 +18,10 @@ $fontface: "PT Serif", Times, serif;
     min-height: calc(100vh - 243px);
 }
 
+@mixin light-background {
+    background-color: rgba(232, 234, 237, .08);
+}
+
 @mixin box-shadow {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }

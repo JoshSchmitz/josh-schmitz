@@ -26,7 +26,7 @@ const Nav = () => {
             </li>
           );
         })}
-        <li className='nav-item'>
+        <li className='nav-item-noeffect'>
           <Authenticate></Authenticate>
         </li>
       </ul>

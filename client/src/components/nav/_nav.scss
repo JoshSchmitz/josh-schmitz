@@ -3,22 +3,31 @@
     display: flex;
     align-items: center;
 
-    .nav-item>a {
-        color: set-text-color($primary-color);
-        text-decoration: none;
-
-        &:hover {
-            @include ease-out;
-            color: lighten($primary-color, 60);
-        }
-    }
-
     .nav-item {
+        @include ease-out;
+
+        &>a {
+            color: set-text-color($primary-color);
+            text-decoration: none;
+
+            &:hover {
+                color: lighten($primary-color, 60);
+            }
+        }
+
+        &-noeffect>a {
+            color: $secondary-color;
+            text-decoration: none;
+
+            &:hover {
+                color: $secondary-color;
+            }
+        }
+
         &.current {
             border-bottom: solid #fff 1px;
 
             &:hover {
-                @include ease-out;
                 border-bottom: solid lighten($primary-color, 60) 1px;
             }
         }

@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { MdOutlineLogin } from 'react-icons/md';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ const Authenticate = () => {
         onClick={handleOpen}
       >
         <div className='auth'>
-          {userInfo ? <ProfileBadge /> : <MdOutlineLogin />}
+          <ProfileBadge />
         </div>
       </Link>
       {open ? (
