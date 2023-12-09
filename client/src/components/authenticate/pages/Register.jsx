@@ -1,19 +1,43 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../../store/slices/auth';
+import { useRegisterMutation } from '../../../store/slices/api-user';
+import { toast } from 'react-toastify';
 
-const Register = ({ loginClick }) => {
+const Register = ({ openClick, loginClick }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [register, { isLoading }] = useRegisterMutation();
+
+  const dispatch = useDispatch();
+
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+    } else {
+      try {
+        const res = await register({ name, email, password }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        loginClick();
+        openClick();
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
 
   return (
     <>
-      <form className='form'>
+      <form className='form' onSubmit={registerHandler}>
         <div className='title-bar'>
-          <h1 className='title'>Register</h1>
+          <h1 className='title'>Sign up</h1>
         </div>
-        <h4 className='subtitle'>Register an account</h4>
+        <h4 className='subtitle'>Sign up for access to cool stuff</h4>
         <div className='form-group'>
           <input
             className='input'
@@ -58,6 +82,7 @@ const Register = ({ loginClick }) => {
   );
 };
 Register.propTypes = {
+  openClick: PropTypes.func,
   loginClick: PropTypes.func,
 };
 export default Register;

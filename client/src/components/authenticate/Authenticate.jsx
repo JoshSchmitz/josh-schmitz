@@ -42,7 +42,10 @@ const Authenticate = () => {
       {open ? (
         <div className='auth-container'>
           {register ? (
-            <Register loginClick={() => handleRegister()} />
+            <Register
+              openClick={() => handleOpen()}
+              loginClick={() => handleRegister()}
+            />
           ) : userInfo ? (
             <Profile />
           ) : (
