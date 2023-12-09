@@ -36,6 +36,7 @@ const Login = ({ openClick, registerClick }) => {
         </h4>
         <div className='form-group'>
           <input
+            id='email'
             className='input'
             type='email'
             placeholder='Email address'
@@ -43,6 +44,7 @@ const Login = ({ openClick, registerClick }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id='password'
             className='input'
             type='password'
             placeholder='Password'

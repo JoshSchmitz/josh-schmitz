@@ -68,6 +68,7 @@ const Profile = () => {
         <h4 className='subtitle'>Update your profile information</h4>
         <div className='form-group'>
           <input
+            id='name'
             className='input'
             type='text'
             placeholder='Name'
@@ -75,6 +76,7 @@ const Profile = () => {
             onChange={(e) => setName(e.target.value)}
           />
           <input
+            id='email'
             className='input'
             type='email'
             placeholder='Email address'
@@ -82,6 +84,7 @@ const Profile = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id='password'
             className='input'
             type='password'
             placeholder='Password'
@@ -89,6 +92,7 @@ const Profile = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
+            id='confirmpassword'
             className='input'
             type='password'
             placeholder='Confirm password'

@@ -40,6 +40,7 @@ const Register = ({ openClick, loginClick }) => {
         <h4 className='subtitle'>Sign up for access to cool stuff</h4>
         <div className='form-group'>
           <input
+            id='name'
             className='input'
             type='text'
             placeholder='Name'
@@ -47,6 +48,7 @@ const Register = ({ openClick, loginClick }) => {
             onChange={(e) => setName(e.target.value)}
           />
           <input
+            id='email'
             className='input'
             type='email'
             placeholder='Email address'
@@ -54,6 +56,7 @@ const Register = ({ openClick, loginClick }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id='password'
             className='input'
             type='password'
             placeholder='Password'
@@ -61,6 +64,7 @@ const Register = ({ openClick, loginClick }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
+            id='confirmpassword'
             className='input'
             type='password'
             placeholder='Confirm password'
