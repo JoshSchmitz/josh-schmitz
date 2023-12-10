@@ -28,3 +28,15 @@ header {
         }
     }
 }
+
+@include mediaSm {
+    header .container {
+        display: block;
+        padding: 0;
+        text-align: center;
+
+        .logo>h1 {
+            margin-bottom: 10px;
+        }
+    }
+}

@@ -1,31 +1,75 @@
-.nav-list {
-    list-style: none;
+.nav {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 
-    &-item {
-        @include ease-out;
+    &-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
 
-        &>a {
-            color: set-text-color($primary-color);
-            text-decoration: none;
+        &-item {
+            @include ease-out;
 
-            &:hover {
+            &>a {
+                color: set-text-color($primary-color);
+                text-decoration: none;
+
+                &:hover {
+                    border-bottom: solid #fff 1px;
+                }
+            }
+
+            &-noeffect>a {
+                color: $secondary-color;
+                text-decoration: none;
+
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+
+            &.current {
                 border-bottom: solid #fff 1px;
             }
         }
+    }
 
-        &-noeffect>a {
-            color: $secondary-color;
-            text-decoration: none;
+    .menu-btn {
+        display: none;
+        font-size: 1.6em;
+
+        &-badge {
+            height: 52px;
+            width: 53px;
+            border-radius: 50%;
+            padding-top: 4.5px;
+            padding-left: .5px;
+            @include ease-out;
+
+            &-text {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 43px;
+                width: 43px;
+                padding: 5px;
+                margin: auto;
+                border: solid 1.5px;
+                border-radius: 50%;
+                font-size: 1.2rem;
+                text-align: center;
+            }
 
             &:hover {
                 color: $secondary-color;
+                @include light-background;
+                // @include box-shadow;
             }
-        }
 
-        &.current {
-            border-bottom: solid #fff 1px;
+            .icon {
+                font-size: 1.6rem;
+            }
         }
     }
 }
@@ -53,6 +97,47 @@ footer .container .nav {
     }
 
 
+}
+
+@include mediaSm {
+    header .container .nav {
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 25px;
+
+        &-list {
+            display: block;
+            position: absolute;
+            top: 160px;
+            left: -110px;
+            padding: 5px 0;
+            background-color: $secondary-color;
+            border-radius: 15px;
+            @include box-shadow;
+            @include ease-out;
+
+            &-item {
+                margin: 5px 10px;
+
+                &>a {
+                    color: $text-dark;
+                    padding: 0 10px
+                }
+
+                &.current {
+                    border-bottom: solid $text-dark 1px;
+                }
+            }
+
+            &.open {
+                left: 5px;
+            }
+        }
+
+        .menu-btn {
+            display: block;
+        }
+    }
 }
 
 /*

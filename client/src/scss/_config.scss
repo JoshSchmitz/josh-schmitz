@@ -26,6 +26,31 @@ $fontface: "PT Serif", Times, serif;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
+// Media query mixins
+@mixin mediaSm {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin mediaMd {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin mediaLg {
+    @media screen and (min-width: 769px) and (max-width: 1170px) {
+        @content;
+    }
+}
+
+@mixin mediaXl {
+    @media screen and (min-width: 1171px) {
+        @content;
+    }
+}
+
 // Set Text Color
 @function set-text-color($color) {
     @if (lightness($color) > 40) {
