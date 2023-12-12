@@ -32,7 +32,7 @@ const Nav = () => {
           <MenuButton type='menu' />
         </Link>
       </div>
-      <ul className={!open ? 'nav-list' : 'nav-list open'}>
+      <ul className={open ? 'nav-list' : 'nav-list closed'}>
         {navItems.map((item) => {
           const name = item.name;
           return (
