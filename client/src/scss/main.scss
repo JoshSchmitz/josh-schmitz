@@ -11,6 +11,10 @@
     margin: 0;
 }
 
+#root {
+    height: 0;
+}
+
 head {
     display: none;
 }
@@ -22,6 +26,11 @@ body {
     font-family: $fontface;
     line-height: 1.5;
     overflow: hidden;
+}
+
+main {
+    position: relative;
+    z-index: -2;
 }
 
 :-webkit-any(article, aside, nav, section) h1 {
