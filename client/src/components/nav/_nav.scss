@@ -110,10 +110,11 @@ footer .container .nav {
             display: block;
             position: absolute;
             top: 160px;
-            left: 5px;
+            left: 0px;
             padding: 5px 0;
             background-color: $secondary-color;
-            border-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
             @include box-shadow;
             @include ease-out;
 
@@ -131,7 +132,8 @@ footer .container .nav {
             }
 
             &.closed {
-                left: -110px;
+                transform: translate(-100%) scaleX(0);
+                transform-origin: left;
             }
         }
 

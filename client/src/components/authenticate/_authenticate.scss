@@ -5,16 +5,18 @@
         position: absolute;
         width: 300px;
         top: 160px;
-        right: 5px;
+        right: 0px;
         color: $text-dark;
         background-color: $secondary-color;
         border: solid $highlight-color 1px;
-        border-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
         @include box-shadow;
         @include ease-out;
 
         &.closed {
-            right: -310px;
+            transform: translate(100%) scaleX(0);
+            transform-origin: right;
         }
 
         .logout {
@@ -32,6 +34,10 @@
             &-icon {
                 font-size: 1.6em;
             }
+        }
+
+        &>.form-section {
+            border-bottom-right-radius: 0;
         }
     }
 
