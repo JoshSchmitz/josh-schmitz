@@ -1,7 +1,6 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 20px;
 
     &-list {
@@ -96,8 +95,45 @@ footer .container .nav {
             padding: 0 10px;
         }
     }
+}
 
+@include mediaMd {
+    header .container .nav {
+        &-list {
+            display: block;
+            position: absolute;
+            top: 160px;
+            left: 0px;
+            padding: 5px 0;
+            background-color: $secondary-color;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            @include box-shadow;
+            @include ease-out;
 
+            &-item {
+                margin: 5px 10px;
+
+                &>a {
+                    color: $text-dark;
+                    padding: 0 10px
+                }
+
+                &.current {
+                    border-bottom: solid $text-dark 1px;
+                }
+            }
+
+            &.closed {
+                transform: translate(-100%) scaleX(0);
+                transform-origin: left;
+            }
+        }
+
+        .menu-btn {
+            visibility: visible;
+        }
+    }
 }
 
 @include mediaSm {
