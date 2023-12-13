@@ -13,6 +13,7 @@
         border-bottom-left-radius: 15px;
         @include box-shadow;
         @include ease-out;
+        z-index: -1;
 
         &.closed {
             transform: translate(100%) scaleX(0);
@@ -71,6 +72,20 @@
 
         .icon {
             font-size: 1.6rem;
+        }
+    }
+}
+
+@include mediaSm {
+    .auth-container {
+        width: 100%;
+        top: 174px;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 15px;
+
+        &.closed {
+            transform: translateY(-100%) scaleY(0);
+            transform-origin: top;
         }
     }
 }

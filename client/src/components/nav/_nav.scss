@@ -108,6 +108,7 @@ footer .container .nav {
             background-color: $secondary-color;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
+            z-index: -1;
             @include box-shadow;
             @include ease-out;
 
@@ -139,42 +140,18 @@ footer .container .nav {
 @include mediaSm {
     header .container .nav {
         justify-content: center;
-        gap: 20px;
         padding-bottom: 25px;
 
         &-list {
-            display: block;
-            position: absolute;
-            top: 160px;
-            left: 0px;
-            padding: 5px 0;
-            background-color: $secondary-color;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
-            @include box-shadow;
-            @include ease-out;
-
-            &-item {
-                margin: 5px 10px;
-
-                &>a {
-                    color: $text-dark;
-                    padding: 0 10px
-                }
-
-                &.current {
-                    border-bottom: solid $text-dark 1px;
-                }
-            }
+            width: 100%;
+            top: 174px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 15px;
 
             &.closed {
-                transform: translate(-100%) scaleX(0);
-                transform-origin: left;
+                transform: translateY(-100%) scaleY(0);
+                transform-origin: top;
             }
-        }
-
-        .menu-btn {
-            visibility: visible;
         }
     }
 }
