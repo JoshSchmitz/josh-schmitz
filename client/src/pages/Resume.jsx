@@ -1,7 +1,9 @@
 const Resume = () => {
   return (
     <main>
-      <h1>Resume Page</h1>
+      <div className='container'>
+        <h1>Resume Page</h1>
+      </div>
     </main>
   );
 };
