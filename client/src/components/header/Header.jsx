@@ -7,7 +7,7 @@ const Header = () => {
         <div className='logo'>
           <h1>Josh Schmitz</h1>
         </div>
-        <Nav></Nav>
+        <Nav location='header' />
       </div>
     </header>
   );

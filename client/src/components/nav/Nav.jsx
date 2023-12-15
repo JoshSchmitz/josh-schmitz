@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 // import components
 import Authenticate from '../authenticate/Authenticate';
@@ -8,30 +9,34 @@ import MenuButton from './MenuButton';
 
 // import redux state
 import { newCurrentItem } from '../../store/slices/nav';
+import { handleOpen } from '../../store/slices/auth';
 
-const Nav = () => {
+const Nav = ({ location }) => {
   const dispatch = useDispatch();
   const { navItems, currentItem } = useSelector((state) => state.nav);
+  const { userInfo, isOpen } = useSelector((state) => state.auth);
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleNavOpen = () => {
     setOpen(!open);
   };
 
   return (
     <nav className='nav'>
-      <div className='nav-list-item-noeffect menu'>
-        <Link
-          to={
-            currentItem === 'Home'
-              ? '/'
-              : `/${currentItem.toString().toLowerCase()}`
-          }
-          onClick={handleOpen}
-        >
-          <MenuButton type='menu' />
-        </Link>
-      </div>
+      {location === 'header' && (
+        <div className='nav-list-item-noeffect menu'>
+          <Link
+            to={
+              currentItem === 'Home'
+                ? '/'
+                : `/${currentItem.toString().toLowerCase()}`
+            }
+            onClick={handleNavOpen}
+          >
+            <MenuButton type='menu' />
+          </Link>
+        </div>
+      )}
       <ul className={open ? 'nav-list' : 'nav-list closed'}>
         {navItems.map((item) => {
           const name = item.name;
@@ -46,7 +51,7 @@ const Nav = () => {
                 to={name === 'Home' ? '/' : `/${name.toString().toLowerCase()}`}
                 onClick={() => {
                   dispatch(newCurrentItem(name));
-                  open && handleOpen();
+                  open && handleNavOpen();
                 }}
               >
                 {name}
@@ -54,11 +59,30 @@ const Nav = () => {
             </li>
           );
         })}
+        {location === 'footer' && (
+          <li className='nav-list-item'>
+            <Link
+              to={
+                currentItem === 'Home'
+                  ? '/'
+                  : `/${currentItem.toString().toLowerCase()}`
+              }
+              onClick={() => dispatch(handleOpen(!isOpen))}
+            >
+              {userInfo ? 'Profile' : 'Sign In'}
+            </Link>
+          </li>
+        )}
       </ul>
-      <div className='nav-list-item-noeffect'>
-        <Authenticate />
-      </div>
+      {location === 'header' && (
+        <div className='nav-list-item-noeffect'>
+          <Authenticate />
+        </div>
+      )}
     </nav>
   );
+};
+Nav.propTypes = {
+  location: PropTypes.string,
 };
 export default Nav;

@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../../store/slices/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCredentials, handleOpen } from '../../../store/slices/auth';
 import { useRegisterMutation } from '../../../store/slices/api-user';
 import { toast } from 'react-toastify';
 
-const Register = ({ openClick, loginClick }) => {
+const Register = ({ loginClick }) => {
+  const { isOpen } = useSelector((state) => state.auth);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +25,7 @@ const Register = ({ openClick, loginClick }) => {
         const res = await register({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
         loginClick();
-        openClick();
+        dispatch(handleOpen(!isOpen));
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
@@ -86,7 +87,6 @@ const Register = ({ openClick, loginClick }) => {
   );
 };
 Register.propTypes = {
-  openClick: PropTypes.func,
   loginClick: PropTypes.func,
 };
 export default Register;

@@ -10,7 +10,7 @@ const Footer = () => {
         <div>
           Copyright &copy; {copyYear}, Joshuah Schmitz, all rights reserved.
         </div>
-        <Nav />
+        <Nav location='footer' />
       </div>
     </footer>
   );

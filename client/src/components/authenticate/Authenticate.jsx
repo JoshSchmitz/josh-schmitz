@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -10,16 +10,19 @@ import Register from './pages/Register';
 // import components
 import ProfileBadge from './components/ProfileBadge';
 
-const Authenticate = () => {
-  const { currentItem } = useSelector((state) => state.nav);
-  const { userInfo } = useSelector((state) => state.auth);
-  const [open, setOpen] = useState(false);
-  const [register, setRegister] = useState(false);
+import { handleOpen } from '../../store/slices/auth';
 
+const Authenticate = () => {
+  const dispatch = useDispatch();
+  const { currentItem } = useSelector((state) => state.nav);
+  const { userInfo, isOpen } = useSelector((state) => state.auth);
+  // const [open, setOpen] = useState(false);
+  const [register, setRegister] = useState(false);
+  /* 
   const handleOpen = () => {
     setOpen(!open);
   };
-
+ */
   const handleRegister = () => {
     setRegister(!register);
   };
@@ -32,23 +35,23 @@ const Authenticate = () => {
             ? '/'
             : `/${currentItem.toString().toLowerCase()}`
         }
-        onClick={handleOpen}
+        onClick={() => dispatch(handleOpen(!isOpen))}
       >
         <div className='auth'>
           <ProfileBadge />
         </div>
       </Link>
-      <div className={open ? 'auth-container' : 'auth-container closed'}>
+      <div className={isOpen ? 'auth-container' : 'auth-container closed'}>
         {register ? (
           <Register
-            openClick={() => handleOpen()}
+            // openClick={() => handleOpen()}
             loginClick={() => handleRegister()}
           />
         ) : userInfo ? (
           <Profile />
         ) : (
           <Login
-            openClick={() => handleOpen()}
+            // openClick={() => handleOpen()}
             registerClick={() => handleRegister()}
           />
         )}
