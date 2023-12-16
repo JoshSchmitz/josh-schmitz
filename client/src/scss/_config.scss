@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
-$primary-color: #0f2462; // rgb(15, 36, 98);
-$secondary-color: #f4f4f4; // rgb(244,244,244);
-$tertiary-color: #debf10;
-$highlight-color: #dfdfdf;
+$bg-dark: #0f2462; // rgb(15, 36, 98);
+$bg-light: #f4f4f4; // rgb(244,244,244);
+$highlight: #dfdfdf;
 $text-dark: #2d2d2d;
-$text-light: #898989;
+$text-medium: #898989;
+$text-light: #f4f4f4;
 $fontface: "PT Serif", Times, serif;
 
-// easeOut mixin
+// mixins
 @mixin ease-out {
     transition: all 1s ease-out;
 }
@@ -26,7 +26,7 @@ $fontface: "PT Serif", Times, serif;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-// Media query mixins
+// media query mixins
 @mixin mediaSm {
     @media screen and (max-width: 500px) {
         @content;
@@ -51,14 +51,25 @@ $fontface: "PT Serif", Times, serif;
     }
 }
 
-// Set Text Color
+// set text color function
 @function set-text-color($color) {
     @if (lightness($color) > 40) {
         @return $text-dark;
     }
 
     @else {
-        @return $secondary-color;
+        @return $bg-light;
+    }
+}
+
+// set link color function
+@function set-link-color($color) {
+    @if(lightness($color) > 40) {
+        @return $bg-dark;
+    }
+
+    @else {
+        @return $bg-light;
     }
 }
 
@@ -83,8 +94,8 @@ $fontface: "PT Serif", Times, serif;
     }
 
     hr {
-        color: $highlight-color;
-        border-color: $highlight-color;
+        color: $highlight;
+        border-color: $highlight;
         border-style: solid;
     }
 

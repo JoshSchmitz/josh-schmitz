@@ -9,28 +9,26 @@
         align-items: center;
 
         &-item {
-            // @include ease-out;
-
             &:hover {
-                border-bottom: solid #fff 1px;
+                border-bottom: solid set-text-color($bg-dark) 1px;
             }
 
             &>a {
-                color: set-text-color($primary-color);
+                color: set-text-color($bg-dark);
                 text-decoration: none;
             }
 
             &-noeffect>a {
-                color: $secondary-color;
+                color: set-text-color($bg-dark);
                 text-decoration: none;
 
                 &:hover {
-                    color: $secondary-color;
+                    color: set-text-color($bg-dark);
                 }
             }
 
             &.current {
-                border-bottom: solid #fff 1px;
+                border-bottom: solid set-text-color($bg-dark) 1px;
             }
         }
     }
@@ -62,7 +60,7 @@
             }
 
             &:hover {
-                color: $secondary-color;
+                color: set-text-color($bg-dark);
                 @include light-background;
                 // @include box-shadow;
             }
@@ -105,7 +103,7 @@ footer .container .nav {
             top: 160px;
             left: 0px;
             padding: 5px 0;
-            background-color: $secondary-color;
+            background-color: $bg-light;
             border-top-right-radius: 15px;
             border-bottom-right-radius: 15px;
             z-index: -1;
@@ -116,12 +114,12 @@ footer .container .nav {
                 margin: 5px 10px;
 
                 &>a {
-                    color: $text-dark;
+                    color: set-text-color($bg-light);
                     padding: 0 10px
                 }
 
                 &.current {
-                    border-bottom: solid $text-dark 1px;
+                    border-bottom: solid set-text-color($bg-light) 1px;
                 }
             }
 

@@ -1,6 +1,6 @@
 header {
-    background-color: $primary-color;
-    color: set-text-color($primary-color);
+    background-color: $bg-dark;
+    color: set-text-color($bg-dark);
 
     .container {
         display: flex;
@@ -19,12 +19,12 @@ header {
             top: -68px;
             right: 0;
             left: 0;
-            background-color: $primary-color;
+            background-color: $bg-dark;
             transform: skewY(2deg);
             -webkit-transform: skewY(2deg);
             -moz-transform: skewY(2deg);
             -ms-transform: skewY(2deg);
-            z-index: -1;
+            z-index: -2;
         }
     }
 }
