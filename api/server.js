@@ -1,8 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+
+// import db connection
 import connectDB from './config/db.js';
+
+// import routes
 import userRoutes from './routes/user.js';
+import resumeRoutes from './routes/resume.js';
+
+// import middleware
 import { notFound, errorHandler } from './middleware/errors.js';
 
 // config
@@ -18,6 +25,7 @@ app.use(cookieParser());
 
 // routes
 app.use('/api/users', userRoutes);
+app.use('/api/resume', resumeRoutes);
 
 // error handlers
 app.use(notFound);
