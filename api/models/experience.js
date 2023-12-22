@@ -18,8 +18,9 @@ const experienceSchema = mongoose.Schema({
   description: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
+  skills: [{ type: mongoose.Schema.Types.ObjectId, required: true }],
   hightlighted: { type: Boolean, required: true },
 });
 
-// const Experience = mongoose.model('Experience', experienceSchema);
-export default experienceSchema;
+const Experience = mongoose.model('Experience', experienceSchema);
+export { Experience, experienceSchema };
