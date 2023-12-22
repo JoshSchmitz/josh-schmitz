@@ -5,7 +5,7 @@ import { MdOutlineLogout } from 'react-icons/md';
 import {
   useLogoutMutation,
   useUpdateUserMutation,
-} from '../../../store/slices/api-user';
+} from '../../../store/slices/api-auth';
 import { clearCredentials, setCredentials } from '../../../store/slices/auth';
 import { toast } from 'react-toastify';
 

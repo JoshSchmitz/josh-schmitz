@@ -5,6 +5,10 @@ const initialState = {
     ? JSON.parse(localStorage.getItem('userInfo'))
     : null,
   isOpen: false,
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: '',
 };
 
 const authSlice = createSlice({

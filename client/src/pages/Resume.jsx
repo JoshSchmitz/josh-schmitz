@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 
+// import state
+
 const Resume = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
