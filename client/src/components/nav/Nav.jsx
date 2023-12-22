@@ -9,7 +9,7 @@ import MenuButton from './MenuButton';
 
 // import redux state
 import { newCurrentItem } from '../../store/slices/nav';
-import { handleOpen } from '../../store/slices/auth';
+import { handleOpen } from '../../store/slices/auth/auth';
 
 const Nav = ({ location }) => {
   const dispatch = useDispatch();

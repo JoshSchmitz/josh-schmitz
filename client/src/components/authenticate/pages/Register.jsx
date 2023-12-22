@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCredentials, handleOpen } from '../../../store/slices/auth';
-import { useRegisterMutation } from '../../../store/slices/api-user';
+import { setCredentials, handleOpen } from '../../../store/slices/auth/auth';
+import { useRegisterMutation } from '../../../store/slices/auth/api-auth';
 import { toast } from 'react-toastify';
 
 const Register = ({ loginClick }) => {

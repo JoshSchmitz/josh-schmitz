@@ -10,7 +10,7 @@ import Register from './pages/Register';
 // import components
 import ProfileBadge from './components/ProfileBadge';
 
-import { handleOpen } from '../../store/slices/auth';
+import { handleOpen } from '../../store/slices/auth/auth';
 
 const Authenticate = () => {
   const dispatch = useDispatch();

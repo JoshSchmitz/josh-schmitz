@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { useLoginMutation } from '../../../store/slices/api-user';
-import { setCredentials, handleOpen } from '../../../store/slices/auth';
+import { useLoginMutation } from '../../../store/slices/auth/api-auth';
+import { setCredentials, handleOpen } from '../../../store/slices/auth/auth';
 
 const Login = ({ registerClick }) => {
   const { isOpen } = useSelector((state) => state.auth);
