@@ -2,12 +2,13 @@ import asyncHandler from 'express-async-handler';
 import Resume from '../models/resume.js';
 
 /* 
-    @desc: Get Resumes
+    @desc: Get Resumes for user
     @route: GET /api/resume
     @access: public
 */
 const getResumes = asyncHandler(async (req, res) => {
-  const resumes = await Resume.find({});
+  const { user } = req.body;
+  const resumes = await Resume.find({ user: user });
   if (resumes) {
     res.status(200).json(
       resumes.map((resume) => {
@@ -55,12 +56,7 @@ const createResume = asyncHandler(async (req, res) => {
 const getResume = asyncHandler(async (req, res) => {
   const resume = await Resume.findById(req.params.id);
   if (resume) {
-    res.status(200).json({
-      _id: resume._id,
-      title: resume.title,
-      bio: resume.bio,
-      main: resume.main,
-    });
+    res.status(200).json(resume);
   } else {
     res.status(404);
     throw new Error('Resume not found');
