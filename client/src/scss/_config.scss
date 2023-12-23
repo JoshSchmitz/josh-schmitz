@@ -104,6 +104,13 @@ $fontface: "PT Serif", Times, serif;
     }
 }
 
+.loader {
+    &-page {
+        color: $bg-dark;
+        margin: 30px auto;
+    }
+}
+
 /* Inserting a collapsed row between two flex items will make 
  * the flex item that comes after it break to a new row */
 .break {

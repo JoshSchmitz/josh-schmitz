@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
+// import components
+import RingLoader from 'react-spinners/RingLoader';
+
 const Resume = ({ id }) => {
   const {
     data: resume,
@@ -12,7 +15,9 @@ const Resume = ({ id }) => {
 
   return (
     <>
-      {isLoading && <h1>Loading ...</h1>}
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
       {isError && <h1>Error: {error}</h1>}
       {isSuccess && (
         <article className='resume'>
