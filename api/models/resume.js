@@ -33,6 +33,7 @@ const resumeSchema = mongoose.Schema(
     leadership: [leadershipSchema],
     project: [projectSchema],
     skill: [skillSchema],
+    main: { type: Boolean, required: true },
   },
   { timestamps: true }
 );
