@@ -3,7 +3,7 @@ const RESUME_URL = '/resume';
 
 export const resumeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getResumes: builder.mutation({
+    getResumes: builder.query({
       query: () => ({
         url: `${RESUME_URL}`,
         method: 'GET',
@@ -16,22 +16,22 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    getResume: builder.mutation({
-      query: () => ({
-        url: `${RESUME_URL}/:id`,
+    getResume: builder.query({
+      query: (id) => ({
+        url: `${RESUME_URL}/${id}`,
         method: 'GET',
       }),
     }),
     updateResume: builder.mutation({
-      query: (data) => ({
-        url: `${RESUME_URL}/:id`,
+      query: (data, id) => ({
+        url: `${RESUME_URL}/${id}`,
         method: 'PUT',
         body: data,
       }),
     }),
     deleteResume: builder.mutation({
-      query: () => ({
-        url: `${RESUME_URL}/:id`,
+      query: (id) => ({
+        url: `${RESUME_URL}/${id}`,
         method: 'DELETE',
       }),
     }),
@@ -39,9 +39,9 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useGetResumesMutation,
+  useGetResumesQuery,
   useCreateResumeMutation,
-  useGetResumeMutation,
+  useGetResumeQuery,
   useUpdateResumeMutation,
   useDeleteResumeMutation,
 } = resumeApiSlice;
