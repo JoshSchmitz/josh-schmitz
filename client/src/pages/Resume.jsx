@@ -1,20 +1,15 @@
-import { useSelector } from 'react-redux';
+//import components
+import Resume from '../components/resume/Resume';
 
-// import state
-
-const Resume = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+const ResumePage = () => {
+  const resume = '65864617817602455608e0a7';
 
   return (
     <main>
       <div className='container'>
-        {userInfo ? (
-          <h1>Logged in - can create resume</h1>
-        ) : (
-          <h1>Logged out - view resume only</h1>
-        )}
+        <Resume id={resume} />
       </div>
     </main>
   );
 };
-export default Resume;
+export default ResumePage;
