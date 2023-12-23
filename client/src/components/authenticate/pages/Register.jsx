@@ -1,10 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+
+// import state
 import { setCredentials, handleOpen } from '../../../store/slices/auth/auth';
 import { useRegisterMutation } from '../../../store/slices/auth/api-auth';
-import { toast } from 'react-toastify';
+
+// import components
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const Register = ({ loginClick }) => {
   const { isOpen } = useSelector((state) => state.auth);
@@ -74,7 +79,16 @@ const Register = ({ loginClick }) => {
           />
         </div>
         <button className='button' type='submit'>
-          Register
+          {isLoading ? (
+            <PulseLoader
+              className='loader-button'
+              loading={isLoading}
+              size={10}
+              color='#f4f4f4'
+            />
+          ) : (
+            'Register'
+          )}
         </button>
       </form>
       <div className='form-section'>

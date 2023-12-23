@@ -106,8 +106,11 @@ $fontface: "PT Serif", Times, serif;
 
 .loader {
     &-page {
-        color: $bg-dark;
         margin: 30px auto;
+    }
+
+    &-button {
+        margin: auto;
     }
 }
 

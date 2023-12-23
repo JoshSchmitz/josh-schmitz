@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { MdOutlineLogout } from 'react-icons/md';
+import { toast } from 'react-toastify';
+
+// import state
 import {
   useLogoutMutation,
   useUpdateUserMutation,
@@ -10,7 +12,10 @@ import {
   clearCredentials,
   setCredentials,
 } from '../../../store/slices/auth/auth';
-import { toast } from 'react-toastify';
+
+//import components
+import { MdOutlineLogout } from 'react-icons/md';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -104,7 +109,16 @@ const Profile = () => {
           />
         </div>
         <button className='button' type='submit'>
-          Update
+          {isLoading ? (
+            <PulseLoader
+              className='loader-button'
+              loading={isLoading}
+              size={10}
+              color='#f4f4f4'
+            />
+          ) : (
+            'Update'
+          )}
         </button>
       </form>
     </>
