@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 
 const experienceSchema = mongoose.Schema({
-  position: {
-    type: String,
+  resume: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
+    ref: 'Resume',
   },
+  position: { type: String, required: true },
   company: {
     name: { type: String, required: true },
     location: {
@@ -22,5 +24,4 @@ const experienceSchema = mongoose.Schema({
   hightlighted: { type: Boolean, required: true },
 });
 
-const Experience = mongoose.model('Experience', experienceSchema);
-export { Experience, experienceSchema };
+export default experienceSchema;
