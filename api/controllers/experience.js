@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler';
-import Experience from '../models/experience.js';
+import Resume from '../models/resume.js';
 
 /* 
     @desc: Create Experience
@@ -7,7 +7,7 @@ import Experience from '../models/experience.js';
     @access: private
 */
 const createExperience = asyncHandler(async (req, res) => {
-  const { resume } = req.body;
+  const resume = await Resume.findById(req.body._id);
 });
 
 /* 
@@ -21,3 +21,5 @@ const createExperience = asyncHandler(async (req, res) => {
     @route: DELETE /api/resume/experience/:id
     @access: private
 */
+
+export { createExperience };
