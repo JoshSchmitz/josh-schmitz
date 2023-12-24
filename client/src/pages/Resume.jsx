@@ -2,7 +2,7 @@
 import Resume from '../components/resume/Resume';
 
 const ResumePage = () => {
-  const resume = '65864617817602455608e0a7';
+  const resume = '658782a85238abdb1f4f1500';
 
   return (
     <main>
