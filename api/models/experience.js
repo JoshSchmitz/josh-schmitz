@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 const experienceSchema = mongoose.Schema({
-  resume: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Resume',
-  },
   position: { type: String, required: true },
   company: {
     name: { type: String, required: true },
@@ -15,12 +10,12 @@ const experienceSchema = mongoose.Schema({
       state: { type: String, required: true },
       postcode: { type: Number, required: true },
     },
-    phone: { type: String, required: true },
+    phone: { type: Number, required: true },
   },
   description: { type: String, required: true },
   startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
-  skills: [{ type: mongoose.Schema.Types.ObjectId, required: true }],
+  endDate: Date,
+  skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skills' }],
   hightlighted: { type: Boolean, required: true },
 });
 
