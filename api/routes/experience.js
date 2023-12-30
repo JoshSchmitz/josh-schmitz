@@ -1,11 +1,11 @@
 import express from 'express';
-import { createExperience } from '../controllers/experience.js';
+import { getExperiences, createExperience } from '../controllers/experience.js';
 import { protect } from '../middleware/authenticate.js';
 
 // instantiate router
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 // routes
-router.route('/').post(protect, createExperience);
+router.route('/').get(getExperiences).post(protect, createExperience);
 
 export default router;

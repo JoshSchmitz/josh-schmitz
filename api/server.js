@@ -8,7 +8,6 @@ import connectDB from './config/db.js';
 // import routes
 import userRoutes from './routes/user.js';
 import resumeRoutes from './routes/resume.js';
-import experienceRoutes from './routes/experience.js';
 
 // import middleware
 import { notFound, errorHandler } from './middleware/errors.js';
@@ -27,7 +26,6 @@ app.use(cookieParser());
 // routes
 app.use('/api/users', userRoutes);
 app.use('/api/resume', resumeRoutes);
-app.use('/api/resume/experience', experienceRoutes);
 
 // error handlers
 app.use(notFound);
