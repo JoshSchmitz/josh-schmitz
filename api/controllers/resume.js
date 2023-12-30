@@ -50,11 +50,11 @@ const createResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Get Resume
-    @route: GET /api/resume/:id
+    @route: GET /api/resume/:resumeId
     @access: public
 */
 const getResume = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.id);
+  const resume = await Resume.findById(req.params.resumeId);
   if (resume) {
     res.status(200).json(resume);
   } else {
@@ -65,11 +65,11 @@ const getResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Update Resume
-    @route: PUT /api/resume/:id
+    @route: PUT /api/resume/:resumeId
     @access: private
 */
 const updateResume = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.id);
+  const resume = await Resume.findById(req.params.resumeId);
   if (resume) {
     resume.title = req.body.title || resume.title;
     resume.bio = req.body.bio || resume.bio;
@@ -91,13 +91,13 @@ const updateResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Delete Resume
-    @route: DELETE /api/resume/:id
+    @route: DELETE /api/resume/:resumeId
     @access: private
 */
 const deleteResume = asyncHandler(async (req, res) => {
-  const resume = await Resume.deleteOne({ _id: req.params.id });
+  const resume = await Resume.deleteOne({ _id: req.params.resumeId });
   if (resume) {
-    res.status(200).json({ note: 'Resume deleted', _id: req.params.id });
+    res.status(200).json({ note: 'Resume deleted', _id: req.params.resumeId });
   } else {
     res.status(400);
     throw new Error('Could not delete resume');

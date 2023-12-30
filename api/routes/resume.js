@@ -15,10 +15,10 @@ const router = express.Router();
 // routes
 router.route('/').get(getResumes).post(protect, createResume);
 router
-  .route('/:id')
+  .route('/:resumeId')
   .get(getResume)
   .put(protect, updateResume)
   .delete(protect, deleteResume);
-router.use('/:id/experience', experienceRoutes);
+router.use('/:resumeId/experience', experienceRoutes);
 
 export default router;
