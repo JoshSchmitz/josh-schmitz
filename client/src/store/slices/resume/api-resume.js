@@ -19,23 +19,23 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ['Resume'],
     }),
     getResume: builder.query({
-      query: (id) => ({
-        url: `${RESUME_URL}/${id}`,
+      query: (resumeId) => ({
+        url: `${RESUME_URL}/${resumeId}`,
         method: 'GET',
       }),
       providesTags: ['Resume'],
     }),
     updateResume: builder.mutation({
-      query: (data, id) => ({
-        url: `${RESUME_URL}/${id}`,
+      query: (data, resumeId) => ({
+        url: `${RESUME_URL}/${resumeId}`,
         method: 'PUT',
         body: data,
       }),
       invalidatesTags: ['Resume'],
     }),
     deleteResume: builder.mutation({
-      query: (id) => ({
-        url: `${RESUME_URL}/${id}`,
+      query: (resumeId) => ({
+        url: `${RESUME_URL}/${resumeId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Resume'],

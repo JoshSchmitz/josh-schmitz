@@ -5,14 +5,14 @@ import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import RingLoader from 'react-spinners/RingLoader';
 import Experiences from '../experience/Experiences';
 
-const Resume = ({ id }) => {
+const Resume = ({ resumeId }) => {
   const {
     data: resume,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetResumeQuery(id);
+  } = useGetResumeQuery(resumeId);
 
   return (
     <>
@@ -33,6 +33,6 @@ const Resume = ({ id }) => {
   );
 };
 Resume.propTypes = {
-  id: PropTypes.string.isRequired,
+  resumeId: PropTypes.string.isRequired,
 };
 export default Resume;
