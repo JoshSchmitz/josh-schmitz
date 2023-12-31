@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-  getExperiences,
   createExperience,
   getExperience,
   updateExperience,
@@ -9,13 +8,13 @@ import {
 import { protect } from '../middleware/authenticate.js';
 
 // instantiate router
-const router = express.Router({ mergeParams: true });
+const router = express.Router();
 
 // routes
-router.route('/').get(getExperiences).post(protect, createExperience);
 router
-  .route('/:experienceId')
+  .route('/')
   .get(getExperience)
+  .post(protect, createExperience)
   .put(protect, updateExperience)
   .delete(protect, deleteExperience);
 

@@ -2,29 +2,45 @@ import asyncHandler from 'express-async-handler';
 import Resume from '../models/resume.js';
 
 /* 
-    @desc: Get experiences for resume
-    @route: GET /api/resume/:resumeId/experience
+    @desc: Get experience for resume
+    @route: GET /api/resume/experience
     @access: public
 */
-const getExperiences = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.resumeId);
-  const experiences = resume.experience;
-  if (experiences) {
-    res.status(200).json(experiences);
+const getExperience = asyncHandler(async (req, res) => {
+  const { resumeId, experienceId } = req.body;
+  if (experienceId) {
+    const resume = await Resume.findById(resumeId);
+    const experiences = resume.experience;
+    const experience = experiences.filter(
+      (exp) => exp._id.valueOf() === experienceId
+    );
+    if (experience) {
+      res.status(200).json(experience);
+    } else {
+      res.status(404);
+      throw new Error(`Experience not found`);
+    }
   } else {
-    res.status(404);
-    throw new Error('No experiences found');
+    const resume = await Resume.findById(resumeId);
+    const experiences = resume.experience;
+    if (experiences) {
+      res.status(200).json(experiences);
+    } else {
+      res.status(404);
+      throw new Error('Experiences not found');
+    }
   }
 });
 
 /* 
     @desc: Create Experience
-    @route: POST /api/resume/:resumeId/experience
+    @route: POST /api/resume/experience
     @access: private
 */
 const createExperience = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.resumeId);
-  try {
+  const { resumeId } = req.body;
+  const resume = await Resume.findById(resumeId);
+  if (resume) {
     let experiences = resume.experience;
     experiences.push({
       position: req.body.position,
@@ -47,116 +63,97 @@ const createExperience = asyncHandler(async (req, res) => {
     resume.experience = experiences;
     await resume.save();
     res.status(200).json({ message: 'Experience created' });
-  } catch (error) {
-    res.status(400);
-    throw new Error('Invalid resume data');
-  }
-});
-
-/* 
-    @desc: Get Experience by ID
-    @route: PUT /api/resume/:resumeId/experience/:experienceId
-    @access: private
-*/
-const getExperience = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.resumeId);
-  const experiences = resume.experience;
-  const experience = experiences.filter(
-    (exp) => exp._id.valueOf() === req.params.experienceId
-  );
-  if (experience) {
-    res.status(200).json(experience);
   } else {
     res.status(404);
-    throw new Error(`Experience ${req.params.experienceId} not found`);
+    throw new Error('Resume not found');
   }
 });
 
 /* 
     @desc: Update Experience
-    @route: PUT /api/resume/:resumeId/experience/:experienceId
+    @route: PUT /api/resume/experience
     @access: private
 */
 const updateExperience = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.resumeId);
-  const experiences = resume.experience;
-  const [experience] = experiences.filter(
-    (exp) => exp._id.valueOf() === req.params.experienceId
-  );
-
-  if (experience) {
-    experience.position = req.body.position || experience.position;
-    experience.company.name = req.body.companyname || experience.company.name;
-    experience.company.location.address =
-      req.body.address || experience.company.location.address;
-    experience.company.location.city =
-      req.body.city || experience.company.location.city;
-    experience.company.location.state =
-      req.body.state || experience.company.location.state;
-    experience.company.location.postcode =
-      req.body.postcode || experience.company.location.postcode;
-    experience.company.phone = req.body.phone || experience.company.phone;
-    experience.description = req.body.description || experience.description;
-    experience.startDate = req.body.startDate || experience.startDate;
-    experience.endDate = req.body.endDate || experience.endDate;
-    experience.highlighted =
-      req.body.highlighted === 'true' ? true : false || experience.highlighted;
-    experience.skills = req.body.skills || experience.skills;
-    const updatedResume = await resume.save();
-    const updatedExperiences = updatedResume.experience;
-    const [updatedExperience] = updatedExperiences.filter(
-      (exp) => exp._id.valueOf() === req.params.experienceId
+  const { resumeId, experienceId } = req.body;
+  const resume = await Resume.findById(resumeId);
+  if (resume) {
+    const experiences = resume.experience;
+    const [experience] = experiences.filter(
+      (exp) => exp._id.valueOf() === experienceId
     );
-    res.status(200).json({
-      _id: updatedExperience._id,
-      position: updatedExperience.position,
-      company: {
-        name: updatedExperience.company.name,
-        location: {
-          address: updatedExperience.company.location.address,
-          city: updatedExperience.company.location.city,
-          state: updatedExperience.company.location.state,
-          postcode: updatedExperience.company.location.postcode,
+    if (experience) {
+      experience.position = req.body.position || experience.position;
+      experience.company.name = req.body.companyname || experience.company.name;
+      experience.company.location.address =
+        req.body.address || experience.company.location.address;
+      experience.company.location.city =
+        req.body.city || experience.company.location.city;
+      experience.company.location.state =
+        req.body.state || experience.company.location.state;
+      experience.company.location.postcode =
+        req.body.postcode || experience.company.location.postcode;
+      experience.company.phone = req.body.phone || experience.company.phone;
+      experience.description = req.body.description || experience.description;
+      experience.startDate = req.body.startDate || experience.startDate;
+      experience.endDate = req.body.endDate || experience.endDate;
+      experience.highlighted =
+        req.body.highlighted === 'true'
+          ? true
+          : false || experience.highlighted;
+      experience.skills = req.body.skills || experience.skills;
+      const updatedResume = await resume.save();
+      const updatedExperiences = updatedResume.experience;
+      const [updatedExperience] = updatedExperiences.filter(
+        (exp) => exp._id.valueOf() === experienceId
+      );
+      res.status(200).json({
+        _id: updatedExperience._id,
+        position: updatedExperience.position,
+        company: {
+          name: updatedExperience.company.name,
+          location: {
+            address: updatedExperience.company.location.address,
+            city: updatedExperience.company.location.city,
+            state: updatedExperience.company.location.state,
+            postcode: updatedExperience.company.location.postcode,
+          },
+          phone: updatedExperience.company.phone,
         },
-        phone: updatedExperience.company.phone,
-      },
-      description: updatedExperience.description,
-      startDate: updatedExperience.startDate,
-      endDate: updatedExperience.endDate,
-      skills: updatedExperience.skills,
-      hightlighted: updatedExperience.highlighted,
-    });
+        description: updatedExperience.description,
+        startDate: updatedExperience.startDate,
+        endDate: updatedExperience.endDate,
+        skills: updatedExperience.skills,
+        hightlighted: updatedExperience.highlighted,
+      });
+    } else {
+      res.status(404);
+      throw new Error('Experience not found');
+    }
   } else {
     res.status(404);
-    throw new Error('Experience not found');
+    throw new Error('Resume not found');
   }
 });
 
 /* 
     @desc: Delete Experience
-    @route: DELETE /api/resume/:resumeId/experience/:experienceId
+    @route: DELETE /api/resume/experience
     @access: private
 */
 
 const deleteExperience = asyncHandler(async (req, res) => {
-  const resume = await Resume.findById(req.params.resumeId);
+  const { resumeId, experienceId } = req.body;
+  const resume = await Resume.findById(resumeId);
   const experiences = resume.experience;
-  experiences.pull(req.params.experienceId);
+  experiences.pull(experienceId);
   const updatedExperience = await resume.save();
   if (updatedExperience) {
-    res
-      .status(200)
-      .json({ message: 'Experience deleted', _id: req.params.experienceId });
+    res.status(200).json({ message: 'Experience deleted', _id: experienceId });
   } else {
     res.status(400);
     throw new Error('Could not delete experience');
   }
 });
 
-export {
-  getExperiences,
-  createExperience,
-  getExperience,
-  updateExperience,
-  deleteExperience,
-};
+export { createExperience, getExperience, updateExperience, deleteExperience };

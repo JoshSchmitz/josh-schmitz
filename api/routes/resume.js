@@ -1,6 +1,5 @@
 import express from 'express';
 import {
-  getResumes,
   getResume,
   createResume,
   updateResume,
@@ -13,12 +12,12 @@ import experienceRoutes from './experience.js';
 const router = express.Router();
 
 // routes
-router.route('/').get(getResumes).post(protect, createResume);
 router
-  .route('/:resumeId')
+  .route('/')
   .get(getResume)
+  .post(protect, createResume)
   .put(protect, updateResume)
   .delete(protect, deleteResume);
-router.use('/:resumeId/experience', experienceRoutes);
+router.use('/experience', experienceRoutes);
 
 export default router;
