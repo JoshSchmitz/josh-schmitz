@@ -3,10 +3,11 @@ const RESUME_URL = '/resume';
 
 export const resumeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getResumes: builder.query({
-      query: () => ({
+    getResume: builder.query({
+      query: (data) => ({
         url: `${RESUME_URL}`,
         method: 'GET',
+        body: data,
       }),
       providesTags: ['Resume'],
     }),
@@ -18,25 +19,19 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Resume'],
     }),
-    getResume: builder.query({
-      query: (resumeId) => ({
-        url: `${RESUME_URL}/${resumeId}`,
-        method: 'GET',
-      }),
-      providesTags: ['Resume'],
-    }),
     updateResume: builder.mutation({
-      query: (data, resumeId) => ({
-        url: `${RESUME_URL}/${resumeId}`,
+      query: (data) => ({
+        url: `${RESUME_URL}`,
         method: 'PUT',
         body: data,
       }),
       invalidatesTags: ['Resume'],
     }),
     deleteResume: builder.mutation({
-      query: (resumeId) => ({
-        url: `${RESUME_URL}/${resumeId}`,
+      query: (data) => ({
+        url: `${RESUME_URL}`,
         method: 'DELETE',
+        body: data,
       }),
       invalidatesTags: ['Resume'],
     }),
@@ -44,9 +39,8 @@ export const resumeApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useGetResumesQuery,
-  useCreateResumeMutation,
   useGetResumeQuery,
+  useCreateResumeMutation,
   useUpdateResumeMutation,
   useDeleteResumeMutation,
 } = resumeApiSlice;
