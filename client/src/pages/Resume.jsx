@@ -7,7 +7,7 @@ const ResumePage = () => {
   return (
     <main>
       <div className='container'>
-        <Resume id={resume} />
+        <Resume resumeId={resume} />
       </div>
     </main>
   );
