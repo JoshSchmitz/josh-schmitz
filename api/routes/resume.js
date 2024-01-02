@@ -12,9 +12,10 @@ import experienceRoutes from './experience.js';
 const router = express.Router();
 
 // routes
+router.get('/:userId', getResume);
+router.get('/:userId/:resumeId', getResume);
 router
   .route('/')
-  .get(getResume)
   .post(protect, createResume)
   .put(protect, updateResume)
   .delete(protect, deleteResume);

@@ -3,11 +3,11 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get Resume for user
-    @route: GET /api/resume
+    @route: GET /api/resume/:userId/:resumeId
     @access: public
 */
 const getResume = asyncHandler(async (req, res) => {
-  const { userId, resumeId } = req.body;
+  const { userId, resumeId } = req.params;
   if (resumeId) {
     const resume = await Resume.findById(resumeId);
     if (resume) {
