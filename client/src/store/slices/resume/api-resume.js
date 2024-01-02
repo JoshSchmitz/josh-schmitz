@@ -4,10 +4,11 @@ const RESUME_URL = '/resume';
 export const resumeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getResume: builder.query({
-      query: (data) => ({
-        url: `${RESUME_URL}`,
+      query: ({ userId, resumeId }) => ({
+        url: resumeId
+          ? `${RESUME_URL}/${userId}/${resumeId}`
+          : `${RESUME_URL}/${userId}`,
         method: 'GET',
-        body: data,
       }),
       providesTags: ['Resume'],
     }),
