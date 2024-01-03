@@ -6,7 +6,6 @@ import {
   deleteResume,
 } from '../controllers/resume.js';
 import { protect } from '../middleware/authenticate.js';
-import experienceRoutes from './experience.js';
 
 // instantiate router
 const router = express.Router();
@@ -19,6 +18,5 @@ router
   .post(protect, createResume)
   .put(protect, updateResume)
   .delete(protect, deleteResume);
-router.use('/experience', experienceRoutes);
 
 export default router;

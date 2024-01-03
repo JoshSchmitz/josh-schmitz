@@ -11,9 +11,10 @@ import { protect } from '../middleware/authenticate.js';
 const router = express.Router();
 
 // routes
+router.get('/:resumeId', getExperience);
+router.get('/:resumeId/:experienceId', getExperience);
 router
   .route('/')
-  .get(getExperience)
   .post(protect, createExperience)
   .put(protect, updateExperience)
   .delete(protect, deleteExperience);

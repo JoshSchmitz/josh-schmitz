@@ -3,11 +3,11 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get experience for resume
-    @route: GET /api/resume/experience
+    @route: GET /api/resume/experience/:resumeId(/:experienceId)
     @access: public
 */
 const getExperience = asyncHandler(async (req, res) => {
-  const { resumeId, experienceId } = req.body;
+  const { resumeId, experienceId } = req.params;
   if (experienceId) {
     const resume = await Resume.findById(resumeId);
     const experiences = resume.experience;
