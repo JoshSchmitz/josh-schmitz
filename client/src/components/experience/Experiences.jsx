@@ -1,16 +1,39 @@
 import PropTypes from 'prop-types';
 
-const Experiences = (experiences) => {
+//import components
+import RingLoader from 'react-spinners/RingLoader';
+import Experience from './Experience';
+
+// import state
+import { useGetExperienceQuery } from '../../store/slices/resume/api-experience';
+
+const Experiences = ({ resumeId }) => {
+  const {
+    data: experiences,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetExperienceQuery({ resumeId });
+
   return (
     <section className='section experiences'>
-      <h1 className='title'>Experiences</h1>
+      <h1 className='title'>Work Experiences</h1>
       <hr />
-      <p>{!experiences.data ? 'No Experiences' : 'Some Experiences'}</p>
-      <p>{JSON.stringify(experiences)}</p>
+      <div>
+        {isLoading && (
+          <RingLoader className='loader-page' loading={isLoading} size={50} />
+        )}
+        {isError && <h1>Error: {error}</h1>}
+        {isSuccess &&
+          experiences.map((exp) => {
+            return <Experience key={exp._id} experience={exp} />;
+          })}
+      </div>
     </section>
   );
 };
 Experiences.propTypes = {
-  experiences: PropTypes.array.isRequired,
+  resumeId: PropTypes.string.isRequired,
 };
 export default Experiences;

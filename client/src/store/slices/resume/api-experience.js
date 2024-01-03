@@ -1,13 +1,14 @@
 import { apiSlice } from '../api';
-const EXPERIENCE_URL = `/resume/experience`;
+const EXPERIENCE_URL = `/experience`;
 
 export const experienceApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getExperience: builder.query({
-      query: (data) => ({
-        url: `${EXPERIENCE_URL}`,
+      query: ({ resumeId, experienceId }) => ({
+        url: experienceId
+          ? `${EXPERIENCE_URL}/${resumeId}/${experienceId}`
+          : `${EXPERIENCE_URL}/${resumeId}`,
         method: 'GET',
-        body: data,
       }),
       providesTags: ['Experience'],
     }),
