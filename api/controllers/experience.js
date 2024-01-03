@@ -58,7 +58,7 @@ const createExperience = asyncHandler(async (req, res) => {
       startDate: new Date(req.body.startdate),
       endDate: new Date(req.body.enddate),
       skills: req.body.skills ? req.body.skills : [],
-      hightlighted: req.body.highlighted === 'true' ? true : false,
+      highlighted: req.body.highlighted === 'true' ? true : false,
     });
     resume.experience = experiences;
     await resume.save();
@@ -97,11 +97,13 @@ const updateExperience = asyncHandler(async (req, res) => {
       experience.description = req.body.description || experience.description;
       experience.startDate = req.body.startDate || experience.startDate;
       experience.endDate = req.body.endDate || experience.endDate;
-      experience.highlighted =
-        req.body.highlighted === 'true'
-          ? true
-          : false || experience.highlighted;
+      if (req.body.highlighted === 'true') {
+        experience.highlighted = true;
+      } else {
+        experience.highlighted = false;
+      }
       experience.skills = req.body.skills || experience.skills;
+
       const updatedResume = await resume.save();
       const updatedExperiences = updatedResume.experience;
       const [updatedExperience] = updatedExperiences.filter(
@@ -124,7 +126,7 @@ const updateExperience = asyncHandler(async (req, res) => {
         startDate: updatedExperience.startDate,
         endDate: updatedExperience.endDate,
         skills: updatedExperience.skills,
-        hightlighted: updatedExperience.highlighted,
+        highlighted: updatedExperience.highlighted,
       });
     } else {
       res.status(404);

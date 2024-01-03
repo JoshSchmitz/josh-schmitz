@@ -16,7 +16,7 @@ const experienceSchema = mongoose.Schema({
   startDate: { type: Date, required: true },
   endDate: Date,
   skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skills' }],
-  hightlighted: { type: Boolean, required: true },
+  highlighted: { type: Boolean, required: true },
 });
 
 export default experienceSchema;
