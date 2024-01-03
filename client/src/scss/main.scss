@@ -1,5 +1,6 @@
 @import 'config';
 @import 'form';
+@import 'modal';
 @import '../components/header/header';
 @import '../components/nav/nav';
 @import '../components/authenticate/authenticate';
@@ -30,7 +31,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: +1;
+    z-index: 0;
 }
 
 main {
