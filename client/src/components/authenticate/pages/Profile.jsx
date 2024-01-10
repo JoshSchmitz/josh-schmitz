@@ -67,13 +67,18 @@ const Profile = () => {
   return (
     <>
       <form className='form' onSubmit={profileHandler}>
-        <div className='title-bar'>
-          <h1 className='title'>{userInfo.name}</h1>
-          <div className='logout'>
-            <MdOutlineLogout className='logout-icon' onClick={logoutHandler} />
+        <div className='form-header'>
+          <div className='title-bar'>
+            <h1 className='title'>{userInfo.name}</h1>
+            <div className='logout'>
+              <MdOutlineLogout
+                className='logout-icon'
+                onClick={logoutHandler}
+              />
+            </div>
           </div>
+          <h4 className='subtitle'>Update your profile information</h4>
         </div>
-        <h4 className='subtitle'>Update your profile information</h4>
         <div className='form-group'>
           <input
             id='name'

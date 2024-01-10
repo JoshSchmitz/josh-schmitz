@@ -33,12 +33,14 @@ const Login = ({ registerClick }) => {
   return (
     <>
       <form className='form' onSubmit={submitHandler}>
-        <div className='title-bar'>
-          <h1 className='title'>Sign In</h1>
+        <div className='form-header'>
+          <div className='title-bar'>
+            <h1 className='title'>Sign In</h1>
+          </div>
+          <h4 className='subtitle'>
+            Sign in to your account using your email address
+          </h4>
         </div>
-        <h4 className='subtitle'>
-          Sign in to your account using your email address
-        </h4>
         <div className='form-group'>
           <input
             id='email'
@@ -70,7 +72,7 @@ const Login = ({ registerClick }) => {
           )}
         </button>
       </form>
-      <div className='form-section'>
+      <div className='form-extra'>
         Need an account?{' '}
         <a className='link' onClick={registerClick}>
           Register

@@ -40,10 +40,12 @@ const Register = ({ loginClick }) => {
   return (
     <>
       <form className='form' onSubmit={registerHandler}>
-        <div className='title-bar'>
-          <h1 className='title'>Sign up</h1>
+        <div className='form-header'>
+          <div className='title-bar'>
+            <h1 className='title'>Sign up</h1>
+          </div>
+          <h4 className='subtitle'>Sign up for access to cool stuff</h4>
         </div>
-        <h4 className='subtitle'>Sign up for access to cool stuff</h4>
         <div className='form-group'>
           <input
             id='name'
@@ -91,7 +93,7 @@ const Register = ({ loginClick }) => {
           )}
         </button>
       </form>
-      <div className='form-section'>
+      <div className='form-extra'>
         Already have an account?{' '}
         <a className='link' onClick={loginClick}>
           Log in

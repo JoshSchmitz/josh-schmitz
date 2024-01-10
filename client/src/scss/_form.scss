@@ -6,12 +6,20 @@
     text-align: center;
     padding: 20px;
 
+    &-section {
+        width: 100%;
+
+        &.group {
+            margin-bottom: 0px;
+        }
+    }
+
     &-group {
         overflow: hidden;
         border-radius: 8px;
         background-color: #fff;
-        margin: 1rem 0 .5rem;
         width: 100%;
+        margin-bottom: 5px;
 
         &:hover {
             & .input {
@@ -22,24 +30,30 @@
                 color: set-text-color($bg-light);
             }
         }
-    }
 
-    &>.title-bar {
-        display: grid;
-        grid-template-areas: "title title logout";
-        grid-template-columns: repeat(3, 1fr);
-
-        &>.title {
-            grid-area: title;
-            font-weight: bold;
-            font-size: 1.6rem;
-            text-align: left;
+        &.inline {
+            display: flex;
         }
     }
 
-    &>.subtitle {
-        font-size: 1rem;
-        color: $text-medium;
+    &-header {
+        &>.title-bar {
+            display: grid;
+            grid-template-areas: "title title logout";
+            grid-template-columns: repeat(3, 1fr);
+
+            &>.title {
+                grid-area: title;
+                font-weight: bold;
+                font-size: 1.6rem;
+                text-align: left;
+            }
+        }
+
+        &>.subtitle {
+            font-size: 1rem;
+            color: $text-medium;
+        }
     }
 
     &>.link {
@@ -50,7 +64,7 @@
     }
 }
 
-.form-section {
+.form-extra {
     padding: 16px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -71,24 +85,42 @@
     }
 }
 
-.label {
-    display: block;
-    margin-bottom: .5rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: set-text-color($bg-light);
-    transition: color .3s cubic-bezier(.25, .01, .25, 1) 0s;
+label {
+    font-family: $formfontface;
+    color: $text-medium;
+    text-align: left;
+    font-size: .75rem;
 }
 
-.input {
+.checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.input,
+textarea {
     background: none;
     border: 0;
     outline: 0;
     height: 40px;
     width: 100%;
     border-bottom: 1px solid #eee;
-    font-size: .9rem;
+    font-size: .85rem;
     padding: 8px 15px;
+    font-family: $formfontface;
+    letter-spacing: normal;
+    word-spacing: normal;
+
+    &.checkbox {
+        width: auto;
+        margin-left: 15px;
+    }
+}
+
+textarea {
+    height: 150px;
+    resize: none;
 }
 
 .button {
