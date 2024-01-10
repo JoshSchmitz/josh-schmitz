@@ -21,6 +21,11 @@
             font-weight: 600;
         }
     }
+
+    &.highlighted {
+        border-left: 4px solid $bg-dark;
+        padding-left: 15px;
+    }
 }
 
 .headline {
@@ -62,7 +67,15 @@
     }
 }
 
-.highlighted {
-    border-left: 4px solid $bg-dark;
-    padding-left: 15px;
+#experience {
+    &>.button {
+        width: fit-content;
+        align-self: end;
+    }
+
+    &>.form-content {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
 }

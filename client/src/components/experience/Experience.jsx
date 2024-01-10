@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 
+// import components
+import { MdEdit, MdDelete } from 'react-icons/md';
+
 const Experience = ({ experience }) => {
   return (
     <div
@@ -10,8 +13,8 @@ const Experience = ({ experience }) => {
       <div className='headline'>
         <h2 className='position'>{experience.position}</h2>
         <div className='actions'>
-          {/* <MdEdit className='action'></MdEdit>
-          <MdDelete className='action' onClick={props.delete}></MdDelete> */}
+          <MdEdit className='action update' />
+          <MdDelete className='action delete' />
         </div>
       </div>
       <div className='details'>
@@ -22,8 +25,8 @@ const Experience = ({ experience }) => {
         </h3>
         <div className='break'></div>
         <h4 className='time'>
-          {experience.startdate} to{' '}
-          {!experience.enddate ? 'Now' : experience.enddate}
+          {experience.startDate} to{' '}
+          {!experience.endDate ? 'Now' : experience.endDate}
         </h4>
       </div>
       <p className='description'>{experience.description}</p>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 $bg-dark: #0f2462; // rgb(15, 36, 98);
 $bg-light: #f4f4f4; // rgb(244,244,244);
@@ -8,6 +9,7 @@ $text-dark: #2d2d2d;
 $text-medium: #898989;
 $text-light: #f4f4f4;
 $fontface: "PT Serif", Times, serif;
+$formfontface: "Open Sans", sans-serif;
 
 // mixins
 @mixin ease-out {
