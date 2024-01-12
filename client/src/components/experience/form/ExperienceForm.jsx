@@ -1,22 +1,22 @@
 /* eslint-disable no-unused-vars */
 // import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { position_validation } from '../experience/form/validations';
+import { position_validation } from './validations';
 import PropTypes from 'prop-types';
 
 // import components
 import PulseLoader from 'react-spinners/PulseLoader';
-import FormHeader from '../form/FormHeader';
-import FormContent from '../form/FormContent';
-import FormSection from '../form/FormSection';
-import FormGroup from '../form/FormGroup';
-import Input from '../form/Input';
+import FormHeader from '../../form/FormHeader';
+import FormContent from '../../form/FormContent';
+import FormSection from '../../form/FormSection';
+import FormGroup from '../../form/FormGroup';
+import Input from '../../form/Input';
 
 // import state
 import {
   useCreateExperienceMutation,
   useUpdateExperienceMutation,
-} from '../../store/slices/resume/api-experience';
+} from '../../../store/slices/resume/api-experience';
 
 const ExperienceForm = ({ edit }) => {
   // react-hook-form validation

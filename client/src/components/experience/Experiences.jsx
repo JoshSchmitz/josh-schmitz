@@ -6,7 +6,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import Modal from 'react-modal';
 import RingLoader from 'react-spinners/RingLoader';
 import Experience from './Experience';
-import ExperienceForm from './ExperienceForm';
+import ExperienceForm from './form/ExperienceForm';
 
 // import state
 import { useGetExperienceQuery } from '../../store/slices/resume/api-experience';
