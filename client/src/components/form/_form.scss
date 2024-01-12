@@ -31,7 +31,8 @@
     }
 
     .input,
-    .textarea {
+    .textarea,
+    .checkbox {
         position: relative;
         margin-bottom: 10px;
 
@@ -136,7 +137,8 @@
         }
 
         &>.input,
-        &>.textarea {
+        &>.textarea,
+        &>.checkbox {
             border-radius: 0;
             margin-bottom: 0;
         }
