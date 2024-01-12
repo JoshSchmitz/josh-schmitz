@@ -23,6 +23,97 @@
         }
     }
 
+    label {
+        font-family: $formfontface;
+        color: $text-medium;
+        text-align: left;
+        font-size: .75rem;
+    }
+
+    .input,
+    .textarea {
+        position: relative;
+        margin-bottom: 10px;
+
+        .message {
+            background-color: $bg-light;
+            font-family: $formfontface;
+            position: absolute;
+            bottom: 4px;
+            right: 3px;
+            width: fit-content;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            justify-content: end;
+            font-size: .7rem;
+            padding: 0 5px;
+            border-radius: 4px;
+
+            &.error {
+                color: $error;
+                background-color: lighten($error, 35%);
+            }
+
+            &.warning {
+                color: $warning;
+                background-color: lighten($warning, 42%);
+            }
+        }
+    }
+
+    input,
+    textarea {
+        background: #fff;
+        border-radius: 8px;
+        border: 0;
+        outline: 0;
+        height: 40px;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        font-size: .85rem;
+        padding: 8px 15px;
+        font-family: $formfontface;
+        letter-spacing: normal;
+        word-spacing: normal;
+
+        &.checkbox {
+            width: auto;
+            margin-left: 15px;
+            margin-bottom: 0;
+        }
+    }
+
+    textarea {
+        height: 150px;
+        resize: none;
+    }
+
+    .checkbox {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+
+    .button {
+        width: 100%;
+        background-color: $bg-dark;
+        color: set-text-color($bg-dark);
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        @include ease-out;
+
+        &:hover {
+            background-color: $text-dark;
+            color: set-text-color($text-dark);
+        }
+    }
+
     &-group {
         overflow: hidden;
         border-radius: 8px;
@@ -44,14 +135,10 @@
             display: flex;
         }
 
-        &>input,
-        textarea {
+        &>.input,
+        &>.textarea {
             border-radius: 0;
-        }
-
-        &>.input>input,
-        textarea {
-            border-radius: 0;
+            margin-bottom: 0;
         }
     }
 
@@ -101,95 +188,5 @@
         &:hover {
             text-decoration: underline;
         }
-    }
-}
-
-label {
-    font-family: $formfontface;
-    color: $text-medium;
-    text-align: left;
-    font-size: .75rem;
-}
-
-.input,
-.textarea {
-    position: relative;
-
-    .message {
-        background-color: $bg-light;
-        font-family: $formfontface;
-        position: absolute;
-        bottom: 4px;
-        right: 3px;
-        width: fit-content;
-        display: flex;
-        gap: 5px;
-        align-items: center;
-        justify-content: end;
-        font-size: .7rem;
-        padding: 0 5px;
-        border-radius: 4px;
-
-        &.error {
-            color: $error;
-            background-color: lighten($error, 35%);
-        }
-
-        &.warning {
-            color: $warning;
-            background-color: lighten($warning, 42%);
-        }
-    }
-
-
-}
-
-.checkbox {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-input,
-textarea {
-    background: #fff;
-    border-radius: 8px;
-    border: 0;
-    outline: 0;
-    height: 40px;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    font-size: .85rem;
-    padding: 8px 15px;
-    font-family: $formfontface;
-    letter-spacing: normal;
-    word-spacing: normal;
-
-    &.checkbox {
-        width: auto;
-        margin-left: 15px;
-    }
-}
-
-textarea {
-    height: 150px;
-    resize: none;
-}
-
-.button {
-    width: 100%;
-    background-color: $bg-dark;
-    color: set-text-color($bg-dark);
-    border: 0;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    @include ease-out;
-
-    &:hover {
-        background-color: $text-dark;
-        color: set-text-color($text-dark);
     }
 }
