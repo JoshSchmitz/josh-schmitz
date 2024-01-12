@@ -8,4 +8,14 @@ const position_validation = {
   },
 };
 
-export { position_validation };
+const description_validation = {
+  id: 'description',
+  rows: 10,
+  cols: 30,
+  placeholder: 'Description',
+  validation: {
+    required: { value: true, message: 'required' },
+  },
+};
+
+export { position_validation, description_validation };
