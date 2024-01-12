@@ -6,11 +6,20 @@
     text-align: center;
     padding: 20px;
 
-    &-section {
-        width: 100%;
+    &-content {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
 
-        &.group {
-            margin-bottom: 0px;
+    &-section {
+        &.full {
+            flex-basis: 100%;
+        }
+
+        &.grow-1 {
+            flex-grow: 1;
         }
     }
 
@@ -33,6 +42,16 @@
 
         &.inline {
             display: flex;
+        }
+
+        &>input,
+        textarea {
+            border-radius: 0;
+        }
+
+        &>.input>input,
+        textarea {
+            border-radius: 0;
         }
     }
 
@@ -92,15 +111,48 @@ label {
     font-size: .75rem;
 }
 
+.input {
+    position: relative;
+
+    .message {
+        background-color: $bg-light;
+        font-family: $formfontface;
+        position: absolute;
+        bottom: 4px;
+        right: 3px;
+        width: fit-content;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: end;
+        font-size: .7rem;
+        padding: 0 5px;
+        border-radius: 4px;
+
+        &.error {
+            color: $error;
+            background-color: lighten($error, 35%);
+        }
+
+        &.warning {
+            color: $warning;
+            background-color: lighten($warning, 42%);
+        }
+    }
+
+
+}
+
 .checkbox {
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.input,
+input,
 textarea {
-    background: none;
+    background: #fff;
+    border-radius: 8px;
     border: 0;
     outline: 0;
     height: 40px;
