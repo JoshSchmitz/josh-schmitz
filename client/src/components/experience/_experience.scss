@@ -72,10 +72,4 @@
         width: fit-content;
         align-self: end;
     }
-
-    &>.form-content {
-        display: flex;
-        flex-direction: row;
-        gap: 16px;
-    }
 }
