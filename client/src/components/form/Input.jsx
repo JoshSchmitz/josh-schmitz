@@ -2,24 +2,9 @@ import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MdError } from 'react-icons/md';
-import { isFormInvalid, findInputError } from './utils/functions';
+import { isFormInvalid, findInputError, framer_error } from './utils/functions';
 
-const framer_error = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 10 },
-  transition: { opacity: 1, y: 0 },
-};
-
-const Input = ({
-  id,
-  type,
-  placeholder,
-  label,
-  value,
-  onChange,
-  validation,
-}) => {
+const Input = ({ id, type, placeholder, label, validation }) => {
   const {
     register,
     formState: { errors },
@@ -39,8 +24,6 @@ const Input = ({
         id={id}
         type={type}
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
         {...register(id, validation)}
       />
       <AnimatePresence mode='wait' initial={false}>
@@ -60,8 +43,6 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
   validation: PropTypes.object,
 };
 
