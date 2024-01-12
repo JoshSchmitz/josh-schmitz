@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MdError } from 'react-icons/md';
 import { isFormInvalid, findInputError, framer_error } from './utils/functions';
 
-const TextArea = ({ id, label, cols, rows, placeholder, validation }) => {
+const Textarea = ({ id, label, cols, rows, placeholder, validation }) => {
   const {
     register,
     formState: { errors },
@@ -38,7 +38,7 @@ const TextArea = ({ id, label, cols, rows, placeholder, validation }) => {
     </div>
   );
 };
-TextArea.propTypes = {
+Textarea.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   cols: PropTypes.number,
@@ -60,4 +60,4 @@ InputError.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-export default TextArea;
+export default Textarea;
