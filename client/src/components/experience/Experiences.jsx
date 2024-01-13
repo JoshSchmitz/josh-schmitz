@@ -38,7 +38,11 @@ const Experiences = ({ resumeId }) => {
         preventScroll={true}
         shouldFocusAfterRender={false}
       >
-        <ExperienceForm edit={false} />
+        <ExperienceForm
+          resume={resumeId}
+          edit={false}
+          toggleModal={toggleModal}
+        />
       </Modal>
       <section className='section experiences'>
         <div className='headline'>

@@ -1,8 +1,21 @@
 /* eslint-disable no-unused-vars */
 // import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import { position_validation } from './validations';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import {
+  position_validation,
+  description_validation,
+  startdate_validation,
+  enddate_validation,
+  highlighted_validation,
+  companyname_validation,
+  companyphone_validation,
+  address_validation,
+  city_validation,
+  state_validation,
+  postcode_validation,
+} from './validations';
 
 // import components
 import PulseLoader from 'react-spinners/PulseLoader';
@@ -11,6 +24,8 @@ import FormContent from '../../form/FormContent';
 import FormSection from '../../form/FormSection';
 import FormGroup from '../../form/FormGroup';
 import Input from '../../form/Input';
+import Textarea from '../../form/Textarea';
+import Checkbox from '../../form/Checkbox';
 
 // import state
 import {
@@ -18,43 +33,30 @@ import {
   useUpdateExperienceMutation,
 } from '../../../store/slices/resume/api-experience';
 
-const ExperienceForm = ({ edit }) => {
+const ExperienceForm = ({ resume, edit, toggleModal }) => {
   // react-hook-form validation
   const methods = useForm();
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
 
-  const onSubmit = methods.handleSubmit((data) => {
+  const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
-      console.log('Create Experience');
-      console.log(data);
+      try {
+        const res = await createExperience({
+          resumeId: resume,
+          ...data,
+          phone: data.phone.replaceAll(/[^0-9]/g, ''),
+        }).unwrap();
+        toast.success('Experience created');
+        toggleModal();
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     } else {
       console.log(data);
       console.log('Update Experience');
     }
   });
-
-  /* const [state, setState] = useState({
-    position: '',
-    description: '',
-    startDate: '',
-    endDate: '',
-    highlighted: false,
-    companyName: '',
-    companyPhone: '',
-    address: '',
-    city: '',
-    state: '',
-    postcode: '',
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setState((prevProps) => ({
-      ...prevProps,
-      [name]: value,
-    }));
-  }; */
 
   return (
     <FormProvider {...methods}>
@@ -76,98 +78,24 @@ const ExperienceForm = ({ edit }) => {
           <FormSection size='full'>
             <FormGroup>
               <Input {...position_validation} />
-              <textarea
-                id='description'
-                cols='30'
-                rows='10'
-                placeholder='Description'
-                // value={state.description}
-                // onChange={handleInputChange}
-              ></textarea>
+              <Textarea {...description_validation} />
             </FormGroup>
           </FormSection>
           <FormSection>
-            <FormGroup label='Start Date'>
-              <input
-                id='startdate'
-                className='input'
-                type='date'
-                // value={state.startDate}
-                // onChange={handleInputChange}
-              />
-            </FormGroup>
-            <FormGroup label='End Date'>
-              <input
-                id='enddate'
-                className='input'
-                type='date'
-                // value={state.endDate}
-                // onChange={handleInputChange}
-              />
-            </FormGroup>
+            <Input {...startdate_validation} />
+            <Input {...enddate_validation} />
             <FormGroup>
-              <div className='checkbox'>
-                <input
-                  id='highlighted'
-                  className='input checkbox'
-                  type='checkbox'
-                  //   value={state.highlighted}
-                  //   onChange={handleInputChange}
-                />
-                <label htmlFor='highlighted'>Highlighted?</label>
-              </div>
+              <Checkbox {...highlighted_validation} />
             </FormGroup>
           </FormSection>
           <FormSection>
             <FormGroup>
-              <input
-                id='companyname'
-                className='input'
-                type='text'
-                placeholder='Company name'
-                // value={state.companyName}
-                // onChange={handleInputChange}
-              />
-              <input
-                id='companyphone'
-                className='input'
-                type='tel'
-                placeholder='Phone'
-                // value={state.companyPhone}
-                // onChange={handleInputChange}
-              />
-              <input
-                id='address'
-                className='input'
-                type='text'
-                placeholder='Address'
-                // value={state.address}
-                // onChange={handleInputChange}
-              />
-              <input
-                id='city'
-                className='input'
-                type='text'
-                placeholder='City'
-                // value={state.city}
-                // onChange={handleInputChange}
-              />
-              <input
-                id='state'
-                className='input'
-                type='text'
-                placeholder='State'
-                // value={state.state}
-                // onChange={handleInputChange}
-              />
-              <input
-                id='postcode'
-                className='input'
-                type='text'
-                placeholder='Post code'
-                // value={state.postcode}
-                // onChange={handleInputChange}
-              />
+              <Input {...companyname_validation} />
+              <Input {...companyphone_validation} />
+              <Input {...address_validation} />
+              <Input {...city_validation} />
+              <Input {...state_validation} />
+              <Input {...postcode_validation} />
             </FormGroup>
           </FormSection>
         </FormContent>
@@ -200,6 +128,8 @@ const ExperienceForm = ({ edit }) => {
   );
 };
 ExperienceForm.propTypes = {
+  resume: PropTypes.string.isRequired,
   edit: PropTypes.bool.isRequired,
+  toggleModal: PropTypes.func.isRequired,
 };
 export default ExperienceForm;
