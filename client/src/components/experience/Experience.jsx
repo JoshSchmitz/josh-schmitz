@@ -1,9 +1,27 @@
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 // import components
 import { MdEdit, MdDelete } from 'react-icons/md';
 
-const Experience = ({ experience }) => {
+// import state
+import { useDeleteExperienceMutation } from '../../store/slices/resume/api-experience';
+
+const Experience = ({ experience, resume }) => {
+  const [deleteExperience, { isLoading }] = useDeleteExperienceMutation();
+
+  const handleDelete = () => {
+    try {
+      deleteExperience({
+        resumeId: resume,
+        experienceId: experience._id,
+      });
+      toast.warning('Experience deleted');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <div
       className={
@@ -13,8 +31,8 @@ const Experience = ({ experience }) => {
       <div className='headline'>
         <h2 className='position'>{experience.position}</h2>
         <div className='actions'>
-          <MdEdit className='action update' />
-          <MdDelete className='action delete' />
+          <MdEdit className='action update' /*onClick={ handleEdit }*/ />
+          <MdDelete className='action delete' onClick={handleDelete} />
         </div>
       </div>
       <div className='details'>
@@ -34,6 +52,7 @@ const Experience = ({ experience }) => {
   );
 };
 Experience.propTypes = {
+  resume: PropTypes.string.isRequired,
   experience: PropTypes.object.isRequired,
 };
 export default Experience;

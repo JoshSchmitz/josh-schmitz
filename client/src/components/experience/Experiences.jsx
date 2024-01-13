@@ -62,7 +62,9 @@ const Experiences = ({ resumeId }) => {
           {isError && <h1>Error: {error}</h1>}
           {isSuccess &&
             experiences.map((exp) => {
-              return <Experience key={exp._id} experience={exp} />;
+              return (
+                <Experience key={exp._id} resume={resumeId} experience={exp} />
+              );
             })}
         </div>
       </section>

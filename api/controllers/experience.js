@@ -58,7 +58,7 @@ const createExperience = asyncHandler(async (req, res) => {
       startDate: new Date(req.body.startdate),
       endDate: new Date(req.body.enddate),
       skills: req.body.skills ? req.body.skills : [],
-      highlighted: req.body.highlighted === 'true' ? true : false,
+      highlighted: req.body.highlighted,
     });
     resume.experience = experiences;
     await resume.save();
