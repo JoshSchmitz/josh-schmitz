@@ -70,6 +70,22 @@
 #experience {
     &>.button {
         width: fit-content;
-        align-self: end;
+        align-self: flex-end;
+    }
+}
+
+.confirm {
+    max-width: 350px;
+    padding: 20px;
+
+    &-message {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    &-options {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
     }
 }
