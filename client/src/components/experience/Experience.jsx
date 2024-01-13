@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 // import components
 import Modal from 'react-modal';
+import Confirm from '../confirm/Confirm';
 import { MdEdit, MdDelete } from 'react-icons/md';
 
 // import state
@@ -17,7 +18,7 @@ const Experience = ({ experience, resume }) => {
     setConfirmIsOpen(!confirmIsOpen);
   };
 
-  const [deleteExperience, { isLoading }] = useDeleteExperienceMutation();
+  const [deleteExperience, { deleteIsLoading }] = useDeleteExperienceMutation();
 
   const handleDelete = () => {
     try {
@@ -42,19 +43,14 @@ const Experience = ({ experience, resume }) => {
         preventScroll={true}
         shouldFocusAfterRender={false}
       >
-        <div className='confirm'>
-          <h3 className='confirm-message'>
-            Are you sure you want to delete this experience?
-          </h3>
-          <div className='confirm-options'>
-            <button className='button' onClick={confirmModal}>
-              Cancel
-            </button>
-            <button className='button' onClick={handleDelete}>
-              Confirm
-            </button>
-          </div>
-        </div>
+        <Confirm
+          confirm={handleDelete}
+          confirmLabel='Delete'
+          loading={deleteIsLoading}
+          close={confirmModal}
+          closeLabel='Cancel'
+          message='Are you sure you want to delete this experience?'
+        />
       </Modal>
       <div
         className={
