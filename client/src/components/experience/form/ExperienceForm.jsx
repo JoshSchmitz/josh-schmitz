@@ -33,7 +33,7 @@ import {
   useUpdateExperienceMutation,
 } from '../../../store/slices/resume/api-experience';
 
-const ExperienceForm = ({ resume, edit, toggleModal }) => {
+const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   // react-hook-form validation
   const methods = useForm();
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
@@ -43,7 +43,7 @@ const ExperienceForm = ({ resume, edit, toggleModal }) => {
     if (!edit) {
       try {
         const res = await createExperience({
-          resumeId: resume,
+          resumeId,
           ...data,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
@@ -128,7 +128,8 @@ const ExperienceForm = ({ resume, edit, toggleModal }) => {
   );
 };
 ExperienceForm.propTypes = {
-  resume: PropTypes.string.isRequired,
+  resumeId: PropTypes.string.isRequired,
+  experienceId: PropTypes.string.isRequired,
   edit: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

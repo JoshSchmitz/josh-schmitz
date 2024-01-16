@@ -39,7 +39,7 @@ const Experiences = ({ resumeId }) => {
         shouldFocusAfterRender={false}
       >
         <ExperienceForm
-          resume={resumeId}
+          resumeId={resumeId}
           edit={false}
           toggleModal={toggleModal}
         />
