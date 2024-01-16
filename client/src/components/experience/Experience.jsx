@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 // import components
 import Modal from 'react-modal';
+import ExperienceForm from './form/ExperienceForm';
 import Confirm from '../confirm/Confirm';
 import { MdEdit, MdDelete } from 'react-icons/md';
 
@@ -16,6 +17,10 @@ const Experience = ({ experience, resume }) => {
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
     setConfirmIsOpen(!confirmIsOpen);
+  };
+  const [formIsOpen, setFormIsOpen] = useState(false);
+  const formModal = () => {
+    setFormIsOpen(!formIsOpen);
   };
 
   const [deleteExperience, { deleteIsLoading }] = useDeleteExperienceMutation();
@@ -37,7 +42,23 @@ const Experience = ({ experience, resume }) => {
       <Modal
         className='modal-content'
         overlayClassName='modal-overlay'
-        contentLabel='Create Experience Modal'
+        contentLabel='Update Experience Modal'
+        isOpen={formIsOpen}
+        onRequestClose={formModal}
+        preventScroll={true}
+        shouldFocusAfterRender={false}
+      >
+        <ExperienceForm
+          resumeId={resume}
+          experienceId={experience._id}
+          edit={true}
+          toggleModal={formModal}
+        />
+      </Modal>
+      <Modal
+        className='modal-content'
+        overlayClassName='modal-overlay'
+        contentLabel='Confirm Modal'
         isOpen={confirmIsOpen}
         onRequestClose={confirmModal}
         preventScroll={true}
@@ -60,7 +81,7 @@ const Experience = ({ experience, resume }) => {
         <div className='headline'>
           <h2 className='position'>{experience.position}</h2>
           <div className='actions'>
-            <MdEdit className='action update' /*onClick={ handleEdit }*/ />
+            <MdEdit className='action update' onClick={formModal} />
             <MdDelete className='action delete' onClick={confirmModal} />
           </div>
         </div>
