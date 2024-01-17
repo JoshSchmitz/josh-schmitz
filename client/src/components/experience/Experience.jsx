@@ -13,18 +13,7 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 import { useDeleteExperienceMutation } from '../../store/slices/resume/api-experience';
 
 const Experience = ({ experience, resume }) => {
-  // format dates
-  const startDate =
-    experience.startDate !== ''
-      ? dayjs(experience.startDate).add(1, 'day').format('YYYY-MM-DD')
-      : 'Now';
-  const endDate =
-    experience.endDate !== ''
-      ? dayjs(experience.endDate).add(1, 'day').format('YYYY-MM-DD')
-      : 'Now';
-
   // modal functions
-  Modal.setAppElement('#root');
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
     setConfirmIsOpen(!confirmIsOpen);
@@ -104,7 +93,13 @@ const Experience = ({ experience, resume }) => {
           </h3>
           <div className='break'></div>
           <h4 className='time'>
-            {startDate} to {endDate}
+            {experience.startDate !== ''
+              ? dayjs(experience.startDate).add(1, 'day').format('MMMM D, YYYY')
+              : 'Now'}{' '}
+            to{' '}
+            {experience.endDate !== ''
+              ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
+              : 'Now'}
           </h4>
         </div>
         <p className='description'>{experience.description}</p>
