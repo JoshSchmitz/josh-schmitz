@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 // import { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
 import {
   position_validation,
@@ -31,6 +33,7 @@ import Checkbox from '../../form/Checkbox';
 import {
   useCreateExperienceMutation,
   useUpdateExperienceMutation,
+  useGetExperienceQuery,
 } from '../../../store/slices/resume/api-experience';
 
 const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
@@ -38,6 +41,47 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   const methods = useForm();
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
+  const {
+    data: experience,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetExperienceQuery({ resumeId, experienceId });
+
+  useEffect(() => {
+    async function loadData() {
+      const phone = experience.company.phone;
+      const xp = await {
+        position: experience.position,
+        description: experience.description,
+        startDate:
+          experience.startDate === ''
+            ? null
+            : dayjs(experience.startDate).add(1, 'day').format('YYYY-MM-DD'),
+        endDate:
+          experience.endDate === ''
+            ? null
+            : dayjs(experience.endDate).add(1, 'day').format('YYYY-MM-DD'),
+        highlighted: experience.highlighted,
+        companyname: experience.company.name,
+        phone: `(${phone.substring(0, 3)}) ${phone.substring(
+          3,
+          6
+        )}-${phone.substring(6)}`,
+        address: experience.company.location.address,
+        city: experience.company.location.city,
+        state: experience.company.location.state,
+        postcode: experience.company.location.postcode,
+      };
+      methods.reset(xp);
+    }
+    if (experienceId) {
+      if (isSuccess) {
+        loadData();
+      }
+    }
+  }, [methods, isSuccess, experience, experienceId]);
 
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
@@ -53,8 +97,18 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
         toast.error(err?.data?.message || err.error);
       }
     } else {
-      console.log(data);
-      console.log('Update Experience');
+      try {
+        const res = await updateExperience({
+          resumeId,
+          experienceId,
+          ...data,
+          phone: data.phone.replaceAll(/[^0-9]/g, ''),
+        }).unwrap();
+        toast.success('Experience updated');
+        toggleModal();
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     }
   });
 
@@ -129,7 +183,7 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
 };
 ExperienceForm.propTypes = {
   resumeId: PropTypes.string.isRequired,
-  experienceId: PropTypes.string.isRequired,
+  experienceId: PropTypes.string,
   edit: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

@@ -24,7 +24,7 @@ const description_validation = {
 
 // start date
 const startdate_validation = {
-  id: 'startdate',
+  id: 'startDate',
   label: 'Start Date',
   type: 'date',
   validation: {
@@ -34,7 +34,7 @@ const startdate_validation = {
 
 // end date
 const enddate_validation = {
-  id: 'enddate',
+  id: 'endDate',
   label: 'End Date',
   type: 'date',
   validation: {},

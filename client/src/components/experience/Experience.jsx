@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -12,6 +13,16 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 import { useDeleteExperienceMutation } from '../../store/slices/resume/api-experience';
 
 const Experience = ({ experience, resume }) => {
+  // format dates
+  const startDate =
+    experience.startDate !== ''
+      ? dayjs(experience.startDate).add(1, 'day').format('YYYY-MM-DD')
+      : 'Now';
+  const endDate =
+    experience.endDate !== ''
+      ? dayjs(experience.endDate).add(1, 'day').format('YYYY-MM-DD')
+      : 'Now';
+
   // modal functions
   Modal.setAppElement('#root');
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
@@ -93,8 +104,7 @@ const Experience = ({ experience, resume }) => {
           </h3>
           <div className='break'></div>
           <h4 className='time'>
-            {experience.startDate} to{' '}
-            {!experience.endDate ? 'Now' : experience.endDate}
+            {startDate} to {endDate}
           </h4>
         </div>
         <p className='description'>{experience.description}</p>

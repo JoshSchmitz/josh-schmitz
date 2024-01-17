@@ -15,7 +15,7 @@ const getExperience = asyncHandler(async (req, res) => {
       (exp) => exp._id.valueOf() === experienceId
     );
     if (experience) {
-      res.status(200).json(experience);
+      res.status(200).json(experience[0]);
     } else {
       res.status(404);
       throw new Error(`Experience not found`);
@@ -56,7 +56,7 @@ const createExperience = asyncHandler(async (req, res) => {
       },
       description: req.body.description,
       startDate: new Date(req.body.startdate),
-      endDate: new Date(req.body.enddate),
+      endDate: req.body.enddate ? new Date(req.body.enddate) : '',
       skills: req.body.skills ? req.body.skills : [],
       highlighted: req.body.highlighted,
     });
@@ -95,14 +95,12 @@ const updateExperience = asyncHandler(async (req, res) => {
         req.body.postcode || experience.company.location.postcode;
       experience.company.phone = req.body.phone || experience.company.phone;
       experience.description = req.body.description || experience.description;
-      experience.startDate = req.body.startDate || experience.startDate;
-      experience.endDate = req.body.endDate || experience.endDate;
-      if (req.body.highlighted === 'true') {
-        experience.highlighted = true;
-      } else {
-        experience.highlighted = false;
-      }
+      experience.highlighted = req.body.highlighted;
       experience.skills = req.body.skills || experience.skills;
+      experience.startDate = req.body.startDate
+        ? new Date(req.body.startDate)
+        : '';
+      experience.endDate = req.body.endDate ? new Date(req.body.endDate) : '';
 
       const updatedResume = await resume.save();
       const updatedExperiences = updatedResume.experience;
