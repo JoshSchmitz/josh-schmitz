@@ -85,24 +85,26 @@ const Experience = ({ experience, resume }) => {
             <MdDelete className='action delete' onClick={confirmModal} />
           </div>
         </div>
-        <div className='details'>
-          <h3 className='company'>{experience.company.name} -</h3>
-          <h3 className='location'>
-            {experience.company.location.city},{' '}
-            {experience.company.location.state}
-          </h3>
-          <div className='break'></div>
-          <h4 className='time'>
-            {experience.startDate !== ''
-              ? dayjs(experience.startDate).add(1, 'day').format('MMMM D, YYYY')
-              : 'Now'}{' '}
-            to{' '}
-            {experience.endDate !== ''
-              ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
-              : 'Now'}
-          </h4>
+        <div className='content'>
+          <div className='details'>
+            <h3 className='company'>
+              {experience.company.name} - {experience.company.location.city},{' '}
+              {experience.company.location.state}
+            </h3>
+            <h4 className='time'>
+              {experience.startDate !== ''
+                ? dayjs(experience.startDate)
+                    .add(1, 'day')
+                    .format('MMMM D, YYYY')
+                : 'Now'}{' '}
+              to{' '}
+              {experience.endDate !== ''
+                ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
+                : 'Now'}
+            </h4>
+          </div>
+          <p className='description'>{experience.description}</p>
         </div>
-        <p className='description'>{experience.description}</p>
       </div>
     </>
   );

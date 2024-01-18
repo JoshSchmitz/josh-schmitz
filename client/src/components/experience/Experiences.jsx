@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //import components
 import { MdAddCircleOutline } from 'react-icons/md';
@@ -19,6 +19,7 @@ const Experiences = ({ resumeId }) => {
     isError,
     error,
   } = useGetExperienceQuery({ resumeId });
+  const [xp, setXp] = useState([]);
 
   // modal functions
   Modal.setAppElement('#root');
@@ -26,6 +27,24 @@ const Experiences = ({ resumeId }) => {
   const toggleModal = () => {
     setIsOpen(!modalIsOpen);
   };
+
+  useEffect(() => {
+    async function experienceSort() {
+      let exp = await experiences;
+      if (exp) {
+        const x = exp
+          .map((exp) => {
+            const startDate =
+              exp.startDate !== '' ? new Date(exp.startDate) : '';
+            const endDate = exp.endDate !== '' ? new Date(exp.endDate) : '';
+            return { ...exp, startDate, endDate };
+          })
+          .sort((a, b) => b.startDate - a.startDate);
+        setXp(x);
+      }
+    }
+    experienceSort();
+  });
 
   return (
     <>
@@ -61,7 +80,7 @@ const Experiences = ({ resumeId }) => {
           )}
           {isError && <h1>Error: {error}</h1>}
           {isSuccess &&
-            experiences.map((exp) => {
+            xp.map((exp) => {
               return (
                 <Experience key={exp._id} resume={resumeId} experience={exp} />
               );

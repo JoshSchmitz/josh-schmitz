@@ -1,5 +1,7 @@
 .experience {
     margin-top: 20px;
+    border-left: 4px solid $bg-light;
+    padding-left: 15px;
 
     h2 {
         font-size: 1.45rem;
@@ -9,18 +11,26 @@
         margin-bottom: 10px;
     }
 
-    .details {
+    .content {
         display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 3px;
-        margin-bottom: 10px;
+        gap: 20px;
 
-        .time {
-            color: $text-medium;
-            font-weight: 600;
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            gap: 3px;
+            margin-bottom: 10px;
+            min-width: 32%;
+
+            .time {
+                color: $text-medium;
+                font-weight: 600;
+            }
         }
     }
+
+
 
     &.highlighted {
         border-left: 4px solid $bg-dark;
