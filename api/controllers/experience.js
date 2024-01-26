@@ -55,8 +55,8 @@ const createExperience = asyncHandler(async (req, res) => {
         phone: req.body.phone,
       },
       description: req.body.description,
-      startDate: req.body.startdate,
-      endDate: req.body.enddate,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
       skills: req.body.skills ? req.body.skills : [],
       highlighted: req.body.highlighted,
     });

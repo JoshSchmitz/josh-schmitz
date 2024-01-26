@@ -1,40 +1,67 @@
-.experience {
-    margin-top: 20px;
-    border-left: 4px solid $bg-light;
-    padding-left: 15px;
+.company {
+    margin-top: 10px;
 
-    h2 {
-        font-size: 1.45rem;
+    &-dates {
+        color: $text-medium;
+        font-size: .93rem;
     }
 
-    .headline {
-        margin-bottom: 10px;
-    }
+    & .experiences {
+        border-left: solid 4px $highlight;
+        padding-left: 10px;
 
-    .content {
-        display: flex;
-        gap: 20px;
+        & .experience {
+            &>.headline {
+                &>.position {
+                    margin: -5px 0;
 
-        .details {
-            display: flex;
-            flex-direction: column;
-            align-items: baseline;
-            gap: 3px;
-            margin-bottom: 10px;
-            min-width: 32%;
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        position: relative;
+                        bottom: 2px;
+                        width: 7px;
+                        height: 7px;
+                        margin-right: 9px;
+                        border-radius: 50%;
+                        background-color: #0f2462;
+                        vertical-align: middle;
+                    }
+                }
 
-            .time {
-                color: $text-medium;
-                font-weight: 600;
+                &>.actions {
+                    font-size: 1.8rem;
+                }
+            }
+
+            &>.content {
+                border-left: solid 2px $bg-light;
+                margin-left: 2.5px;
+                padding-left: 10px;
+                padding-bottom: 6px;
+                font-size: .93rem;
+
+                & .details {
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    color: $text-medium;
+
+                    & .separator {
+                        background-color: $text-medium;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        vertical-align: middle;
+
+                    }
+                }
             }
         }
-    }
 
-
-
-    &.highlighted {
-        border-left: 4px solid $bg-dark;
-        padding-left: 15px;
+        & .experience.sequential>.content {
+            border-left: solid 2px $bg-dark;
+        }
     }
 }
 
@@ -76,6 +103,8 @@
         }
     }
 }
+
+
 
 #experience {
     &>.button {

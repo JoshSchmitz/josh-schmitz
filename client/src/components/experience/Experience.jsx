@@ -75,11 +75,17 @@ const Experience = ({ experience, resume }) => {
       </Modal>
       <div
         className={
-          experience.highlighted ? 'experience highlighted' : 'experience'
+          experience.highlighted
+            ? experience.sequential
+              ? 'experience highlighted sequential'
+              : 'experience highlighted'
+            : experience.sequential
+            ? 'experience sequential'
+            : 'experience'
         }
       >
         <div className='headline'>
-          <h2 className='position'>{experience.position}</h2>
+          <h3 className='position'>{experience.position}</h3>
           <div className='actions'>
             <MdEdit className='action update' onClick={formModal} />
             <MdDelete className='action delete' onClick={confirmModal} />
@@ -87,11 +93,11 @@ const Experience = ({ experience, resume }) => {
         </div>
         <div className='content'>
           <div className='details'>
-            <h3 className='company'>
-              {experience.company.name} - {experience.company.location.city},{' '}
-              {experience.company.location.state}
-            </h3>
-            <h4 className='time'>
+            <p className='location'>
+              {experience.location.city}, {experience.location.state}
+            </p>
+            <div className='separator'></div>
+            <p className='time'>
               {experience.startDate !== ''
                 ? dayjs(experience.startDate)
                     .add(1, 'day')
@@ -101,7 +107,7 @@ const Experience = ({ experience, resume }) => {
               {experience.endDate !== ''
                 ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
                 : 'Now'}
-            </h4>
+            </p>
           </div>
           <p className='description'>{experience.description}</p>
         </div>
