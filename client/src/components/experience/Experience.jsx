@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import duration from 'dayjs/plugin/duration';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -11,6 +13,10 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 
 // import state
 import { useDeleteExperienceMutation } from '../../store/slices/resume/api-experience';
+
+// comfigure dayjs
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 const Experience = ({ experience, resume }) => {
   // modal functions
@@ -34,6 +40,51 @@ const Experience = ({ experience, resume }) => {
       toast.warning('Experience deleted');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  const calculateDuration = (startdate, enddate) => {
+    const start = startdate;
+    const end = enddate;
+    let duration;
+    let remainder;
+    let years;
+    let months;
+
+    if (!end) {
+      duration = Math.abs(dayjs.duration(dayjs(start).diff()).asYears());
+      years = Math.floor(
+        Math.abs(dayjs.duration(dayjs(start).diff()).asYears())
+      );
+      remainder = duration - dayjs.duration({ years: years }).asYears();
+      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+      if (months === 12) {
+        years = years + 1;
+        months = 0;
+      }
+      return years === 0
+        ? dayjs.duration({ months: months }).humanize()
+        : months === 0
+        ? dayjs.duration({ years: years }).humanize()
+        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+            .duration({ months: months })
+            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
+    } else {
+      duration = dayjs.duration(dayjs(end).diff(start)).asYears();
+      years = Math.floor(dayjs.duration(dayjs(end).diff(start)).asYears());
+      remainder = duration - dayjs.duration({ years: years }).asYears();
+      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+      if (months === 12) {
+        years = years + 1;
+        months = 0;
+      }
+      return years === 0
+        ? dayjs.duration({ months: months }).humanize()
+        : months === 0
+        ? dayjs.duration({ years: years }).humanize()
+        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+            .duration({ months: months })
+            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
     }
   };
 
@@ -97,7 +148,7 @@ const Experience = ({ experience, resume }) => {
               {experience.location.city}, {experience.location.state}
             </p>
             <div className='separator'></div>
-            <p className='time'>
+            <p className='dates'>
               {experience.startDate !== ''
                 ? dayjs(experience.startDate)
                     .add(1, 'day')
@@ -107,6 +158,10 @@ const Experience = ({ experience, resume }) => {
               {experience.endDate !== ''
                 ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
                 : 'Now'}
+            </p>
+            <div className='separator'></div>
+            <p className='duration'>
+              {calculateDuration(experience.startDate, experience.endDate)}
             </p>
           </div>
           <p className='description'>{experience.description}</p>
