@@ -3,7 +3,7 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get experience for resume
-    @route: GET /api/resume/experience/:resumeId(/:experienceId)
+    @route: GET /api/resume/:resumeId/experience(/:experienceId)
     @access: public
 */
 const getExperience = asyncHandler(async (req, res) => {
@@ -34,11 +34,11 @@ const getExperience = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Create Experience
-    @route: POST /api/resume/experience
+    @route: POST /api/resume/:resumeId/experience
     @access: private
 */
 const createExperience = asyncHandler(async (req, res) => {
-  const { resumeId } = req.body;
+  const { resumeId } = req.params;
   const resume = await Resume.findById(resumeId);
   if (resume) {
     let experiences = resume.experience;
@@ -71,11 +71,11 @@ const createExperience = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Update Experience
-    @route: PUT /api/resume/experience
+    @route: PUT /api/resume/:resumeId/experience/:experienceId
     @access: private
 */
 const updateExperience = asyncHandler(async (req, res) => {
-  const { resumeId, experienceId } = req.body;
+  const { resumeId, experienceId } = req.params;
   const resume = await Resume.findById(resumeId);
   if (resume) {
     const experiences = resume.experience;
@@ -138,12 +138,12 @@ const updateExperience = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Delete Experience
-    @route: DELETE /api/resume/experience
+    @route: DELETE /api/resume/:resumeId/experience/:experienceId
     @access: private
 */
 
 const deleteExperience = asyncHandler(async (req, res) => {
-  const { resumeId, experienceId } = req.body;
+  const { resumeId, experienceId } = req.params;
   const resume = await Resume.findById(resumeId);
   const experiences = resume.experience;
   experiences.pull(experienceId);

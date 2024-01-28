@@ -3,7 +3,7 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get Resume for user
-    @route: GET /api/resume/:userId/:resumeId
+    @route: GET /api/resume/(:userId or :resumeId)
     @access: public
 */
 const getResume = asyncHandler(async (req, res) => {
@@ -21,7 +21,9 @@ const getResume = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error('Resume not found');
     }
-  } else {
+  }
+
+  if (userId) {
     const resumes = await Resume.find({ user: userId });
     if (resumes) {
       res.status(200).json(
@@ -43,11 +45,12 @@ const getResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Create Resume
-    @route: POST /api/resume
+    @route: POST /api/resume/:userId
     @access: private
 */
 const createResume = asyncHandler(async (req, res) => {
-  const { userId, title, bio, main } = req.body;
+  const { userId } = req.params;
+  const { title, bio, main } = req.body;
   const resume = await Resume.create({ user: userId, title, bio, main });
   if (resume) {
     res.status(200).json({
@@ -65,11 +68,11 @@ const createResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Update Resume
-    @route: PUT /api/resume
+    @route: PUT /api/resume/:resumeId
     @access: private
 */
 const updateResume = asyncHandler(async (req, res) => {
-  const { resumeId } = req.body;
+  const { resumeId } = req.params;
   const resume = await Resume.findById(resumeId);
   if (resume) {
     resume.title = req.body.title || resume.title;
@@ -96,11 +99,11 @@ const updateResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Delete Resume
-    @route: DELETE /api/resume
+    @route: DELETE /api/resume/:resumeId
     @access: private
 */
 const deleteResume = asyncHandler(async (req, res) => {
-  const { resumeId } = req.body;
+  const { resumeId } = req.params;
   const resume = await Resume.deleteOne({ _id: resumeId });
   if (resume) {
     res.status(200).json({ message: 'Resume deleted', _id: resumeId });

@@ -6,17 +6,23 @@ import {
   deleteResume,
 } from '../controllers/resume.js';
 import { protect } from '../middleware/authenticate.js';
+import experienceRoutes from './experience.js';
+import educationRoutes from './education.js';
 
 // instantiate router
 const router = express.Router();
 
 // routes
-router.get('/:userId', getResume);
-router.get('/:userId/:resumeId', getResume);
+router.route('/:userId').get(getResume).post(protect, createResume);
 router
-  .route('/')
-  .post(protect, createResume)
+  .route('/:resumeId')
+  .get(getResume)
   .put(protect, updateResume)
   .delete(protect, deleteResume);
+
+// nest routes
+router
+  .use('/:resumeId/experience', experienceRoutes)
+  .use('/:resumeId/education', educationRoutes);
 
 export default router;
