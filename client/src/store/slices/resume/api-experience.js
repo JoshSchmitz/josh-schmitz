@@ -1,20 +1,20 @@
 import { apiSlice } from '../api';
-const EXPERIENCE_URL = `/experience`;
+const RESUME_URL = '/resume';
 
 export const experienceApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getExperience: builder.query({
       query: ({ resumeId, experienceId }) => ({
         url: experienceId
-          ? `${EXPERIENCE_URL}/${resumeId}/${experienceId}`
-          : `${EXPERIENCE_URL}/${resumeId}`,
+          ? `${RESUME_URL}/${resumeId}/experience/${experienceId}`
+          : `${RESUME_URL}/${resumeId}/experience/`,
         method: 'GET',
       }),
       providesTags: ['Experience'],
     }),
     createExperience: builder.mutation({
       query: (data) => ({
-        url: `${EXPERIENCE_URL}`,
+        url: `${RESUME_URL}/${data.resumeId}/experience/`,
         method: 'POST',
         body: data,
       }),
@@ -22,7 +22,7 @@ export const experienceApiSlice = apiSlice.injectEndpoints({
     }),
     updateExperience: builder.mutation({
       query: (data) => ({
-        url: `${EXPERIENCE_URL}`,
+        url: `${RESUME_URL}/${data.resumeId}/experience/${data.experienceId}`,
         method: 'PUT',
         body: data,
       }),
@@ -30,7 +30,7 @@ export const experienceApiSlice = apiSlice.injectEndpoints({
     }),
     deleteExperience: builder.mutation({
       query: (data) => ({
-        url: `${EXPERIENCE_URL}`,
+        url: `${RESUME_URL}/${data.resumeId}/experience/${data.experienceId}`,
         method: 'DELETE',
         body: data,
       }),

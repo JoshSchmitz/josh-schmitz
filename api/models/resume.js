@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 // import sub-models
-// import { awardSchema } from './award.js';
-// import { educationSchema } from './education.js';
 import experienceSchema from './experience.js';
+import educationSchema from './education.js';
+// import { awardSchema } from './award.js';
 // import { groupSchema } from './group.js';
 // import { languageSchema } from './language.js';
 // import { leadershipSchema } from './leadership.js';
@@ -25,9 +25,9 @@ const resumeSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    // award: [awardSchema],
-    // education: [educationSchema],
     experience: [experienceSchema],
+    education: [educationSchema],
+    // award: [awardSchema],
     // group: [groupSchema],
     // language: [languageSchema],
     // leadership: [leadershipSchema],

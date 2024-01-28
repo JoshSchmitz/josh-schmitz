@@ -3,11 +3,11 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get Resume for user
-    @route: GET /api/resume/(:userId or :resumeId)
+    @route: GET /api/resume/(/ or :resumeId)
     @access: public
 */
 const getResume = asyncHandler(async (req, res) => {
-  const { userId, resumeId } = req.params;
+  const { resumeId, userId } = req.params;
   if (resumeId) {
     const resume = await Resume.findById(resumeId);
     if (resume) {
@@ -45,11 +45,11 @@ const getResume = asyncHandler(async (req, res) => {
 
 /* 
     @desc: Create Resume
-    @route: POST /api/resume/:userId
+    @route: POST /api/resume/
     @access: private
 */
 const createResume = asyncHandler(async (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.body;
   const { title, bio, main } = req.body;
   const resume = await Resume.create({ user: userId, title, bio, main });
   if (resume) {

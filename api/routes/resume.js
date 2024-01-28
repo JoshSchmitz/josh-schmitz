@@ -13,7 +13,7 @@ import educationRoutes from './education.js';
 const router = express.Router();
 
 // routes
-router.route('/:userId').get(getResume).post(protect, createResume);
+router.route('/user/:userId').get(getResume).post(protect, createResume);
 router
   .route('/:resumeId')
   .get(getResume)
