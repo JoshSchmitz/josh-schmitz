@@ -33,7 +33,7 @@ const getExperience = asyncHandler(async (req, res) => {
 });
 
 /* 
-    @desc: Create Experience
+    @desc: Create experience
     @route: POST /api/resume/:resumeId/experience
     @access: private
 */
@@ -70,7 +70,7 @@ const createExperience = asyncHandler(async (req, res) => {
 });
 
 /* 
-    @desc: Update Experience
+    @desc: Update experience
     @route: PUT /api/resume/:resumeId/experience/:experienceId
     @access: private
 */
@@ -137,11 +137,10 @@ const updateExperience = asyncHandler(async (req, res) => {
 });
 
 /* 
-    @desc: Delete Experience
+    @desc: Delete experience
     @route: DELETE /api/resume/:resumeId/experience/:experienceId
     @access: private
 */
-
 const deleteExperience = asyncHandler(async (req, res) => {
   const { resumeId, experienceId } = req.params;
   const resume = await Resume.findById(resumeId);
