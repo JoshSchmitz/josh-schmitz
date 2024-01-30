@@ -10,15 +10,20 @@ const getExperience = asyncHandler(async (req, res) => {
   const { resumeId, experienceId } = req.params;
   if (experienceId) {
     const resume = await Resume.findById(resumeId);
-    const experiences = resume.experience;
-    const experience = experiences.filter(
-      (exp) => exp._id.valueOf() === experienceId
-    );
-    if (experience) {
-      res.status(200).json(experience[0]);
+    if (resume) {
+      const experiences = resume.experience;
+      const experience = experiences.filter(
+        (exp) => exp._id.valueOf() === experienceId
+      );
+      if (experience) {
+        res.status(200).json(experience[0]);
+      } else {
+        res.status(404);
+        throw new Error(`Experience not found`);
+      }
     } else {
       res.status(404);
-      throw new Error(`Experience not found`);
+      throw new Error('Resume not found');
     }
   } else {
     const resume = await Resume.findById(resumeId);
@@ -144,14 +149,21 @@ const updateExperience = asyncHandler(async (req, res) => {
 const deleteExperience = asyncHandler(async (req, res) => {
   const { resumeId, experienceId } = req.params;
   const resume = await Resume.findById(resumeId);
-  const experiences = resume.experience;
-  experiences.pull(experienceId);
-  const updatedExperience = await resume.save();
-  if (updatedExperience) {
-    res.status(200).json({ message: 'Experience deleted', _id: experienceId });
+  if (resume) {
+    const experiences = resume.experience;
+    experiences.pull(experienceId);
+    const updatedExperience = await resume.save();
+    if (updatedExperience) {
+      res
+        .status(200)
+        .json({ message: 'Experience deleted', _id: experienceId });
+    } else {
+      res.status(400);
+      throw new Error('Could not delete experience');
+    }
   } else {
-    res.status(400);
-    throw new Error('Could not delete experience');
+    res.status(404);
+    throw new Error('Resume not found');
   }
 });
 
