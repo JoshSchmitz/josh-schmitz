@@ -12,15 +12,14 @@ const educationSchema = mongoose.Schema({
       address: { type: String, required: true },
       city: { type: String, required: true },
       state: { type: String, required: true },
-      postcode: { type: Number, required: true },
+      postcode: { type: String, required: true },
     },
-    phone: { type: Number },
+    phone: { type: String },
   },
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
+  startDate: { type: String, required: true },
+  endDate: String,
   gpa: { type: Number, default: 0 },
   highlighted: { type: Boolean, required: true },
 });
 
-const Education = mongoose.model('Education', educationSchema);
-export { Education, educationSchema };
+export default educationSchema;
