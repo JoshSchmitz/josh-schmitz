@@ -20,7 +20,7 @@ import {
 } from './validations';
 
 // import components
-import PulseLoader from 'react-spinners/PulseLoader';
+import Form from '../../form/Form';
 import FormHeader from '../../form/FormHeader';
 import FormContent from '../../form/FormContent';
 import FormSection from '../../form/FormSection';
@@ -28,6 +28,7 @@ import FormGroup from '../../form/FormGroup';
 import Input from '../../form/Input';
 import Textarea from '../../form/Textarea';
 import Checkbox from '../../form/Checkbox';
+import Button from '../../form/Button';
 
 // import state
 import {
@@ -114,12 +115,7 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
 
   return (
     <FormProvider {...methods}>
-      <form
-        className='form'
-        id='experience'
-        noValidate
-        onSubmit={(e) => e.preventDefault()}
-      >
+      <Form name='experience'>
         <FormHeader
           title={!edit ? 'Add Experience' : 'Update Experience'}
           subtitle={
@@ -153,31 +149,20 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
             </FormGroup>
           </FormSection>
         </FormContent>
-
-        <button className='button' type='submit' onClick={onSubmit}>
-          {!edit ? (
-            createIsLoading ? (
-              <PulseLoader
-                className='loader-button'
-                loading={createIsLoading}
-                size={10}
-                color='#f4f4f4'
-              />
-            ) : (
-              'Add Experience'
-            )
-          ) : updateIsLoading ? (
-            <PulseLoader
-              className='loader-button'
-              loading={updateIsLoading}
-              size={10}
-              color='#f4f4f4'
-            />
-          ) : (
-            'Update Experience'
-          )}
-        </button>
-      </form>
+        {!edit ? (
+          <Button
+            label='Create Experience'
+            loading={createIsLoading}
+            onSubmit={onSubmit}
+          />
+        ) : (
+          <Button
+            label='Update Experience'
+            loading={updateIsLoading}
+            onSubmit={onSubmit}
+          />
+        )}
+      </Form>
     </FormProvider>
   );
 };
