@@ -5,6 +5,7 @@ import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 // import components
 import RingLoader from 'react-spinners/RingLoader';
 import Experiences from '../experience/Experiences';
+import Educations from '../education/Educations';
 
 const Resume = ({ resumeId }) => {
   // const { userId } = useSelector((state) => state.auth.userInfo._id);
@@ -29,6 +30,7 @@ const Resume = ({ resumeId }) => {
             <p className='bio'>{resume.bio}</p>
           </section>
           <Experiences resumeId={resumeId} />
+          <Educations resumeId={resumeId} />
         </article>
       )}
     </>
