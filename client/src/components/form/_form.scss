@@ -51,7 +51,8 @@
 
     .input,
     .textarea,
-    .checkbox {
+    .checkbox,
+    .select {
         position: relative;
         margin-bottom: 10px;
 
@@ -125,6 +126,7 @@
         letter-spacing: normal;
         word-spacing: normal;
         width: auto;
+        margin-bottom: 0;
 
         &__control {
             padding: 0 15px;
