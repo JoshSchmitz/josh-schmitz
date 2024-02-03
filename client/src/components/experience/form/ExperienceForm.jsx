@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
@@ -42,13 +41,10 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   const methods = useForm();
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
-  const {
-    data: experience,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetExperienceQuery({ resumeId, experienceId });
+  const { data: experience, isSuccess } = useGetExperienceQuery({
+    resumeId,
+    experienceId,
+  });
 
   useEffect(() => {
     async function loadData() {
@@ -92,8 +88,12 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
           ...data,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
-        toast.success('Experience created');
-        toggleModal();
+        if (res) {
+          toast.success('Experience created');
+          toggleModal();
+        } else {
+          toast.error('Could not create experience');
+        }
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
@@ -105,8 +105,12 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
           ...data,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
-        toast.success('Experience updated');
-        toggleModal();
+        if (res) {
+          toast.success('Experience updated');
+          toggleModal();
+        } else {
+          toast.error('Could not update experience');
+        }
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
