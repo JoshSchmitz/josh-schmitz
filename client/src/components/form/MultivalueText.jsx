@@ -17,6 +17,7 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
   const inputError = findInputError(errors, id);
   const isInvalid = isFormInvalid(inputError);
 
+  const [firstRenderDone, setFirstRenderDone] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [fieldValue, setFieldValue] = useState([]);
 
@@ -40,8 +41,15 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
   };
 
   useEffect(() => {
-    setValue(id, fieldValue, { shouldValidate: true });
-  }, [id, setValue, fieldValue]);
+    setFirstRenderDone(true);
+  }, []);
+
+  useEffect(() => {
+    if (firstRenderDone) {
+      setValue(id, fieldValue, { shouldValidate: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fieldValue]);
 
   return (
     <div className='selectbox'>
