@@ -38,7 +38,7 @@ import {
 
 const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   // react-hook-form validation
-  const methods = useForm();
+  const methods = useForm({ mode: 'onChange' });
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
   const { data: experience, isSuccess } = useGetExperienceQuery({
