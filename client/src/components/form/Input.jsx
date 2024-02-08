@@ -30,6 +30,7 @@ const Input = ({ id, type, placeholder, label, validation }) => {
         {isInvalid && (
           <InputError
             type='error'
+            label={label && true}
             message={inputError.error.message}
             key={inputError.error.message}
           />
@@ -46,9 +47,12 @@ Input.propTypes = {
   validation: PropTypes.object,
 };
 
-const InputError = ({ message, type }) => {
+const InputError = ({ message, type, label }) => {
   return (
-    <motion.p className={`message ${type}`} {...framer_error}>
+    <motion.p
+      className={label === true ? `message label ${type}` : `message ${type}`}
+      {...framer_error}
+    >
       <MdError />
       {message}
     </motion.p>
@@ -57,6 +61,7 @@ const InputError = ({ message, type }) => {
 InputError.propTypes = {
   type: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
+  label: PropTypes.bool,
 };
 
 export default Input;
