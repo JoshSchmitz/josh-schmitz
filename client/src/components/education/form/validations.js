@@ -102,6 +102,31 @@ const majors_validation = {
   },
 };
 
+// minors
+const minors_validation = {
+  id: 'minors',
+  placeholder: 'Select Minor(s) ...',
+  validation: {
+    required: { value: true, message: 'required' },
+  },
+};
+
+// gpa
+const gpa_validation = {
+  id: 'gpa',
+  type: 'number',
+  label: 'GPA',
+  min: 0,
+  max: 5,
+  step: 0.01,
+  default: '1',
+  validation: {
+    required: { value: true, message: 'required' },
+    min: { value: 1.0, message: 'minimum is 1.0' },
+    max: { value: 4.5, message: 'maximum is 4.5' },
+  },
+};
+
 // start date
 const startdate_validation = {
   id: 'startDate',
@@ -120,6 +145,13 @@ const enddate_validation = {
   validation: {},
 };
 
+// highlighted
+const highlighted_validation = {
+  id: 'highlighted',
+  label: 'Highlighted?',
+  validation: {},
+};
+
 export {
   institutionname_validation,
   institutionphone_validation,
@@ -129,6 +161,9 @@ export {
   postcode_validation,
   degree_validation,
   majors_validation,
+  minors_validation,
   startdate_validation,
+  gpa_validation,
   enddate_validation,
+  highlighted_validation,
 };
