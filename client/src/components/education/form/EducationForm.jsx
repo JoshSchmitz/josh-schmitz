@@ -13,8 +13,11 @@ import {
   postcode_validation,
   degree_validation,
   majors_validation,
+  minors_validation,
   startdate_validation,
+  gpa_validation,
   enddate_validation,
+  highlighted_validation,
 } from './validations';
 
 // import components
@@ -27,6 +30,7 @@ import Input from '../../form/Input';
 import Button from '../../form/Button';
 import BasicSingleSelect from '../../form/BasicSingleSelect';
 import MultivalueText from '../../form/MultiValueText';
+import Checkbox from '../../form/Checkbox';
 
 // import state
 import {
@@ -81,7 +85,9 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
             <FormGroup>
               <BasicSingleSelect {...degree_validation} />
               <MultivalueText {...majors_validation} />
+              <MultivalueText {...minors_validation} />
             </FormGroup>
+            <Input {...gpa_validation} />
           </FormSection>
           <FormSection>
             <FormGroup>
@@ -96,6 +102,9 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           <FormSection>
             <Input {...startdate_validation} />
             <Input {...enddate_validation} />
+            <FormGroup>
+              <Checkbox {...highlighted_validation} />
+            </FormGroup>
           </FormSection>
         </FormContent>
         {!edit ? (
