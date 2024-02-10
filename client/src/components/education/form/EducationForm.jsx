@@ -63,8 +63,50 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
       // create submit
+      try {
+        console.log({
+          resumeId,
+          ...data,
+          degree: data.degree.label,
+          majorCount: data.majors.length,
+          minorCount: data.minors.length,
+          phone: data.phone.replaceAll(/[^0-9]/g, ''),
+        });
+        const res = await createEducation({
+          resumeId,
+          ...data,
+          degree: data.degree.label,
+          majorCount: data.majors.length,
+          minorCount: data.minors.length,
+          phone: data.phone.replaceAll(/[^0-9]/g, ''),
+        }).unwrap();
+        if (res) {
+          toast.success('Education created');
+          toggleModal();
+        } else {
+          toast.error('Could not create education');
+        }
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     } else {
       // update submit
+      try {
+        const res = await updateEducation({
+          resumeId,
+          educationId,
+          ...data,
+          phone: data.phone.replaceAll(/[^0-9]/g, ''),
+        }).unwrap();
+        if (res) {
+          toast.success('Education updated');
+          toggleModal();
+        } else {
+          toast.error('Could not update education');
+        }
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
     }
   });
 
