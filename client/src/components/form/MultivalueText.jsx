@@ -26,7 +26,7 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
   };
 
   const createOption = (label) => {
-    return { label, value: label };
+    return { title: label, label, value: label };
   };
 
   const handleKeyDown = (e) => {
