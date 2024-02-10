@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const educationSchema = mongoose.Schema({
   degree: { type: String, required: true },
-  major: [{ title: { type: String, required: true } }],
+  majors: [{ title: { type: String, required: true } }],
   majorCount: { type: Number, default: 0 },
-  minor: [{ title: { type: String, required: true } }],
+  minors: [{ title: { type: String, required: true } }],
   minorCount: { type: Number, default: 0 },
   institution: {
     name: { type: String, required: true },

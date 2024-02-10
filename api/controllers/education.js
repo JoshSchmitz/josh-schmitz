@@ -49,8 +49,10 @@ const createEducation = asyncHandler(async (req, res) => {
     let educations = resume.education;
     educations.push({
       degree: req.body.degree,
-      major: req.body.major, // [{ title: Title }, { title: Title }]
-      minor: req.body.minor, // [{ title: Title }, { title: Title }]
+      majors: req.body.majors,
+      majorCount: req.body.majorCount,
+      minors: req.body.minors,
+      minorCount: req.body.minorCount,
       institution: {
         name: req.body.institutionname,
         location: {
