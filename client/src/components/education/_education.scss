@@ -1,3 +1,72 @@
+.education {
+    margin-top: 5px;
+
+    &>.headline {
+        &>.details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .gpa {
+                color: $text-medium;
+            }
+
+            .dates {
+                display: flex;
+                gap: 6px;
+                color: $text-medium;
+            }
+
+            .separator {
+                @include separator;
+                height: 5px;
+                width: 5px;
+            }
+        }
+
+        &>.actions {
+            font-size: 1.8rem;
+        }
+    }
+
+    .specializations {
+        display: flex;
+        gap: 25px;
+
+        .majors,
+        .minors {
+            font-size: .93rem;
+            color: $text-medium;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            .major,
+            .minor {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+
+                .separator {
+                    @include separator;
+                }
+            }
+        }
+    }
+
+    .institution {
+        font-size: .93rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .separator {
+            @include separator;
+            background-color: $text-dark;
+        }
+    }
+}
+
 #education {
     width: 600px;
 
