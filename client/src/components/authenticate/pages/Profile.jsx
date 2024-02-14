@@ -66,7 +66,7 @@ const Profile = () => {
 
   return (
     <>
-      <form className='form' onSubmit={profileHandler}>
+      <form className='form' autoComplete='on' onSubmit={profileHandler}>
         <div className='form-header'>
           <div className='title-bar'>
             <h1 className='title'>{userInfo.name}</h1>
@@ -85,6 +85,7 @@ const Profile = () => {
             className='input'
             type='text'
             placeholder='Name'
+            autoComplete='on'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -93,6 +94,7 @@ const Profile = () => {
             className='input'
             type='email'
             placeholder='Email address'
+            autoComplete='on'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -101,6 +103,7 @@ const Profile = () => {
             className='input'
             type='password'
             placeholder='Password'
+            autoComplete='off'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -109,6 +112,7 @@ const Profile = () => {
             className='input'
             type='password'
             placeholder='Confirm password'
+            autoComplete='off'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />

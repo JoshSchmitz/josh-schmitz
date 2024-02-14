@@ -47,6 +47,7 @@ const Login = ({ registerClick }) => {
             className='input'
             type='email'
             placeholder='Email address'
+            autoComplete='on'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -55,6 +56,7 @@ const Login = ({ registerClick }) => {
             className='input'
             type='password'
             placeholder='Password'
+            autoComplete='off'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

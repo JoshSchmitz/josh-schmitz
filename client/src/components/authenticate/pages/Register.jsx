@@ -39,7 +39,7 @@ const Register = ({ loginClick }) => {
 
   return (
     <>
-      <form className='form' onSubmit={registerHandler}>
+      <form className='form' autoComplete='on' onSubmit={registerHandler}>
         <div className='form-header'>
           <div className='title-bar'>
             <h1 className='title'>Sign up</h1>
@@ -52,6 +52,7 @@ const Register = ({ loginClick }) => {
             className='input'
             type='text'
             placeholder='Name'
+            autoComplete='on'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -60,6 +61,7 @@ const Register = ({ loginClick }) => {
             className='input'
             type='email'
             placeholder='Email address'
+            autoComplete='on'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -68,6 +70,7 @@ const Register = ({ loginClick }) => {
             className='input'
             type='password'
             placeholder='Password'
+            autoComplete='off'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -76,6 +79,7 @@ const Register = ({ loginClick }) => {
             className='input'
             type='password'
             placeholder='Confirm password'
+            autoComplete='off'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
