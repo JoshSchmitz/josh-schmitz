@@ -77,16 +77,27 @@ const degree_validation = {
   isClearable: true,
   isSearchable: true,
   options: [
-    { value: 'aa', label: 'Associates of Arts' },
-    { value: 'as', label: 'Associates of Science' },
+    { value: 'Associate of Arts', label: 'Associate of Arts' },
     {
-      value: 'ba',
-      label: 'Bachelors of Arts',
+      value: 'Associate of Applied Arts',
+      label: 'Associate of Applied Arts',
+    },
+    { value: 'Associate of Science', label: 'Associate of Science' },
+    {
+      value: 'Associate of Applied Science',
+      label: 'Associate of Applied Science',
     },
     {
-      value: 'bs',
-      label: 'Bachelors of Science',
+      value: 'Bachelor of Arts',
+      label: 'Bachelor of Arts',
     },
+    {
+      value: 'Bachelor of Science',
+      label: 'Bachelor of Science',
+    },
+    { value: 'Master', label: 'Master' },
+    { value: 'Master of Science', label: 'Master of Science' },
+    { value: 'Doctor', label: 'Doctor' },
   ],
   validation: {
     required: { value: true, message: 'required' },
