@@ -32,7 +32,7 @@ const Education = ({ education, resume }) => {
         resumeId: resume,
         educationId: education._id,
       });
-      toast.warning('Experience deleted');
+      toast.warning('Education deleted');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
