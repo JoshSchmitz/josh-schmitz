@@ -74,7 +74,12 @@ const Education = ({ education, resume }) => {
           message='Are you sure you want to delete this education?'
         />
       </Modal>
-      <div className='education' key={education._id}>
+      <div
+        className={
+          education.highlighted ? 'education highlighted' : 'education'
+        }
+        key={education._id}
+      >
         <div className='headline'>
           <div className='details'>
             <h3 className='degree'>{education.degree}</h3>
