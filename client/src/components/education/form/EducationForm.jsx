@@ -126,6 +126,12 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           resumeId,
           educationId,
           ...data,
+          majors: data.majors.map((m) => {
+            return { title: m.label };
+          }),
+          minors: data.minors.map((m) => {
+            return { title: m.label };
+          }),
           degree: data.degree.label,
           majorCount: data.majors.length,
           minorCount: data.minors.length,
