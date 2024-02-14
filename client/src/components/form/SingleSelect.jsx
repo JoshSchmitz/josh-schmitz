@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MdError } from 'react-icons/md';
 import { isFormInvalid, findInputError, framer_error } from './utils/functions';
 
-const BasicSingleSelect = ({
+const SingleSelect = ({
   id,
   placeholder,
   isClearable,
@@ -59,7 +59,7 @@ const BasicSingleSelect = ({
     </div>
   );
 };
-BasicSingleSelect.propTypes = {
+SingleSelect.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   placeholder: PropTypes.string,
@@ -82,4 +82,4 @@ InputError.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-export default BasicSingleSelect;
+export default SingleSelect;

@@ -28,7 +28,7 @@ import FormSection from '../../form/FormSection';
 import FormGroup from '../../form/FormGroup';
 import Input from '../../form/Input';
 import Button from '../../form/Button';
-import BasicSingleSelect from '../../form/BasicSingleSelect';
+import SingleSelect from '../../form/SingleSelect';
 import MultivalueText from '../../form/MultiValueText';
 import Checkbox from '../../form/Checkbox';
 
@@ -164,7 +164,7 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
         <FormContent>
           <FormSection size='full'>
             <FormGroup>
-              <BasicSingleSelect {...degree_validation} />
+              <SingleSelect {...degree_validation} />
               <MultivalueText {...majors_validation} initialvalue={majors} />
               <MultivalueText {...minors_validation} initialvalue={minors} />
             </FormGroup>
