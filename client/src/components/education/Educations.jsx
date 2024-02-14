@@ -62,7 +62,13 @@ const Educations = ({ resumeId }) => {
           {isError && <h1>Error: {error}</h1>}
           {isSuccess &&
             eds.map((ed) => {
-              return <Education key={ed._id} education={ed}></Education>;
+              return (
+                <Education
+                  key={ed._id}
+                  education={ed}
+                  resume={resumeId}
+                ></Education>
+              );
             })}
         </div>
       </section>
