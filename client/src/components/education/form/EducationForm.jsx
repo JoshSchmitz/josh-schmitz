@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, KeyboardEventHandler } from 'react';
+import { useEffect, KeyboardEventHandler, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -46,32 +46,62 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
   // state
   const [createEducation, { createIsLoading }] = useCreateEducationMutation();
   const [updateEducation, { updateIsLoading }] = useUpdateEducationMutation();
+  const [majors, setMajors] = useState();
+  const [minors, setMinors] = useState();
   const { data: education, isSuccess } = useGetEducationQuery({
     resumeId,
     educationId,
   });
 
   useEffect(() => {
-    async function loadData() {}
+    async function loadData() {
+      const phone = await education.institution.phone;
+      setMajors(
+        await education.majors.map((m) => {
+          return { label: m.title, value: m.title };
+        })
+      );
+      setMinors(
+        await education.minors.map((m) => {
+          return { label: m.title, value: m.title };
+        })
+      );
+      const ed = await {
+        degree: { label: education.degree, value: education.degree },
+        gpa: education.gpa,
+        institutionname: education.institution.name,
+        phone: `(${phone.substring(0, 3)}) ${phone.substring(
+          3,
+          6
+        )}-${phone.substring(6)}`,
+        address: education.institution.location.address,
+        city: education.institution.location.city,
+        state: education.institution.location.state,
+        postcode: education.institution.location.postcode,
+        startDate:
+          education.startDate === ''
+            ? null
+            : dayjs(education.startDate).add(1, 'day').format('YYYY-MM-DD'),
+        endDate:
+          education.endDate === ''
+            ? null
+            : dayjs(education.endDate).add(1, 'day').format('YYYY-MM-DD'),
+        highlighted: education.highlighted,
+      };
+      methods.reset(ed);
+    }
     if (educationId) {
       if (isSuccess) {
         loadData();
       }
     }
-  }, [methods, isSuccess, education, educationId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [education]);
 
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
       // create submit
       try {
-        console.log({
-          resumeId,
-          ...data,
-          degree: data.degree.label,
-          majorCount: data.majors.length,
-          minorCount: data.minors.length,
-          phone: data.phone.replaceAll(/[^0-9]/g, ''),
-        });
         const res = await createEducation({
           resumeId,
           ...data,
@@ -96,6 +126,9 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           resumeId,
           educationId,
           ...data,
+          degree: data.degree.label,
+          majorCount: data.majors.length,
+          minorCount: data.minors.length,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
@@ -126,8 +159,8 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           <FormSection size='full'>
             <FormGroup>
               <BasicSingleSelect {...degree_validation} />
-              <MultivalueText {...majors_validation} />
-              <MultivalueText {...minors_validation} />
+              <MultivalueText {...majors_validation} initialvalue={majors} />
+              <MultivalueText {...minors_validation} initialvalue={minors} />
             </FormGroup>
             <Input {...gpa_validation} />
           </FormSection>

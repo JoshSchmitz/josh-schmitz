@@ -6,9 +6,15 @@ import { isFormInvalid, findInputError, framer_error } from './utils/functions';
 
 // import components
 import { MdError } from 'react-icons/md';
-import CreatableSelect from 'react-select/creatable';
+import AsyncCreatableSelect from 'react-select/async-creatable';
 
-const MultiValueText = ({ id, label, placeholder, validation }) => {
+const MultiValueText = ({
+  id,
+  label,
+  placeholder,
+  validation,
+  initialvalue,
+}) => {
   const {
     setValue,
     control,
@@ -26,7 +32,7 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
   };
 
   const createOption = (label) => {
-    return { title: label, label, value: label };
+    return { label, value: label };
   };
 
   const handleKeyDown = (e) => {
@@ -43,6 +49,11 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
   useEffect(() => {
     setFirstRenderDone(true);
   }, []);
+
+  useEffect(() => {
+    initialvalue && setFieldValue(initialvalue);
+    setFirstRenderDone(true);
+  }, [initialvalue]);
 
   useEffect(() => {
     if (firstRenderDone) {
@@ -63,7 +74,7 @@ const MultiValueText = ({ id, label, placeholder, validation }) => {
         control={control}
         rules={validation}
         render={({ field }) => (
-          <CreatableSelect
+          <AsyncCreatableSelect
             {...field}
             id={id}
             className='select multivaluetext'
@@ -101,6 +112,7 @@ MultiValueText.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   validation: PropTypes.object,
+  initialvalue: PropTypes.array,
 };
 
 const InputError = ({ message, type }) => {
