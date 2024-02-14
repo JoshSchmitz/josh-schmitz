@@ -13,7 +13,7 @@ const router = express.Router({ mergeParams: true });
 // routes
 router.route('/').get(getEducation).post(protect, createEducation);
 router
-  .route('/:experienceId')
+  .route('/:educationId')
   .get(getEducation)
   .put(protect, updateEducation)
   .delete(protect, deleteEducation);
