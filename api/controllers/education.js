@@ -92,8 +92,8 @@ const updateEducation = asyncHandler(async (req, res) => {
     );
     if (education) {
       education.degree = req.body.degree || education.degree;
-      education.major = req.body.major || education.major;
-      education.minor = req.body.minor || education.minor;
+      education.majors = req.body.majors || education.majors;
+      education.minors = req.body.minors || education.minors;
       education.institutionname =
         req.body.institutionname || education.institutionname;
       education.address = req.body.address || education.address;
@@ -111,7 +111,7 @@ const updateEducation = asyncHandler(async (req, res) => {
       const updatedResume = await resume.save();
       const updatedEducations = updatedResume.education;
       const [updatedEducation] = updatedEducations.filter(
-        (exp) => exp._id.valueOf() === experienceId
+        (exp) => exp._id.valueOf() === educationId
       );
       res.status(200).json({
         _id: updatedEducation._id,
