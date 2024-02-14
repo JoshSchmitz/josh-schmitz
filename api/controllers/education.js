@@ -93,14 +93,18 @@ const updateEducation = asyncHandler(async (req, res) => {
     if (education) {
       education.degree = req.body.degree || education.degree;
       education.majors = req.body.majors || education.majors;
+      education.majorCount = education.majors.length;
       education.minors = req.body.minors || education.minors;
-      education.institutionname =
+      education.minorCount = education.minors.length;
+      education.institution.name =
         req.body.institutionname || education.institutionname;
-      education.address = req.body.address || education.address;
-      education.city = req.body.city || education.city;
-      education.state = req.body.state || education.state;
-      education.postcode = req.body.postcode || education.postcode;
-      education.phone = req.body.phone || education.phone;
+      education.institution.location.address =
+        req.body.address || education.address;
+      education.institution.location.city = req.body.city || education.city;
+      education.institution.location.state = req.body.state || education.state;
+      education.institution.location.postcode =
+        req.body.postcode || education.postcode;
+      education.institution.phone = req.body.phone || education.phone;
       education.startDate = req.body.startDate
         ? new Date(req.body.startDate)
         : '';
@@ -117,7 +121,9 @@ const updateEducation = asyncHandler(async (req, res) => {
         _id: updatedEducation._id,
         degree: updatedEducation.degree,
         major: updatedEducation.major,
+        majorCount: updatedEducation.majorCount,
         minor: updatedEducation.minor,
+        minorCount: updatedEducation.minorCount,
         institution: {
           name: updatedEducation.institutionname,
           location: {
@@ -154,7 +160,7 @@ const deleteEducation = asyncHandler(async (req, res) => {
   if (resume) {
     const educations = resume.education;
     educations.pull(educationId);
-    const updatedEducation = await Resume.save();
+    const updatedEducation = await resume.save();
     if (updatedEducation) {
       res.status(200).json({ message: 'education deleted', _id: educationId });
     } else {

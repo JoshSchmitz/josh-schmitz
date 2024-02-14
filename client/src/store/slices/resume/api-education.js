@@ -32,7 +32,6 @@ export const educationApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${RESUME_URL}/${data.resumeId}/education/${data.educationId}`,
         method: 'DELETE',
-        body: data,
       }),
       invalidatesTags: ['Education'],
     }),
