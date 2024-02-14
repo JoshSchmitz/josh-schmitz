@@ -70,10 +70,12 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
         degree: { label: education.degree, value: education.degree },
         gpa: education.gpa,
         institutionname: education.institution.name,
-        phone: `(${phone.substring(0, 3)}) ${phone.substring(
-          3,
-          6
-        )}-${phone.substring(6)}`,
+        phone: phone
+          ? `(${phone.substring(0, 3)}) ${phone.substring(
+              3,
+              6
+            )}-${phone.substring(6)}`
+          : '',
         address: education.institution.location.address,
         city: education.institution.location.city,
         state: education.institution.location.state,
