@@ -110,7 +110,7 @@ const updateEducation = asyncHandler(async (req, res) => {
         : '';
       education.endDate = req.body.endDate ? new Date(req.body.endDate) : '';
       education.gpa = req.body.gpa || education.gpa;
-      education.highlighted = req.body.highlighted || education.highlighted;
+      education.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedEducations = updatedResume.education;
