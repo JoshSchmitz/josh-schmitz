@@ -1,5 +1,7 @@
 .education {
     margin-top: 5px;
+    border-left: solid 4px $bg-light;
+    padding-left: 10px;
 
     &>.headline {
         &>.details {
@@ -64,6 +66,10 @@
             @include separator;
             background-color: $text-dark;
         }
+    }
+
+    &.highlighted {
+        border-left: solid 4px $bg-dark;
     }
 }
 
