@@ -162,7 +162,7 @@ const deleteEducation = asyncHandler(async (req, res) => {
     educations.pull(educationId);
     const updatedEducation = await resume.save();
     if (updatedEducation) {
-      res.status(200).json({ message: 'education deleted', _id: educationId });
+      res.status(200).json({ message: 'Education deleted', _id: educationId });
     } else {
       res.status(400);
       throw new Error('Could not delete education');
