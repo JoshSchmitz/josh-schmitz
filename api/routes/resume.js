@@ -8,6 +8,7 @@ import {
 import { protect } from '../middleware/authenticate.js';
 import experienceRoutes from './experience.js';
 import educationRoutes from './education.js';
+import skillRoutes from './skill.js';
 
 // instantiate router
 const router = express.Router();
@@ -23,6 +24,7 @@ router
 // nest routes
 router
   .use('/:resumeId/experience', experienceRoutes)
-  .use('/:resumeId/education', educationRoutes);
+  .use('/:resumeId/education', educationRoutes)
+  .use('/:resumeId/skill', skillRoutes);
 
 export default router;

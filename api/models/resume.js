@@ -3,12 +3,12 @@ import mongoose from 'mongoose';
 // import sub-models
 import experienceSchema from './experience.js';
 import educationSchema from './education.js';
+import skillSchema from './skill.js';
 // import { awardSchema } from './award.js';
 // import { groupSchema } from './group.js';
 // import { languageSchema } from './language.js';
 // import { leadershipSchema } from './leadership.js';
 // import { projectSchema } from './project.js';
-// import { skillSchema } from './skill.js';
 
 const resumeSchema = mongoose.Schema(
   {
@@ -27,12 +27,12 @@ const resumeSchema = mongoose.Schema(
     },
     experience: [experienceSchema],
     education: [educationSchema],
+    skill: [skillSchema],
     // award: [awardSchema],
     // group: [groupSchema],
     // language: [languageSchema],
     // leadership: [leadershipSchema],
     // project: [projectSchema],
-    // skill: [skillSchema],
     main: { type: Boolean, required: true },
   },
   { timestamps: true }
