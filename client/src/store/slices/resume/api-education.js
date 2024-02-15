@@ -29,8 +29,8 @@ export const educationApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ['Education'],
     }),
     deleteEducation: builder.mutation({
-      query: (data) => ({
-        url: `${RESUME_URL}/${data.resumeId}/education/${data.educationId}`,
+      query: ({ resumeId, educationId }) => ({
+        url: `${RESUME_URL}/${resumeId}/education/${educationId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Education'],

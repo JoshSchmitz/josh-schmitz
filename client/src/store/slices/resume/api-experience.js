@@ -29,8 +29,8 @@ export const experienceApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: ['Experience'],
     }),
     deleteExperience: builder.mutation({
-      query: (data) => ({
-        url: `${RESUME_URL}/${data.resumeId}/experience/${data.experienceId}`,
+      query: ({ resumeId, experienceId }) => ({
+        url: `${RESUME_URL}/${resumeId}/experience/${experienceId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Experience'],
