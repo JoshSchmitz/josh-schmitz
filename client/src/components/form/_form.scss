@@ -286,7 +286,8 @@
 
             &>input,
             &>textarea,
-            &>.select {
+            &>.select,
+            &>.select-tile {
                 border-radius: 0;
                 margin-bottom: 0;
             }
@@ -297,7 +298,8 @@
 
                 &>input,
                 &>textarea,
-                &>.select {
+                &>.select,
+                &>.select-tile {
                     border-top-left-radius: 8px;
                     border-top-right-radius: 8px;
                 }
@@ -309,7 +311,8 @@
 
                 &>input,
                 &>textarea,
-                &>.select {
+                &>.select,
+                &>.select-tile {
                     border-bottom-left-radius: 8px;
                     border-bottom-right-radius: 8px;
                 }
