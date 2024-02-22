@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    min-width: 300px;
     text-align: center;
     padding: 20px;
 
@@ -168,6 +169,91 @@
             padding: 2px 5px 2px 7px;
             border-radius: 5px;
             gap: 4px;
+        }
+
+        &-tile {
+            background: #fff;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            border-radius: 8px;
+            font-size: .85rem;
+            font-family: $formfontface;
+            letter-spacing: normal;
+            word-spacing: normal;
+            width: auto;
+            margin-bottom: 0;
+
+            &__control {
+                padding: 0 15px;
+            }
+
+            &__placeholder {
+                color: $text-medium;
+            }
+
+            &__indicator {
+                width: 18px;
+            }
+
+            &__menu {
+                background: #fff;
+                border: solid 1px $text-medium;
+                border-radius: 8px;
+                padding: 5px;
+                margin-top: 5px;
+                min-width: fit-content;
+
+                &-list {
+                    max-height: 200px;
+                    overflow-y: auto;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 5px;
+                }
+            }
+
+            &__option {
+                width: 80px;
+                padding: 5px;
+                border-radius: 8px;
+                text-align: center;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $bg-light;
+                }
+
+                &>.option-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    &>.icon {
+                        font-size: 40px;
+                    }
+                }
+            }
+
+            &__single-value {
+                &>.option-content {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+
+                    &>.icon {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            &__multi-value {
+                background-color: #eee;
+                margin-right: 6px;
+                padding: 2px 5px 2px 7px;
+                border-radius: 5px;
+                gap: 4px;
+            }
         }
     }
 
