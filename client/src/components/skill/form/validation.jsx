@@ -1,4 +1,7 @@
 import { BsNodePlusFill } from 'react-icons/bs';
+import { FaWrench } from 'react-icons/fa';
+import { FaPencil, FaHandHoldingDollar, FaPeopleLine } from 'react-icons/fa6';
+import { IoColorPalette } from 'react-icons/io5';
 import {
   DiAndroid,
   DiAngularSimple,
@@ -105,6 +108,51 @@ const icon_validation = {
       ),
     },
     {
+      value: 'FaWrench',
+      label: (
+        <div className='option-content' key='fawrench'>
+          <FaWrench className='icon' />
+          <p className='label'>Fix</p>
+        </div>
+      ),
+    },
+    {
+      value: 'FaPencil',
+      label: (
+        <div className='option-content' key='fapencil'>
+          <FaPencil className='icon' />
+          <p className='label'>Write</p>
+        </div>
+      ),
+    },
+    {
+      value: 'IoColorPalette',
+      label: (
+        <div className='option-content' key='iocoloralette'>
+          <IoColorPalette className='icon' />
+          <p className='label'>Create</p>
+        </div>
+      ),
+    },
+    {
+      value: 'FaHandHoldingDollar',
+      label: (
+        <div className='option-content' key='fahandholdingdollar'>
+          <FaHandHoldingDollar className='icon' />
+          <p className='label'>Finance</p>
+        </div>
+      ),
+    },
+    {
+      value: 'FaPeopleLine',
+      label: (
+        <div className='option-content' key='fapeopleline'>
+          <FaPeopleLine className='icon' />
+          <p className='label'>Manage</p>
+        </div>
+      ),
+    },
+    {
       value: 'DiCode',
       label: (
         <div className='option-content' key='dicode'>
@@ -181,7 +229,7 @@ const icon_validation = {
       label: (
         <div className='option-content' key='dichrome'>
           <DiChrome className='icon' />
-          <p className='label'>DiChrome</p>
+          <p className='label'>Chrome</p>
         </div>
       ),
     },
@@ -190,7 +238,7 @@ const icon_validation = {
       label: (
         <div className='option-content' key='dicodepen'>
           <DiCodepen className='icon' />
-          <p className='label'>DiCodepen</p>
+          <p className='label'>Codepen</p>
         </div>
       ),
     },
@@ -379,7 +427,7 @@ const icon_validation = {
       label: (
         <div className='option-content' key='dinodejssmall'>
           <DiNodejsSmall className='icon' />
-          <p className='label'>DiNodejsSmall</p>
+          <p className='label'>NodeJS</p>
         </div>
       ),
     },
