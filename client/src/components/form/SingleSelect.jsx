@@ -7,12 +7,13 @@ import { isFormInvalid, findInputError, framer_error } from './utils/functions';
 
 const SingleSelect = ({
   id,
+  label,
+  options,
+  validation,
   placeholder,
   isClearable,
   isSearchable,
-  options,
-  label,
-  validation,
+  listmode,
 }) => {
   const {
     control,
@@ -33,8 +34,8 @@ const SingleSelect = ({
         render={({ field }) => (
           <SelectBox
             {...field}
-            className='select'
-            classNamePrefix='select'
+            className={listmode ? `select-${listmode}` : 'select'}
+            classNamePrefix={listmode ? `select-${listmode}` : 'select'}
             unstyled={true}
             isClearable={isClearable}
             isSearchable={isSearchable}
@@ -62,11 +63,12 @@ const SingleSelect = ({
 SingleSelect.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
-  placeholder: PropTypes.string,
   options: PropTypes.array,
+  validation: PropTypes.object,
+  placeholder: PropTypes.string,
   isClearable: PropTypes.bool,
   isSearchable: PropTypes.bool,
-  validation: PropTypes.object,
+  listmode: PropTypes.string,
 };
 
 const InputError = ({ message, type }) => {
