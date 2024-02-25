@@ -63,7 +63,7 @@ const Skill = ({ skill, resume }) => {
     setFormIsOpen(!formIsOpen);
   };
 
-  const [deleteSkill, deleteIsLoading] = useDeleteSkillMutation();
+  const [deleteSkill, { deleteIsLoading }] = useDeleteSkillMutation();
 
   const handleDelete = () => {
     try {
@@ -110,7 +110,7 @@ const Skill = ({ skill, resume }) => {
           loading={deleteIsLoading}
           close={confirmModal}
           closeLabel='Cancel'
-          message='Are you sure you want to delete this education?'
+          message='Are you sure you want to delete this skill?'
         />
       </Modal>
       <div

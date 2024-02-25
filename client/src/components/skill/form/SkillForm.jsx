@@ -83,6 +83,7 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
               <p className='label'>
                 {skill.icon
                   .substring(2)
+                  .replace(/[0-9]/g, '')
                   .replace(/([A-Z])/g, ' $1')
                   .trim()}
               </p>
