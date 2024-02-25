@@ -1,6 +1,10 @@
 import { BsNodePlusFill } from 'react-icons/bs';
-import { FaWrench } from 'react-icons/fa';
-import { FaPencil, FaHandHoldingDollar, FaPeopleLine } from 'react-icons/fa6';
+import {
+  FaWrench,
+  FaPencil,
+  FaHandHoldingDollar,
+  FaPeopleLine,
+} from 'react-icons/fa6';
 import { IoColorPalette } from 'react-icons/io5';
 import {
   DiAndroid,
