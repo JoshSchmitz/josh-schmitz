@@ -123,6 +123,77 @@
         align-items: center;
     }
 
+    .range {
+        .form-group {
+            padding: 5px 15px;
+
+            input[type="range"] {
+                --c: #0f2462; // active color
+                --g: 6px; // the gap
+                --l: 6px; // line thickness
+                --s: 18px; // thumb size
+
+                // width: 400px;
+                height: var(--s);
+                /* needed for Firefox*/
+                --_c: color-mix(in srgb, var(--c), #000 var(--p, 0%));
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background: none;
+                cursor: pointer;
+                overflow: hidden;
+                padding: 0;
+                border-bottom: none;
+
+                &:focus-visible,
+                &:hover {
+                    --p: 25%;
+                }
+
+                &:active,
+                &:focus-visible {
+                    --_b: var(--s)
+                }
+
+                &::-moz-range-thumb {
+                    height: var(--s);
+                    width: var(--s);
+                    background: none;
+                    border-radius: 50%;
+                    box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+                    border-image: linear-gradient(90deg, var(--_c) 50%, $highlight 0) 0 1/calc(50% - var(--l)/2) 100vw/0 calc(100vw + var(--g));
+                    -moz-appearance: none;
+                    appearance: none;
+                    transition: .3s;
+                }
+
+                &::-moz-range-track {
+                    border-radius: 18px;
+                }
+            }
+
+            /* chromium */
+            input[type="range" i] {
+                &::-webkit-slider-thumb {
+                    height: var(--s);
+                    aspect-ratio: 1;
+                    border-radius: 50%;
+                    box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+                    border-image: linear-gradient(90deg, var(--_c) 50%, $highlight 0) 0 1/calc(50% - var(--l)/2) 100vw/0 calc(100vw + var(--g));
+                    -webkit-appearance: none;
+                    appearance: none;
+                    transition: .3s;
+                }
+
+                &::-webkit-slider-runnable-track {
+                    border-radius: 18px;
+                }
+            }
+        }
+
+    }
+
     .select {
         background: #fff;
         text-align: left;
