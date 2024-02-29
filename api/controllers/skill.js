@@ -47,7 +47,7 @@ const createSkill = asyncHandler(async (req, res) => {
     let skills = resume.skill;
     skills.push({
       title: req.body.title,
-      years: req.body.years,
+      startDate: req.body.startDate,
       experience: req.body.experience,
       icon: req.body.icon,
       category: req.body.category,
@@ -75,7 +75,7 @@ const updateSkill = asyncHandler(async (req, res) => {
     const [skill] = skills.filter((sk) => sk._id.valueOf() === skillId);
     if (skill) {
       skill.title = req.body.title || skill.title;
-      skill.years = req.body.years || skill.years;
+      skill.startDate = req.body.startDate ? new Date(req.body.startDate) : '';
       skill.experience = req.body.experience || skill.experience;
       skill.icon = req.body.icon || skill.icon;
       skill.category = req.body.category || skill.category;
@@ -88,7 +88,7 @@ const updateSkill = asyncHandler(async (req, res) => {
       );
       res.status(200).json({
         title: updatedSkill.title,
-        years: updatedSkill.years,
+        startDate: updatedSkill.startDate,
         experience: updatedSkill.experience,
         icon: updatedSkill.icon,
         category: updatedSkill.category,

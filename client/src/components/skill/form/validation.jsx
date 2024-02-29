@@ -63,30 +63,21 @@ const title_validation = {
 };
 
 // years
-const years_validation = {
-  id: 'years',
-  type: 'number',
-  label: 'Years of Knowledge',
-  min: 1,
-  max: 50,
-  step: 0.5,
-  default: '1',
-  validation: {
-    required: { value: true, message: 'required' },
-    min: { value: 1.0, message: 'minimum is 1' },
-    max: { value: 50.0, message: 'maximum is 50' },
-  },
+const startDate_validation = {
+  id: 'startDate',
+  label: 'Start Date',
+  type: 'date',
+  validation: {},
 };
 
 // experience
 const experience_validation = {
   id: 'experience',
-  type: 'number',
   label: 'Level of Experience',
   min: 1,
   max: 6,
   step: 1,
-  default: '1',
+  defaultValue: 1,
   validation: {
     required: { value: true, message: 'required' },
     min: { value: 1, message: 'minimum is 1' },
@@ -542,7 +533,7 @@ const highlighted_validation = {
 
 export {
   title_validation,
-  years_validation,
+  startDate_validation,
   experience_validation,
   icon_validation,
   category_validation,

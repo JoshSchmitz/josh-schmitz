@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { nanoid } from '@reduxjs/toolkit';
+import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 import {
   title_validation,
-  years_validation,
+  startDate_validation,
   experience_validation,
   icon_validation,
   category_validation,
@@ -28,6 +30,7 @@ import Button from '../../form/Button';
 import SingleSelect from '../../form/SingleSelect';
 import CreatableSingleSelect from '../../form/CreatableSingleSelect';
 import Checkbox from '../../form/Checkbox';
+import Range from '../../form/Range';
 
 // import state
 import {
@@ -73,7 +76,10 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
 
       const s = await {
         title: skill.title,
-        years: skill.years,
+        startDate:
+          skill.startDate === ''
+            ? null
+            : dayjs(skill.startDate).add(1, 'day').format('YYYY-MM-DD'),
         experience: skill.experience,
         icon: {
           value: skill.icon,
@@ -90,17 +96,21 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
             </div>
           ),
         },
-        category: { label: skill.category, value: skill.category },
+        category: {
+          key: nanoid(),
+          label: skill.category,
+          value: skill.category,
+        },
         highlighted: skill.highlighted,
       };
       methods.reset(s);
     }
     async function loadOptions() {
       const sk = await skills;
-      const options = [{ label: 'Skill', value: 'Skill' }];
+      const options = [{ key: nanoid(), label: 'Skill', value: 'Skill' }];
       sk.forEach((s) => {
         if (!options.find((o) => o.label === s.category)) {
-          options.push({ label: s.category, value: s.category });
+          options.push({ key: nanoid(), label: s.category, value: s.category });
         }
       });
       setCategoryOptions(options);
@@ -167,8 +177,8 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
         <FormContent>
           <FormSection>
             <Input {...title_validation} />
-            <Input {...years_validation} />
-            <Input {...experience_validation} />
+            <Input {...startDate_validation} />
+            <Range {...experience_validation} />
             <FormGroup>
               <SingleSelect {...icon_validation} />
               <CreatableSingleSelect

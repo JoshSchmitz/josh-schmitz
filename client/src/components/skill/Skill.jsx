@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import dayjs from 'dayjs';
 
 // import state
 import { useDeleteSkillMutation } from '../../store/slices/resume/api-skill';
@@ -125,7 +126,7 @@ const Skill = ({ skill, resume }) => {
             <h3 className='name'>{skill.title}</h3>
             <div className='separator'></div>
             <p className='years'>
-              {skill.years} {skill.years > 1 ? 'years' : 'year'}
+              {dayjs.duration(dayjs(skill.startDate).diff(dayjs())).humanize()}
             </p>
           </div>
           <div className='exp'>
