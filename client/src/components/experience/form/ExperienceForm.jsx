@@ -17,7 +17,7 @@ import {
   city_validation,
   state_validation,
   postcode_validation,
-} from './validations';
+} from './validation';
 
 // import components
 import Form from '../../form/Form';

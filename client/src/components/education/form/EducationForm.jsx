@@ -18,7 +18,7 @@ import {
   gpa_validation,
   enddate_validation,
   highlighted_validation,
-} from './validations';
+} from './validation';
 
 // import components
 import Form from '../../form/Form';
