@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -10,6 +10,7 @@ import {
   startdate_validation,
   enddate_validation,
   highlighted_validation,
+  skills_validation,
   companyname_validation,
   companyphone_validation,
   address_validation,
@@ -28,6 +29,7 @@ import Input from '../../form/Input';
 import Textarea from '../../form/Textarea';
 import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button';
+import MultiSelect from '../../form/MultiSelect';
 
 // import state
 import {
@@ -35,20 +37,57 @@ import {
   useUpdateExperienceMutation,
   useGetExperienceQuery,
 } from '../../../store/slices/resume/api-experience';
+import { useGetSkillQuery } from '../../../store/slices/resume/api-skill';
 
 const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   // react-hook-form validation
   const methods = useForm({ mode: 'onChange' });
+
+  // redux state
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
   const { data: experience, isSuccess } = useGetExperienceQuery({
     resumeId,
     experienceId,
   });
+  const { data: skills, isSuccess: isSkillSuccess } = useGetSkillQuery({
+    resumeId,
+  });
+
+  // state
+  const [skillOptions, setSkillOptions] = useState([]);
 
   useEffect(() => {
+    if (isSkillSuccess) {
+      loadSkills();
+    }
+    async function loadSkills() {
+      const sk = await skills;
+      const options = sk.map((s) => {
+        return { label: s.title, value: s._id, key: s._id };
+      });
+      setSkillOptions(options);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skills]);
+
+  useEffect(() => {
+    if (experienceId) {
+      if (isSuccess) {
+        loadData();
+      }
+    }
     async function loadData() {
-      const phone = experience.company.phone;
+      const sks = await experience.skills;
+      const skillsValue = [];
+      sks.forEach((sk) => {
+        skills.forEach((s) => {
+          if (s._id === sk) {
+            skillsValue.push({ label: s.title, value: s._id, key: s._id });
+          }
+        });
+      });
+      const phone = await experience.company.phone;
       const xp = await {
         position: experience.position,
         description: experience.description,
@@ -72,22 +111,26 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
         city: experience.company.location.city,
         state: experience.company.location.state,
         postcode: experience.company.location.postcode,
+        skills: skillsValue,
       };
       methods.reset(xp);
     }
-    if (experienceId) {
-      if (isSuccess) {
-        loadData();
-      }
-    }
-  }, [methods, isSuccess, experience, experienceId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [experience]);
 
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
       try {
+        let skills = [];
+        if (data.skills.length > 0) {
+          skills = data.skills.map((s) => {
+            return s.value;
+          });
+        }
         const res = await createExperience({
           resumeId,
           ...data,
+          skills: skills,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
@@ -101,10 +144,17 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
       }
     } else {
       try {
+        let skills = [];
+        if (data.skills.length > 0) {
+          skills = data.skills.map((s) => {
+            return s.value;
+          });
+        }
         const res = await updateExperience({
           resumeId,
           experienceId,
           ...data,
+          skills: skills,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
@@ -138,6 +188,7 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
             </FormGroup>
           </FormSection>
           <FormSection>
+            <MultiSelect {...skills_validation} options={skillOptions} />
             <Input {...startdate_validation} />
             <Input {...enddate_validation} />
             <FormGroup>

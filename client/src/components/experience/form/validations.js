@@ -47,6 +47,14 @@ const highlighted_validation = {
   validation: {},
 };
 
+// skills
+const skills_validation = {
+  id: 'skills',
+  placeholder: 'Relevent Skills ...',
+  isClearable: true,
+  isSearchable: true,
+};
+
 // company name
 const companyname_validation = {
   id: 'companyname',
@@ -123,6 +131,7 @@ export {
   startdate_validation,
   enddate_validation,
   highlighted_validation,
+  skills_validation,
   companyname_validation,
   companyphone_validation,
   address_validation,
