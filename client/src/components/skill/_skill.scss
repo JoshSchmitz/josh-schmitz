@@ -90,3 +90,24 @@
         }
     }
 }
+
+.skillslist {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: $formfontface;
+    font-size: .7rem;
+
+    .skill {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: $text-medium;
+
+        .separator {
+            @include separator;
+            width: 2.5px;
+            height: 2.5px;
+        }
+    }
+}
