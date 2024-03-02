@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 // import components
 import Modal from 'react-modal';
+import SkillsList from '../skill/SkillsList';
 import ExperienceForm from './form/ExperienceForm';
 import Confirm from '../confirm/Confirm';
 import { MdEdit, MdDelete } from 'react-icons/md';
@@ -165,6 +166,7 @@ const Experience = ({ experience, resume }) => {
             </p>
           </div>
           <p className='description'>{experience.description}</p>
+          <SkillsList resumeId={resume} list={experience.skills} />
         </div>
       </div>
     </>
