@@ -237,9 +237,25 @@
         &__multi-value {
             background-color: #eee;
             margin-right: 6px;
-            padding: 2px 5px 2px 7px;
+            // padding: 2px 5px 2px 7px;
             border-radius: 5px;
             gap: 4px;
+
+            &__label {
+                margin: 2px 2px 2px 7px;
+            }
+
+            &__remove {
+                border-bottom-right-radius: 5px;
+                border-top-right-radius: 5px;
+                padding: 0 2px;
+                @include ease-out;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: darken($highlight, 7%);
+                }
+            }
         }
 
         &-tile {
@@ -324,6 +340,10 @@
                 padding: 2px 5px 2px 7px;
                 border-radius: 5px;
                 gap: 4px;
+
+                &__remove:hover {
+                    background-color: $text-medium;
+                }
             }
         }
     }
