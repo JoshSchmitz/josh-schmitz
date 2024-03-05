@@ -29,7 +29,7 @@ import FormGroup from '../../form/FormGroup';
 import Input from '../../form/Input';
 import Button from '../../form/Button';
 import SingleSelect from '../../form/SingleSelect';
-import MultivalueText from '../../form/MultiValueText';
+import MultiValueText from '../../form/MultiValueText';
 import Checkbox from '../../form/Checkbox';
 
 // import state
@@ -167,8 +167,8 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           <FormSection size='full'>
             <FormGroup>
               <SingleSelect {...degree_validation} />
-              <MultivalueText {...majors_validation} initialvalue={majors} />
-              <MultivalueText {...minors_validation} initialvalue={minors} />
+              <MultiValueText {...majors_validation} initialvalue={majors} />
+              <MultiValueText {...minors_validation} initialvalue={minors} />
             </FormGroup>
             <Input {...gpa_validation} />
           </FormSection>
