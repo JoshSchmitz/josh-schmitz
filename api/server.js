@@ -27,7 +27,6 @@ app.use(cookieParser());
 // routes
 app.use('/api/users', userRoutes);
 app.use('/api/resume', resumeRoutes);
-app.use('/api/experience', experienceRoutes);
 
 // error handlers
 app.use(notFound);
