@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { useEffect, KeyboardEventHandler, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
