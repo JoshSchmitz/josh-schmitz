@@ -48,6 +48,7 @@ import {
   DiVisualstudio,
   DiWordpress,
 } from 'react-icons/di';
+import { nanoid } from '@reduxjs/toolkit';
 
 // field definitions and validations for SkillForm
 
@@ -96,414 +97,368 @@ const icon_validation = {
     {
       value: 'BsNodePlusFill',
       label: (
-        <div className='option-content' key='bsnodeplusfill'>
+        <div className='option-content' key={nanoid()}>
           <BsNodePlusFill className='icon' />
-          <p className='label'>Skill</p>
         </div>
       ),
     },
     {
       value: 'FaWrench',
       label: (
-        <div className='option-content' key='fawrench'>
+        <div className='option-content' key={nanoid()}>
           <FaWrench className='icon' />
-          <p className='label'>Fix</p>
         </div>
       ),
     },
     {
       value: 'FaPencil',
       label: (
-        <div className='option-content' key='fapencil'>
+        <div className='option-content' key={nanoid()}>
           <FaPencil className='icon' />
-          <p className='label'>Write</p>
         </div>
       ),
     },
     {
       value: 'IoColorPalette',
       label: (
-        <div className='option-content' key='iocoloralette'>
+        <div className='option-content' key={nanoid()}>
           <IoColorPalette className='icon' />
-          <p className='label'>Create</p>
         </div>
       ),
     },
     {
       value: 'FaHandHoldingDollar',
       label: (
-        <div className='option-content' key='fahandholdingdollar'>
+        <div className='option-content' key={nanoid()}>
           <FaHandHoldingDollar className='icon' />
-          <p className='label'>Finance</p>
         </div>
       ),
     },
     {
       value: 'FaPeopleLine',
       label: (
-        <div className='option-content' key='fapeopleline'>
+        <div className='option-content' key={nanoid()}>
           <FaPeopleLine className='icon' />
-          <p className='label'>Manage</p>
         </div>
       ),
     },
     {
       value: 'DiCode',
       label: (
-        <div className='option-content' key='dicode'>
+        <div className='option-content' key={nanoid()}>
           <DiCode className='icon' />
-          <p className='label'>Code</p>
         </div>
       ),
     },
     {
       value: 'DiCodeBadge',
       label: (
-        <div className='option-content' key='dicodebadge'>
+        <div className='option-content' key={nanoid()}>
           <DiCodeBadge className='icon' />
-          <p className='label'>Code Badge</p>
         </div>
       ),
     },
     {
       value: 'DiAndroid',
       label: (
-        <div className='option-content' key='diandroid'>
+        <div className='option-content' key={nanoid()}>
           <DiAndroid className='icon' />
-          <p className='label'>Android</p>
         </div>
       ),
     },
     {
       value: 'DiAngularSimple',
       label: (
-        <div className='option-content' key='diangularsimple'>
+        <div className='option-content' key={nanoid()}>
           <DiAngularSimple className='icon' />
-          <p className='label'>Angular</p>
         </div>
       ),
     },
     {
       value: 'DiAppstore',
       label: (
-        <div className='option-content' key='diappstore'>
+        <div className='option-content' key={nanoid()}>
           <DiAppstore className='icon' />
-          <p className='label'>Appstore</p>
         </div>
       ),
     },
     {
       value: 'DiAtlassian',
       label: (
-        <div className='option-content' key='diatlassian'>
+        <div className='option-content' key={nanoid()}>
           <DiAtlassian className='icon' />
-          <p className='label'>Atlassian</p>
         </div>
       ),
     },
     {
       value: 'DiAws',
       label: (
-        <div className='option-content' key='diaws'>
+        <div className='option-content' key={nanoid()}>
           <DiAws className='icon' />
-          <p className='label'>AWS</p>
         </div>
       ),
     },
     {
       value: 'DiBootstrap',
       label: (
-        <div className='option-content' key='dibootstrap'>
+        <div className='option-content' key={nanoid()}>
           <DiBootstrap className='icon' />
-          <p className='label'>Bootstrap</p>
         </div>
       ),
     },
     {
       value: 'DiChrome',
       label: (
-        <div className='option-content' key='dichrome'>
+        <div className='option-content' key={nanoid()}>
           <DiChrome className='icon' />
-          <p className='label'>Chrome</p>
         </div>
       ),
     },
     {
       value: 'DiCodepen',
       label: (
-        <div className='option-content' key='dicodepen'>
+        <div className='option-content' key={nanoid()}>
           <DiCodepen className='icon' />
-          <p className='label'>Codepen</p>
         </div>
       ),
     },
     {
       value: 'DiCreativecommons',
       label: (
-        <div className='option-content' key='dicreativecommons'>
+        <div className='option-content' key={nanoid()}>
           <DiCreativecommons className='icon' />
-          <p className='label'>Creative Commons</p>
         </div>
       ),
     },
     {
       value: 'DiCss3',
       label: (
-        <div className='option-content' key='disss3'>
+        <div className='option-content' key={nanoid()}>
           <DiCss3 className='icon' />
-          <p className='label'>CSS</p>
         </div>
       ),
     },
     {
       value: 'DiCss3Full',
       label: (
-        <div className='option-content' key='dicss3full'>
+        <div className='option-content' key={nanoid()}>
           <DiCss3Full className='icon' />
-          <p className='label'>CSS</p>
         </div>
       ),
     },
     {
       value: 'DiDatabase',
       label: (
-        <div className='option-content' key='didatabase'>
+        <div className='option-content' key={nanoid()}>
           <DiDatabase className='icon' />
-          <p className='label'>Database</p>
         </div>
       ),
     },
     {
       value: 'DiDotnet',
       label: (
-        <div className='option-content' key='didotnet'>
+        <div className='option-content' key={nanoid()}>
           <DiDotnet className='icon' />
-          <p className='label'>DotNet</p>
         </div>
       ),
     },
     {
       value: 'DiFirefox',
       label: (
-        <div className='option-content' key='difirefox'>
+        <div className='option-content' key={nanoid()}>
           <DiFirefox className='icon' />
-          <p className='label'>Firefox</p>
         </div>
       ),
     },
     {
       value: 'DiGit',
       label: (
-        <div className='option-content' key='digit'>
+        <div className='option-content' key={nanoid()}>
           <DiGit className='icon' />
-          <p className='label'>Git</p>
         </div>
       ),
     },
     {
       value: 'DiGithub',
       label: (
-        <div className='option-content' key='digithub'>
+        <div className='option-content' key={nanoid()}>
           <DiGithub className='icon' />
-          <p className='label'>Github</p>
         </div>
       ),
     },
     {
       value: 'DiGithubBadge',
       label: (
-        <div className='option-content' key='digithubbadge'>
+        <div className='option-content' key={nanoid()}>
           <DiGithubBadge className='icon' />
-          <p className='label'>Github</p>
         </div>
       ),
     },
     {
       value: 'DiGoogleAnalytics',
       label: (
-        <div className='option-content' key='digoogleanalytics'>
+        <div className='option-content' key={nanoid()}>
           <DiGoogleAnalytics className='icon' />
-          <p className='label'>Google Analytics</p>
         </div>
       ),
     },
     {
       value: 'DiGoogleDrive',
       label: (
-        <div className='option-content' key='digoogledrive'>
+        <div className='option-content' key={nanoid()}>
           <DiGoogleDrive className='icon' />
-          <p className='label'>Google Drive</p>
         </div>
       ),
     },
     {
       value: 'DiHtml5',
       label: (
-        <div className='option-content' key='dihtml5'>
+        <div className='option-content' key={nanoid()}>
           <DiHtml5 className='icon' />
-          <p className='label'>Html</p>
         </div>
       ),
     },
     {
       value: 'DiJava',
       label: (
-        <div className='option-content' key='dijava'>
+        <div className='option-content' key={nanoid()}>
           <DiJava className='icon' />
-          <p className='label'>Java</p>
         </div>
       ),
     },
     {
       value: 'DiJavascript1',
       label: (
-        <div className='option-content' key='dijavascript1'>
+        <div className='option-content' key={nanoid()}>
           <DiJavascript1 className='icon' />
-          <p className='label'>Javascript</p>
         </div>
       ),
     },
     {
       value: 'DiJsBadge',
       label: (
-        <div className='option-content' key='dijsbadge'>
+        <div className='option-content' key={nanoid()}>
           <DiJsBadge className='icon' />
-          <p className='label'>Javascript</p>
         </div>
       ),
     },
     {
       value: 'DiLaravel',
       label: (
-        <div className='option-content' key='dilaravel'>
+        <div className='option-content' key={nanoid()}>
           <DiLaravel className='icon' />
-          <p className='label'>Laravel</p>
         </div>
       ),
     },
     {
       value: 'DiLess',
       label: (
-        <div className='option-content' key='diless'>
+        <div className='option-content' key={nanoid()}>
           <DiLess className='icon' />
-          <p className='label'>Less</p>
         </div>
       ),
     },
     {
       value: 'DiMarkdown',
       label: (
-        <div className='option-content' key='dimarkdown'>
+        <div className='option-content' key={nanoid()}>
           <DiMarkdown className='icon' />
-          <p className='label'>Markdown</p>
         </div>
       ),
     },
     {
       value: 'DiMongodb',
       label: (
-        <div className='option-content' key='dimongodb'>
+        <div className='option-content' key={nanoid()}>
           <DiMongodb className='icon' />
-          <p className='label'>MongoDB</p>
         </div>
       ),
     },
     {
       value: 'DiNodejs',
       label: (
-        <div className='option-content' key='dinodejs'>
+        <div className='option-content' key={nanoid()}>
           <DiNodejs className='icon' />
-          <p className='label'>NodeJS</p>
         </div>
       ),
     },
     {
       value: 'DiNodejsSmall',
       label: (
-        <div className='option-content' key='dinodejssmall'>
+        <div className='option-content' key={nanoid()}>
           <DiNodejsSmall className='icon' />
-          <p className='label'>NodeJS</p>
         </div>
       ),
     },
     {
       value: 'DiNpm',
       label: (
-        <div className='option-content' key='dinpm'>
+        <div className='option-content' key={nanoid()}>
           <DiNpm className='icon' />
-          <p className='label'>NPM</p>
         </div>
       ),
     },
     {
       value: 'DiPhotoshop',
       label: (
-        <div className='option-content' key='diphotoshop'>
+        <div className='option-content' key={nanoid()}>
           <DiPhotoshop className='icon' />
-          <p className='label'>Photoshop</p>
         </div>
       ),
     },
     {
       value: 'DiPhp',
       label: (
-        <div className='option-content' key='diphp'>
+        <div className='option-content' key={nanoid()}>
           <DiPhp className='icon' />
-          <p className='label'>Php</p>
         </div>
       ),
     },
     {
       value: 'DiSass',
       label: (
-        <div className='option-content' key='disass'>
+        <div className='option-content' key={nanoid()}>
           <DiSass className='icon' />
-          <p className='label'>Sass</p>
         </div>
       ),
     },
     {
       value: 'DiReact',
       label: (
-        <div className='option-content' key='direact'>
+        <div className='option-content' key={nanoid()}>
           <DiReact className='icon' />
-          <p className='label'>React</p>
         </div>
       ),
     },
     {
       value: 'DiTerminal',
       label: (
-        <div className='option-content' key='diterminal'>
+        <div className='option-content' key={nanoid()}>
           <DiTerminal className='icon' />
-          <p className='label'>Terminal</p>
         </div>
       ),
     },
     {
       value: 'DiTerminalBadge',
       label: (
-        <div className='option-content' key='diterminalbadge'>
+        <div className='option-content' key={nanoid()}>
           <DiTerminalBadge className='icon' />
-          <p className='label'>Terminal</p>
         </div>
       ),
     },
     {
       value: 'DiVisualstudio',
       label: (
-        <div className='option-content' key='DiVisualstudio'>
+        <div className='option-content' key={nanoid()}>
           <DiVisualstudio className='icon' />
-          <p className='label'>VSCode</p>
         </div>
       ),
     },
     {
       value: 'DiWordpress',
       label: (
-        <div className='option-content' key='diwordpress'>
+        <div className='option-content' key={nanoid()}>
           <DiWordpress className='icon' />
-          <p className='label'>Wordpress</p>
         </div>
       ),
     },
