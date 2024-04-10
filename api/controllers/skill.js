@@ -75,7 +75,7 @@ const updateSkill = asyncHandler(async (req, res) => {
     const [skill] = skills.filter((sk) => sk._id.valueOf() === skillId);
     if (skill) {
       skill.title = req.body.title || skill.title;
-      skill.startDate = req.body.startDate ? new Date(req.body.startDate) : '';
+      skill.startDate = req.body.startDate ? req.body.startDate : '';
       skill.experience = req.body.experience || skill.experience;
       skill.icon = req.body.icon || skill.icon;
       skill.category = req.body.category || skill.category;

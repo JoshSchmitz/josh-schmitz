@@ -105,10 +105,8 @@ const updateEducation = asyncHandler(async (req, res) => {
       education.institution.location.postcode =
         req.body.postcode || education.postcode;
       education.institution.phone = req.body.phone || education.phone;
-      education.startDate = req.body.startDate
-        ? new Date(req.body.startDate)
-        : '';
-      education.endDate = req.body.endDate ? new Date(req.body.endDate) : '';
+      education.startDate = req.body.startDate ? req.body.startDate : '';
+      education.endDate = req.body.endDate ? req.body.endDate : '';
       education.gpa = req.body.gpa || education.gpa;
       education.highlighted = req.body.highlighted;
 

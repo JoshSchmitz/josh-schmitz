@@ -80,7 +80,7 @@ const updateLeadership = asyncHandler(async (req, res) => {
       leadership.title = req.body.title || leadership.title;
       leadership.description = req.body.description || leadership.description;
       leadership.icon = req.body.icon || leadership.icon;
-      leadership.date = req.body.date ? new Date(req.body.date) : '';
+      leadership.date = req.body.date ? req.body.date : '';
       leadership.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();

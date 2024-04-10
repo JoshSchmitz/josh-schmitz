@@ -102,10 +102,8 @@ const updateExperience = asyncHandler(async (req, res) => {
       experience.description = req.body.description || experience.description;
       experience.highlighted = req.body.highlighted;
       experience.skills = req.body.skills || experience.skills;
-      experience.startDate = req.body.startDate
-        ? new Date(req.body.startDate)
-        : '';
-      experience.endDate = req.body.endDate ? new Date(req.body.endDate) : '';
+      experience.startDate = req.body.startDate ? req.body.startDate : '';
+      experience.endDate = req.body.endDate ? req.body.endDate : '';
 
       const updatedResume = await resume.save();
       const updatedExperiences = updatedResume.experience;
