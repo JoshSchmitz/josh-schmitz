@@ -7,6 +7,7 @@ import RingLoader from 'react-spinners/RingLoader';
 import Experiences from '../experience/Experiences';
 import Educations from '../education/Educations';
 import Skills from '../skill/Skills';
+import Leaderships from '../leadership/Leaderships';
 
 const Resume = ({ resumeId }) => {
   // const { userId } = useSelector((state) => state.auth.userInfo._id);
@@ -33,6 +34,7 @@ const Resume = ({ resumeId }) => {
           <Experiences resumeId={resumeId} />
           <Educations resumeId={resumeId} />
           <Skills resumeId={resumeId} />
+          <Leaderships resumeId={resumeId} />
         </article>
       )}
     </>
