@@ -134,8 +134,8 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
-          toast.success('Experience created');
           toggleModal();
+          toast.success('Experience created');
         } else {
           toast.error('Could not create experience');
         }
@@ -158,8 +158,8 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
-          toast.success('Experience updated');
           toggleModal();
+          toast.success('Experience updated');
         } else {
           toast.error('Could not update experience');
         }

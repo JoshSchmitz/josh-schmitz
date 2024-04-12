@@ -135,8 +135,8 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
           category: data.category.label,
         }).unwrap();
         if (res) {
-          toast.success('Skill created');
           toggleModal();
+          toast.success('Skill created');
         } else {
           toast.error('Could not create skill');
         }
@@ -154,8 +154,8 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
           category: data.category.label,
         }).unwrap();
         if (res) {
-          toast.success('Skill updated');
           toggleModal();
+          toast.success('Skill updated');
         } else {
           toast.error('Could not update skill');
         }

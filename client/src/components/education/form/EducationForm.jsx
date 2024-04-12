@@ -112,8 +112,8 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
-          toast.success('Education created');
           toggleModal();
+          toast.success('Education created');
         } else {
           toast.error('Could not create education');
         }
@@ -139,8 +139,8 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
-          toast.success('Education updated');
           toggleModal();
+          toast.success('Education updated');
         } else {
           toast.error('Could not update education');
         }
