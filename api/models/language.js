@@ -5,6 +5,7 @@ const languageSchema = mongoose.Schema({
   dialect: { type: String },
   years: { type: Number, required: true, default: 0 },
   experience: { type: Number, required: true, default: 0 },
+  highlighted: { type: Boolean, required: true },
 });
 
 const Language = mongoose.model('Language', languageSchema);
