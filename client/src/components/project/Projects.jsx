@@ -3,7 +3,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 const Projects = () => {
   return (
     <>
-      <section className='section projects'>
+      <section className='section' id='projects'>
         <div className='headline'>
           <h1 className='title'>Projects</h1>
           <div className='actions'>

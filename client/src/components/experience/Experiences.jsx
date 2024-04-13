@@ -125,7 +125,7 @@ const Experiences = ({ resumeId }) => {
           toggleModal={toggleModal}
         />
       </Modal>
-      <section className='section experiences'>
+      <section className='section' id='experiences'>
         <div className='headline'>
           <h1 className='title'>Work Experience</h1>
           <div className='actions'>

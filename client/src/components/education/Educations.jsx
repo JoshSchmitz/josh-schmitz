@@ -44,7 +44,7 @@ const Educations = ({ resumeId }) => {
           toggleModal={toggleModal}
         />
       </Modal>
-      <section className='section educations'>
+      <section className='section' id='educations'>
         <div className='headline'>
           <h1 className='title'>Education</h1>
           <div className='actions'>
