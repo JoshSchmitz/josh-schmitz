@@ -12,6 +12,7 @@ import Projects from '../project/Projects';
 import Accomplishments from '../accomplishment/Accomplishments';
 import Awards from '../award/Awards';
 import Groups from '../group/Groups';
+import Languages from '../language/Languages';
 
 const Resume = ({ resumeId }) => {
   // const { userId } = useSelector((state) => state.auth.userInfo._id);
@@ -43,6 +44,7 @@ const Resume = ({ resumeId }) => {
           <Accomplishments resumeId={resumeId} />
           <Awards resumeId={resumeId} />
           <Groups resumeId={resumeId} />
+          <Languages resumeId={resumeId} />
         </article>
       )}
     </>
