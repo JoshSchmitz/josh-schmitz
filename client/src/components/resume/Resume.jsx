@@ -8,6 +8,10 @@ import Experiences from '../experience/Experiences';
 import Educations from '../education/Educations';
 import Skills from '../skill/Skills';
 import Leaderships from '../leadership/Leaderships';
+import Projects from '../project/Projects';
+import Accomplishments from '../accomplishment/Accomplishments';
+import Awards from '../award/Awards';
+import Groups from '../group/Groups';
 
 const Resume = ({ resumeId }) => {
   // const { userId } = useSelector((state) => state.auth.userInfo._id);
@@ -35,6 +39,10 @@ const Resume = ({ resumeId }) => {
           <Educations resumeId={resumeId} />
           <Skills resumeId={resumeId} />
           <Leaderships resumeId={resumeId} />
+          <Projects resumeId={resumeId} />
+          <Accomplishments resumeId={resumeId} />
+          <Awards resumeId={resumeId} />
+          <Groups resumeId={resumeId} />
         </article>
       )}
     </>
