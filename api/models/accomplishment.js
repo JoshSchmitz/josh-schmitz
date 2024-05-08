@@ -8,5 +8,4 @@ const accomplishmentSchema = mongoose.Schema({
   highlighted: { type: Boolean, required: true },
 });
 
-const Accomplishment = mongoose.model('Accomplishment', accomplishmentSchema);
-export { Accomplishment, awardSchema };
+export default accomplishmentSchema;
