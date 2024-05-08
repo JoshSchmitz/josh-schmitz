@@ -9,5 +9,4 @@ const projectSchema = mongoose.Schema({
   highlighted: { type: Boolean, required: true },
 });
 
-const Project = mongoose.model('Project', projectSchema);
-export { Project, projectSchema };
+export default projectSchema;
