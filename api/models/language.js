@@ -8,5 +8,4 @@ const languageSchema = mongoose.Schema({
   highlighted: { type: Boolean, required: true },
 });
 
-const Language = mongoose.model('Language', languageSchema);
-export { Language, languageSchema };
+export default languageSchema;
