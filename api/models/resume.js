@@ -5,10 +5,11 @@ import experienceSchema from './experience.js';
 import educationSchema from './education.js';
 import skillSchema from './skill.js';
 import leadershipSchema from './leadership.js';
-// import { awardSchema } from './award.js';
-// import { groupSchema } from './group.js';
-// import { languageSchema } from './language.js';
-// import { projectSchema } from './project.js';
+import awardSchema from './award.js';
+import groupSchema from './group.js';
+import languageSchema from './language.js';
+import projectSchema from './project.js';
+import accomplishmentSchema from './accomplishment.js';
 
 const resumeSchema = mongoose.Schema(
   {
@@ -29,10 +30,11 @@ const resumeSchema = mongoose.Schema(
     education: [educationSchema],
     skill: [skillSchema],
     leadership: [leadershipSchema],
-    // award: [awardSchema],
-    // group: [groupSchema],
-    // language: [languageSchema],
-    // project: [projectSchema],
+    award: [awardSchema],
+    group: [groupSchema],
+    language: [languageSchema],
+    project: [projectSchema],
+    accomplishment: [accomplishmentSchema],
     main: { type: Boolean, required: true },
   },
   { timestamps: true }
