@@ -55,7 +55,8 @@ const createGroup = asyncHandler(async (req, res) => {
       description: req.body.description,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      position: req.body.position,
+      position: req.body.position ? req.body.position : [],
+      highlighted: req.body.highlighted,
     });
     resume.group = groups;
     await resume.save();
@@ -75,17 +76,18 @@ const updateGroup = asyncHandler(async (req, res) => {
   const { resumeId, groupId } = req.params;
   const resume = await Resume.findById(resumeId);
   if (resume) {
-    const groups = resume.language;
+    const groups = resume.group;
     const [group] = groups.filter((lang) => lang._id.valueOf() === groupId);
     if (group) {
-      group.name = req.body.name || group.name;
-      group.dialect = req.body.dialect || group.dialect;
-      group.years = req.body.years || group.years;
-      group.experience = req.body.experience || group.experience;
+      group.title = req.body.title || group.title;
+      group.description = req.body.description || group.description;
+      group.startDate = req.body.startDate || group.startDate;
+      group.endDate = req.body.endDate || group.endDate;
+      group.position = req.body.position || group.position;
       group.highlighted = req.body.highlighted || group.highlighted;
 
       const updatedResume = await resume.save();
-      const updatedGroups = updatedResume.language;
+      const updatedGroups = updatedResume.group;
       const [updatedGroup] = updatedGroups.filter(
         (lang) => lang._id.valueOf() === groupId
       );
@@ -95,10 +97,11 @@ const updateGroup = asyncHandler(async (req, res) => {
         startDate: updatedGroup.startDate,
         endDate: updatedGroup.endDate,
         position: updatedGroup.position,
+        highlighted: updatedGroup.highlighted,
       });
     } else {
       res.status(400);
-      throw new Error('Language not found');
+      throw new Error('Group not found');
     }
   } else {
     res.status(400);
