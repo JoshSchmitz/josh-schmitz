@@ -9,7 +9,7 @@ import Resume from '../models/resume.js';
 const getAward = asyncHandler(async (req, res) => {
   const { resumeId, awardId } = req.params;
   if (awardId) {
-    const resume = await Resume.findById(awardId);
+    const resume = await Resume.findById(resumeId);
     if (resume) {
       const awards = resume.award;
       const award = awards.filter((aw) => aw._id.valueOf() === awardId);
@@ -24,7 +24,7 @@ const getAward = asyncHandler(async (req, res) => {
       throw new Error('Resume not found');
     }
   } else {
-    const resume = await Resume.findById(awardId);
+    const resume = await Resume.findById(resumeId);
     if (resume) {
       const awards = resume.award;
       if (awards) {
@@ -77,7 +77,7 @@ const updateAward = asyncHandler(async (req, res) => {
   if (resume) {
     const awards = resume.award;
     const [award] = awards.filter((aw) => aw._id.valueOf() === awardId);
-    if (language) {
+    if (award) {
       award.title = req.body.title || award.title;
       award.description = req.body.description || award.description;
       award.date = req.body.date || award.date;
@@ -98,7 +98,7 @@ const updateAward = asyncHandler(async (req, res) => {
       });
     } else {
       res.status(400);
-      throw new Error('Language not found');
+      throw new Error('Award not found');
     }
   } else {
     res.status(400);
