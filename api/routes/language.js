@@ -13,7 +13,7 @@ const router = express.Router({ mergeParams: true });
 // routes
 router.route('/').get(getLanguage).post(protect, createLanguage);
 router
-  .route('/:groupId')
+  .route('/:languageId')
   .get(getLanguage)
   .put(protect, updateLanguage)
   .delete(protect, deleteLanguage);

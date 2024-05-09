@@ -34,7 +34,7 @@ router
   .use('/:resumeId/education', educationRoutes)
   .use('/:resumeId/experience', experienceRoutes)
   .use('/:resumeId/group', groupRoutes)
-  .use('.:resumeId/language', languageRoutes)
+  .use('/:resumeId/language', languageRoutes)
   .use('/:resumeId/leadership', leadershipRoutes)
   .use('/:resumeId/project', projectRoutes)
   .use('/:resumeId/skill', skillRoutes);
