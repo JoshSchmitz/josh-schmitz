@@ -11,7 +11,7 @@ const getProject = asyncHandler(async (req, res) => {
   if (projectId) {
     const resume = await Resume.findById(resumeId);
     if (resume) {
-      const projects = resume.language;
+      const projects = resume.project;
       const project = projects.filter(
         (proj) => proj._id.valueOf() === projectId
       );
@@ -57,7 +57,7 @@ const createProject = asyncHandler(async (req, res) => {
       description: req.body.description,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      skills: req.body.skills,
+      skills: req.body.skills ? req.body.skills : [],
       highlighted: req.body.highlighted,
     });
     resume.project = projects;
@@ -85,8 +85,8 @@ const updateProject = asyncHandler(async (req, res) => {
     if (project) {
       project.title = req.body.title || project.title;
       project.description = req.body.description || project.description;
-      project.startDate = req.body.startDate || project.startDate;
-      project.endDate = req.body.endDate || project.endDate;
+      project.startDate = req.body.startDate ? req.body.startDate : '';
+      project.endDate = req.body.endDate ? req.body.endDate : '';
       project.skills = req.body.skills || project.skills;
       project.highlighted = req.body.highlighted || project.highlighted;
 
@@ -105,7 +105,7 @@ const updateProject = asyncHandler(async (req, res) => {
       });
     } else {
       res.status(400);
-      throw new Error('Language not found');
+      throw new Error('Project not found');
     }
   } else {
     res.status(400);
