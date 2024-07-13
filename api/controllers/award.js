@@ -80,7 +80,7 @@ const updateAward = asyncHandler(async (req, res) => {
     if (award) {
       award.title = req.body.title || award.title;
       award.description = req.body.description || award.description;
-      award.date = req.body.date || award.date;
+      award.date = req.body.date ? req.body.date : '';
       award.icon = req.body.icon || award.icon;
       award.highlighted = req.body.highlighted || award.highlighted;
 
