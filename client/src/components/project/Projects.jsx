@@ -34,7 +34,7 @@ const Projects = ({ resumeId }) => {
       <Modal
         className='modal-content'
         overlayClassName='modal-overlay'
-        contentLabel='Create Leadership Modal'
+        contentLabel='Create Project Modal'
         isOpen={modalIsOpen}
         onRequestClose={toggleModal}
         preventScroll={false}
@@ -68,7 +68,7 @@ const Projects = ({ resumeId }) => {
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((proj) => {
                 return (
-                  <Project key={proj._id} resume={resumeId} leadership={proj} />
+                  <Project key={proj._id} resume={resumeId} project={proj} />
                 );
               })}
         </div>

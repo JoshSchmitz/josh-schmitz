@@ -34,7 +34,7 @@ const Groups = ({ resumeId }) => {
       <Modal
         className='modal-content'
         overlayClassName='modal-overlay'
-        contentLabel='Create Leadership Modal'
+        contentLabel='Create Group Modal'
         isOpen={modalIsOpen}
         onRequestClose={toggleModal}
         preventScroll={false}
@@ -42,7 +42,7 @@ const Groups = ({ resumeId }) => {
       >
         <GroupForm resumeId={resumeId} edit={false} toggleModal={toggleModal} />
       </Modal>
-      <section className='section' id='group'>
+      <section className='section' id='groups'>
         <div className='headline'>
           <h1 className='title'>Groups</h1>
           <div className='actions'>
@@ -64,7 +64,7 @@ const Groups = ({ resumeId }) => {
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((group) => {
                 return (
-                  <Group key={group._id} resume={resumeId} leadership={group} />
+                  <Group key={group._id} resume={resumeId} group={group} />
                 );
               })}
         </div>

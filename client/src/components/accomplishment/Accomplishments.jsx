@@ -34,7 +34,7 @@ const Accomplishments = ({ resumeId }) => {
       <Modal
         className='modal-content'
         overlayClassName='modal-overlay'
-        contentLabel='Create Leadership Modal'
+        contentLabel='Create Accomplishment Modal'
         isOpen={modalIsOpen}
         onRequestClose={toggleModal}
         preventScroll={false}
@@ -71,7 +71,7 @@ const Accomplishments = ({ resumeId }) => {
                   <Accomplishment
                     key={acc._id}
                     resume={resumeId}
-                    leadership={acc}
+                    accomplishment={acc}
                   />
                 );
               })}

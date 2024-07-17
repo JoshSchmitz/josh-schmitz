@@ -33,7 +33,7 @@ const Languages = ({ resumeId }) => {
       <Modal
         className='modal-content'
         overlayClassName='modal-overlay'
-        contentLabel='Create Leadership Modal'
+        contentLabel='Create Language Modal'
         isOpen={modalIsOpen}
         onRequestClose={toggleModal}
         preventScroll={false}
@@ -56,7 +56,7 @@ const Languages = ({ resumeId }) => {
           </div>
         </div>
         <hr />
-        <div className='projects'>
+        <div className='languages'>
           {isLoading && (
             <RingLoader className='loader-page' loading={isLoading} size={50} />
           )}
@@ -67,11 +67,7 @@ const Languages = ({ resumeId }) => {
               // .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((lang) => {
                 return (
-                  <Language
-                    key={lang._id}
-                    resume={resumeId}
-                    leadership={lang}
-                  />
+                  <Language key={lang._id} resume={resumeId} language={lang} />
                 );
               })}
         </div>

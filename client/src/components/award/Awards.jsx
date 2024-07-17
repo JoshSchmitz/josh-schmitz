@@ -53,7 +53,7 @@ const Awards = ({ resumeId }) => {
           </div>
         </div>
         <hr />
-        <div className='projects'>
+        <div className='awards'>
           {isLoading && (
             <RingLoader className='loader-page' loading={isLoading} size={50} />
           )}
@@ -63,7 +63,7 @@ const Awards = ({ resumeId }) => {
               .filter((aw) => aw.title)
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((aw) => {
-                return <Award key={aw._id} resume={resumeId} leadership={aw} />;
+                return <Award key={aw._id} resume={resumeId} award={aw} />;
               })}
         </div>
       </section>
