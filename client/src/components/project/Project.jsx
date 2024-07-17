@@ -1,10 +1,112 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import dayjs from 'dayjs';
 
-const Project = () => {
-  return <div>Project</div>;
+// import state
+import { useDeleteProjectMutation } from '../../store/slices/resume/api-project';
+
+// import components
+import Modal from 'react-modal';
+import Confirm from '../confirm/Confirm';
+import ProjectForm from './form/ProjectForm';
+
+// import icons
+import { MdEdit, MdDelete } from 'react-icons/md';
+// import * as MdIcons from 'react-icons/md';
+
+const Project = ({ project, resume }) => {
+  // generate icon
+  // let Icon = '';
+  // Icon = MdIcons[`${project.icon}`];
+
+  // modal functions
+  const [confirmIsOpen, setConfirmIsOpen] = useState(false);
+  const confirmModal = () => {
+    setConfirmIsOpen(!confirmIsOpen);
+  };
+  const [formIsOpen, setFormIsOpen] = useState(false);
+  const formModal = () => {
+    setFormIsOpen(!formIsOpen);
+  };
+
+  // redux state
+  const [deleteProject, { deleteIsLoading }] = useDeleteProjectMutation();
+
+  // delete leadership handler
+  const handleDelete = () => {
+    try {
+      deleteProject({
+        resumeId: resume,
+        leadershipId: project._id,
+      });
+      toast.warning('Project deleted');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  return (
+    <>
+      <Modal
+        className='modal-content'
+        overlayClassName='modal-overlay'
+        contentLabel='Update Project Modal'
+        isOpen={formIsOpen}
+        onRequestClose={formModal}
+        preventScroll={true}
+        shouldFocusAfterRender={false}
+      >
+        <ProjectForm
+          resumeId={resume}
+          leadershipId={project._id}
+          edit={true}
+          toggleModal={formModal}
+        />
+      </Modal>
+      <Modal
+        className='modal-content'
+        overlayClassName='modal-overlay'
+        contentLabel='Confirm Modal'
+        isOpen={confirmIsOpen}
+        onRequestClose={confirmModal}
+        preventScroll={true}
+        shouldFocusAfterRender={false}
+      >
+        <Confirm
+          confirm={handleDelete}
+          confirmLabel='Delete'
+          loading={deleteIsLoading}
+          close={confirmModal}
+          closeLabel='Cancel'
+          message='Are you sure you want to delete this project?'
+        />
+      </Modal>
+      <div
+        className={project.highlighted ? 'project highlighted' : 'project'}
+        key={project._id}
+      >
+        {/* <div className='icon'>
+          <Icon />
+        </div> */}
+        <div className='details'>
+          <h3 className='proj-title'>{project.title}</h3>
+          <p className='description'>{project.description}</p>
+          <p className='date'>
+            {dayjs(project.date).add(1, 'day').format('MMMM D, YYYY')}
+          </p>
+        </div>
+        <div className='actions'>
+          <MdEdit className='action update' onClick={formModal} />
+          <MdDelete className='action delete' onClick={confirmModal} />
+        </div>
+      </div>
+    </>
+  );
 };
 Project.propTypes = {
   project: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
 };
+
 export default Project;
