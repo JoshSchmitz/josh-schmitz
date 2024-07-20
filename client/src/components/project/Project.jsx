@@ -10,6 +10,7 @@ import { useDeleteProjectMutation } from '../../store/slices/resume/api-project'
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import ProjectForm from './form/ProjectForm';
+import SkillsList from '../skill/SkillsList';
 
 // import icons
 import { MdEdit, MdDelete } from 'react-icons/md';
@@ -91,10 +92,17 @@ const Project = ({ project, resume }) => {
         </div> */}
         <div className='details'>
           <h3 className='proj-title'>{project.title}</h3>
-          <p className='description'>{project.description}</p>
-          <p className='date'>
-            {dayjs(project.date).add(1, 'day').format('MMMM D, YYYY')}
+          <p className='dates'>
+            {`${dayjs(project.startDate)
+              .add(1, 'day')
+              .format('MMMM D, YYYY')} to ${
+              project.endDate === ''
+                ? 'Now'
+                : dayjs(project.endDate).add(1, 'day').format('MMMM D, YYYY')
+            }`}
           </p>
+          <p className='description'>{project.description}</p>
+          <SkillsList resumeId={resume} list={project.skills} />
         </div>
         <div className='actions'>
           <MdEdit className='action update' onClick={formModal} />
