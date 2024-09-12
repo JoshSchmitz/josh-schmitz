@@ -14,7 +14,7 @@ const Icon = ({ icon }) => {
     }
   };
 
-  return <div>{React.createElement(DisplayIcon(icon))}</div>;
+  return <>{React.createElement(DisplayIcon(icon))}</>;
 };
 Icon.propTypes = {
   icon: PropTypes.any,
