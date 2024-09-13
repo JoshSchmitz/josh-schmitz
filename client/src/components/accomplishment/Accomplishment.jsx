@@ -10,16 +10,9 @@ import { useDeleteAccomplishmentMutation } from '../../store/slices/resume/api-a
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import AccomplishmentForm from './form/AccomplishmentForm';
-
-// import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-// import * as MdIcons from 'react-icons/md';
+import Icon from '../icon/Icon';
 
 const Accomplishment = ({ accomplishment, resume }) => {
-  // generate icon
-  // let Icon = '';
-  // Icon = MdIcons[`${accomplishment.icon}`];
-
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -60,7 +53,7 @@ const Accomplishment = ({ accomplishment, resume }) => {
       >
         <AccomplishmentForm
           resumeId={resume}
-          leadershipId={accomplishment._id}
+          accomplishmentId={accomplishment._id}
           edit={true}
           toggleModal={formModal}
         />
@@ -91,7 +84,9 @@ const Accomplishment = ({ accomplishment, resume }) => {
         }
         key={accomplishment._id}
       >
-        <div className='icon'>{/* <Icon /> */}</div>
+        <div className='icon'>
+          <Icon icon={accomplishment.icon} />
+        </div>
         <div className='details'>
           <h3 className='lead-title'>{accomplishment.title}</h3>
           <p className='description'>{accomplishment.description}</p>
@@ -100,8 +95,12 @@ const Accomplishment = ({ accomplishment, resume }) => {
           </p>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <div className='action update' onClick={formModal}>
+            <Icon icon='MdEdit' />
+          </div>
+          <div className='action delete' onClick={confirmModal}>
+            <Icon icon='MdDelete' />
+          </div>
         </div>
       </div>
     </>
