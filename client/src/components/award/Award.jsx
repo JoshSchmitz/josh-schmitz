@@ -10,16 +10,9 @@ import { useDeleteAwardMutation } from '../../store/slices/resume/api-award';
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import AwardForm from './form/AwardForm';
-
-// import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-// import * as MdIcons from 'react-icons/md';
+import Icon from '../icon/Icon';
 
 const Award = ({ award, resume }) => {
-  // generate icon
-  // let Icon = '';
-  // Icon = MdIcons[`${leadership.icon}`];
-
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -59,7 +52,7 @@ const Award = ({ award, resume }) => {
       >
         <AwardForm
           resumeId={resume}
-          leadershipId={award._id}
+          awardId={award._id}
           edit={true}
           toggleModal={formModal}
         />
@@ -86,7 +79,9 @@ const Award = ({ award, resume }) => {
         className={award.highlighted ? 'award highlighted' : 'award'}
         key={award._id}
       >
-        <div className='icon'>{/* <Icon /> */}</div>
+        <div className='icon'>
+          <Icon icon={award.icon} />
+        </div>
         <div className='details'>
           <h3 className='lead-title'>{award.title}</h3>
           <p className='description'>{award.description}</p>
@@ -95,8 +90,12 @@ const Award = ({ award, resume }) => {
           </p>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <div className='action update' onClick={formModal}>
+            <Icon icon='MdEdit' />
+          </div>
+          <div className='action delete' onClick={confirmModal}>
+            <Icon icon='MdDelete' />
+          </div>
         </div>
       </div>
     </>
