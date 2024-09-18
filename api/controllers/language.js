@@ -55,7 +55,7 @@ const createLanguage = asyncHandler(async (req, res) => {
     languages.push({
       name: req.body.name,
       dialect: req.body.dialect,
-      years: req.body.years,
+      startDate: req.body.startDate,
       experience: req.body.experience,
       highlighted: req.body.highlighted,
     });
@@ -84,7 +84,7 @@ const updateLanguage = asyncHandler(async (req, res) => {
     if (language) {
       language.name = req.body.name || language.name;
       language.dialect = req.body.dialect || language.dialect;
-      language.years = req.body.years || language.years;
+      language.startDate = req.body.startDate || language.startDate;
       language.experience = req.body.experience || language.experience;
       language.highlighted = req.body.highlighted || language.highlighted;
 
@@ -96,7 +96,7 @@ const updateLanguage = asyncHandler(async (req, res) => {
       res.status(200).json({
         name: updatedLanguage.name,
         dialect: updatedLanguage.dialect,
-        years: updatedLanguage.years,
+        startDate: updatedLanguage.startDate,
         experience: updatedLanguage.experience,
         highlighted: updatedLanguage.highlighted,
       });
