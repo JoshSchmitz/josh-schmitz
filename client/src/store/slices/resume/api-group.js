@@ -22,7 +22,7 @@ export const groupApiSlice = apiSlice.injectEndpoints({
     }),
     updateGroup: builder.mutation({
       query: (data) => ({
-        url: `${RESUME_URL}/${data.resumeId}/Group/${data.groupId}`,
+        url: `${RESUME_URL}/${data.resumeId}/group/${data.groupId}`,
         method: 'PUT',
         body: data,
       }),

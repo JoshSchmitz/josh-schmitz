@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import duration from 'dayjs/plugin/duration';
 
 // import state
 import { useDeleteGroupMutation } from '../../store/slices/resume/api-group';
@@ -14,6 +16,10 @@ import LeadershipForm from './form/GroupForm';
 // import icons
 import { MdEdit, MdDelete } from 'react-icons/md';
 // import * as MdIcons from 'react-icons/md';
+
+// comfigure dayjs
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 const Group = ({ group, resume }) => {
   // generate icon
@@ -46,6 +52,51 @@ const Group = ({ group, resume }) => {
     }
   };
 
+  const calculateDuration = (startdate, enddate) => {
+    const start = startdate;
+    const end = enddate;
+    let duration;
+    let remainder;
+    let years;
+    let months;
+
+    if (!end) {
+      duration = Math.abs(dayjs.duration(dayjs(start).diff()).asYears());
+      years = Math.floor(
+        Math.abs(dayjs.duration(dayjs(start).diff()).asYears())
+      );
+      remainder = duration - dayjs.duration({ years: years }).asYears();
+      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+      if (months === 12) {
+        years = years + 1;
+        months = 0;
+      }
+      return years === 0
+        ? dayjs.duration({ months: months }).humanize()
+        : months === 0
+        ? dayjs.duration({ years: years }).humanize()
+        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+            .duration({ months: months })
+            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
+    } else {
+      duration = dayjs.duration(dayjs(end).diff(start)).asYears();
+      years = Math.floor(dayjs.duration(dayjs(end).diff(start)).asYears());
+      remainder = duration - dayjs.duration({ years: years }).asYears();
+      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+      if (months === 12) {
+        years = years + 1;
+        months = 0;
+      }
+      return years === 0
+        ? dayjs.duration({ months: months }).humanize()
+        : months === 0
+        ? dayjs.duration({ years: years }).humanize()
+        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+            .duration({ months: months })
+            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
+    }
+  };
+
   return (
     <>
       <Modal
@@ -59,7 +110,7 @@ const Group = ({ group, resume }) => {
       >
         <LeadershipForm
           resumeId={resume}
-          leadershipId={group._id}
+          groupId={group._id}
           edit={true}
           toggleModal={formModal}
         />
@@ -90,8 +141,18 @@ const Group = ({ group, resume }) => {
         <div className='details'>
           <h3 className='group-title'>{group.title}</h3>
           <p className='description'>{group.description}</p>
-          <p className='date'>
-            {dayjs(group.date).add(1, 'day').format('MMMM D, YYYY')}
+          <p className='dates'>
+            {group.startDate !== ''
+              ? dayjs(group.startDate).add(1, 'day').format('MMMM D, YYYY')
+              : 'Now'}{' '}
+            to{' '}
+            {group.endDate !== ''
+              ? dayjs(group.endDate).add(1, 'day').format('MMMM D, YYYY')
+              : 'Now'}
+          </p>
+          <div className='separator'></div>
+          <p className='duration'>
+            {calculateDuration(group.startDate, group.endDate)}
           </p>
         </div>
         <div className='actions'>
