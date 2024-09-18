@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 
@@ -16,6 +16,7 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 // import * as MdIcons from 'react-icons/md';
 
 const Language = ({ language, resume }) => {
+  const [experience, setExperience] = useState([]);
   // generate icon
   // let Icon = '';
   // Icon = MdIcons[`${language.icon}`];
@@ -32,6 +33,19 @@ const Language = ({ language, resume }) => {
 
   // redux state
   const [deleteLanguage, { deleteIsLoading }] = useDeleteLanguageMutation();
+
+  // generate experience
+  useEffect(() => {
+    const xp = [];
+    for (let i = 0; i < 6; i++) {
+      if (i < language.experience) {
+        xp.push('filled');
+      } else {
+        xp.push('empty');
+      }
+    }
+    setExperience(xp);
+  }, [language]);
 
   // delete leadership handler
   const handleDelete = () => {
@@ -59,7 +73,7 @@ const Language = ({ language, resume }) => {
       >
         <LeadershipForm
           resumeId={resume}
-          leadershipId={language._id}
+          languageId={language._id}
           edit={true}
           toggleModal={formModal}
         />
@@ -86,13 +100,26 @@ const Language = ({ language, resume }) => {
         className={language.highlighted ? 'language highlighted' : 'language'}
         key={language._id}
       >
-        <div className='icon'>{/* <Icon /> */}</div>
         <div className='details'>
-          <h3 className='lang-title'>{language.title}</h3>
-          <p className='description'>{language.description}</p>
-          <p className='date'>
-            {dayjs(language.date).add(1, 'day').format('MMMM D, YYYY')}
-          </p>
+          <div className='info'>
+            <h3 className='name'>{language.name}</h3>
+            <div className='separator'></div>
+            <p className='years'>
+              {dayjs
+                .duration(dayjs(language.startDate).diff(dayjs()))
+                .humanize()}
+            </p>
+          </div>
+          <p className='dialect'>{language.dialect}</p>
+          <div className='exp'>
+            {experience.map((item, i) => {
+              if (item === 'filled') {
+                return <div key={i} className='xp filled'></div>;
+              } else {
+                return <div key={i} className='xp'></div>;
+              }
+            })}
+          </div>
         </div>
         <div className='actions'>
           <MdEdit className='action update' onClick={formModal} />
