@@ -82,7 +82,7 @@ const updateAward = asyncHandler(async (req, res) => {
       award.description = req.body.description || award.description;
       award.date = req.body.date ? req.body.date : '';
       award.icon = req.body.icon || award.icon;
-      award.highlighted = req.body.highlighted || award.highlighted;
+      award.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedAwards = updatedResume.award;

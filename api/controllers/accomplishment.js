@@ -87,8 +87,7 @@ const updateAccomplishment = asyncHandler(async (req, res) => {
         req.body.description || accomplishment.description;
       accomplishment.date = req.body.date ? req.body.date : '';
       accomplishment.icon = req.body.icon || accomplishment.icon;
-      accomplishment.highlighted =
-        req.body.highlighted || accomplishment.highlighted;
+      accomplishment.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedAccomplishments = updatedResume.accomplishment;

@@ -88,7 +88,7 @@ const updateProject = asyncHandler(async (req, res) => {
       project.startDate = req.body.startDate ? req.body.startDate : '';
       project.endDate = req.body.endDate ? req.body.endDate : '';
       project.skills = req.body.skills || project.skills;
-      project.highlighted = req.body.highlighted || project.highlighted;
+      project.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedProjects = updatedResume.project;

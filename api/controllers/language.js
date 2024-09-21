@@ -86,7 +86,7 @@ const updateLanguage = asyncHandler(async (req, res) => {
       language.dialect = req.body.dialect || language.dialect;
       language.startDate = req.body.startDate || language.startDate;
       language.experience = req.body.experience || language.experience;
-      language.highlighted = req.body.highlighted || language.highlighted;
+      language.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedLanguages = updatedResume.language;

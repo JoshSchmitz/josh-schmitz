@@ -84,7 +84,7 @@ const updateGroup = asyncHandler(async (req, res) => {
       group.startDate = req.body.startDate || group.startDate;
       group.endDate = req.body.endDate || group.endDate;
       group.position = req.body.position || group.position;
-      group.highlighted = req.body.highlighted || group.highlighted;
+      group.highlighted = req.body.highlighted;
 
       const updatedResume = await resume.save();
       const updatedGroups = updatedResume.group;
