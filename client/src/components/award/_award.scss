@@ -1,0 +1,59 @@
+.section#awards {
+    .awards {
+        padding: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .award {
+            display: flex;
+            // align-items: center;
+            gap: 8px;
+            width: fit-content;
+            border: solid $highlight 2px;
+            border-radius: 10px;
+            padding: 5px 8px;
+
+            &>.icon {
+                font-size: 1.8rem;
+                font-weight: bolder;
+                margin-top: 5px;
+            }
+
+            &>.details {
+                &>.headline {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .date {
+                        display: flex;
+                        gap: 6px;
+                        color: $text-medium;
+                    }
+
+                    .separator {
+                        @include separator;
+                        height: 5px;
+                        width: 5px;
+                    }
+                }
+            }
+
+            &>.actions {
+                gap: 4px;
+
+                &>.action {
+                    font-size: 1.2rem;
+                }
+            }
+
+            &.highlighted {
+                padding: 8px;
+                border: solid $bg-dark 2px;
+                border-radius: 12px;
+                @include box-shadow;
+            }
+        }
+    }
+}

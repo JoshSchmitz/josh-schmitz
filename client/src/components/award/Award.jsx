@@ -83,11 +83,15 @@ const Award = ({ award, resume }) => {
           <Icon icon={award.icon} />
         </div>
         <div className='details'>
-          <h3 className='lead-title'>{award.title}</h3>
+          <div className='headline'>
+            <h3 className='lead-title'>{award.title}</h3>
+            <div className='separator' />
+            <p className='date'>
+              {dayjs(award.date).add(1, 'day').format('MMMM D, YYYY')}
+            </p>
+          </div>
+
           <p className='description'>{award.description}</p>
-          <p className='date'>
-            {dayjs(award.date).add(1, 'day').format('MMMM D, YYYY')}
-          </p>
         </div>
         <div className='actions'>
           <div className='action update' onClick={formModal}>
