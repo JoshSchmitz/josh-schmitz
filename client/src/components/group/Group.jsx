@@ -52,50 +52,50 @@ const Group = ({ group, resume }) => {
     }
   };
 
-  const calculateDuration = (startdate, enddate) => {
-    const start = startdate;
-    const end = enddate;
-    let duration;
-    let remainder;
-    let years;
-    let months;
+  // const calculateDuration = (startdate, enddate) => {
+  //   const start = startdate;
+  //   const end = enddate;
+  //   let duration;
+  //   let remainder;
+  //   let years;
+  //   let months;
 
-    if (!end) {
-      duration = Math.abs(dayjs.duration(dayjs(start).diff()).asYears());
-      years = Math.floor(
-        Math.abs(dayjs.duration(dayjs(start).diff()).asYears())
-      );
-      remainder = duration - dayjs.duration({ years: years }).asYears();
-      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
-      if (months === 12) {
-        years = years + 1;
-        months = 0;
-      }
-      return years === 0
-        ? dayjs.duration({ months: months }).humanize()
-        : months === 0
-        ? dayjs.duration({ years: years }).humanize()
-        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
-            .duration({ months: months })
-            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
-    } else {
-      duration = dayjs.duration(dayjs(end).diff(start)).asYears();
-      years = Math.floor(dayjs.duration(dayjs(end).diff(start)).asYears());
-      remainder = duration - dayjs.duration({ years: years }).asYears();
-      months = Math.round(dayjs.duration({ years: remainder }).asMonths());
-      if (months === 12) {
-        years = years + 1;
-        months = 0;
-      }
-      return years === 0
-        ? dayjs.duration({ months: months }).humanize()
-        : months === 0
-        ? dayjs.duration({ years: years }).humanize()
-        : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
-            .duration({ months: months })
-            .asMonths()} ${months > 1 ? 'months' : 'month'}`;
-    }
-  };
+  //   if (!end) {
+  //     duration = Math.abs(dayjs.duration(dayjs(start).diff()).asYears());
+  //     years = Math.floor(
+  //       Math.abs(dayjs.duration(dayjs(start).diff()).asYears())
+  //     );
+  //     remainder = duration - dayjs.duration({ years: years }).asYears();
+  //     months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+  //     if (months === 12) {
+  //       years = years + 1;
+  //       months = 0;
+  //     }
+  //     return years === 0
+  //       ? dayjs.duration({ months: months }).humanize()
+  //       : months === 0
+  //       ? dayjs.duration({ years: years }).humanize()
+  //       : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+  //           .duration({ months: months })
+  //           .asMonths()} ${months > 1 ? 'months' : 'month'}`;
+  //   } else {
+  //     duration = dayjs.duration(dayjs(end).diff(start)).asYears();
+  //     years = Math.floor(dayjs.duration(dayjs(end).diff(start)).asYears());
+  //     remainder = duration - dayjs.duration({ years: years }).asYears();
+  //     months = Math.round(dayjs.duration({ years: remainder }).asMonths());
+  //     if (months === 12) {
+  //       years = years + 1;
+  //       months = 0;
+  //     }
+  //     return years === 0
+  //       ? dayjs.duration({ months: months }).humanize()
+  //       : months === 0
+  //       ? dayjs.duration({ years: years }).humanize()
+  //       : `${dayjs.duration({ years: years }).humanize()}, ${dayjs
+  //           .duration({ months: months })
+  //           .asMonths()} ${months > 1 ? 'months' : 'month'}`;
+  //   }
+  // };
 
   return (
     <>
@@ -137,23 +137,22 @@ const Group = ({ group, resume }) => {
         className={group.highlighted ? 'group highlighted' : 'group'}
         key={group._id}
       >
-        <div className='icon'>{/* <Icon /> */}</div>
+        {/* <div className='icon'><Icon /></div> */}
         <div className='details'>
-          <h3 className='group-title'>{group.title}</h3>
+          <div className='headline'>
+            <h3 className='group-title'>{group.title}</h3>
+            <div className='separator'></div>
+            <p className='dates'>
+              {group.startDate !== ''
+                ? dayjs(group.startDate).add(1, 'day').format('MMMM D, YYYY')
+                : 'Now'}{' '}
+              to{' '}
+              {group.endDate !== ''
+                ? dayjs(group.endDate).add(1, 'day').format('MMMM D, YYYY')
+                : 'Now'}
+            </p>
+          </div>
           <p className='description'>{group.description}</p>
-          <p className='dates'>
-            {group.startDate !== ''
-              ? dayjs(group.startDate).add(1, 'day').format('MMMM D, YYYY')
-              : 'Now'}{' '}
-            to{' '}
-            {group.endDate !== ''
-              ? dayjs(group.endDate).add(1, 'day').format('MMMM D, YYYY')
-              : 'Now'}
-          </p>
-          <div className='separator'></div>
-          <p className='duration'>
-            {calculateDuration(group.startDate, group.endDate)}
-          </p>
         </div>
         <div className='actions'>
           <MdEdit className='action update' onClick={formModal} />
