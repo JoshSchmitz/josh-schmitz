@@ -91,16 +91,20 @@ const Project = ({ project, resume }) => {
           <Icon />
         </div> */}
         <div className='details'>
-          <h3 className='proj-title'>{project.title}</h3>
-          <p className='dates'>
-            {`${dayjs(project.startDate)
-              .add(1, 'day')
-              .format('MMMM D, YYYY')} to ${
-              project.endDate === ''
-                ? 'Now'
-                : dayjs(project.endDate).add(1, 'day').format('MMMM D, YYYY')
-            }`}
-          </p>
+          <div className='headline'>
+            <h3 className='proj-title'>{project.title}</h3>
+            <div className='separator'></div>
+            <p className='dates'>
+              {`${dayjs(project.startDate)
+                .add(1, 'day')
+                .format('MMMM D, YYYY')} to ${
+                project.endDate === ''
+                  ? 'Now'
+                  : dayjs(project.endDate).add(1, 'day').format('MMMM D, YYYY')
+              }`}
+            </p>
+          </div>
+
           <p className='description'>{project.description}</p>
           <SkillsList resumeId={resume} list={project.skills} />
         </div>
