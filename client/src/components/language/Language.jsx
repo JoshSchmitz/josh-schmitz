@@ -103,6 +103,9 @@ const Language = ({ language, resume }) => {
         <div className='details'>
           <div className='info'>
             <h3 className='name'>{language.name}</h3>
+            <p className='dialect'>
+              {language.dialect && `( ${language.dialect} )`}
+            </p>
             <div className='separator'></div>
             <p className='years'>
               {dayjs
@@ -110,7 +113,6 @@ const Language = ({ language, resume }) => {
                 .humanize()}
             </p>
           </div>
-          <p className='dialect'>{language.dialect}</p>
           <div className='exp'>
             {experience.map((item, i) => {
               if (item === 'filled') {
