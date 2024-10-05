@@ -60,7 +60,7 @@ const Project = ({ project, resume }) => {
       >
         <ProjectForm
           resumeId={resume}
-          leadershipId={project._id}
+          projectId={project._id}
           edit={true}
           toggleModal={formModal}
         />
@@ -95,12 +95,10 @@ const Project = ({ project, resume }) => {
             <h3 className='proj-title'>{project.title}</h3>
             <div className='separator'></div>
             <p className='dates'>
-              {`${dayjs(project.startDate)
-                .add(1, 'day')
-                .format('MMMM D, YYYY')} to ${
+              {`${dayjs(project.startDate).format('MMMM D, YYYY')} to ${
                 project.endDate === ''
                   ? 'Now'
-                  : dayjs(project.endDate).add(1, 'day').format('MMMM D, YYYY')
+                  : dayjs(project.endDate).format('MMMM D, YYYY')
               }`}
             </p>
           </div>
