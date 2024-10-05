@@ -79,7 +79,7 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
         startDate:
           skill.startDate === ''
             ? null
-            : dayjs(skill.startDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(skill.startDate).format('YYYY-MM-DD'),
         experience: skill.experience,
         icon: {
           value: skill.icon,

@@ -144,11 +144,11 @@ const Group = ({ group, resume }) => {
             <div className='separator'></div>
             <p className='dates'>
               {group.startDate !== ''
-                ? dayjs(group.startDate).add(1, 'day').format('MMMM D, YYYY')
+                ? dayjs(group.startDate).format('MMMM D, YYYY')
                 : 'Now'}{' '}
               to{' '}
               {group.endDate !== ''
-                ? dayjs(group.endDate).add(1, 'day').format('MMMM D, YYYY')
+                ? dayjs(group.endDate).format('MMMM D, YYYY')
                 : 'Now'}
             </p>
           </div>

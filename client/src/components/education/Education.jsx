@@ -89,15 +89,11 @@ const Education = ({ education, resume }) => {
             <div className='dates'>
               <h4 className='startdate'>
                 {education.startDate !== ''
-                  ? dayjs(education.startDate)
-                      .add(1, 'day')
-                      .format('MMMM D, YYYY')
+                  ? dayjs(education.startDate).format('MMMM D, YYYY')
                   : 'Now'}{' '}
                 to{' '}
                 {education.endDate !== ''
-                  ? dayjs(education.endDate)
-                      .add(1, 'day')
-                      .format('MMMM D, YYYY')
+                  ? dayjs(education.endDate).format('MMMM D, YYYY')
                   : 'Now'}
               </h4>
             </div>

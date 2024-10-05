@@ -95,7 +95,7 @@ const Leadership = ({ leadership, resume }) => {
           <h3 className='lead-title'>{leadership.title}</h3>
           <p className='description'>{leadership.description}</p>
           <p className='date'>
-            {dayjs(leadership.date).add(1, 'day').format('MMMM D, YYYY')}
+            {dayjs(leadership.date).format('MMMM D, YYYY')}
           </p>
         </div>
         <div className='actions'>

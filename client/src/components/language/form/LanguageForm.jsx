@@ -56,7 +56,7 @@ const LanguageForm = ({ resumeId, languageId, edit, toggleModal }) => {
         startDate:
           language.startDate === ''
             ? null
-            : dayjs(language.startDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(language.startDate).format('YYYY-MM-DD'),
         highlighted: language.highlighted,
       };
       methods.reset(lang);

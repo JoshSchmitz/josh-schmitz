@@ -78,7 +78,7 @@ const AccomplishmentForm = ({
         date:
           accomplishment.date === ''
             ? null
-            : dayjs(accomplishment.date).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(accomplishment.date).format('YYYY-MM-DD'),
         highlighted: accomplishment.highlighted,
       };
       methods.reset(accomp);

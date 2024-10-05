@@ -71,7 +71,7 @@ const LeadershipForm = ({ resumeId, leadershipId, edit, toggleModal }) => {
         date:
           leadership.date === ''
             ? null
-            : dayjs(leadership.date).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(leadership.date).format('YYYY-MM-DD'),
         highlighted: leadership.highlighted,
       };
       methods.reset(lead);

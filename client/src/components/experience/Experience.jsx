@@ -151,13 +151,11 @@ const Experience = ({ experience, resume }) => {
             <div className='separator'></div>
             <p className='dates'>
               {experience.startDate !== ''
-                ? dayjs(experience.startDate)
-                    .add(1, 'day')
-                    .format('MMMM D, YYYY')
+                ? dayjs(experience.startDate).format('MMMM D, YYYY')
                 : 'Now'}{' '}
               to{' '}
               {experience.endDate !== ''
-                ? dayjs(experience.endDate).add(1, 'day').format('MMMM D, YYYY')
+                ? dayjs(experience.endDate).format('MMMM D, YYYY')
                 : 'Now'}
             </p>
             <div className='separator'></div>

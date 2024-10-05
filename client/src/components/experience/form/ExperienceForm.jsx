@@ -94,11 +94,11 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
         startDate:
           experience.startDate === ''
             ? null
-            : dayjs(experience.startDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(experience.startDate).format('YYYY-MM-DD'),
         endDate:
           experience.endDate === ''
             ? null
-            : dayjs(experience.endDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(experience.endDate).format('YYYY-MM-DD'),
         highlighted: experience.highlighted,
         companyname: experience.company.name,
         phone: phone

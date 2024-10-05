@@ -71,11 +71,11 @@ const GroupForm = ({ resumeId, groupId, edit, toggleModal }) => {
         startDate:
           group.startDate === ''
             ? null
-            : dayjs(group.startDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(group.startDate).format('YYYY-MM-DD'),
         endDate:
           group.endDate === ''
             ? null
-            : dayjs(group.endDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(group.endDate).format('YYYY-MM-DD'),
         position: group.position,
         highlighted: group.highlighted,
       };

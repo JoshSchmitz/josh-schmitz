@@ -86,9 +86,7 @@ const Award = ({ award, resume }) => {
           <div className='headline'>
             <h3 className='lead-title'>{award.title}</h3>
             <div className='separator' />
-            <p className='date'>
-              {dayjs(award.date).add(1, 'day').format('MMMM D, YYYY')}
-            </p>
+            <p className='date'>{dayjs(award.date).format('MMMM D, YYYY')}</p>
           </div>
 
           <p className='description'>{award.description}</p>

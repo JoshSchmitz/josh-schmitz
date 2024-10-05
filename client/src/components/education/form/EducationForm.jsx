@@ -82,11 +82,11 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
         startDate:
           education.startDate === ''
             ? null
-            : dayjs(education.startDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(education.startDate).format('YYYY-MM-DD'),
         endDate:
           education.endDate === ''
             ? null
-            : dayjs(education.endDate).add(1, 'day').format('YYYY-MM-DD'),
+            : dayjs(education.endDate).format('YYYY-MM-DD'),
         highlighted: education.highlighted,
       };
       methods.reset(ed);

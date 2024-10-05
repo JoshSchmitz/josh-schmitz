@@ -91,7 +91,7 @@ const Accomplishment = ({ accomplishment, resume }) => {
           <h3 className='lead-title'>{accomplishment.title}</h3>
           <p className='description'>{accomplishment.description}</p>
           <p className='date'>
-            {dayjs(accomplishment.date).add(1, 'day').format('MMMM D, YYYY')}
+            {dayjs(accomplishment.date).format('MMMM D, YYYY')}
           </p>
         </div>
         <div className='actions'>

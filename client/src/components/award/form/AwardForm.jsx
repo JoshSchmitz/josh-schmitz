@@ -68,10 +68,7 @@ const AwardForm = ({ resumeId, awardId, edit, toggleModal }) => {
             </div>
           ),
         },
-        date:
-          award.date === ''
-            ? null
-            : dayjs(award.date).add(1, 'day').format('YYYY-MM-DD'),
+        date: award.date === '' ? null : dayjs(award.date).format('YYYY-MM-DD'),
         highlighted: award.highlighted,
       };
       methods.reset(awd);
