@@ -8,6 +8,8 @@
         .group {
             display: flex;
             gap: 5px;
+            padding: 8px;
+            border: solid $bg-light 2px;
 
             &>.details {
                 flex-grow: 1;
@@ -50,7 +52,7 @@
             &.highlighted {
                 padding: 8px;
                 border: solid $bg-dark 2px;
-                border-radius: 12px;
+                border-radius: 10px;
                 @include box-shadow;
             }
         }
