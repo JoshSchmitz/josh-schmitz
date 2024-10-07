@@ -12,14 +12,9 @@ import Confirm from '../confirm/Confirm';
 import LeadershipForm from './form/LeadershipForm';
 
 // import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-import * as MdIcons from 'react-icons/md';
+import Icon from '../icon/Icon';
 
 const Leadership = ({ leadership, resume }) => {
-  // generate icon
-  let Icon = '';
-  Icon = MdIcons[`${leadership.icon}`];
-
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -88,9 +83,7 @@ const Leadership = ({ leadership, resume }) => {
         }
         key={leadership._id}
       >
-        <div className='icon'>
-          <Icon />
-        </div>
+        <Icon icon={leadership.icon} />
         <div className='details'>
           <h3 className='lead-title'>{leadership.title}</h3>
           <p className='description'>{leadership.description}</p>
@@ -99,8 +92,12 @@ const Leadership = ({ leadership, resume }) => {
           </p>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

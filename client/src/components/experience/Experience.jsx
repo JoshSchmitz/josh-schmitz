@@ -10,7 +10,7 @@ import Modal from 'react-modal';
 import SkillsList from '../skill/SkillsList';
 import ExperienceForm from './form/ExperienceForm';
 import Confirm from '../confirm/Confirm';
-import { MdEdit, MdDelete } from 'react-icons/md';
+import Icon from '../icon/Icon';
 
 // import state
 import { useDeleteExperienceMutation } from '../../store/slices/resume/api-experience';
@@ -139,8 +139,12 @@ const Experience = ({ experience, resume }) => {
         <div className='headline'>
           <h3 className='position'>{experience.position}</h3>
           <div className='actions'>
-            <MdEdit className='action update' onClick={formModal} />
-            <MdDelete className='action delete' onClick={confirmModal} />
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
           </div>
         </div>
         <div className='content'>

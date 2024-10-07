@@ -13,13 +13,8 @@ import {
   highlighted_validation,
 } from './validation';
 
-// import icons
-import * as BsIcons from 'react-icons/bs';
-import * as DiIcons from 'react-icons/di';
-import * as FaIcons from 'react-icons/fa6';
-import * as IoIcons from 'react-icons/io5';
-
 // import components
+import Icon from '../../icon/Icon';
 import Form from '../../form/Form';
 import FormHeader from '../../form/FormHeader';
 import FormContent from '../../form/FormContent';
@@ -55,25 +50,6 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
 
   useEffect(() => {
     async function loadData() {
-      let Icon = '';
-      const lib = await skill.icon.substring(0, 2);
-      switch (lib) {
-        case 'Bs':
-          Icon = BsIcons[`${skill.icon}`];
-          break;
-        case 'Di':
-          Icon = DiIcons[`${skill.icon}`];
-          break;
-        case 'Fa':
-          Icon = FaIcons[`${skill.icon}`];
-          break;
-        case 'Io':
-          Icon = IoIcons[`${skill.icon}`];
-          break;
-        default:
-          break;
-      }
-
       const s = await {
         title: skill.title,
         startDate:
@@ -84,9 +60,9 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
         icon: {
           value: skill.icon,
           label: (
-            <div className='option-content' key={skill.icon.toLowerCase()}>
-              <Icon className='icon' />
-              <p className='label'>
+            <div className='option-content'>
+              <Icon icon={skill.icon} key={nanoid()} />
+              <p className='label' key={nanoid()}>
                 {skill.icon
                   .substring(2)
                   .replace(/[0-9]/g, '')

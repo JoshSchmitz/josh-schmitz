@@ -13,10 +13,8 @@ import {
   highlighted_validation,
 } from './validation.jsx';
 
-// import icons
-import * as MdIcons from 'react-icons/md';
-
 // import components
+import Icon from '../../icon/Icon.jsx';
 import Form from '../../form/Form';
 import FormHeader from '../../form/FormHeader';
 import FormContent from '../../form/FormContent';
@@ -61,9 +59,6 @@ const AccomplishmentForm = ({
       }
     }
     async function loadData() {
-      let Icon = '';
-      Icon = MdIcons[`${accomplishment.icon}`];
-
       const accomp = await {
         title: accomplishment.title,
         description: accomplishment.description,
@@ -71,7 +66,7 @@ const AccomplishmentForm = ({
           value: accomplishment.icon,
           label: (
             <div className='option-content' key={nanoid()}>
-              <Icon className='icon' />
+              <Icon icon={accomplishment.icon} />
             </div>
           ),
         },

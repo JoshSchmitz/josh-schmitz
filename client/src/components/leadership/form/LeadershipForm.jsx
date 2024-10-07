@@ -13,10 +13,8 @@ import {
   highlighted_validation,
 } from './validation.jsx';
 
-// import icons
-import * as MdIcons from 'react-icons/md';
-
 // import components
+import Icon from '../../icon/Icon.jsx';
 import Form from '../../form/Form';
 import FormHeader from '../../form/FormHeader';
 import FormContent from '../../form/FormContent';
@@ -54,9 +52,6 @@ const LeadershipForm = ({ resumeId, leadershipId, edit, toggleModal }) => {
       }
     }
     async function loadData() {
-      let Icon = '';
-      Icon = MdIcons[`${leadership.icon}`];
-
       const lead = await {
         title: leadership.title,
         description: leadership.description,
@@ -64,7 +59,7 @@ const LeadershipForm = ({ resumeId, leadershipId, edit, toggleModal }) => {
           value: leadership.icon,
           label: (
             <div className='option-content' key={nanoid()}>
-              <Icon className='icon' />
+              <Icon icon={leadership.icon} />
             </div>
           ),
         },

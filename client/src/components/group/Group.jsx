@@ -9,23 +9,16 @@ import duration from 'dayjs/plugin/duration';
 import { useDeleteGroupMutation } from '../../store/slices/resume/api-group';
 
 // import components
+import Icon from '../icon/Icon';
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import LeadershipForm from './form/GroupForm';
-
-// import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-// import * as MdIcons from 'react-icons/md';
 
 // comfigure dayjs
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 const Group = ({ group, resume }) => {
-  // generate icon
-  // let Icon = '';
-  // Icon = MdIcons[`${group.icon}`];
-
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -155,8 +148,12 @@ const Group = ({ group, resume }) => {
           <p className='description'>{group.description}</p>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@
 
         .award {
             display: flex;
-            // align-items: center;
+            align-items: flex-start;
             gap: 8px;
             width: fit-content;
             border: solid $highlight 2px;
@@ -42,10 +42,7 @@
 
             &>.actions {
                 gap: 4px;
-
-                &>.action {
-                    font-size: 1.2rem;
-                }
+                font-size: 1.1rem;
             }
 
             &.highlighted {

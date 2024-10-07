@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import components
-import { MdAddCircleOutline } from 'react-icons/md';
+import Icon from '../icon/Icon';
 import RingLoader from 'react-spinners/RingLoader';
 import Modal from 'react-modal';
 import Group from './Group';
@@ -46,7 +46,8 @@ const Groups = ({ resumeId }) => {
         <div className='headline'>
           <h1 className='title'>Groups</h1>
           <div className='actions'>
-            <MdAddCircleOutline
+            <Icon
+              icon='MdAddCircleOutline'
               className='action create'
               onClick={toggleModal}
             />

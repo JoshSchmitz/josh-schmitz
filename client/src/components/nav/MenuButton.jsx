@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { MdMenu, MdOutlineLink } from 'react-icons/md';
+
+//import components
+import Icon from '../icon/Icon';
 
 const MenuButton = ({ type }) => {
   return (
@@ -8,9 +10,9 @@ const MenuButton = ({ type }) => {
         <div className='menu-btn-badge'>
           <div className='menu-btn-badge-text'>
             {type === 'menu' ? (
-              <MdMenu className='icon' />
+              <Icon icon='MdMenu' />
             ) : (
-              <MdOutlineLink className='icon' />
+              <Icon icon='MdOutlineLink' />
             )}
           </div>
         </div>

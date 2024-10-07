@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
@@ -11,35 +12,10 @@ import Confirm from '../confirm/Confirm';
 import Modal from 'react-modal';
 
 // import icons
-import { useEffect, useState } from 'react';
-import { MdEdit, MdDelete } from 'react-icons/md';
-import * as BsIcons from 'react-icons/bs';
-import * as DiIcons from 'react-icons/di';
-import * as FaIcons from 'react-icons/fa6';
-import * as IoIcons from 'react-icons/io5';
+import Icon from '../icon/Icon';
 
 const Skill = ({ skill, resume }) => {
   const [experience, setExperience] = useState([]);
-
-  // generate icon
-  let Icon = '';
-  const lib = skill.icon.substring(0, 2);
-  switch (lib) {
-    case 'Bs':
-      Icon = BsIcons[`${skill.icon}`];
-      break;
-    case 'Di':
-      Icon = DiIcons[`${skill.icon}`];
-      break;
-    case 'Fa':
-      Icon = FaIcons[`${skill.icon}`];
-      break;
-    case 'Io':
-      Icon = IoIcons[`${skill.icon}`];
-      break;
-    default:
-      break;
-  }
 
   // generate experience
   useEffect(() => {
@@ -118,9 +94,7 @@ const Skill = ({ skill, resume }) => {
         className={skill.highlighted ? 'skill highlighted' : 'skill'}
         key={skill._id}
       >
-        <div className='icon'>
-          <Icon />
-        </div>
+        <Icon icon={skill.icon} />
         <div className='details'>
           <div className='info'>
             <h3 className='name'>{skill.title}</h3>
@@ -140,8 +114,12 @@ const Skill = ({ skill, resume }) => {
           </div>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

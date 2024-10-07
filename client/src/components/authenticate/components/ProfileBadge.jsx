@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
-import { MdOutlineLogin } from 'react-icons/md';
+
+//import components
+import Icon from '../../icon/Icon';
 
 const ProfileBadge = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -16,11 +18,7 @@ const ProfileBadge = () => {
   return (
     <div className='auth-badge'>
       <div className='auth-badge-text'>
-        {userInfo ? (
-          getInitials(userInfo.name)
-        ) : (
-          <MdOutlineLogin className='icon' />
-        )}
+        {userInfo ? getInitials(userInfo.name) : <Icon icon='MdOutlineLogin' />}
       </div>
     </div>
   );

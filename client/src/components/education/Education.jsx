@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { useDeleteEducationMutation } from '../../store/slices/resume/api-education';
 
 // import components
-import { MdEdit, MdDelete } from 'react-icons/md';
+import Icon from '../icon/Icon';
 import Modal from 'react-modal';
 import EducationForm from './form/EducationForm';
 import Confirm from '../confirm/Confirm';
@@ -99,8 +99,12 @@ const Education = ({ education, resume }) => {
             </div>
           </div>
           <div className='actions'>
-            <MdEdit className='action update' onClick={formModal} />
-            <MdDelete className='action delete' onClick={confirmModal} />
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
           </div>
         </div>
         <div className='specializations'>

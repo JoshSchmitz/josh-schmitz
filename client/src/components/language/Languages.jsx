@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // import components
-import { MdAddCircleOutline } from 'react-icons/md';
+import Icon from '../icon/Icon';
 import RingLoader from 'react-spinners/RingLoader';
 import Modal from 'react-modal';
 import Language from './Language';
@@ -49,7 +49,8 @@ const Languages = ({ resumeId }) => {
         <div className='headline'>
           <h1 className='title'>Languages</h1>
           <div className='actions'>
-            <MdAddCircleOutline
+            <Icon
+              icon='MdAddCircleOutline'
               className='action create'
               onClick={toggleModal}
             />

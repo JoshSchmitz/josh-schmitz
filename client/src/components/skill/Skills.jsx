@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // import components
-import { MdAddCircleOutline } from 'react-icons/md';
+import Icon from '../icon/Icon';
 import RingLoader from 'react-spinners/RingLoader';
 import Modal from 'react-modal';
 import SkillForm from './form/SkillForm';
@@ -61,7 +61,8 @@ const Skills = ({ resumeId }) => {
         <div className='headline'>
           <h1 className='title'>Skills</h1>
           <div className='actions'>
-            <MdAddCircleOutline
+            <Icon
+              icon='MdAddCircleOutline'
               className='action create'
               onClick={toggleModal}
             />

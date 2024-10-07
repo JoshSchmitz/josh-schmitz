@@ -14,6 +14,7 @@ import {
 } from '../../../store/slices/auth/auth';
 
 //import components
+import Icon from '../../icon/Icon';
 import { MdOutlineLogout } from 'react-icons/md';
 import PulseLoader from 'react-spinners/PulseLoader';
 
@@ -71,7 +72,8 @@ const Profile = () => {
           <div className='title-bar'>
             <h1 className='title'>{userInfo.name}</h1>
             <div className='logout'>
-              <MdOutlineLogout
+              <Icon
+                icon='MdOutlineLogout'
                 className='logout-icon'
                 onClick={logoutHandler}
               />

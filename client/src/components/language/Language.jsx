@@ -3,23 +3,17 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 
-// import state
-import { useDeleteLanguageMutation } from '../../store/slices/resume/api-language';
-
 // import components
+import Icon from '../icon/Icon';
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import LeadershipForm from './form/LanguageForm';
 
-// import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-// import * as MdIcons from 'react-icons/md';
+// import state
+import { useDeleteLanguageMutation } from '../../store/slices/resume/api-language';
 
 const Language = ({ language, resume }) => {
   const [experience, setExperience] = useState([]);
-  // generate icon
-  // let Icon = '';
-  // Icon = MdIcons[`${language.icon}`];
 
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
@@ -124,8 +118,12 @@ const Language = ({ language, resume }) => {
           </div>
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

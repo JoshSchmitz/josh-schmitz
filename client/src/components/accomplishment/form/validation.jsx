@@ -1,14 +1,5 @@
-// import icons
 import { nanoid } from '@reduxjs/toolkit';
-import {
-  MdOutlineSportsFootball,
-  MdGroups,
-  MdMilitaryTech,
-  MdBusinessCenter,
-  MdComputer,
-  MdCrop,
-} from 'react-icons/md';
-import { BsFillMortarboardFill, BsPencilFill } from 'react-icons/bs';
+import Icon from '../../icon/Icon';
 
 // position
 const title_validation = {
@@ -49,10 +40,10 @@ const icon_validation = {
   listmode: 'tile',
   options: [
     {
-      value: 'MdMilitaryTech',
+      value: 'BsFillMortarboardFill',
       label: (
         <div className='option-content' key={nanoid()}>
-          <BsFillMortarboardFill className='icon' />
+          <Icon icon='BsFillMortarboardFill' />
         </div>
       ),
     },
@@ -60,7 +51,7 @@ const icon_validation = {
       value: 'MdGroups',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdGroups className='icon' />
+          <Icon icon='MdGroups' />
         </div>
       ),
     },
@@ -68,7 +59,7 @@ const icon_validation = {
       value: 'MdOutlineSportsFootball',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdOutlineSportsFootball className='icon' />
+          <Icon icon='MdOutlineSportsFootball' />
         </div>
       ),
     },
@@ -76,7 +67,7 @@ const icon_validation = {
       value: 'BsPencilFill',
       label: (
         <div className='option-content' key={nanoid()}>
-          <BsPencilFill className='icon' />
+          <Icon icon='BsPencilFill' />
         </div>
       ),
     },
@@ -84,7 +75,7 @@ const icon_validation = {
       value: 'MdMilitaryTech',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdMilitaryTech className='icon' />
+          <Icon icon='MdMilitaryTech' />
         </div>
       ),
     },
@@ -92,7 +83,7 @@ const icon_validation = {
       value: 'MdBusinessCenter',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdBusinessCenter className='icon' />
+          <Icon icon='MdBusinessCenter' />
         </div>
       ),
     },
@@ -100,7 +91,7 @@ const icon_validation = {
       value: 'MdComputer',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdComputer className='icon' />
+          <Icon icon='MdComputer' />
         </div>
       ),
     },
@@ -108,7 +99,7 @@ const icon_validation = {
       value: 'MdCrop',
       label: (
         <div className='option-content' key={nanoid()}>
-          <MdCrop className='icon' />
+          <Icon icon='MdCrop' />
         </div>
       ),
     },

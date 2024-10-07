@@ -1,21 +1,24 @@
-import { BsNodePlusFill } from 'react-icons/bs';
-import {
-  FaWrench,
-  FaPencil,
-  FaHandHoldingDollar,
-  FaPeopleLine,
-} from 'react-icons/fa6';
-import { IoColorPalette } from 'react-icons/io5';
-import {
+import { nanoid } from '@reduxjs/toolkit';
+import Icon from '../../icon/Icon';
+
+// import { BsNodePlusFill } from 'react-icons/bs';
+// import {
+// FaWrench,
+// FaPencil,
+// FaHandHoldingDollar,
+// FaPeopleLine,
+// } from 'react-icons/fa6';
+// import { IoColorPalette } from 'react-icons/io5';
+/* import {
   DiAndroid,
   DiAngularSimple,
   DiAppstore,
   DiAtlassian,
   DiAws,
   DiBootstrap,
-  DiChrome,
-  DiCode,
-  DiCodeBadge,
+  DiChrome, */
+// DiCode,
+/* DiCodeBadge,
   DiCodepen,
   DiCreativecommons,
   DiCss3,
@@ -47,8 +50,7 @@ import {
   DiTerminalBadge,
   DiVisualstudio,
   DiWordpress,
-} from 'react-icons/di';
-import { nanoid } from '@reduxjs/toolkit';
+} from 'react-icons/di'; */
 
 // field definitions and validations for SkillForm
 
@@ -95,10 +97,11 @@ const icon_validation = {
   listmode: 'tile',
   options: [
     {
+      key: nanoid(),
       value: 'BsNodePlusFill',
       label: (
         <div className='option-content' key={nanoid()}>
-          <BsNodePlusFill className='icon' />
+          <Icon icon='BsNodePlusFill' />
         </div>
       ),
     },
@@ -106,7 +109,7 @@ const icon_validation = {
       value: 'FaWrench',
       label: (
         <div className='option-content' key={nanoid()}>
-          <FaWrench className='icon' />
+          <Icon icon='FaWrench' />
         </div>
       ),
     },
@@ -114,7 +117,7 @@ const icon_validation = {
       value: 'FaPencil',
       label: (
         <div className='option-content' key={nanoid()}>
-          <FaPencil className='icon' />
+          <Icon icon='FaPencil' />
         </div>
       ),
     },
@@ -122,7 +125,7 @@ const icon_validation = {
       value: 'IoColorPalette',
       label: (
         <div className='option-content' key={nanoid()}>
-          <IoColorPalette className='icon' />
+          <Icon icon='IoColorPalette' />
         </div>
       ),
     },
@@ -130,7 +133,7 @@ const icon_validation = {
       value: 'FaHandHoldingDollar',
       label: (
         <div className='option-content' key={nanoid()}>
-          <FaHandHoldingDollar className='icon' />
+          <Icon icon='FaHandHoldingDollar' />
         </div>
       ),
     },
@@ -138,7 +141,7 @@ const icon_validation = {
       value: 'FaPeopleLine',
       label: (
         <div className='option-content' key={nanoid()}>
-          <FaPeopleLine className='icon' />
+          <Icon icon='FaPeopleLine' />
         </div>
       ),
     },
@@ -146,7 +149,7 @@ const icon_validation = {
       value: 'DiCode',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCode className='icon' />
+          <Icon icon='DiCode' />
         </div>
       ),
     },
@@ -154,7 +157,7 @@ const icon_validation = {
       value: 'DiCodeBadge',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCodeBadge className='icon' />
+          <Icon icon='DiCodeBadge' />
         </div>
       ),
     },
@@ -162,7 +165,7 @@ const icon_validation = {
       value: 'DiAndroid',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiAndroid className='icon' />
+          <Icon icon='DiAndroid' />
         </div>
       ),
     },
@@ -170,7 +173,7 @@ const icon_validation = {
       value: 'DiAngularSimple',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiAngularSimple className='icon' />
+          <Icon icon='DiAngularSimple' />
         </div>
       ),
     },
@@ -178,7 +181,7 @@ const icon_validation = {
       value: 'DiAppstore',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiAppstore className='icon' />
+          <Icon icon='DiAppstore' />
         </div>
       ),
     },
@@ -186,7 +189,7 @@ const icon_validation = {
       value: 'DiAtlassian',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiAtlassian className='icon' />
+          <Icon icon='DiAtlassian' />
         </div>
       ),
     },
@@ -194,7 +197,7 @@ const icon_validation = {
       value: 'DiAws',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiAws className='icon' />
+          <Icon icon='DiAws' />
         </div>
       ),
     },
@@ -202,7 +205,7 @@ const icon_validation = {
       value: 'DiBootstrap',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiBootstrap className='icon' />
+          <Icon icon='DiBootstrap' />
         </div>
       ),
     },
@@ -210,7 +213,7 @@ const icon_validation = {
       value: 'DiChrome',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiChrome className='icon' />
+          <Icon icon='DiChrome' />
         </div>
       ),
     },
@@ -218,7 +221,7 @@ const icon_validation = {
       value: 'DiCodepen',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCodepen className='icon' />
+          <Icon icon='DiCodepen' />
         </div>
       ),
     },
@@ -226,7 +229,7 @@ const icon_validation = {
       value: 'DiCreativecommons',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCreativecommons className='icon' />
+          <Icon icon='DiCreativecommons' />
         </div>
       ),
     },
@@ -234,7 +237,7 @@ const icon_validation = {
       value: 'DiCss3',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCss3 className='icon' />
+          <Icon icon='DiCss3' />
         </div>
       ),
     },
@@ -242,7 +245,7 @@ const icon_validation = {
       value: 'DiCss3Full',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiCss3Full className='icon' />
+          <Icon icon='DiCss3Full' />
         </div>
       ),
     },
@@ -250,7 +253,7 @@ const icon_validation = {
       value: 'DiDatabase',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiDatabase className='icon' />
+          <Icon icon='DiDatabase' />
         </div>
       ),
     },
@@ -258,7 +261,7 @@ const icon_validation = {
       value: 'DiDotnet',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiDotnet className='icon' />
+          <Icon icon='DiDotnet' />
         </div>
       ),
     },
@@ -266,7 +269,7 @@ const icon_validation = {
       value: 'DiFirefox',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiFirefox className='icon' />
+          <Icon icon='DiFirefox' />
         </div>
       ),
     },
@@ -274,7 +277,7 @@ const icon_validation = {
       value: 'DiGit',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiGit className='icon' />
+          <Icon icon='DiGit' />
         </div>
       ),
     },
@@ -282,7 +285,7 @@ const icon_validation = {
       value: 'DiGithub',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiGithub className='icon' />
+          <Icon icon='DiGithub' />
         </div>
       ),
     },
@@ -290,7 +293,7 @@ const icon_validation = {
       value: 'DiGithubBadge',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiGithubBadge className='icon' />
+          <Icon icon='DiGithubBadge' />
         </div>
       ),
     },
@@ -298,7 +301,7 @@ const icon_validation = {
       value: 'DiGoogleAnalytics',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiGoogleAnalytics className='icon' />
+          <Icon icon='DiGoogleAnalytics' />
         </div>
       ),
     },
@@ -306,7 +309,7 @@ const icon_validation = {
       value: 'DiGoogleDrive',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiGoogleDrive className='icon' />
+          <Icon icon='DiGoogleDrive' />
         </div>
       ),
     },
@@ -314,7 +317,7 @@ const icon_validation = {
       value: 'DiHtml5',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiHtml5 className='icon' />
+          <Icon icon='DiHtml5' />
         </div>
       ),
     },
@@ -322,7 +325,7 @@ const icon_validation = {
       value: 'DiJava',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiJava className='icon' />
+          <Icon icon='DiJava' />
         </div>
       ),
     },
@@ -330,7 +333,7 @@ const icon_validation = {
       value: 'DiJavascript1',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiJavascript1 className='icon' />
+          <Icon icon='DiJavascript1' />
         </div>
       ),
     },
@@ -338,7 +341,7 @@ const icon_validation = {
       value: 'DiJsBadge',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiJsBadge className='icon' />
+          <Icon icon='DiJsBadge' />
         </div>
       ),
     },
@@ -346,7 +349,7 @@ const icon_validation = {
       value: 'DiLaravel',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiLaravel className='icon' />
+          <Icon icon='DiLaravel' />
         </div>
       ),
     },
@@ -354,7 +357,7 @@ const icon_validation = {
       value: 'DiLess',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiLess className='icon' />
+          <Icon icon='DiLess' />
         </div>
       ),
     },
@@ -362,7 +365,7 @@ const icon_validation = {
       value: 'DiMarkdown',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiMarkdown className='icon' />
+          <Icon icon='DiMarkdown' />
         </div>
       ),
     },
@@ -370,7 +373,7 @@ const icon_validation = {
       value: 'DiMongodb',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiMongodb className='icon' />
+          <Icon icon='DiMongodb' />
         </div>
       ),
     },
@@ -378,7 +381,7 @@ const icon_validation = {
       value: 'DiNodejs',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiNodejs className='icon' />
+          <Icon icon='DiNodejs' />
         </div>
       ),
     },
@@ -386,7 +389,7 @@ const icon_validation = {
       value: 'DiNodejsSmall',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiNodejsSmall className='icon' />
+          <Icon icon='DiNodejsSmall' />
         </div>
       ),
     },
@@ -394,7 +397,7 @@ const icon_validation = {
       value: 'DiNpm',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiNpm className='icon' />
+          <Icon icon='DiNpm' />
         </div>
       ),
     },
@@ -402,7 +405,7 @@ const icon_validation = {
       value: 'DiPhotoshop',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiPhotoshop className='icon' />
+          <Icon icon='DiPhotoshop' />
         </div>
       ),
     },
@@ -410,7 +413,7 @@ const icon_validation = {
       value: 'DiPhp',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiPhp className='icon' />
+          <Icon icon='DiPhp' />
         </div>
       ),
     },
@@ -418,7 +421,7 @@ const icon_validation = {
       value: 'DiSass',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiSass className='icon' />
+          <Icon icon='DiSass' />
         </div>
       ),
     },
@@ -426,7 +429,7 @@ const icon_validation = {
       value: 'DiReact',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiReact className='icon' />
+          <Icon icon='DiReact' />
         </div>
       ),
     },
@@ -434,7 +437,7 @@ const icon_validation = {
       value: 'DiTerminal',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiTerminal className='icon' />
+          <Icon icon='DiTerminal' />
         </div>
       ),
     },
@@ -442,7 +445,7 @@ const icon_validation = {
       value: 'DiTerminalBadge',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiTerminalBadge className='icon' />
+          <Icon icon='DiTerminalBadge' />
         </div>
       ),
     },
@@ -450,7 +453,7 @@ const icon_validation = {
       value: 'DiVisualstudio',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiVisualstudio className='icon' />
+          <Icon icon='DiVisualstudio' />
         </div>
       ),
     },
@@ -458,7 +461,7 @@ const icon_validation = {
       value: 'DiWordpress',
       label: (
         <div className='option-content' key={nanoid()}>
-          <DiWordpress className='icon' />
+          <Icon icon='DiWordpress' />
         </div>
       ),
     },

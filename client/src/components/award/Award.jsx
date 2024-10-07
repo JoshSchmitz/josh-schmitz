@@ -79,9 +79,7 @@ const Award = ({ award, resume }) => {
         className={award.highlighted ? 'award highlighted' : 'award'}
         key={award._id}
       >
-        <div className='icon'>
-          <Icon icon={award.icon} />
-        </div>
+        <Icon icon={award.icon} />
         <div className='details'>
           <div className='headline'>
             <h3 className='lead-title'>{award.title}</h3>
@@ -92,12 +90,12 @@ const Award = ({ award, resume }) => {
           <p className='description'>{award.description}</p>
         </div>
         <div className='actions'>
-          <div className='action update' onClick={formModal}>
-            <Icon icon='MdEdit' />
-          </div>
-          <div className='action delete' onClick={confirmModal}>
-            <Icon icon='MdDelete' />
-          </div>
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

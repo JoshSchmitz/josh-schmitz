@@ -7,20 +7,13 @@ import dayjs from 'dayjs';
 import { useDeleteProjectMutation } from '../../store/slices/resume/api-project';
 
 // import components
+import Icon from '../icon/Icon';
 import Modal from 'react-modal';
 import Confirm from '../confirm/Confirm';
 import ProjectForm from './form/ProjectForm';
 import SkillsList from '../skill/SkillsList';
 
-// import icons
-import { MdEdit, MdDelete } from 'react-icons/md';
-// import * as MdIcons from 'react-icons/md';
-
 const Project = ({ project, resume }) => {
-  // generate icon
-  // let Icon = '';
-  // Icon = MdIcons[`${project.icon}`];
-
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -87,9 +80,6 @@ const Project = ({ project, resume }) => {
         className={project.highlighted ? 'project highlighted' : 'project'}
         key={project._id}
       >
-        {/* <div className='icon'>
-          <Icon />
-        </div> */}
         <div className='details'>
           <div className='headline'>
             <h3 className='proj-title'>{project.title}</h3>
@@ -107,8 +97,12 @@ const Project = ({ project, resume }) => {
           <SkillsList resumeId={resume} list={project.skills} />
         </div>
         <div className='actions'>
-          <MdEdit className='action update' onClick={formModal} />
-          <MdDelete className='action delete' onClick={confirmModal} />
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>

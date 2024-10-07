@@ -84,9 +84,7 @@ const Accomplishment = ({ accomplishment, resume }) => {
         }
         key={accomplishment._id}
       >
-        <div className='icon'>
-          <Icon icon={accomplishment.icon} />
-        </div>
+        <Icon icon={accomplishment.icon} />
         <div className='details'>
           <h3 className='lead-title'>{accomplishment.title}</h3>
           <p className='description'>{accomplishment.description}</p>
@@ -95,12 +93,12 @@ const Accomplishment = ({ accomplishment, resume }) => {
           </p>
         </div>
         <div className='actions'>
-          <div className='action update' onClick={formModal}>
-            <Icon icon='MdEdit' />
-          </div>
-          <div className='action delete' onClick={confirmModal}>
-            <Icon icon='MdDelete' />
-          </div>
+          <Icon icon='MdEdit' className='action update' onClick={formModal} />
+          <Icon
+            icon='MdDelete'
+            className='action delete'
+            onClick={confirmModal}
+          />
         </div>
       </div>
     </>
