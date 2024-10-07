@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 
 // import components
 import Icon from '../icon/Icon';
@@ -65,7 +66,7 @@ const Languages = ({ resumeId }) => {
           {isSuccess &&
             languages
               .filter((lang) => lang.name)
-              // .sort((a, b) => dayjs(b.date) - dayjs(a.date))
+              .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
               .map((lang) => {
                 return (
                   <Language key={lang._id} resume={resumeId} language={lang} />
