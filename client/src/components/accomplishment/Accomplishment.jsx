@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import state
@@ -12,7 +13,10 @@ import Confirm from '../confirm/Confirm';
 import AccomplishmentForm from './form/AccomplishmentForm';
 import Icon from '../icon/Icon';
 
-const Accomplishment = ({ accomplishment, resume }) => {
+const Accomplishment = ({ accomplishment, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -92,14 +96,16 @@ const Accomplishment = ({ accomplishment, resume }) => {
             {dayjs(accomplishment.date).format('MMMM D, YYYY')}
           </p>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -107,6 +113,7 @@ const Accomplishment = ({ accomplishment, resume }) => {
 Accomplishment.propTypes = {
   accomplishment: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Accomplishment;

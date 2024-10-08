@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -10,9 +11,16 @@ import Accomplishment from './Accomplishment';
 import AccomplishmentForm from './form/AccomplishmentForm';
 
 // import state
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetAccomplishmentQuery } from '../../store/slices/resume/api-accomplishment';
 
 const Accomplishments = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
   // state
   const {
     data: accomplishments,
@@ -49,13 +57,15 @@ const Accomplishments = ({ resumeId }) => {
       <section className='section' id='accomplishments'>
         <div className='headline'>
           <h1 className='title'>Accomplishments</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='accomplishments'>
@@ -71,8 +81,9 @@ const Accomplishments = ({ resumeId }) => {
                 return (
                   <Accomplishment
                     key={acc._id}
-                    resume={resumeId}
                     accomplishment={acc}
+                    resume={resumeId}
+                    user={user}
                   />
                 );
               })}
