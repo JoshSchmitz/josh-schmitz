@@ -4,6 +4,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import duration from 'dayjs/plugin/duration';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 // import components
 import Modal from 'react-modal';
@@ -19,7 +20,10 @@ import { useDeleteExperienceMutation } from '../../store/slices/resume/api-exper
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
-const Experience = ({ experience, resume }) => {
+const Experience = ({ experience, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -138,14 +142,20 @@ const Experience = ({ experience, resume }) => {
       >
         <div className='headline'>
           <h3 className='position'>{experience.position}</h3>
-          <div className='actions'>
-            <Icon icon='MdEdit' className='action update' onClick={formModal} />
-            <Icon
-              icon='MdDelete'
-              className='action delete'
-              onClick={confirmModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdEdit'
+                className='action update'
+                onClick={formModal}
+              />
+              <Icon
+                icon='MdDelete'
+                className='action delete'
+                onClick={confirmModal}
+              />
+            </div>
+          )}
         </div>
         <div className='content'>
           <div className='details'>
@@ -176,6 +186,7 @@ const Experience = ({ experience, resume }) => {
 };
 Experience.propTypes = {
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
   experience: PropTypes.object.isRequired,
 };
 export default Experience;

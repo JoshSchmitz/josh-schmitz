@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 // import components
 import Experience from './Experience';
 
-const Company = ({ company, resumeId }) => {
+const Company = ({ company, resumeId, user }) => {
   return (
     <div className='company'>
       <div className='headline'>
@@ -24,7 +24,12 @@ const Company = ({ company, resumeId }) => {
       <div className='experiences'>
         {company.experiences.map((exp) => {
           return (
-            <Experience key={exp._id} experience={exp} resume={resumeId} />
+            <Experience
+              key={exp._id}
+              experience={exp}
+              resume={resumeId}
+              user={user}
+            />
           );
         })}
       </div>
@@ -34,5 +39,6 @@ const Company = ({ company, resumeId }) => {
 Company.propTypes = {
   company: PropTypes.object.isRequired,
   resumeId: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 export default Company;

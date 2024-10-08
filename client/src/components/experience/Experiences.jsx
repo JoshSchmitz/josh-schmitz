@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import { nanoid } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 //import components
 import Icon from '../icon/Icon';
@@ -12,8 +13,16 @@ import ExperienceForm from './form/ExperienceForm';
 
 // import state
 import { useGetExperienceQuery } from '../../store/slices/resume/api-experience';
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Experiences = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
+  // experience for resume
   const {
     data: xp,
     isLoading,
@@ -128,13 +137,15 @@ const Experiences = ({ resumeId }) => {
       <section className='section' id='experiences'>
         <div className='headline'>
           <h1 className='title'>Work Experience</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='companies'>
@@ -149,6 +160,7 @@ const Experiences = ({ resumeId }) => {
                   key={nanoid()}
                   company={comp}
                   resumeId={resumeId}
+                  user={user}
                 ></Company>
               );
             })}
