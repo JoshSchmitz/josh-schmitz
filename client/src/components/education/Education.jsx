@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
@@ -13,7 +14,10 @@ import Modal from 'react-modal';
 import EducationForm from './form/EducationForm';
 import Confirm from '../confirm/Confirm';
 
-const Education = ({ education, resume }) => {
+const Education = ({ education, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -98,14 +102,20 @@ const Education = ({ education, resume }) => {
               </h4>
             </div>
           </div>
-          <div className='actions'>
-            <Icon icon='MdEdit' className='action update' onClick={formModal} />
-            <Icon
-              icon='MdDelete'
-              className='action delete'
-              onClick={confirmModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdEdit'
+                className='action update'
+                onClick={formModal}
+              />
+              <Icon
+                icon='MdDelete'
+                className='action delete'
+                onClick={confirmModal}
+              />
+            </div>
+          )}
         </div>
         <div className='specializations'>
           <div className='majors'>
@@ -145,6 +155,7 @@ const Education = ({ education, resume }) => {
 };
 Education.propTypes = {
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
   education: PropTypes.object.isRequired,
 };
 export default Education;

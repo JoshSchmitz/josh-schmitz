@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // import components
 import Icon from '../icon/Icon';
@@ -10,8 +11,15 @@ import EducationForm from './form/EducationForm';
 
 //import state
 import { useGetEducationQuery } from '../../store/slices/resume/api-education';
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Educations = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
   const {
     data: eds,
     isLoading,
@@ -47,13 +55,15 @@ const Educations = ({ resumeId }) => {
       <section className='section' id='educations'>
         <div className='headline'>
           <h1 className='title'>Education</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='educations'>
@@ -68,6 +78,7 @@ const Educations = ({ resumeId }) => {
                   key={ed._id}
                   education={ed}
                   resume={resumeId}
+                  user={user}
                 ></Education>
               );
             })}
