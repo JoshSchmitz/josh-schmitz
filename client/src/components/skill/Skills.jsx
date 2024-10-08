@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 
 // import components
@@ -10,9 +12,15 @@ import Skill from './Skill';
 
 // import state
 import { useGetSkillQuery } from '../../store/slices/resume/api-skill';
-import { nanoid } from '@reduxjs/toolkit';
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Skills = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
   const {
     data: skills,
     isLoading,
@@ -60,13 +68,15 @@ const Skills = ({ resumeId }) => {
       <section className='section' id='skills'>
         <div className='headline'>
           <h1 className='title'>Skills</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='categories'>
@@ -90,6 +100,7 @@ const Skills = ({ resumeId }) => {
                               key={skill._id}
                               skill={skill}
                               resume={resumeId}
+                              user={user}
                             />
                           )
                         );

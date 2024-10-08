@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import state
@@ -14,7 +15,9 @@ import Modal from 'react-modal';
 // import icons
 import Icon from '../icon/Icon';
 
-const Skill = ({ skill, resume }) => {
+const Skill = ({ skill, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
   const [experience, setExperience] = useState([]);
 
   // generate experience
@@ -113,14 +116,16 @@ const Skill = ({ skill, resume }) => {
             })}
           </div>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -128,6 +133,7 @@ const Skill = ({ skill, resume }) => {
 Skill.propTypes = {
   skill: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Skill;
