@@ -13,6 +13,7 @@ const getResume = asyncHandler(async (req, res) => {
     if (resume) {
       res.status(200).json({
         _id: resume._id,
+        user: resume.user,
         title: resume.title,
         bio: resume.bio,
         main: resume.main,
@@ -30,6 +31,7 @@ const getResume = asyncHandler(async (req, res) => {
         resumes.map((resume) => {
           return {
             _id: resume._id,
+            user: resume.user,
             title: resume.title,
             bio: resume.bio,
             main: resume.main,
