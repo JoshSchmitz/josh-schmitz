@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import state
@@ -14,7 +15,10 @@ import LeadershipForm from './form/LeadershipForm';
 // import icons
 import Icon from '../icon/Icon';
 
-const Leadership = ({ leadership, resume }) => {
+const Leadership = ({ leadership, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -91,14 +95,16 @@ const Leadership = ({ leadership, resume }) => {
             {dayjs(leadership.date).format('MMMM D, YYYY')}
           </p>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -106,6 +112,7 @@ const Leadership = ({ leadership, resume }) => {
 Leadership.propTypes = {
   leadership: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Leadership;

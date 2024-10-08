@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -11,8 +12,15 @@ import LeadershipForm from './form/LeadershipForm';
 
 // import state
 import { useGetLeadershipQuery } from '../../store/slices/resume/api-leadership';
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Leaderships = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
   // state
   const {
     data: leaderships,
@@ -49,13 +57,15 @@ const Leaderships = ({ resumeId }) => {
       <section className='section' id='leadership'>
         <div className='headline'>
           <h1 className='title'>Leadership</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='leaderships'>
@@ -71,8 +81,9 @@ const Leaderships = ({ resumeId }) => {
                 return (
                   <Leadership
                     key={lead._id}
-                    resume={resumeId}
                     leadership={lead}
+                    resume={resumeId}
+                    user={user}
                   />
                 );
               })}
