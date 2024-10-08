@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -11,6 +12,7 @@ import ProjectForm from './form/ProjectForm';
 
 // import state
 import { useGetProjectQuery } from '../../store/slices/resume/api-project';
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Projects = ({ resumeId }) => {
   // state
@@ -21,6 +23,11 @@ const Projects = ({ resumeId }) => {
     isError,
     error,
   } = useGetProjectQuery({ resumeId });
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
 
   // modal functions
   Modal.setAppElement('#root');
@@ -49,13 +56,15 @@ const Projects = ({ resumeId }) => {
       <section className='section' id='projects'>
         <div className='headline'>
           <h1 className='title'>Projects</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='projects'>
@@ -69,7 +78,12 @@ const Projects = ({ resumeId }) => {
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((proj) => {
                 return (
-                  <Project key={proj._id} resume={resumeId} project={proj} />
+                  <Project
+                    key={proj._id}
+                    project={proj}
+                    resume={resumeId}
+                    user={user}
+                  />
                 );
               })}
         </div>

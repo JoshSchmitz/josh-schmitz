@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import state
@@ -13,7 +14,10 @@ import Confirm from '../confirm/Confirm';
 import ProjectForm from './form/ProjectForm';
 import SkillsList from '../skill/SkillsList';
 
-const Project = ({ project, resume }) => {
+const Project = ({ project, resume, user }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -96,14 +100,16 @@ const Project = ({ project, resume }) => {
           <p className='description'>{project.description}</p>
           <SkillsList resumeId={resume} list={project.skills} />
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -111,6 +117,7 @@ const Project = ({ project, resume }) => {
 Project.propTypes = {
   project: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Project;
