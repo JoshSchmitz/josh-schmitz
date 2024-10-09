@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import components
@@ -12,8 +13,11 @@ import LeadershipForm from './form/LanguageForm';
 // import state
 import { useDeleteLanguageMutation } from '../../store/slices/resume/api-language';
 
-const Language = ({ language, resume }) => {
+const Language = ({ language, resume, user }) => {
+  // state
+  const { userInfo } = useSelector((state) => state.auth);
   const [experience, setExperience] = useState([]);
+  const [deleteLanguage, { deleteIsLoading }] = useDeleteLanguageMutation();
 
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
@@ -24,9 +28,6 @@ const Language = ({ language, resume }) => {
   const formModal = () => {
     setFormIsOpen(!formIsOpen);
   };
-
-  // redux state
-  const [deleteLanguage, { deleteIsLoading }] = useDeleteLanguageMutation();
 
   // generate experience
   useEffect(() => {
@@ -117,14 +118,16 @@ const Language = ({ language, resume }) => {
             })}
           </div>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -132,6 +135,7 @@ const Language = ({ language, resume }) => {
 Language.propTypes = {
   language: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Language;

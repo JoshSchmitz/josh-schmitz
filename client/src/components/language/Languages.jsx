@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -10,10 +11,15 @@ import Language from './Language';
 import LanguageForm from './form/LanguageForm';
 
 // import state
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetLanguageQuery } from '../../store/slices/resume/api-language';
 
 const Languages = ({ resumeId }) => {
   // state
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
   const {
     data: languages,
     isLoading,
@@ -49,13 +55,15 @@ const Languages = ({ resumeId }) => {
       <section className='section' id='languages'>
         <div className='headline'>
           <h1 className='title'>Languages</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='languages'>
@@ -69,7 +77,12 @@ const Languages = ({ resumeId }) => {
               .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
               .map((lang) => {
                 return (
-                  <Language key={lang._id} resume={resumeId} language={lang} />
+                  <Language
+                    key={lang._id}
+                    language={lang}
+                    resume={resumeId}
+                    user={user}
+                  />
                 );
               })}
         </div>
