@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -10,10 +11,15 @@ import Group from './Group';
 import GroupForm from './form/GroupForm';
 
 // import state
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetGroupQuery } from '../../store/slices/resume/api-group';
 
 const Groups = ({ resumeId }) => {
   // state
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
   const {
     data: groups,
     isLoading,
@@ -45,13 +51,15 @@ const Groups = ({ resumeId }) => {
       <section className='section' id='groups'>
         <div className='headline'>
           <h1 className='title'>Groups</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='groups'>
@@ -65,7 +73,12 @@ const Groups = ({ resumeId }) => {
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((group) => {
                 return (
-                  <Group key={group._id} resume={resumeId} group={group} />
+                  <Group
+                    key={group._id}
+                    group={group}
+                    resume={resumeId}
+                    user={user}
+                  />
                 );
               })}
         </div>

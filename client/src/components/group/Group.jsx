@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import duration from 'dayjs/plugin/duration';
@@ -18,7 +19,11 @@ import LeadershipForm from './form/GroupForm';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
-const Group = ({ group, resume }) => {
+const Group = ({ group, resume, user }) => {
+  // state
+  const { userInfo } = useSelector((state) => state.auth);
+  const [deleteGroup, { deleteIsLoading }] = useDeleteGroupMutation();
+
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -28,9 +33,6 @@ const Group = ({ group, resume }) => {
   const formModal = () => {
     setFormIsOpen(!formIsOpen);
   };
-
-  // redux state
-  const [deleteGroup, { deleteIsLoading }] = useDeleteGroupMutation();
 
   // delete leadership handler
   const handleDelete = () => {
@@ -147,14 +149,16 @@ const Group = ({ group, resume }) => {
           </div>
           <p className='description'>{group.description}</p>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -162,6 +166,7 @@ const Group = ({ group, resume }) => {
 Group.propTypes = {
   group: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Group;
