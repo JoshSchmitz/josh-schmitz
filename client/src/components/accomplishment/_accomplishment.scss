@@ -10,7 +10,7 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 5px;
-            padding: 8px;
+            padding: 8px 12px;
             border: solid $bg-light 2px;
 
             &>.icon {
@@ -40,7 +40,6 @@
             }
 
             &.highlighted {
-                padding: 8px;
                 border: solid $bg-dark 2px;
                 border-radius: 12px;
                 @include box-shadow;
