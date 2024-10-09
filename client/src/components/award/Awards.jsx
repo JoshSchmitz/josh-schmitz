@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
@@ -10,9 +11,16 @@ import Award from './Award';
 import AwardForm from './form/AwardForm';
 
 // import state
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetAwardQuery } from '../../store/slices/resume/api-award';
 
 const Awards = ({ resumeId }) => {
+  // current user id and resume user id
+  const { userInfo } = useSelector((state) => state.auth);
+  const {
+    data: { user },
+  } = useGetResumeQuery({ resumeId });
+
   // state
   const {
     data: awards,
@@ -45,13 +53,15 @@ const Awards = ({ resumeId }) => {
       <section className='section' id='awards'>
         <div className='headline'>
           <h1 className='title'>Awards</h1>
-          <div className='actions'>
-            <Icon
-              icon='MdAddCircleOutline'
-              className='action create'
-              onClick={toggleModal}
-            />
-          </div>
+          {userInfo && userInfo._id === user && (
+            <div className='actions'>
+              <Icon
+                icon='MdAddCircleOutline'
+                className='action create'
+                onClick={toggleModal}
+              />
+            </div>
+          )}
         </div>
         <hr />
         <div className='awards'>
@@ -64,7 +74,14 @@ const Awards = ({ resumeId }) => {
               .filter((aw) => aw.title)
               .sort((a, b) => dayjs(b.date) - dayjs(a.date))
               .map((aw) => {
-                return <Award key={aw._id} resume={resumeId} award={aw} />;
+                return (
+                  <Award
+                    key={aw._id}
+                    award={aw}
+                    resume={resumeId}
+                    user={user}
+                  />
+                );
               })}
         </div>
       </section>

@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 // import state
@@ -12,7 +13,7 @@ import Confirm from '../confirm/Confirm';
 import AwardForm from './form/AwardForm';
 import Icon from '../icon/Icon';
 
-const Award = ({ award, resume }) => {
+const Award = ({ award, resume, user }) => {
   // modal functions
   const [confirmIsOpen, setConfirmIsOpen] = useState(false);
   const confirmModal = () => {
@@ -24,6 +25,7 @@ const Award = ({ award, resume }) => {
   };
 
   // redux state
+  const { userInfo } = useSelector((state) => state.auth);
   const [deleteLeadership, { deleteIsLoading }] = useDeleteAwardMutation();
 
   // delete leadership handler
@@ -89,14 +91,16 @@ const Award = ({ award, resume }) => {
 
           <p className='description'>{award.description}</p>
         </div>
-        <div className='actions'>
-          <Icon icon='MdEdit' className='action update' onClick={formModal} />
-          <Icon
-            icon='MdDelete'
-            className='action delete'
-            onClick={confirmModal}
-          />
-        </div>
+        {userInfo && userInfo._id === user && (
+          <div className='actions'>
+            <Icon icon='MdEdit' className='action update' onClick={formModal} />
+            <Icon
+              icon='MdDelete'
+              className='action delete'
+              onClick={confirmModal}
+            />
+          </div>
+        )}
       </div>
     </>
   );
@@ -104,6 +108,7 @@ const Award = ({ award, resume }) => {
 Award.propTypes = {
   award: PropTypes.object.isRequired,
   resume: PropTypes.string.isRequired,
+  user: PropTypes.string,
 };
 
 export default Award;
