@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import dayjs from 'dayjs';
-import { nanoid } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
+import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 
 //import components
 import Icon from '../icon/Icon';
@@ -16,13 +16,11 @@ import { useGetExperienceQuery } from '../../store/slices/resume/api-experience'
 import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
 const Experiences = ({ resumeId }) => {
-  // current user id and resume user id
+  // state
   const { userInfo } = useSelector((state) => state.auth);
   const {
     data: { user },
   } = useGetResumeQuery({ resumeId });
-
-  // experience for resume
   const {
     data: xp,
     isLoading,
