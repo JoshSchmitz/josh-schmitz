@@ -33,7 +33,7 @@ export const leadershipApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/leadership/${leadershipId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Leadership'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });

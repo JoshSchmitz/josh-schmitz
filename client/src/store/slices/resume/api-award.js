@@ -33,7 +33,7 @@ export const awardApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/award/${awardId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Award'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });

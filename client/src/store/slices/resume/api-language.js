@@ -33,7 +33,7 @@ export const languageApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/language/${languageId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Language'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });

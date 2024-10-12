@@ -33,7 +33,7 @@ export const groupApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/group/${groupId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Group'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });

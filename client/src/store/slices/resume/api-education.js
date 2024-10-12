@@ -33,7 +33,7 @@ export const educationApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/education/${educationId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Education'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });

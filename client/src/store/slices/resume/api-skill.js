@@ -33,7 +33,7 @@ export const skillApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/skill/${skillId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Skill'],
+      invalidatesTags: ['Resume'],
     }),
   }),
 });
