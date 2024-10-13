@@ -17,6 +17,15 @@ const getResume = asyncHandler(async (req, res) => {
         title: resume.title,
         bio: resume.bio,
         main: resume.main,
+        experienceCount: resume.experience.length,
+        educationCount: resume.education.length,
+        skillCount: resume.skill.length,
+        leadershipCount: resume.leadership.length,
+        accomplishmentCount: resume.accomplishment.length,
+        awardCount: resume.award.length,
+        groupCount: resume.group.length,
+        languageCount: resume.language.length,
+        projectCount: resume.project.length,
       });
     } else {
       res.status(404);
@@ -35,6 +44,15 @@ const getResume = asyncHandler(async (req, res) => {
             title: resume.title,
             bio: resume.bio,
             main: resume.main,
+            experienceCount: resume.experience.length,
+            educationCount: resume.education.length,
+            skillCount: resume.skill.length,
+            leadershipCount: resume.leadership.length,
+            accomplishmentCount: resume.accomplishment.length,
+            awardCount: resume.award.length,
+            groupCount: resume.group.length,
+            languageCount: resume.language.length,
+            projectCount: resume.project.length,
           };
         })
       );
