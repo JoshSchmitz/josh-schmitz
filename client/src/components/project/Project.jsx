@@ -36,7 +36,7 @@ const Project = ({ project, resume, user }) => {
     try {
       deleteProject({
         resumeId: resume,
-        leadershipId: project._id,
+        projectId: project._id,
       });
       toast.warning('Project deleted');
     } catch (err) {
