@@ -27,6 +27,7 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateLeadershipMutation,
   useUpdateLeadershipMutation,
@@ -38,6 +39,7 @@ const LeadershipForm = ({ resumeId, leadershipId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // redux state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createLeadership, { createIsLoading }] = useCreateLeadershipMutation();
   const [updateLeadership, { updateIsLoading }] = useUpdateLeadershipMutation();
   const { data: leadership, isSuccess } = useGetLeadershipQuery({
@@ -86,6 +88,7 @@ const LeadershipForm = ({ resumeId, leadershipId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Leadership created');
+          refetch();
         } else {
           toast.error('Could not create leadership');
         }

@@ -28,6 +28,7 @@ import Checkbox from '../../form/Checkbox';
 import Range from '../../form/Range';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateSkillMutation,
   useUpdateSkillMutation,
@@ -39,7 +40,7 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // state
-  const [categoryOptions, setCategoryOptions] = useState([]);
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createSkill, { createIsLoading }] = useCreateSkillMutation();
   const [updateSkill, { updateIsLoading }] = useUpdateSkillMutation();
   const { data: skills } = useGetSkillQuery({ resumeId });
@@ -47,6 +48,7 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
     resumeId,
     skillId,
   });
+  const [categoryOptions, setCategoryOptions] = useState([]);
 
   useEffect(() => {
     async function loadData() {
@@ -113,6 +115,7 @@ const SkillForm = ({ resumeId, skillId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Skill created');
+          refetch();
         } else {
           toast.error('Could not create skill');
         }

@@ -14,9 +14,6 @@ import {
   highlighted_validation,
 } from './validation.jsx';
 
-// import icons
-// import * as MdIcons from 'react-icons/md';
-
 // import components
 import Form from '../../form/Form';
 import FormHeader from '../../form/FormHeader';
@@ -30,6 +27,7 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateProjectMutation,
   useUpdateProjectMutation,
@@ -42,6 +40,7 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // redux state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createProject, { createIsLoading }] = useCreateProjectMutation();
   const [updateProject, { updateIsLoading }] = useUpdateProjectMutation();
   const { data: project, isSuccess } = useGetProjectQuery({
@@ -122,6 +121,7 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Project created');
+          refetch();
         } else {
           toast.error('Could not create project');
         }

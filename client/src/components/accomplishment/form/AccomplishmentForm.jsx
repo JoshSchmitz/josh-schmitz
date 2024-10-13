@@ -27,6 +27,7 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateAccomplishmentMutation,
   useUpdateAccomplishmentMutation,
@@ -42,7 +43,8 @@ const AccomplishmentForm = ({
   // react-hook-form validation
   const methods = useForm({ mode: 'onChange' });
 
-  // redux state
+  // state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createAccomplishment, { createIsLoading }] =
     useCreateAccomplishmentMutation();
   const [updateAccomplishment, { updateIsLoading }] =
@@ -93,6 +95,7 @@ const AccomplishmentForm = ({
         if (res) {
           toggleModal();
           toast.success('Accomplishment created');
+          refetch();
         } else {
           toast.error('Could not create accomplishment');
         }

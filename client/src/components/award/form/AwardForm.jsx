@@ -27,6 +27,7 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateAwardMutation,
   useUpdateAwardMutation,
@@ -38,6 +39,7 @@ const AwardForm = ({ resumeId, awardId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // redux state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createAward, { createIsLoading }] = useCreateAwardMutation();
   const [updateAward, { updateIsLoading }] = useUpdateAwardMutation();
   const { data: award, isSuccess } = useGetAwardQuery({
@@ -83,6 +85,7 @@ const AwardForm = ({ resumeId, awardId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Award created');
+          refetch();
         } else {
           toast.error('Could not create award');
         }

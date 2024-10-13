@@ -24,6 +24,7 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateLanguageMutation,
   useUpdateLanguageMutation,
@@ -35,6 +36,7 @@ const LanguageForm = ({ resumeId, languageId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // redux state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createLanguage, { createIsLoading }] = useCreateLanguageMutation();
   const [updateLanguage, { updateIsLoading }] = useUpdateLanguageMutation();
   const { data: language, isSuccess } = useGetLanguageQuery({
@@ -75,6 +77,7 @@ const LanguageForm = ({ resumeId, languageId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Language created');
+          refetch();
         } else {
           toast.error('Could not create language');
         }

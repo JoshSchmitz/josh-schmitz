@@ -32,6 +32,7 @@ import Button from '../../form/Button';
 import MultiSelect from '../../form/MultiSelect';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateExperienceMutation,
   useUpdateExperienceMutation,
@@ -43,7 +44,8 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   // react-hook-form validation
   const methods = useForm({ mode: 'onChange' });
 
-  // redux state
+  // state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
   const { data: experience, isSuccess } = useGetExperienceQuery({

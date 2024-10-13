@@ -32,6 +32,7 @@ import MultiValueText from '../../form/MultiValueText';
 import Checkbox from '../../form/Checkbox';
 
 // import state
+import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateEducationMutation,
   useUpdateEducationMutation,
@@ -43,6 +44,7 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // state
+  const { refetch } = useGetResumeQuery({ resumeId });
   const [createEducation, { createIsLoading }] = useCreateEducationMutation();
   const [updateEducation, { updateIsLoading }] = useUpdateEducationMutation();
   const [majors, setMajors] = useState();
@@ -114,6 +116,7 @@ const EducationForm = ({ resumeId, educationId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Education created');
+          refetch();
         } else {
           toast.error('Could not create education');
         }
