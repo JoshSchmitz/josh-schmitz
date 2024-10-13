@@ -84,9 +84,6 @@ const AddBadge = ({ section, resume }) => {
             toggleModal={toggleModal}
           />
         )}
-        {section === 'Award' && (
-          <AwardForm resumeId={resume} edit={false} toggleModal={toggleModal} />
-        )}
       </Modal>
       <div className='addbadge' onClick={toggleModal}>
         <Icon icon='MdAdd' />
