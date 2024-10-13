@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-// import { useSelector } from 'react-redux';
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
+import { useSelector } from 'react-redux';
 
 // import components
+import AddSection from './AddSection';
 import RingLoader from 'react-spinners/RingLoader';
 import Experiences from '../experience/Experiences';
 import Educations from '../education/Educations';
@@ -14,8 +14,10 @@ import Awards from '../award/Awards';
 import Groups from '../group/Groups';
 import Languages from '../language/Languages';
 
+// import state
+import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
+
 const Resume = ({ resumeId }) => {
-  // const { userId } = useSelector((state) => state.auth.userInfo._id);
   const {
     data: resume,
     isLoading,
@@ -23,6 +25,7 @@ const Resume = ({ resumeId }) => {
     isError,
     error,
   } = useGetResumeQuery({ resumeId });
+  const { userInfo } = useSelector((state) => state.auth);
 
   return (
     <>
@@ -32,19 +35,24 @@ const Resume = ({ resumeId }) => {
       {isError && <h1>Error: {error}</h1>}
       {isSuccess && (
         <article className='resume'>
-          <section className='section title'>
+          <section className='section' id='bio'>
             <h1 className='title'>{resume.title}</h1>
             <p className='bio'>{resume.bio}</p>
           </section>
-          <Experiences resumeId={resumeId} />
-          <Educations resumeId={resumeId} />
-          <Skills resumeId={resumeId} />
-          <Leaderships resumeId={resumeId} />
-          <Projects resumeId={resumeId} />
-          <Accomplishments resumeId={resumeId} />
-          <Awards resumeId={resumeId} />
-          <Groups resumeId={resumeId} />
-          <Languages resumeId={resumeId} />
+          {userInfo && userInfo._id === resume.user && (
+            <AddSection resumeId={resumeId} />
+          )}
+          {resume.experienceCount > 0 && <Experiences resumeId={resumeId} />}
+          {resume.educationCount > 0 && <Educations resumeId={resumeId} />}
+          {resume.skillCount > 0 && <Skills resumeId={resumeId} />}
+          {resume.leadershipCount > 0 && <Leaderships resumeId={resumeId} />}
+          {resume.projectCount > 0 && <Projects resumeId={resumeId} />}
+          {resume.accomplishmentCount > 0 && (
+            <Accomplishments resumeId={resumeId} />
+          )}
+          {resume.awardCount > 0 && <Awards resumeId={resumeId} />}
+          {resume.groupCount > 0 && <Groups resumeId={resumeId} />}
+          {resume.languageCount > 0 && <Languages resumeId={resumeId} />}
         </article>
       )}
     </>
