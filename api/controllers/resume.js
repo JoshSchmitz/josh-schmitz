@@ -3,7 +3,7 @@ import Resume from '../models/resume.js';
 
 /* 
     @desc: Get Resume for user
-    @route: GET /api/resume/(/ or :resumeId)
+    @route: GET /api/resume/(/user/:userId or :resumeId)
     @access: public
 */
 const getResume = asyncHandler(async (req, res) => {
