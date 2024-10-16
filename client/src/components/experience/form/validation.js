@@ -53,6 +53,7 @@ const skills_validation = {
   placeholder: 'Relevent Skills ...',
   isClearable: true,
   isSearchable: true,
+  noOptionsMessage: () => 'No Skills, please add one',
   validation: {
     required: { value: true, message: 'required' },
   },

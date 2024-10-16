@@ -13,6 +13,7 @@ const MultiSelect = ({
   placeholder,
   isClearable,
   isSearchable,
+  noOptionsMessage,
   listmode,
 }) => {
   const {
@@ -40,6 +41,7 @@ const MultiSelect = ({
             isMulti
             isClearable={isClearable}
             isSearchable={isSearchable}
+            noOptionsMessage={noOptionsMessage}
             id={id}
             placeholder={placeholder ? placeholder : 'Select ...'}
             options={options}
@@ -69,6 +71,7 @@ MultiSelect.propTypes = {
   placeholder: PropTypes.string,
   isClearable: PropTypes.bool,
   isSearchable: PropTypes.bool,
+  noOptionsMessage: PropTypes.func,
   listmode: PropTypes.string,
 };
 
