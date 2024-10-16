@@ -18,7 +18,7 @@ export const groupApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Group'],
+      invalidatesTags: ['Group', 'Resume'],
     }),
     updateGroup: builder.mutation({
       query: (data) => ({
@@ -33,7 +33,7 @@ export const groupApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/group/${groupId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Resume'],
+      invalidatesTags: ['Group', 'Resume'],
     }),
   }),
 });

@@ -18,7 +18,7 @@ export const languageApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Language'],
+      invalidatesTags: ['Language', 'Resume'],
     }),
     updateLanguage: builder.mutation({
       query: (data) => ({
@@ -33,7 +33,7 @@ export const languageApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/language/${languageId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Resume'],
+      invalidatesTags: ['Language', 'Resume'],
     }),
   }),
 });

@@ -18,7 +18,7 @@ export const awardApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ['Award'],
+      invalidatesTags: ['Award', 'Resume'],
     }),
     updateAward: builder.mutation({
       query: (data) => ({
@@ -33,7 +33,7 @@ export const awardApiSlice = apiSlice.injectEndpoints({
         url: `${RESUME_URL}/${resumeId}/award/${awardId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Resume'],
+      invalidatesTags: ['Award', 'Resume'],
     }),
   }),
 });
