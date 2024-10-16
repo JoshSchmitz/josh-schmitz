@@ -53,6 +53,9 @@ const skills_validation = {
   placeholder: 'Relevent Skills ...',
   isClearable: true,
   isSearchable: true,
+  validation: {
+    required: { value: true, message: 'required' },
+  },
 };
 
 // company name

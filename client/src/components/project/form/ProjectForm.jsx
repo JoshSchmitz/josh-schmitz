@@ -116,7 +116,7 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
         const res = await createProject({
           resumeId,
           ...data,
-          skills: skills,
+          skills: skills ? skills : [],
         }).unwrap();
         if (res) {
           toggleModal();
