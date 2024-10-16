@@ -27,7 +27,7 @@ const Accomplishment = ({ accomplishment, resume, user }) => {
     setFormIsOpen(!formIsOpen);
   };
 
-  // redux state
+  // state
   const [deleteLeadership, { deleteIsLoading }] =
     useDeleteAccomplishmentMutation();
 
