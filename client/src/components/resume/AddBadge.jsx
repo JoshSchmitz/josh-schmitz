@@ -86,7 +86,7 @@ const AddBadge = ({ section, resume }) => {
         )}
       </Modal>
       <div className='addbadge' onClick={toggleModal}>
-        <Icon icon='MdAdd' />
+        <Icon icon='MdAddCircleOutline' />
         <h3 className='label'>Add {section}</h3>
       </div>
     </>

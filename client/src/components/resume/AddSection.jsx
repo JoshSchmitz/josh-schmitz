@@ -23,7 +23,7 @@ const AddSection = ({ resumeId }) => {
       )}
       {isError && <h1>Error: {error}</h1>}
       {isSuccess && (
-        <section className='section' id='addsection'>
+        <section className='insert' id='addsection'>
           {resume.experienceCount === 0 && (
             <AddBadge section='Experience' resume={resumeId} />
           )}

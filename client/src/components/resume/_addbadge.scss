@@ -1,8 +1,9 @@
-.section#addsection {
+.insert#addsection {
     display: flex;
     gap: 8px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
     .addbadge {
         color: $text-medium;
