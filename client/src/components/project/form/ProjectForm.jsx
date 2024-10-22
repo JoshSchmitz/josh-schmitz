@@ -27,7 +27,6 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
-import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateProjectMutation,
   useUpdateProjectMutation,
@@ -40,7 +39,6 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // redux state
-  const { refetch } = useGetResumeQuery({ resumeId });
   const [createProject, { createIsLoading }] = useCreateProjectMutation();
   const [updateProject, { updateIsLoading }] = useUpdateProjectMutation();
   const { data: project, isSuccess } = useGetProjectQuery({
@@ -107,21 +105,20 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
       try {
-        let skills = [];
+        let formskills = [];
         if (data.skills.length > 0) {
-          skills = data.skills.map((s) => {
+          formskills = data.skills.map((s) => {
             return s.value;
           });
         }
         const res = await createProject({
           resumeId,
           ...data,
-          skills: skills ? skills : [],
+          skills: formskills,
         }).unwrap();
         if (res) {
           toggleModal();
           toast.success('Project created');
-          refetch();
         } else {
           toast.error('Could not create project');
         }
@@ -130,9 +127,9 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
       }
     } else {
       try {
-        let skills = [];
+        let formskills = [];
         if (data.skills.length > 0) {
-          skills = data.skills.map((s) => {
+          formskills = data.skills.map((s) => {
             return s.value;
           });
         }
@@ -140,7 +137,7 @@ const ProjectForm = ({ resumeId, projectId, edit, toggleModal }) => {
           resumeId,
           projectId,
           ...data,
-          skills: skills,
+          skills: formskills,
         }).unwrap();
         if (res) {
           toggleModal();

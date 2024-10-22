@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import PropTypes from 'prop-types';
@@ -32,7 +31,6 @@ import Button from '../../form/Button';
 import MultiSelect from '../../form/MultiSelect';
 
 // import state
-import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateExperienceMutation,
   useUpdateExperienceMutation,
@@ -45,7 +43,6 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // state
-  const { refetch } = useGetResumeQuery({ resumeId });
   const [createExperience, { createIsLoading }] = useCreateExperienceMutation();
   const [updateExperience, { updateIsLoading }] = useUpdateExperienceMutation();
   const { data: experience, isSuccess } = useGetExperienceQuery({
@@ -123,16 +120,16 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
   const onSubmit = methods.handleSubmit(async (data) => {
     if (!edit) {
       try {
-        let skills = [];
+        let formskills = [];
         if (data.skills.length > 0) {
-          skills = data.skills.map((s) => {
+          formskills = data.skills.map((s) => {
             return s.value;
           });
         }
         const res = await createExperience({
           resumeId,
           ...data,
-          skills: skills,
+          skills: formskills,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
@@ -146,9 +143,9 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
       }
     } else {
       try {
-        let skills = [];
+        let formskills = [];
         if (data.skills.length > 0) {
-          skills = data.skills.map((s) => {
+          formskills = data.skills.map((s) => {
             return s.value;
           });
         }
@@ -156,7 +153,7 @@ const ExperienceForm = ({ resumeId, experienceId, edit, toggleModal }) => {
           resumeId,
           experienceId,
           ...data,
-          skills: skills,
+          skills: formskills,
           phone: data.phone.replaceAll(/[^0-9]/g, ''),
         }).unwrap();
         if (res) {
