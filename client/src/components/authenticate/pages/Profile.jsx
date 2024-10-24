@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 // import state
 import {
@@ -15,10 +15,10 @@ import {
 
 //import components
 import Icon from '../../icon/Icon';
-import { MdOutlineLogout } from 'react-icons/md';
 import PulseLoader from 'react-spinners/PulseLoader';
 
 const Profile = () => {
+  const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.auth);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -30,9 +30,11 @@ const Profile = () => {
   const [updateUser, { isLoading }] = useUpdateUserMutation();
 
   useEffect(() => {
-    setName(userInfo.name);
-    setEmail(userInfo.email);
-  }, [userInfo.name, userInfo.email]);
+    if (userInfo) {
+      setName(userInfo.name);
+      setEmail(userInfo.email);
+    }
+  }, [userInfo]);
 
   const profileHandler = async (e) => {
     e.preventDefault();
@@ -60,6 +62,7 @@ const Profile = () => {
     try {
       await logout().unwrap();
       dispatch(clearCredentials());
+      navigate('/');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -67,71 +70,69 @@ const Profile = () => {
 
   return (
     <>
-      <form className='form' autoComplete='on' onSubmit={profileHandler}>
-        <div className='form-header'>
-          <div className='title-bar'>
-            <h1 className='title'>{userInfo.name}</h1>
-            <div className='logout'>
-              <Icon
-                icon='MdOutlineLogout'
-                className='logout-icon'
-                onClick={logoutHandler}
-              />
+      {userInfo && (
+        <form className='form' autoComplete='on' onSubmit={profileHandler}>
+          <div className='form-header'>
+            <div className='title-bar'>
+              <h1 className='title'>{userInfo.name}</h1>
+              <div className='logout'>
+                <Icon icon='MdOutlineLogout' onClick={logoutHandler} />
+              </div>
             </div>
+            <h4 className='subtitle'>Update your profile information</h4>
           </div>
-          <h4 className='subtitle'>Update your profile information</h4>
-        </div>
-        <div className='form-group'>
-          <input
-            id='name'
-            className='input'
-            type='text'
-            placeholder='Name'
-            autoComplete='on'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            id='email'
-            className='input'
-            type='email'
-            placeholder='Email address'
-            autoComplete='on'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            id='password'
-            className='input'
-            type='password'
-            placeholder='Password'
-            autoComplete='off'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            id='confirmpassword'
-            className='input'
-            type='password'
-            placeholder='Confirm password'
-            autoComplete='off'
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button className='button' type='submit'>
-          {isLoading ? (
-            <PulseLoader
-              className='loader-button'
-              loading={isLoading}
-              size={10}
-              color='#f4f4f4'
+          <div className='form-group'>
+            <input
+              id='name'
+              className='input'
+              type='text'
+              placeholder='Name'
+              autoComplete='on'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-          ) : (
-            'Update'
-          )}
-        </button>
-      </form>
+            <input
+              id='email'
+              className='input'
+              type='email'
+              placeholder='Email address'
+              autoComplete='on'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              id='password'
+              className='input'
+              type='password'
+              placeholder='Password'
+              autoComplete='off'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              id='confirmpassword'
+              className='input'
+              type='password'
+              placeholder='Confirm password'
+              autoComplete='off'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+          <button className='button' type='submit'>
+            {isLoading ? (
+              <PulseLoader
+                className='loader-button'
+                loading={isLoading}
+                size={10}
+                color='#f4f4f4'
+              />
+            ) : (
+              'Update'
+            )}
+          </button>
+        </form>
+      )}
     </>
   );
 };

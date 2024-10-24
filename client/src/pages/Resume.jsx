@@ -1,13 +1,14 @@
 //import components
+import { useParams } from 'react-router-dom';
 import Resume from '../components/resume/Resume';
 
 const ResumePage = () => {
-  const resume = '658782a85238abdb1f4f1500';
+  const { id } = useParams();
 
   return (
     <main>
       <div className='container'>
-        <Resume resumeId={resume} />
+        <Resume resumeId={id} />
       </div>
     </main>
   );

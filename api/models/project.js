@@ -5,7 +5,7 @@ const projectSchema = mongoose.Schema({
   description: { type: String, required: true },
   startDate: { type: String, required: true },
   endDate: String,
-  skills: [{ type: mongoose.Schema.Types.ObjectId }],
+  skills: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Skills' }],
   highlighted: { type: Boolean, required: true },
 });
 
