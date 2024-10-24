@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 // import pages
 import Login from './pages/Login';
-import Profile from './pages/Profile';
 import Register from './pages/Register';
 
 // import components
@@ -29,26 +28,32 @@ const Authenticate = () => {
 
   return (
     <>
-      <Link
-        to={
-          currentItem === 'Home'
-            ? '/'
-            : `/${currentItem.toString().toLowerCase()}`
-        }
-        onClick={() => dispatch(handleOpen(!isOpen))}
-      >
-        <div className='auth'>
-          <ProfileBadge />
-        </div>
-      </Link>
+      {userInfo ? (
+        <Link to='profile'>
+          <div className='auth'>
+            <ProfileBadge />
+          </div>
+        </Link>
+      ) : (
+        <Link
+          to={
+            currentItem === 'Home'
+              ? '/'
+              : `/${currentItem.toString().toLowerCase()}`
+          }
+          onClick={() => dispatch(handleOpen(!isOpen))}
+        >
+          <div className='auth'>
+            <ProfileBadge />
+          </div>
+        </Link>
+      )}
       <div className={isOpen ? 'auth-container' : 'auth-container closed'}>
         {register ? (
           <Register
             // openClick={() => handleOpen()}
             loginClick={() => handleRegister()}
           />
-        ) : userInfo ? (
-          <Profile />
         ) : (
           <Login
             // openClick={() => handleOpen()}
