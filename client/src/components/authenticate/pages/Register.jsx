@@ -48,7 +48,7 @@ const Register = ({ loginClick }) => {
         </div>
         <div className='form-group'>
           <input
-            id='name'
+            id='registername'
             className='input'
             type='text'
             placeholder='Name'
@@ -57,7 +57,7 @@ const Register = ({ loginClick }) => {
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            id='email'
+            id='registeremail'
             className='input'
             type='email'
             placeholder='Email address'
@@ -66,7 +66,7 @@ const Register = ({ loginClick }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            id='password'
+            id='registerpassword'
             className='input'
             type='password'
             placeholder='Password'
@@ -75,7 +75,7 @@ const Register = ({ loginClick }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
-            id='confirmpassword'
+            id='registerconfirmpassword'
             className='input'
             type='password'
             placeholder='Confirm password'

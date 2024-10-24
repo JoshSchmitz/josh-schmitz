@@ -83,7 +83,7 @@ const Profile = () => {
           </div>
           <div className='form-group'>
             <input
-              id='name'
+              id='profilename'
               className='input'
               type='text'
               placeholder='Name'
@@ -92,7 +92,7 @@ const Profile = () => {
               onChange={(e) => setName(e.target.value)}
             />
             <input
-              id='email'
+              id='profileemail'
               className='input'
               type='email'
               placeholder='Email address'
@@ -101,7 +101,7 @@ const Profile = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              id='password'
+              id='profilepassword'
               className='input'
               type='password'
               placeholder='Password'
@@ -110,7 +110,7 @@ const Profile = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <input
-              id='confirmpassword'
+              id='profileconfirmpassword'
               className='input'
               type='password'
               placeholder='Confirm password'

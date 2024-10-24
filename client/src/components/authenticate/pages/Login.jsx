@@ -43,7 +43,7 @@ const Login = ({ registerClick }) => {
         </div>
         <div className='form-group'>
           <input
-            id='email'
+            id='loginemail'
             className='input'
             type='email'
             placeholder='Email address'
@@ -52,7 +52,7 @@ const Login = ({ registerClick }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            id='password'
+            id='loginpassword'
             className='input'
             type='password'
             placeholder='Password'
