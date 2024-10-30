@@ -29,7 +29,6 @@ import Checkbox from '../../form/Checkbox';
 import Button from '../../form/Button.jsx';
 
 // import state
-import { useGetResumeQuery } from '../../../store/slices/resume/api-resume';
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,
@@ -41,7 +40,6 @@ const GroupForm = ({ resumeId, groupId, edit, toggleModal }) => {
   const methods = useForm({ mode: 'onChange' });
 
   // state
-  const { refetch } = useGetResumeQuery({ resumeId });
   const [createGroup, { createIsLoading }] = useCreateGroupMutation();
   const [updateGroup, { updateIsLoading }] = useUpdateGroupMutation();
   const { data: group, isSuccess } = useGetGroupQuery({
@@ -98,7 +96,6 @@ const GroupForm = ({ resumeId, groupId, edit, toggleModal }) => {
         if (res) {
           toggleModal();
           toast.success('Group created');
-          refetch();
         } else {
           toast.error('Could not create group');
         }
