@@ -78,6 +78,7 @@ const createResume = asyncHandler(async (req, res) => {
       _id: resume._id,
       title: resume.title,
       bio: resume.bio,
+      main: resume.main,
       createdAt: resume.createdAt,
     });
   } else {
@@ -97,7 +98,7 @@ const updateResume = asyncHandler(async (req, res) => {
   if (resume) {
     resume.title = req.body.title || resume.title;
     resume.bio = req.body.bio || resume.bio;
-    resume.main = req.body.main || resume.main;
+    resume.main = req.body.main;
     const updatedResume = await resume.save();
     if (updatedResume) {
       res.status(200).json({

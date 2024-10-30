@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 //import components
 import ProfileForm from '../components/authenticate/pages/Profile';
-import Resumes from '../components/resume/Resumes';
+import Resumes from '../components/resumes/Resumes';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -15,7 +15,7 @@ const Profile = () => {
             <div className='edit'>
               <ProfileForm />
             </div>
-            <Resumes />
+            <Resumes userId={userInfo._id} />
           </div>
         ) : (
           <div className='container'>
