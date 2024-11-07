@@ -1,8 +1,10 @@
+import ContactTile from '../components/contact/Contact';
+
 const Contact = () => {
   return (
     <main>
       <div className='container'>
-        <h1>Contact Page</h1>
+        <ContactTile />
       </div>
     </main>
   );

@@ -7,6 +7,7 @@ import * as BsIcons from 'react-icons/bs';
 import * as DiIcons from 'react-icons/di';
 import * as FaIcons from 'react-icons/fa6';
 import * as IoIcons from 'react-icons/io5';
+import * as AiIcons from 'react-icons/ai';
 
 const Icon = ({ icon, className, onClick }) => {
   const DisplayIcon = (iconName) => {
@@ -24,6 +25,9 @@ const Icon = ({ icon, className, onClick }) => {
     }
     if (iconName.startsWith('Io')) {
       return IoIcons[iconName];
+    }
+    if (iconName.startsWith('Ai')) {
+      return AiIcons[iconName];
     }
   };
 
