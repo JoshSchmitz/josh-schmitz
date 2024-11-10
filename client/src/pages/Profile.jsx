@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileForm from '../components/authenticate/pages/Profile';
 import Resumes from '../components/resumes/Resumes';
 
-const Profile = () => {
+const ProfilePage = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
@@ -28,4 +28,4 @@ const Profile = () => {
     </>
   );
 };
-export default Profile;
+export default ProfilePage;

@@ -1,12 +1,12 @@
-import ContactTile from '../components/contact/Contact';
+import Contact from '../components/contact/Contact';
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <main>
       <div className='container'>
-        <ContactTile />
+        <Contact />
       </div>
     </main>
   );
 };
-export default Contact;
+export default ContactPage;
