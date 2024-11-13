@@ -1,15 +1,27 @@
+import PropTypes from 'prop-types';
+
+//import components
 import Icon from '../icon/Icon';
 
 // import assets
 import portrait from '../../assets/images/portrait.png';
 
-const Contact = () => {
+const Contact = ({ style }) => {
   return (
-    <article className='contact'>
+    <article className={style === 'vertical' ? 'contact vertical' : 'contact'}>
       <div className='details'>
         <img className='portrait round bw' src={portrait} alt='Portrait' />
       </div>
       <div className='contact-info'>
+        {style === 'vertical' && (
+          <div className='info bio'>
+            <p>
+              Front-End Web Developer looking for a remote position where I can
+              be creative, solve problems, and add value to the front end of web
+              applications and websites.
+            </p>
+          </div>
+        )}
         <div className='info'>
           <Icon icon='MdOutlineEmail' />
           <p>josh.schmitz1@gmail.com</p>
@@ -48,4 +60,8 @@ const Contact = () => {
     </article>
   );
 };
+Contact.propTypes = {
+  style: PropTypes.string,
+};
+
 export default Contact;

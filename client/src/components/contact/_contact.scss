@@ -64,4 +64,32 @@
             font-size: 2rem;
         }
     }
+
+    &.vertical {
+        flex-direction: column;
+        gap: 20px;
+
+        .contact-info {
+            align-items: center;
+            gap: 8px;
+
+            .info {
+                font-size: 1rem;
+
+                &.bio {
+                    font-size: .85rem;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                .icon {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .social {
+            flex-direction: row;
+        }
+    }
 }

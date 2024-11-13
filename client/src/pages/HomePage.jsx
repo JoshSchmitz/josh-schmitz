@@ -1,8 +1,10 @@
+import HomeContent from '../components/home/HomeContent';
+
 const HomePage = () => {
   return (
     <main>
       <div className='container'>
-        <h1>Home Page</h1>
+        <HomeContent />
       </div>
     </main>
   );

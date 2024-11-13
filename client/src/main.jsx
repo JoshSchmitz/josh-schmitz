@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import store from './store/store.js';
 
 // import pages
-import HomePage from './pages/Home.jsx';
+import HomePage from './pages/HomePage.jsx';
 import ContactPage from './pages/Contact.jsx';
 import ResumePage from './pages/Resume.jsx';
 import ProfilePage from './pages/Profile.jsx';
