@@ -1,26 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
 //import components
-import Icon from '../icon/Icon';
-import Modal from 'react-modal';
 import RingLoader from 'react-spinners/RingLoader';
 import Company from './Company';
-import ExperienceForm from './form/ExperienceForm';
 
 // import state
 import { useGetExperienceQuery } from '../../store/slices/resume/api-experience';
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
-const Experiences = ({ resumeId }) => {
+const Experiences = ({ resumeId, userId, highlight }) => {
   // state
-  const { userInfo } = useSelector((state) => state.auth);
-  const {
-    data: { user },
-  } = useGetResumeQuery({ resumeId });
   const {
     data: xp,
     isLoading,
@@ -29,13 +20,6 @@ const Experiences = ({ resumeId }) => {
     error,
   } = useGetExperienceQuery({ resumeId });
   const [companies, setCompanies] = useState([]);
-
-  // modal functions
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(!modalIsOpen);
-  };
 
   useEffect(() => {
     /* 
@@ -107,67 +91,44 @@ const Experiences = ({ resumeId }) => {
           });
         });
 
-        setCompanies(
-          company.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
-        );
+        highlight
+          ? setCompanies(
+              company
+                .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
+                .slice(0, 1)
+            )
+          : setCompanies(
+              company.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
+            );
       }
     }
     buildCompanies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [xp]);
 
   return (
-    <>
-      <Modal
-        className='modal-content'
-        overlayClassName='modal-overlay'
-        contentLabel='Create Experience Modal'
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        preventScroll={true}
-        shouldFocusAfterRender={false}
-      >
-        <ExperienceForm
-          resumeId={resumeId}
-          edit={false}
-          toggleModal={toggleModal}
-        />
-      </Modal>
-      <section className='section' id='experiences'>
-        <div className='headline'>
-          <h1 className='title'>Work Experience</h1>
-          {userInfo && userInfo._id === user && (
-            <div className='actions'>
-              <Icon
-                icon='MdAddCircleOutline'
-                className='action create'
-                onClick={toggleModal}
-              />
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className='companies'>
-          {isLoading && (
-            <RingLoader className='loader-page' loading={isLoading} size={50} />
-          )}
-          {isError && <h1>Error: {error}</h1>}
-          {isSuccess &&
-            companies.map((comp) => {
-              return (
-                <Company
-                  key={nanoid()}
-                  company={comp}
-                  resumeId={resumeId}
-                  user={user}
-                ></Company>
-              );
-            })}
-        </div>
-      </section>
-    </>
+    <div className='companies'>
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
+      {isError && <h1>Error: {error}</h1>}
+      {isSuccess &&
+        companies.map((comp) => {
+          return (
+            <Company
+              key={nanoid()}
+              company={comp}
+              resumeId={resumeId}
+              user={userId}
+            ></Company>
+          );
+        })}
+    </div>
   );
 };
 Experiences.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  highlight: PropTypes.bool,
 };
 export default Experiences;
