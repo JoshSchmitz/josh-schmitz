@@ -6,7 +6,7 @@ import AddSection from './AddSection';
 import RingLoader from 'react-spinners/RingLoader';
 import ExperienceSection from '../experience/ExperienceSection';
 import EducationSection from '../education/EducationSection';
-import SkillsSection from '../skill/SkillsSection';
+import SkillSection from '../skill/SkillSection';
 import Leaderships from '../leadership/Leaderships';
 import Projects from '../project/Projects';
 import Accomplishments from '../accomplishment/Accomplishments';
@@ -49,7 +49,7 @@ const Resume = ({ resumeId }) => {
             <EducationSection resumeId={resumeId} userId={resume.user} />
           )}
           {resume.skillCount > 0 && (
-            <SkillsSection resumeId={resumeId} userId={resume.user} />
+            <SkillSection resumeId={resumeId} userId={resume.user} />
           )}
           {resume.leadershipCount > 0 && <Leaderships resumeId={resumeId} />}
           {resume.projectCount > 0 && <Projects resumeId={resumeId} />}

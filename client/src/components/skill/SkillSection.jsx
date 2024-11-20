@@ -8,7 +8,7 @@ import SkillForm from './form/SkillForm';
 import Icon from '../icon/Icon';
 import Modal from 'react-modal';
 
-const SkillsSection = ({ resumeId, userId }) => {
+const SkillSection = ({ resumeId, userId }) => {
   // state
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -51,9 +51,9 @@ const SkillsSection = ({ resumeId, userId }) => {
     </>
   );
 };
-SkillsSection.propTypes = {
+SkillSection.propTypes = {
   resumeId: PropTypes.string.isRequired,
   userId: PropTypes.string,
 };
 
-export default SkillsSection;
+export default SkillSection;
