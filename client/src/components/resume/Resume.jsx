@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import AddSection from './AddSection';
 import RingLoader from 'react-spinners/RingLoader';
 import ExperienceSection from '../experience/ExperienceSection';
-import Educations from '../education/Educations';
-import Skills from '../skill/Skills';
+import EducationSection from '../education/EducationSection';
+import SkillsSection from '../skill/SkillsSection';
 import Leaderships from '../leadership/Leaderships';
 import Projects from '../project/Projects';
 import Accomplishments from '../accomplishment/Accomplishments';
@@ -45,8 +45,12 @@ const Resume = ({ resumeId }) => {
           {resume.experienceCount > 0 && (
             <ExperienceSection resumeId={resumeId} userId={resume.user} />
           )}
-          {resume.educationCount > 0 && <Educations resumeId={resumeId} />}
-          {resume.skillCount > 0 && <Skills resumeId={resumeId} />}
+          {resume.educationCount > 0 && (
+            <EducationSection resumeId={resumeId} userId={resume.user} />
+          )}
+          {resume.skillCount > 0 && (
+            <SkillsSection resumeId={resumeId} userId={resume.user} />
+          )}
           {resume.leadershipCount > 0 && <Leaderships resumeId={resumeId} />}
           {resume.projectCount > 0 && <Projects resumeId={resumeId} />}
           {resume.accomplishmentCount > 0 && (
