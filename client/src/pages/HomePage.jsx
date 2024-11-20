@@ -6,6 +6,7 @@ import Contact from '../components/contact/Contact';
 import Experiences from '../components/experience/Experiences';
 import Educations from '../components/education/Educations';
 import Skills from '../components/skill/Skills';
+import Leaderships from '../components/leadership/Leaderships';
 
 import { useGetResumeQuery } from '../store/slices/resume/api-resume';
 
@@ -42,6 +43,7 @@ const HomePage = () => {
           <Experiences resumeId={mainResumeId} highlight />
           <Educations resumeId={mainResumeId} highlight />
           <Skills resumeId={mainResumeId} highlight />
+          <Leaderships resumeId={mainResumeId} highlight />
         </div>
       </div>
     </main>
