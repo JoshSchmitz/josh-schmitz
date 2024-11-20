@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 // import RingLoader from 'react-spinners/RingLoader';
 import Contact from '../components/contact/Contact';
 import Experiences from '../components/experience/Experiences';
+import Educations from '../components/education/Educations';
+import Skills from '../components/skill/Skills';
 
 import { useGetResumeQuery } from '../store/slices/resume/api-resume';
 
@@ -38,6 +40,8 @@ const HomePage = () => {
         <Contact style='vertical' />
         <div className='details'>
           <Experiences resumeId={mainResumeId} highlight />
+          <Educations resumeId={mainResumeId} highlight />
+          <Skills resumeId={mainResumeId} highlight />
         </div>
       </div>
     </main>
