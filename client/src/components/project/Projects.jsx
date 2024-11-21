@@ -1,20 +1,15 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 // import components
-import Icon from '../icon/Icon';
 import RingLoader from 'react-spinners/RingLoader';
-import Modal from 'react-modal';
 import Project from './Project';
-import ProjectForm from './form/ProjectForm';
 
 // import state
 import { useGetProjectQuery } from '../../store/slices/resume/api-project';
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 
-const Projects = ({ resumeId }) => {
+const Projects = ({ resumeId, userId, highlight }) => {
   // state
   const {
     data: projects,
@@ -23,75 +18,58 @@ const Projects = ({ resumeId }) => {
     isError,
     error,
   } = useGetProjectQuery({ resumeId });
-  // current user id and resume user id
-  const { userInfo } = useSelector((state) => state.auth);
-  const {
-    data: { user },
-  } = useGetResumeQuery({ resumeId });
+  const [proj, setProj] = useState([]);
 
-  // modal functions
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(!modalIsOpen);
-  };
+  useEffect(() => {
+    async function displayHighlighted() {
+      if (projects) {
+        const prj = projects
+          .filter((p) => p.highlighted === true)
+          .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate));
+        if (prj.length === 0) {
+          setProj(
+            projects
+              .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
+              .slice(0, 1)
+          );
+        } else {
+          setProj(prj);
+        }
+      }
+    }
+    async function displayFull() {
+      if (projects) {
+        setProj(projects.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
+      }
+    }
+
+    highlight ? displayHighlighted() : displayFull();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projects]);
 
   return (
-    <>
-      <Modal
-        className='modal-content'
-        overlayClassName='modal-overlay'
-        contentLabel='Create Project Modal'
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        preventScroll={false}
-        shouldFocusAfterRender={false}
-      >
-        <ProjectForm
-          resumeId={resumeId}
-          edit={false}
-          toggleModal={toggleModal}
-        />
-      </Modal>
-      <section className='section' id='projects'>
-        <div className='headline'>
-          <h1 className='title'>Projects</h1>
-          {userInfo && userInfo._id === user && (
-            <div className='actions'>
-              <Icon
-                icon='MdAddCircleOutline'
-                className='action create'
-                onClick={toggleModal}
-              />
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className='projects'>
-          {isLoading && (
-            <RingLoader className='loader-page' loading={isLoading} size={50} />
-          )}
-          {isError && <h1>Error: {error}</h1>}
-          {isSuccess &&
-            projects
-              .filter((proj) => proj.title)
-              .sort((a, b) => dayjs(b.date) - dayjs(a.date))
-              .map((proj) => {
-                return (
-                  <Project
-                    key={proj._id}
-                    project={proj}
-                    resume={resumeId}
-                    user={user}
-                  />
-                );
-              })}
-        </div>
-      </section>
-    </>
+    <div className='projects'>
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
+      {isError && <h1>Error: {error}</h1>}
+      {isSuccess &&
+        proj.map((proj) => {
+          return (
+            <Project
+              key={proj._id}
+              project={proj}
+              resume={resumeId}
+              user={userId}
+            />
+          );
+        })}
+    </div>
   );
 };
 Projects.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  highlight: PropTypes.bool,
 };
 export default Projects;
