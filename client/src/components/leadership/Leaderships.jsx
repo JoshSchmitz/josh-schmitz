@@ -41,11 +41,7 @@ const Leaderships = ({ resumeId, userId, highlight }) => {
       }
     }
 
-    if (highlight) {
-      displayHighlighted();
-    } else {
-      displayFull();
-    }
+    highlight ? displayHighlighted() : displayFull();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [leaderships]);
 
