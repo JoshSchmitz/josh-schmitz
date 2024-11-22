@@ -10,7 +10,7 @@ import SkillSection from '../skill/SkillSection';
 import LeadershipSection from '../leadership/LeadershipSection';
 import ProjectSection from '../project/ProjectSection';
 import AccomplishmentSection from '../accomplishment/AccomplishmentSection';
-import Awards from '../award/Awards';
+import AwardSection from '../award/AwardSection';
 import Groups from '../group/Groups';
 import Languages from '../language/Languages';
 
@@ -60,7 +60,9 @@ const Resume = ({ resumeId }) => {
           {resume.accomplishmentCount > 0 && (
             <AccomplishmentSection resumeId={resumeId} userId={resume.user} />
           )}
-          {resume.awardCount > 0 && <Awards resumeId={resumeId} />}
+          {resume.awardCount > 0 && (
+            <AwardSection resumeId={resumeId} userId={resume.user} />
+          )}
           {resume.groupCount > 0 && <Groups resumeId={resumeId} />}
           {resume.languageCount > 0 && <Languages resumeId={resumeId} />}
         </article>
