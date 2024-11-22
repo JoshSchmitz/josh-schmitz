@@ -1,26 +1,15 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 // import components
-import Icon from '../icon/Icon';
 import RingLoader from 'react-spinners/RingLoader';
-import Modal from 'react-modal';
 import Accomplishment from './Accomplishment';
-import AccomplishmentForm from './form/AccomplishmentForm';
 
 // import state
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetAccomplishmentQuery } from '../../store/slices/resume/api-accomplishment';
 
-const Accomplishments = ({ resumeId }) => {
-  // current user id and resume user id
-  const { userInfo } = useSelector((state) => state.auth);
-  const {
-    data: { user },
-  } = useGetResumeQuery({ resumeId });
-
+const Accomplishments = ({ resumeId, userId, highlight }) => {
   // state
   const {
     data: accomplishments,
@@ -29,70 +18,60 @@ const Accomplishments = ({ resumeId }) => {
     isError,
     error,
   } = useGetAccomplishmentQuery({ resumeId });
+  const [accomps, setAccomps] = useState([]);
 
-  // modal functions
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(!modalIsOpen);
-  };
+  useEffect(() => {
+    async function displayHighlighted() {
+      if (accomplishments) {
+        const accs = accomplishments
+          .filter((a) => a.highlighted === true)
+          .sort((a, b) => dayjs(b.date) - dayjs(a.date));
+        if (accs.length === 0) {
+          setAccomps(
+            accomplishments
+              .sort((a, b) => dayjs(b.date) - dayjs(a.date))
+              .slice(0, 2)
+          );
+        } else {
+          setAccomps(accs);
+        }
+      }
+    }
+    async function displayFull() {
+      if (accomplishments) {
+        setAccomps(
+          accomplishments.sort((a, b) => dayjs(b.date) - dayjs(a.date))
+        );
+      }
+    }
+
+    highlight ? displayHighlighted() : displayFull();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accomplishments]);
 
   return (
-    <>
-      <Modal
-        className='modal-content'
-        overlayClassName='modal-overlay'
-        contentLabel='Create Accomplishment Modal'
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        preventScroll={false}
-        shouldFocusAfterRender={false}
-      >
-        <AccomplishmentForm
-          resumeId={resumeId}
-          edit={false}
-          toggleModal={toggleModal}
-        />
-      </Modal>
-      <section className='section' id='accomplishments'>
-        <div className='headline'>
-          <h1 className='title'>Accomplishments</h1>
-          {userInfo && userInfo._id === user && (
-            <div className='actions'>
-              <Icon
-                icon='MdAddCircleOutline'
-                className='action create'
-                onClick={toggleModal}
-              />
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className='accomplishments'>
-          {isLoading && (
-            <RingLoader className='loader-page' loading={isLoading} size={50} />
-          )}
-          {isError && <h1>Error: {error}</h1>}
-          {isSuccess &&
-            accomplishments
-              .filter((acc) => acc.title)
-              .sort((a, b) => dayjs(b.date) - dayjs(a.date))
-              .map((acc) => {
-                return (
-                  <Accomplishment
-                    key={acc._id}
-                    accomplishment={acc}
-                    resume={resumeId}
-                    user={user}
-                  />
-                );
-              })}
-        </div>
-      </section>
-    </>
+    <div className='accomplishments'>
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
+      {isError && <h1>Error: {error}</h1>}
+      {isSuccess &&
+        accomps.map((acc) => {
+          return (
+            <Accomplishment
+              key={acc._id}
+              accomplishment={acc}
+              resume={resumeId}
+              user={userId}
+            />
+          );
+        })}
+    </div>
   );
 };
 Accomplishments.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  highlight: PropTypes.bool,
 };
 export default Accomplishments;
