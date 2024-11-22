@@ -9,7 +9,7 @@ import EducationSection from '../education/EducationSection';
 import SkillSection from '../skill/SkillSection';
 import LeadershipSection from '../leadership/LeadershipSection';
 import ProjectSection from '../project/ProjectSection';
-import Accomplishments from '../accomplishment/Accomplishments';
+import AccomplishmentSection from '../accomplishment/AccomplishmentSection';
 import Awards from '../award/Awards';
 import Groups from '../group/Groups';
 import Languages from '../language/Languages';
@@ -58,7 +58,7 @@ const Resume = ({ resumeId }) => {
             <ProjectSection resumeId={resumeId} userId={resume.user} />
           )}
           {resume.accomplishmentCount > 0 && (
-            <Accomplishments resumeId={resumeId} />
+            <AccomplishmentSection resumeId={resumeId} userId={resume.user} />
           )}
           {resume.awardCount > 0 && <Awards resumeId={resumeId} />}
           {resume.groupCount > 0 && <Groups resumeId={resumeId} />}
