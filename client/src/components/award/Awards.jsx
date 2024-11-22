@@ -1,26 +1,15 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 // import components
-import Icon from '../icon/Icon';
-import RingLoader from 'react-spinners/RingLoader';
-import Modal from 'react-modal';
 import Award from './Award';
-import AwardForm from './form/AwardForm';
+import RingLoader from 'react-spinners/RingLoader';
 
 // import state
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetAwardQuery } from '../../store/slices/resume/api-award';
 
-const Awards = ({ resumeId }) => {
-  // current user id and resume user id
-  const { userInfo } = useSelector((state) => state.auth);
-  const {
-    data: { user },
-  } = useGetResumeQuery({ resumeId });
-
+const Awards = ({ resumeId, userId, highlight }) => {
   // state
   const {
     data: awards,
@@ -29,66 +18,50 @@ const Awards = ({ resumeId }) => {
     isError,
     error,
   } = useGetAwardQuery({ resumeId });
+  const [aws, setAws] = useState([]);
 
-  // modal functions
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(!modalIsOpen);
-  };
+  useEffect(() => {
+    async function displayHilighted() {
+      if (awards) {
+        const aw = awards
+          .filter((a) => a.highlighted === true)
+          .sort((a, b) => dayjs(b.date) - dayjs(a.date));
+        if (aw.length === 0) {
+          setAws(
+            awards.sort((a, b) => dayjs(b.date) - dayjs(a.date)).slice(0, 2)
+          );
+        } else {
+          setAws(aw);
+        }
+      }
+    }
+    async function displayFull() {
+      if (awards) {
+        setAws(awards.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
+      }
+    }
+    highlight ? displayHilighted() : displayFull();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [awards]);
 
   return (
-    <>
-      <Modal
-        className='modal-content'
-        overlayClassName='modal-overlay'
-        contentLabel='Create Award Modal'
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        preventScroll={false}
-        shouldFocusAfterRender={false}
-      >
-        <AwardForm resumeId={resumeId} edit={false} toggleModal={toggleModal} />
-      </Modal>
-      <section className='section' id='awards'>
-        <div className='headline'>
-          <h1 className='title'>Awards</h1>
-          {userInfo && userInfo._id === user && (
-            <div className='actions'>
-              <Icon
-                icon='MdAddCircleOutline'
-                className='action create'
-                onClick={toggleModal}
-              />
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className='awards'>
-          {isLoading && (
-            <RingLoader className='loader-page' loading={isLoading} size={50} />
-          )}
-          {isError && <h1>Error: {error}</h1>}
-          {isSuccess &&
-            awards
-              .filter((aw) => aw.title)
-              .sort((a, b) => dayjs(b.date) - dayjs(a.date))
-              .map((aw) => {
-                return (
-                  <Award
-                    key={aw._id}
-                    award={aw}
-                    resume={resumeId}
-                    user={user}
-                  />
-                );
-              })}
-        </div>
-      </section>
-    </>
+    <div className='awards'>
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
+      {isError && <h1>Error: {error}</h1>}
+      {isSuccess &&
+        aws.map((aw) => {
+          return (
+            <Award key={aw._id} award={aw} resume={resumeId} user={userId} />
+          );
+        })}
+    </div>
   );
 };
 Awards.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  highlight: PropTypes.bool,
 };
 export default Awards;
