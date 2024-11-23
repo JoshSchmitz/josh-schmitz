@@ -1,25 +1,16 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 // import components
-import Icon from '../icon/Icon';
-import RingLoader from 'react-spinners/RingLoader';
-import Modal from 'react-modal';
 import Language from './Language';
-import LanguageForm from './form/LanguageForm';
+import RingLoader from 'react-spinners/RingLoader';
 
 // import state
-import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
 import { useGetLanguageQuery } from '../../store/slices/resume/api-language';
 
-const Languages = ({ resumeId }) => {
+const Languages = ({ resumeId, userId, highlight }) => {
   // state
-  const { userInfo } = useSelector((state) => state.auth);
-  const {
-    data: { user },
-  } = useGetResumeQuery({ resumeId });
   const {
     data: languages,
     isLoading,
@@ -27,70 +18,59 @@ const Languages = ({ resumeId }) => {
     isError,
     error,
   } = useGetLanguageQuery({ resumeId });
+  const [langs, setLangs] = useState([]);
 
-  // modal functions
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const toggleModal = () => {
-    setIsOpen(!modalIsOpen);
-  };
+  useEffect(() => {
+    async function displayHighlighted() {
+      if (languages) {
+        const ls = languages
+          .filter((l) => l.highlighted === true)
+          .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate));
+        if (ls.length === 0) {
+          setLangs(
+            languages
+              .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
+              .slice(0, 3)
+          );
+        } else {
+          setLangs(ls);
+        }
+      }
+    }
+    async function displayFull() {
+      if (languages) {
+        setLangs(
+          languages.sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
+        );
+      }
+    }
+    highlight ? displayHighlighted() : displayFull();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [languages]);
 
   return (
-    <>
-      <Modal
-        className='modal-content'
-        overlayClassName='modal-overlay'
-        contentLabel='Create Language Modal'
-        isOpen={modalIsOpen}
-        onRequestClose={toggleModal}
-        preventScroll={false}
-        shouldFocusAfterRender={false}
-      >
-        <LanguageForm
-          resumeId={resumeId}
-          edit={false}
-          toggleModal={toggleModal}
-        />
-      </Modal>
-      <section className='section' id='languages'>
-        <div className='headline'>
-          <h1 className='title'>Languages</h1>
-          {userInfo && userInfo._id === user && (
-            <div className='actions'>
-              <Icon
-                icon='MdAddCircleOutline'
-                className='action create'
-                onClick={toggleModal}
-              />
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className='languages'>
-          {isLoading && (
-            <RingLoader className='loader-page' loading={isLoading} size={50} />
-          )}
-          {isError && <h1>Error: {error}</h1>}
-          {isSuccess &&
-            languages
-              .filter((lang) => lang.name)
-              .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
-              .map((lang) => {
-                return (
-                  <Language
-                    key={lang._id}
-                    language={lang}
-                    resume={resumeId}
-                    user={user}
-                  />
-                );
-              })}
-        </div>
-      </section>
-    </>
+    <div className='languages'>
+      {isLoading && (
+        <RingLoader className='loader-page' loading={isLoading} size={50} />
+      )}
+      {isError && <h1>Error: {error}</h1>}
+      {isSuccess &&
+        langs.map((lang) => {
+          return (
+            <Language
+              key={lang._id}
+              language={lang}
+              resume={resumeId}
+              user={userId}
+            />
+          );
+        })}
+    </div>
   );
 };
 Languages.propTypes = {
   resumeId: PropTypes.string.isRequired,
+  userId: PropTypes.string,
+  highlight: PropTypes.bool,
 };
 export default Languages;
