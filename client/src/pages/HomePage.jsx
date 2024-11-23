@@ -13,6 +13,7 @@ import Awards from '../components/award/Awards';
 import Groups from '../components/group/Groups';
 
 import { useGetResumeQuery } from '../store/slices/resume/api-resume';
+import Languages from '../components/language/Languages';
 
 const HomePage = () => {
   const userId = '656776679c8a5750bef8d7fc';
@@ -52,6 +53,7 @@ const HomePage = () => {
           <Accomplishments resumeId={mainResumeId} highlight />
           <Awards resumeId={mainResumeId} highlight />
           <Groups resumeId={mainResumeId} highlight />
+          <Languages resumeId={mainResumeId} highlight />
         </div>
       </div>
     </main>
