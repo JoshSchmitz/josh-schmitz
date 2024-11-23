@@ -12,7 +12,7 @@ import ProjectSection from '../project/ProjectSection';
 import AccomplishmentSection from '../accomplishment/AccomplishmentSection';
 import AwardSection from '../award/AwardSection';
 import GroupSection from '../group/GroupSection';
-import Languages from '../language/Languages';
+import LanguageSection from '../language/LanguageSection';
 
 // import state
 import { useGetResumeQuery } from '../../store/slices/resume/api-resume';
@@ -66,7 +66,9 @@ const Resume = ({ resumeId }) => {
           {resume.groupCount > 0 && (
             <GroupSection resumeId={resumeId} userId={resume.user} />
           )}
-          {resume.languageCount > 0 && <Languages resumeId={resumeId} />}
+          {resume.languageCount > 0 && (
+            <LanguageSection resumeId={resumeId} userId={resume.user} />
+          )}
         </article>
       )}
     </>
