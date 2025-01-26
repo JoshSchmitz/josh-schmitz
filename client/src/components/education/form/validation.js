@@ -108,18 +108,14 @@ const degree_validation = {
 const majors_validation = {
   id: 'majors',
   placeholder: 'Select Major(s) ...',
-  validation: {
-    required: { value: true, message: 'required' },
-  },
+  validation: {},
 };
 
 // minors
 const minors_validation = {
   id: 'minors',
   placeholder: 'Select Minor(s) ...',
-  validation: {
-    required: { value: true, message: 'required' },
-  },
+  validation: {},
 };
 
 // gpa
