@@ -1,15 +1,21 @@
-// .section#groups {}
-.groups {
+.section#groups .groups {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 12px;
+}
 
+#homepage #details .groups {
+    grid-area: gr;
+}
+
+.groups {
     .group {
         display: flex;
         gap: 5px;
         padding: 8px 12px;
         border: solid $bg-light 2px;
+        margin-bottom: 10px;
 
         &>.details {
             flex-grow: 1;

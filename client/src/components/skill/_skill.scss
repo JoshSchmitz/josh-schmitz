@@ -2,12 +2,19 @@
     .categories {
         .category {
             margin-top: 12px;
+
+            .skills {
+                padding: 10px 0;
+            }
         }
     }
 }
 
+#homepage #details #skill.categories {
+    grid-area: sk;
+}
+
 .skills {
-    padding: 10px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;

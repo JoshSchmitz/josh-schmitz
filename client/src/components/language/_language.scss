@@ -1,6 +1,12 @@
-// .section#languages {}
-.languages {
+.section#languages .languages {
     padding: 10px 0;
+}
+
+#homepage #details #language.categories {
+    grid-area: lang;
+}
+
+.languages {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;

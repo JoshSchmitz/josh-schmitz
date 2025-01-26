@@ -1,9 +1,17 @@
-// .section#awards {}
-.awards {
+.section#awards .awards {
     padding: 10px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+}
+
+#homepage #details .awards {
+    grid-area: aw;
+}
+
+.awards {
+    display: flex;
+    gap: 10px;
 
     .award {
         display: flex;

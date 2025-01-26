@@ -1,12 +1,22 @@
+.section#projects .projects {
+    .project {
+        margin-top: 5px;
+    }
+}
+
+#homepage #details .projects {
+    grid-area: proj;
+}
+
 .projects {
     .project {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: 10px;
-        margin-top: 5px;
         border-left: solid 4px $bg-light;
         padding-left: 10px;
+        margin-bottom: 8px;
 
         &>.details {
             &>.headline {

@@ -1,7 +1,17 @@
+// .section#educations .educations {
+//     .education {
+//         margin-top: 5px;
+//     }
+// }
+
+#homepage #details .educations {
+    grid-area: edu;
+}
+
 .education {
-    margin-top: 5px;
     border-left: solid 4px $bg-light;
     padding-left: 10px;
+    margin-top: 8px;
 
     &>.headline {
         &>.details {
