@@ -27,10 +27,9 @@ const Projects = ({ resumeId, userId, highlight }) => {
           .filter((p) => p.highlighted === true)
           .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate));
         if (prj.length === 0) {
+          const ps = [...projects];
           setProj(
-            projects
-              .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
-              .slice(0, 1)
+            ps.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate)).slice(0, 1)
           );
         } else {
           setProj(prj);
@@ -39,7 +38,8 @@ const Projects = ({ resumeId, userId, highlight }) => {
     }
     async function displayFull() {
       if (projects) {
-        setProj(projects.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
+        const ps = [...projects];
+        setProj(ps.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
       }
     }
 

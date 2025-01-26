@@ -23,25 +23,23 @@ const Accomplishments = ({ resumeId, userId, highlight }) => {
   useEffect(() => {
     async function displayHighlighted() {
       if (accomplishments) {
-        const accs = accomplishments
+        const as = accomplishments
           .filter((a) => a.highlighted === true)
           .sort((a, b) => dayjs(b.date) - dayjs(a.date));
-        if (accs.length === 0) {
+        if (as.length === 0) {
+          const as = [...accomplishments];
           setAccomps(
-            accomplishments
-              .sort((a, b) => dayjs(b.date) - dayjs(a.date))
-              .slice(0, 2)
+            as.sort((a, b) => dayjs(b.date) - dayjs(a.date)).slice(0, 2)
           );
         } else {
-          setAccomps(accs);
+          setAccomps(as);
         }
       }
     }
     async function displayFull() {
       if (accomplishments) {
-        setAccomps(
-          accomplishments.sort((a, b) => dayjs(b.date) - dayjs(a.date))
-        );
+        const as = [...accomplishments];
+        setAccomps(as.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
       }
     }
 

@@ -23,21 +23,23 @@ const Leaderships = ({ resumeId, userId, highlight }) => {
   useEffect(() => {
     async function displayHighlighted() {
       if (leaderships) {
-        const leads = leaderships.filter((e) => e.highlighted === true);
-        if (leads.length === 0) {
+        const ls = leaderships
+          .filter((l) => l.highlighted === true)
+          .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate));
+        if (ls.length === 0) {
+          const ls = [...leaderships];
           setLeads(
-            leaderships
-              .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate))
-              .slice(0, 1)
+            ls.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate)).slice(0, 1)
           );
         } else {
-          setLeads(leads);
+          setLeads(ls);
         }
       }
     }
     async function displayFull() {
       if (leaderships) {
-        setLeads(leaderships.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
+        const ls = [...leaderships];
+        setLeads(ls.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
       }
     }
 

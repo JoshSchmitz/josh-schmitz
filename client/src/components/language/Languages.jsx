@@ -27,8 +27,9 @@ const Languages = ({ resumeId, userId, highlight }) => {
           .filter((l) => l.highlighted === true)
           .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate));
         if (ls.length === 0) {
+          const ls = [...languages];
           setLangs(
-            languages
+            ls
               .sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
               .slice(0, 3)
           );
@@ -39,9 +40,8 @@ const Languages = ({ resumeId, userId, highlight }) => {
     }
     async function displayFull() {
       if (languages) {
-        setLangs(
-          languages.sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate))
-        );
+        const ls = [...languages];
+        setLangs(ls.sort((a, b) => dayjs(a.startDate) - dayjs(b.startDate)));
       }
     }
     highlight ? displayHighlighted() : displayFull();
@@ -49,22 +49,24 @@ const Languages = ({ resumeId, userId, highlight }) => {
   }, [languages]);
 
   return (
-    <div className='languages'>
-      {isLoading && (
-        <RingLoader className='loader-page' loading={isLoading} size={50} />
-      )}
-      {isError && <h1>Error: {error}</h1>}
-      {isSuccess &&
-        langs.map((lang) => {
-          return (
-            <Language
-              key={lang._id}
-              language={lang}
-              resume={resumeId}
-              user={userId}
-            />
-          );
-        })}
+    <div id='language' className='categories'>
+      <div className='languages'>
+        {isLoading && (
+          <RingLoader className='loader-page' loading={isLoading} size={50} />
+        )}
+        {isError && <h1>Error: {error}</h1>}
+        {isSuccess &&
+          langs.map((lang) => {
+            return (
+              <Language
+                key={lang._id}
+                language={lang}
+                resume={resumeId}
+                user={userId}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

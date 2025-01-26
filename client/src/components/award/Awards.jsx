@@ -23,21 +23,21 @@ const Awards = ({ resumeId, userId, highlight }) => {
   useEffect(() => {
     async function displayHilighted() {
       if (awards) {
-        const aw = awards
+        const as = awards
           .filter((a) => a.highlighted === true)
           .sort((a, b) => dayjs(b.date) - dayjs(a.date));
-        if (aw.length === 0) {
-          setAws(
-            awards.sort((a, b) => dayjs(b.date) - dayjs(a.date)).slice(0, 2)
-          );
+        if (as.length === 0) {
+          const as = [...awards];
+          setAws(as.sort((a, b) => dayjs(b.date) - dayjs(a.date)).slice(0, 2));
         } else {
-          setAws(aw);
+          setAws(as);
         }
       }
     }
     async function displayFull() {
       if (awards) {
-        setAws(awards.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
+        const as = [...awards];
+        setAws(as.sort((a, b) => dayjs(b.date) - dayjs(a.date)));
       }
     }
     highlight ? displayHilighted() : displayFull();

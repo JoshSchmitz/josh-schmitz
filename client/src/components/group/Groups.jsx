@@ -27,8 +27,9 @@ const Groups = ({ resumeId, userId, highlight }) => {
           .filter((g) => g.highlighted === true)
           .sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate));
         if (gs.length === 0) {
+          const gs = [...groups];
           setGrps(
-            groups
+            gs
               .sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate))
               .slice(0, 2)
           );
@@ -39,7 +40,8 @@ const Groups = ({ resumeId, userId, highlight }) => {
     }
     async function displayFull() {
       if (groups) {
-        setGrps(groups.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate)));
+        const gs = [...groups];
+        setGrps(gs.sort((a, b) => dayjs(b.startDate) - dayjs(a.startDate)));
       }
     }
     highlight ? displayHighlighted() : displayFull();

@@ -37,7 +37,7 @@ const Skills = ({ resumeId, userId, highlight }) => {
   }, [skills]);
 
   return (
-    <div className='categories'>
+    <div id='skill' className='categories'>
       {isLoading && (
         <RingLoader className='loader-page' loading={isLoading} size={50} />
       )}

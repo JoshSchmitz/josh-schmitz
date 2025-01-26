@@ -23,19 +23,23 @@ const Educations = ({ resumeId, userId, highlight }) => {
   useEffect(() => {
     async function displayHighlghted() {
       if (eds) {
-        const ed = eds.filter((e) => e.highlighted === true);
-        if (ed.length === 0) {
+        const es = eds
+          .filter((e) => e.highlighted === true)
+          .sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate));
+        if (es.length === 0) {
+          const es = [...eds];
           setEducations(
-            eds.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate)).slice(0, 1)
+            es.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate)).slice(0, 1)
           );
         } else {
-          setEducations(ed);
+          setEducations(es);
         }
       }
     }
     async function displayFull() {
       if (eds) {
-        setEducations(eds);
+        const es = [...eds];
+        setEducations(es.sort((a, b) => dayjs(b.endDate) - dayjs(a.endDate)));
       }
     }
     if (highlight) {
