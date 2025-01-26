@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useGetResumeQuery } from '../store/slices/resume/api-resume';
 // import { useSelector } from 'react-redux';
 
 // import RingLoader from 'react-spinners/RingLoader';
@@ -8,12 +9,6 @@ import Educations from '../components/education/Educations';
 import Skills from '../components/skill/Skills';
 import Leaderships from '../components/leadership/Leaderships';
 import Projects from '../components/project/Projects';
-import Accomplishments from '../components/accomplishment/Accomplishments';
-import Awards from '../components/award/Awards';
-import Groups from '../components/group/Groups';
-
-import { useGetResumeQuery } from '../store/slices/resume/api-resume';
-import Languages from '../components/language/Languages';
 
 const HomePage = () => {
   const userId = '656776679c8a5750bef8d7fc';
@@ -44,16 +39,12 @@ const HomePage = () => {
     <main>
       <div id='homepage' className='container'>
         <Contact style='vertical' />
-        <div className='details'>
+        <div id='details'>
           <Experiences resumeId={mainResumeId} highlight />
           <Educations resumeId={mainResumeId} highlight />
           <Skills resumeId={mainResumeId} highlight />
           <Leaderships resumeId={mainResumeId} highlight />
           <Projects resumeId={mainResumeId} highlight />
-          <Accomplishments resumeId={mainResumeId} highlight />
-          <Awards resumeId={mainResumeId} highlight />
-          <Groups resumeId={mainResumeId} highlight />
-          <Languages resumeId={mainResumeId} highlight />
         </div>
       </div>
     </main>
