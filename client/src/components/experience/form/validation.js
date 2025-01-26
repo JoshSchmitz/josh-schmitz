@@ -66,7 +66,7 @@ const companyname_validation = {
   placeholder: 'Company name',
   validation: {
     required: { value: true, message: 'required' },
-    maxLength: { value: 30, message: 'max 30 characters' },
+    maxLength: { value: 60, message: 'max 60 characters' },
   },
 };
 
