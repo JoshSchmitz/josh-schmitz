@@ -1,57 +1,6 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Icon from '../../icon/Icon';
 
-// import { BsNodePlusFill } from 'react-icons/bs';
-// import {
-// FaWrench,
-// FaPencil,
-// FaHandHoldingDollar,
-// FaPeopleLine,
-// } from 'react-icons/fa6';
-// import { IoColorPalette } from 'react-icons/io5';
-/* import {
-  DiAndroid,
-  DiAngularSimple,
-  DiAppstore,
-  DiAtlassian,
-  DiAws,
-  DiBootstrap,
-  DiChrome, */
-// DiCode,
-/* DiCodeBadge,
-  DiCodepen,
-  DiCreativecommons,
-  DiCss3,
-  DiCss3Full,
-  DiDatabase,
-  DiDotnet,
-  DiFirefox,
-  DiGit,
-  DiGithub,
-  DiGithubBadge,
-  DiGoogleAnalytics,
-  DiGoogleDrive,
-  DiHtml5,
-  DiJava,
-  DiJavascript1,
-  DiJsBadge,
-  DiLaravel,
-  DiLess,
-  DiMarkdown,
-  DiMongodb,
-  DiNodejs,
-  DiNodejsSmall,
-  DiNpm,
-  DiPhotoshop,
-  DiPhp,
-  DiReact,
-  DiSass,
-  DiTerminal,
-  DiTerminalBadge,
-  DiVisualstudio,
-  DiWordpress,
-} from 'react-icons/di'; */
-
 // field definitions and validations for SkillForm
 
 // title
@@ -266,6 +215,14 @@ const icon_validation = {
       ),
     },
     {
+      value: 'FaFigma',
+      label: (
+        <div className='option-content' key={nanoid()}>
+          <Icon icon='FaFigma' />
+        </div>
+      ),
+    },
+    {
       value: 'DiFirefox',
       label: (
         <div className='option-content' key={nanoid()}>
@@ -370,6 +327,14 @@ const icon_validation = {
       ),
     },
     {
+      value: 'SiMicrosoft',
+      label: (
+        <div className='option-content' key={nanoid()}>
+          <Icon icon='SiMicrosoft' />
+        </div>
+      ),
+    },
+    {
       value: 'DiMongodb',
       label: (
         <div className='option-content' key={nanoid()}>
@@ -418,6 +383,14 @@ const icon_validation = {
       ),
     },
     {
+      value: 'SiPowerautomate',
+      label: (
+        <div className='option-content' key={nanoid()}>
+          <Icon icon='SiPowerautomate' />
+        </div>
+      ),
+    },
+    {
       value: 'DiSass',
       label: (
         <div className='option-content' key={nanoid()}>
@@ -426,10 +399,26 @@ const icon_validation = {
       ),
     },
     {
+      value: 'SiMicrosoftsharepoint',
+      label: (
+        <div className='option-content' key={nanoid()}>
+          <Icon icon='SiMicrosoftsharepoint' />
+        </div>
+      ),
+    },
+    {
       value: 'DiReact',
       label: (
         <div className='option-content' key={nanoid()}>
           <Icon icon='DiReact' />
+        </div>
+      ),
+    },
+    {
+      value: 'SiRedux',
+      label: (
+        <div className='option-content' key={nanoid()}>
+          <Icon icon='SiRedux' />
         </div>
       ),
     },
